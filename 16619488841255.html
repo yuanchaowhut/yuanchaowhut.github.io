@@ -1,0 +1,452 @@
+
+
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      
+    运管服子系统签名鉴权总结 - 
+    
+    </title>
+    
+    
+    
+    <link href="atom.xml" rel="alternate" title="" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/style.css">
+    
+</head>
+  <body>
+
+
+
+
+        <div id="wrapper">
+            <header class="site-header">
+                <div class="container">
+                    <div class="site-title-wrapper">
+                          <a class="button-square" href="index.html">
+<svg class="svg-inline--fa fa-home fa-w-18" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="home" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor" d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z"></path></svg>
+                            </a>
+                        
+                         
+                        
+                        
+                        
+                        
+                      
+                      <a class="button-square" href="atom.xml" target="_blank" title="RSS">
+                              <svg class="svg-inline--fa fa-rss fa-w-14" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="rss" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M128.081 415.959c0 35.369-28.672 64.041-64.041 64.041S0 451.328 0 415.959s28.672-64.041 64.041-64.041 64.04 28.673 64.04 64.041zm175.66 47.25c-8.354-154.6-132.185-278.587-286.95-286.95C7.656 175.765 0 183.105 0 192.253v48.069c0 8.415 6.49 15.472 14.887 16.018 111.832 7.284 201.473 96.702 208.772 208.772.547 8.397 7.604 14.887 16.018 14.887h48.069c9.149.001 16.489-7.655 15.995-16.79zm144.249.288C439.596 229.677 251.465 40.445 16.503 32.01 7.473 31.686 0 38.981 0 48.016v48.068c0 8.625 6.835 15.645 15.453 15.999 191.179 7.839 344.627 161.316 352.465 352.465.353 8.618 7.373 15.453 15.999 15.453h48.068c9.034-.001 16.329-7.474 16.005-16.504z"></path></svg><!-- <i class="fas fa-rss fa-lg"></i> -->
+                      </a>
+
+              
+                       
+                         
+                        
+                    </div>
+
+                    <ul class="site-nav">
+                        
+                    </ul>
+                </div>
+            </header>
+
+            <div id="container">
+
+ 
+<div class="container">
+  <article class="post-container">
+    <header class="post-header">
+        <h1 class="post-title">运管服子系统签名鉴权总结</h1>
+        <p class="post-date">
+                <span>Posted <time datetime="2022/08/31" itemprop="datePublished">2022/08/31</time></span>
+            </p>
+    </header>
+
+    <div class="post-content clearfix">
+<ul>
+<li><a href="#%E9%9C%80%E6%B1%82%E8%83%8C%E6%99%AF">需求背景</a></li>
+<li><a href="#%E6%A0%A1%E9%AA%8C%E8%A7%84%E5%88%99">校验规则</a></li>
+<li><a href="#%E6%94%B9%E9%80%A0%E7%82%B9">改造点</a></li>
+<li><a href="#%E5%B0%81%E8%A3%85%E5%B7%A5%E5%85%B7%E7%B1%BB">封装工具类</a>
+<ul>
+<li><a href="#signatureforjquery">signatureForJquery</a></li>
+<li><a href="#signatureforaxios">signatureForAxios</a></li>
+<li><a href="#signatureforurl">signatureForUrl</a></li>
+<li><a href="#window-open%E6%89%B9%E5%A4%84%E7%90%86">window.open批处理</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BD%BF%E7%94%A8%E5%8F%8A%E4%B8%BE%E4%BE%8B">使用及举例</a>
+<ul>
+<li><a href="#axios-fetch%E7%B1%BB%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%E5%A4%84%E7%90%86">axios(fetch)类网络请求处理</a></li>
+<li><a href="#window-open%E7%9A%84%E5%A4%84%E7%90%86">window.open的处理</a></li>
+<li><a href="#window-location-href%E5%A4%84%E7%90%86">window.location.href处理</a></li>
+<li><a href="#iframe%E5%8F%8A%E4%B8%AD%E7%9A%84src%E5%A4%84%E7%90%86">iframe及中的src处理</a></li>
+<li><a href="#a%E6%A0%87%E7%AD%BEhref%E9%93%BE%E6%8E%A5%E7%9A%84%E5%A4%84%E7%90%86">a标签href链接的处理</a></li>
+</ul>
+</li>
+<li><a href="#%E5%A6%82%E4%BD%95%E9%AA%8C%E8%AF%81%EF%BC%9F">如何验证？</a>
+<ul>
+<li><a href="#%E6%88%90%E5%8A%9F%E6%A1%88%E4%BE%8B">成功案例</a></li>
+<li><a href="#%E5%A4%B1%E8%B4%A5%E6%A1%88%E4%BE%8B">失败案例</a></li>
+</ul>
+</li>
+<li><a href="#%E5%BC%80%E5%8F%91%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9">开发注意事项</a></li>
+<li><a href="#%E5%89%A9%E4%BD%99%E5%B7%A5%E4%BD%9C">剩余工作</a></li>
+</ul>
+<h2><a id="%E9%9C%80%E6%B1%82%E8%83%8C%E6%99%AF" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>需求背景</h2>
+<p>接口签名验证是公司从去年底就开始推行的事情，在我看来主要有两个目的，一是应对第三方测评机构和业主方的需求，二是它确确实实能够降低一些网络安全风险，为我们系统的稳定性提供一份保障。因此，尽管过去的一周为了做好签名鉴权这件事，耗费了我大量的精力和脑细胞，但是我还是想尽量做到位，同时也能够学习一些新东西。</p>
+<h2><a id="%E6%A0%A1%E9%AA%8C%E8%A7%84%E5%88%99" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>校验规则</h2>
+<p>公司各系统签名鉴权详细规则请参考<a href="https://alidocs.dingtalk.com/i/team/9JOGOlqDaEMJz4QL/docs/9JOGOj4ynpd4em4Q?iframeQuery=">此文档</a>。简单来说，就是要在我们发出的每个请求上都额外附加3个签名鉴权参数，nonce、timestamp、signature，其中nonce和timestamp的生成相对简单和固定，signature则复杂的多，有一套专门的计算方法。前端将这3个参数传送到后台，后台据此解析和验证，从而可以避免一些url的篡改、伪造等攻击。</p>
+<h2><a id="%E6%94%B9%E9%80%A0%E7%82%B9" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>改造点</h2>
+<p>由于我们是先有成型的项目，然后再做这个事情，因此需要改造的地方还是比较多的。并且我们也不可能挨个在发送请求的地方插入签名鉴权的逻辑，否则工作量将大到无法估量。因此最好的办法还是要封装一个工具类，然后在所有请求都必须经过的地方植入这段逻辑。在做这个工作之前，我们首先需要总结分类，搞清楚到底有哪些地方需要进行处理。</p>
+<ul>
+<li>普通请求。包括常见的get、post、put、delete，以及部分项目中还会用到$.ajax()请求。</li>
+<li>文件下载。包括<a href=""></a>这类链接形式的下载。</li>
+<li>window.open和window.location.href等。</li>
+<li>iframe等</li>
+</ul>
+<h2><a id="%E5%B0%81%E8%A3%85%E5%B7%A5%E5%85%B7%E7%B1%BB" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>封装工具类</h2>
+<p>运管服前端子系统使用的网络框架主要有以下几类：\(.ajax 【以渣土系统等老KO项目为主】，axios库【以react等新项目为主】，fetch【户外广告、门前三包等】。其中\).ajax算一个大类，axios和fetch大同小异，可以归为一个大类，最后再加上诸如window.open这类直接通过url发送请求算作一类，总共可以划分3个大类。因此，我们的工具类至少需要对外暴露3个API。即：signatureForJquery、signatureForAxios、signatureForUrl。这里我们不展开讨论工具类的每一个细节，大家可以直接去查看项目中的源码。这里只贴一个核心代码片段，让大家感受一些生成签名参数的流程。</p>
+<h3><a id="signatureforjquery" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>signatureForJquery</h3>
+<pre><code class="language-js">export const signatureForJquery = function ($) {
+    let _ajax = $.ajax;
+    $.ajax = function (options) {
+        let isJson = isApplicationJson(options, 'jquery');
+        let isFormdata = isFormData(options);
+        let url = options.url;
+
+        // 1.获取url参数
+        const urlParams = getUrlParam(url);
+        if (urlParams.signature) {
+            delete urlParams.signature
+        }
+
+        // 2.初始化签名鉴权参数
+        let option = initOptions();
+        let signatureOption = Object.assign({}, urlParams, option);
+        if (options.data &amp;&amp; !isJson &amp;&amp; !isFormdata) {
+            signatureOption = Object.assign(signatureOption, options.data);
+        }
+        if (options.dataType === 'jsonp') {
+            signatureOption.callback = options.jsonpCallback
+        }
+
+        // 3.排序
+        let paramStr = sortOption(signatureOption);
+        // application/json 请求需要签名 body 的 json(JSON.stringify()后的字符串)
+        if (isJson) {
+            paramStr = paramStr + encode(typeof options.data === 'object'? JSON.stringify(options.data): options.data);
+        }
+
+        // 4.获取 uri
+        let uri = generateUri(url);
+
+        // 5.拼接 uri 和 params
+        paramStr = uri + &quot;?&quot; + paramStr;
+
+        // 6.加密(执行完这一步option中包含完整的签名鉴权3个参数)
+        option.signature = cryptoHash(paramStr);
+
+        // 7.原来的urlParams和签名鉴权的option一起做到url上，防止有application/json情况
+        options.url = buildUrl(url, Object.assign({}, urlParams, option));
+
+        //8.调用原生的$.ajax方法
+        _ajax(options);
+    };
+}
+</code></pre>
+<h3><a id="signatureforaxios" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>signatureForAxios</h3>
+<pre><code class="language-js">export const signatureForAxios = function (url, params = {}, config = {}) {
+    let isJson = isApplicationJson(config);
+    let isMedia = isFormData(config);
+
+    // 1.获取url参数
+    const urlParams = getUrlParam(url);
+
+    // 2.初始化签名鉴权参数
+    let option = initOptions();
+
+    //3.合并签名鉴权参数
+    let signatureOption = mergeOptions(urlParams, params, option, config);
+
+    // 3.排序
+    let paramStr = sortOption(signatureOption);
+
+    // 4.获取uri
+    let uri = generateUri(url);
+
+    // 5.组装uri和params
+    if (isJson) {
+        paramStr = uri + &quot;?&quot; + paramStr + encode(typeof params === 'string' ? params : JSON.stringify(params));
+    }else {
+        paramStr = uri + &quot;?&quot; + paramStr;
+    }
+
+    // 6.加密
+    signatureOption.signature = cryptoHash(paramStr);
+
+    // 7.获取纯净的url
+    url = getPureUrl(url);
+
+    //8.返回新的url和params
+    if (isJson || isMedia) {
+        //json和media类型签名鉴权参数拼接到url上，此signatureOption中只包含urlParams和签名3参数
+        url = buildUrl(url, signatureOption);
+        return {url, params};
+    } else {
+        return {url: url, params: signatureOption};
+    }
+}
+</code></pre>
+<h3><a id="signatureforurl" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>signatureForUrl</h3>
+<pre><code class="language-js">export const signatureForUrl = function (url) {
+    // 1.获取url参数
+    const urlParams = getUrlParam(url);
+
+    // 2.生成 option (不含signature)
+    let option = initOptions();
+    let signatureOption = Object.assign({}, urlParams, option);
+
+    // 3.排序
+    let paramStr = sortOption(signatureOption);
+
+    // 4.获取 uri
+    let uri = generateUri(url);
+
+    // 5.拼接 uri 和 params
+    paramStr = uri + &quot;?&quot; + paramStr;
+
+    // 6.加密
+    signatureOption.signature = cryptoHash(paramStr);
+
+    // 7.拼接加密参数
+    url = buildUrl(url, signatureOption);
+
+    return url;
+}
+</code></pre>
+<h3><a id="window-open%E6%89%B9%E5%A4%84%E7%90%86" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>window.open批处理</h3>
+<p>本来打算全局搜索window.open(url)的代码，然后对括号中的url参数，调用signature工具类中的signatureForUrl进行签名处理，后来发现这样的地方实在有些多，故产生了改写原生的window.open方法的想法，即表面上看原来的代码原封不动，但实际上已经被我偷梁换柱了。不过考虑到这个改动比较大，将来说不定还是要用到原生的方法，所以我还是保留了对原来逻辑的支持----在参数列表末尾中多传递一个true，就表示要使用原生的window.open()。</p>
+<pre><code class="language-js">/**
+ * 重写原生的window.open方法，但兼顾了原来的逻辑，如果要使用原来的window.open,只需要在参数列表末尾加一个true即可
+ * 例如：window.open(url, true)、window.open(url, target, true)、window.open(url, target, features, true).
+ * @param url 与原来的window.open参数相同
+ * @param target 与原来的window.open参数相同(_blank、_parent、_self、_top、name等)
+ * @param features 与原来的window.open参数相同 参考: https://www.runoob.com/jsref/met-win-open.html
+ * @param original 布尔类型，true-使用原来的逻辑，即不参与签名鉴权，反之则参与
+ */
+const winOpen = window.open;
+window.open = function (url, target, features, original) {
+    const len = arguments.length;
+    if (len &gt;= 2 &amp;&amp; arguments[len - 1] === true) {
+        let args = [];
+        for (let i = 0; i &lt; arguments.length - 1; i++) {
+            args.push(arguments[i]);
+        }
+        winOpen.apply(this, args);
+    } else {
+        url = signatureForUrl(url);
+        winOpen(url, target, features);
+    }
+}
+</code></pre>
+<h2><a id="%E4%BD%BF%E7%94%A8%E5%8F%8A%E4%B8%BE%E4%BE%8B" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>使用及举例</h2>
+<h3><a id="axios-fetch%E7%B1%BB%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%E5%A4%84%E7%90%86" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>axios(fetch)类网络请求处理</h3>
+<pre><code class="language-js">import {signatureForAxios, TYPE_JSON, TYPE_MEDIA} from '@/utils/signature';
+
+//GET请求
+const get = (url, params = {}, config = {}) =&gt; {
+    //执行签名鉴权逻辑
+    const signature = signatureForAxios(url, params);
+    url = signature.url;
+    params = signature.params;
+    return axios.get(url, { params, baseURL: url.includes('http') ? '' : baseURL, ...config }).then(res =&gt; {
+        if (res &amp;&amp; res.data) {
+            if (res.data.data) {
+                return res.data.data;
+            }
+            return res.data;
+        }
+        return res;
+    });
+};
+
+//POST请求
+const post = (url, params, config) =&gt; {
+  //执行签名鉴权逻辑
+  const signature = signatureForAxios(url, params);
+  url = signature.url;
+  params = signature.params;
+  return axios.post(url, qs.stringify(params), config).then(res =&gt; {
+    if (res &amp;&amp; res.data) {
+      return res.data.resultInfo;
+    }
+    return res;
+  });
+};
+
+//Content-Type为application/json的POST请求
+const postJson = (url, params, config) =&gt; {
+  //执行签名鉴权逻辑
+  const signature = signatureForAxios(url, params, {type: TYPE_JSON});
+  url = signature.url;
+  params = signature.params;
+  return axios.post(url, params, config).then(res =&gt; {
+    if (res &amp;&amp; res.data) {
+      return res.data.resultInfo;
+    }
+    return res;
+  });
+};
+
+//Content-Type为multipart/formdata的POST请求
+const upLoad = (url, formData) =&gt; {
+  //执行签名鉴权逻辑
+  const signature = signatureForAxios(url, formData, {type: TYPE_MEDIA});
+  url = signature.url;
+  formData = signature.params;
+  return axios.post(url, formData).then(res =&gt; {
+    if (res &amp;&amp; res.data &amp;&amp; res.data.data) {
+      return res.data.data;
+    } else if (res &amp;&amp; res.data &amp;&amp; res.data.resultInfo) {
+      return res.data.resultInfo;
+    }
+    return res;
+  });
+};
+</code></pre>
+<h3><a id="window-open%E7%9A%84%E5%A4%84%E7%90%86" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>window.open的处理</h3>
+<p>由于之前在signature工具类中已经改写了原生的window.open，所以项目中实际上调用的是我自己的window.open方法，在真正打开目标页面之前，我拦截并处理了它的url，所以实际上就已经携带了签名3参数，故不需要额外再处理。</p>
+<h3><a id="window-location-href%E5%A4%84%E7%90%86" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>window.location.href处理</h3>
+<p>window.location.href实际上和window.open(url, '_self')的效果是等同的，因此可以将它修改为window.open(url, '_self')。这样就可以沿用window.open的批处理逻辑。当然也可以导入工具类中的signatureForUrl，然后调用这个方法先处理一下url。</p>
+<p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202208312030214.png" alt="202203262217718" /></p>
+<h3><a id="iframe%E5%8F%8A%E4%B8%AD%E7%9A%84src%E5%A4%84%E7%90%86" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>iframe及中的src处理</h3>
+<p>这类请求没有任何捷径，只能挨个处理。但是好在项目中使用的场景一般不多，所以工作量不算大。</p>
+<p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202208312031662.png" alt="202203262219604" /></p>
+<p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202208312031131.png" alt="202203262219881" /></p>
+<h3><a id="a%E6%A0%87%E7%AD%BEhref%E9%93%BE%E6%8E%A5%E7%9A%84%E5%A4%84%E7%90%86" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>a标签href链接的处理</h3>
+<p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202208312032321.png" alt="202203262220499" /></p>
+<h2><a id="%E5%A6%82%E4%BD%95%E9%AA%8C%E8%AF%81%EF%BC%9F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>如何验证？</h2>
+<p>需要注意的是，携带了签名鉴权的3个参数，不代表签名就一定成功了。目前，由于签名鉴权的功能还不是很稳定，各个部门都还在测试完善阶段，因此现在签名失败对调用接口还没有什么影响，但是我们可以通过response headers查看签名是否成功。</p>
+<h3><a id="%E6%88%90%E5%8A%9F%E6%A1%88%E4%BE%8B" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>成功案例</h3>
+<p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202208312032674.png" alt="202203262235638" /></p>
+<h3><a id="%E5%A4%B1%E8%B4%A5%E6%A1%88%E4%BE%8B" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>失败案例</h3>
+<p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202208312032353.png" alt="202203262315863" /></p>
+<h2><a id="%E5%BC%80%E5%8F%91%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>开发注意事项</h2>
+<ol>
+<li>尽量少用window.location.href，可以使用 window.open(url, '_self') 代替，如果一定要使用，请将url用signatureForUrl包装一下；</li>
+<li><a></a>标签的href属性、iframe的src属性，请使用signatureForUrl包装一下；</li>
+<li>其它特殊请求凡是涉及到url的都类似处理一下，保证发出去的请求都有签名鉴权参数；</li>
+</ol>
+<h2><a id="%E5%89%A9%E4%BD%99%E5%B7%A5%E4%BD%9C" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>剩余工作</h2>
+<p>目前已完成综合考评、户外广告、门前三包、渣土企业年审等react项目的主体签名鉴权工作，不排除一些url方式的请求尚未发现，比如window.location.href之类。老项目工地渣土、应急指挥等$.ajax请求不需要我们考虑，但是url类请求、附件上传等需要特殊处理。这部分需要修改的地方还比较多，需要挨个解决。另外，还有没发现的bug，只能后面慢慢发现慢慢解决了。</p>
+<p>1、ant-design moment对象问题；</p>
+<p>2、get请求url参数json字符串 {} 问题；</p>
+<p>3、{} [] $ 等特殊符号问题;</p>
+<p>4、$.ajax() tranditinal问题</p>
+<pre><code class="language-js"> _saveplanproctree = http.getInstance('home/emergencyv2/planmgr/saveplanproc',{type:&quot;post&quot;,traditional: true}); 
+var params={
+      planID:self._planID,
+      procIDs:procIDs.join(',')
+}
+_deletePlanProc.ajax(params).then(function(data){
+   self.initPlanProcTree();
+});
+</code></pre>
+
+    </div>
+    <footer class="post-footer clearfix">
+      <p class="post-categories">
+        <span>Categories:</span>
+        
+            <a href="%E6%95%B0%E5%AD%97%E6%94%BF%E9%80%9A.html">数字政通</span>, 
+           
+      </p>
+        
+    </footer>
+     <div class="comments-wrap">
+        <div class="share-comments">
+          
+
+          
+
+          
+        </div>
+      </div><!-- end comments wrap -->
+  </article>
+ </div><!-- end-->
+
+
+
+    <footer class="footer">
+            <div class="container">
+                <div class="site-footer-wrapper">
+                        <a class="button-square" href="index.html">
+<svg class="svg-inline--fa fa-home fa-w-18" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="home" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor" d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z"></path></svg>
+                            </a>
+                        
+                         
+                        
+                        
+                        
+                        
+                      
+                      <a class="button-square" href="atom.xml" target="_blank" title="RSS">
+                              <svg class="svg-inline--fa fa-rss fa-w-14" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="rss" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M128.081 415.959c0 35.369-28.672 64.041-64.041 64.041S0 451.328 0 415.959s28.672-64.041 64.041-64.041 64.04 28.673 64.04 64.041zm175.66 47.25c-8.354-154.6-132.185-278.587-286.95-286.95C7.656 175.765 0 183.105 0 192.253v48.069c0 8.415 6.49 15.472 14.887 16.018 111.832 7.284 201.473 96.702 208.772 208.772.547 8.397 7.604 14.887 16.018 14.887h48.069c9.149.001 16.489-7.655 15.995-16.79zm144.249.288C439.596 229.677 251.465 40.445 16.503 32.01 7.473 31.686 0 38.981 0 48.016v48.068c0 8.625 6.835 15.645 15.453 15.999 191.179 7.839 344.627 161.316 352.465 352.465.353 8.618 7.373 15.453 15.999 15.453h48.068c9.034-.001 16.329-7.474 16.005-16.504z"></path></svg><!-- <i class="fas fa-rss fa-lg"></i> -->
+                      </a>
+
+              
+                       
+                                                
+                </div>
+                <div class="site-menu-wrapper">
+                  &nbsp;<span>|</span>&nbsp;
+                  
+                    <a target="self" class="" href="index.html">Home</a>
+                    &nbsp;<span>|</span>&nbsp;
+                  
+                    <a target="_self" class="" href="archives.html">Archives</a>
+                    &nbsp;<span>|</span>&nbsp;
+                                             
+                </div>
+
+                <p class="footer-copyright">
+                        Copyright &copy; 2019
+                        Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+                        Theme used <a target="_blank" href="https://blog.timac.org">Timac</a>.
+                </p>
+            </div>
+        </footer>
+
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="asset/prism.js"></script>
+
+        
+      
+  
+    
+
+
+    </body>
+</html>

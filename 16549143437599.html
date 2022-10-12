@@ -1,0 +1,362 @@
+
+
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      
+    Vue3 源码调试流程 - 
+    
+    </title>
+    
+    
+    
+    <link href="atom.xml" rel="alternate" title="" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/style.css">
+    
+</head>
+  <body>
+
+
+
+
+        <div id="wrapper">
+            <header class="site-header">
+                <div class="container">
+                    <div class="site-title-wrapper">
+                          <a class="button-square" href="index.html">
+<svg class="svg-inline--fa fa-home fa-w-18" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="home" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor" d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z"></path></svg>
+                            </a>
+                        
+                         
+                        
+                        
+                        
+                        
+                      
+                      <a class="button-square" href="atom.xml" target="_blank" title="RSS">
+                              <svg class="svg-inline--fa fa-rss fa-w-14" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="rss" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M128.081 415.959c0 35.369-28.672 64.041-64.041 64.041S0 451.328 0 415.959s28.672-64.041 64.041-64.041 64.04 28.673 64.04 64.041zm175.66 47.25c-8.354-154.6-132.185-278.587-286.95-286.95C7.656 175.765 0 183.105 0 192.253v48.069c0 8.415 6.49 15.472 14.887 16.018 111.832 7.284 201.473 96.702 208.772 208.772.547 8.397 7.604 14.887 16.018 14.887h48.069c9.149.001 16.489-7.655 15.995-16.79zm144.249.288C439.596 229.677 251.465 40.445 16.503 32.01 7.473 31.686 0 38.981 0 48.016v48.068c0 8.625 6.835 15.645 15.453 15.999 191.179 7.839 344.627 161.316 352.465 352.465.353 8.618 7.373 15.453 15.999 15.453h48.068c9.034-.001 16.329-7.474 16.005-16.504z"></path></svg><!-- <i class="fas fa-rss fa-lg"></i> -->
+                      </a>
+
+              
+                       
+                         
+                        
+                    </div>
+
+                    <ul class="site-nav">
+                        
+                    </ul>
+                </div>
+            </header>
+
+            <div id="container">
+
+ 
+<div class="container">
+  <article class="post-container">
+    <header class="post-header">
+        <h1 class="post-title">Vue3 源码调试流程</h1>
+        <p class="post-date">
+                <span>Posted <time datetime="2022/06/11" itemprop="datePublished">2022/06/11</time></span>
+            </p>
+    </header>
+
+    <div class="post-content clearfix">
+<ul>
+<li><a href="#%E6%BA%90%E7%A0%81%E4%B8%8B%E8%BD%BD">源码下载</a></li>
+<li><a href="#%E6%BA%90%E7%A0%81%E6%89%93%E5%8C%85">源码打包</a></li>
+<li><a href="#%E6%BA%90%E7%A0%81%E8%B0%83%E8%AF%95">源码调试</a></li>
+</ul>
+<h1><a id="%E6%BA%90%E7%A0%81%E4%B8%8B%E8%BD%BD" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>源码下载</h1>
+<ol>
+<li>
+<p>下载地址：<a href="https://github.com/vuejs/core">https://github.com/vuejs/core</a></p>
+</li>
+<li>
+<p>切换 Tags 标签，选择合适的版本下载</p>
+</li>
+</ol>
+<img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202206110920957.png" alt="image-20220611091952355" style="zoom:50%;" />
+<ol start="3">
+<li>安装依赖 pnpm install</li>
+</ol>
+<h1><a id="%E6%BA%90%E7%A0%81%E6%89%93%E5%8C%85" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>源码打包</h1>
+<ol>
+<li>
+<p>打开根目录下的 package.json 可以看到内置的脚本</p>
+<p>dev:  开发环境下打包，使用的是 esbuild 打包</p>
+<p>build:  生产环境下打包，使用的是 rollup 打包</p>
+<pre><code class="language-json">&quot;private&quot;: true,
+  &quot;version&quot;: &quot;3.2.31&quot;,
+  &quot;scripts&quot;: {
+    &quot;dev&quot;: &quot;node scripts/dev.js&quot;,
+    &quot;build&quot;: &quot;node scripts/build.js&quot;,
+}
+</code></pre>
+</li>
+<li>
+<p>由于我们主要是开发环境下打包调试，故使用 dev，对应的脚本是 scripts/dev.js，如下所示，重要之处已经添加了注释。</p>
+<pre><code class="language-js">// Using esbuild for faster dev builds.
+// We are still using Rollup for production builds because it generates
+// smaller files w/ better tree-shaking.
+
+// @ts-check
+const {build} = require('esbuild')                                            // esbuild 打包
+const nodePolyfills = require('@esbuild-plugins/node-modules-polyfill')         // 补丁包（非必须）
+const {resolve, relative} = require('path')
+const args = require('minimist')(process.argv.slice(2))                         // minimist 解析命令行参数
+
+// 默认为 vue，可以通过命令行传参打包指定的模块，比如：npm run dev reactivity  则只打包 reactivity 模块。
+const target = args._[0] || 'vue' 
+
+// 默认为 global，可通过修改根目录下的 package.json 指定打包格式，例如想打包 cjs 模式的包：
+// &quot;dev&quot;: &quot;node scripts/dev.js -f cjs&quot;。但如果已经修改到了这里，那上一步指定模块名，也可以这里指定，命令行就无需传参数了
+// &quot;dev&quot;: &quot;node scripts/dev.js reactivity -f cjs&quot;，命令行只需要执行 npm run dev 即可。
+const format = args.f || 'global' 
+
+const inlineDeps = args.i || args.inline
+
+// 具体哪个模块下的 package.json，它里边有一个自定义属性 buildOptions，后面打包会用到。
+const pkg = require(resolve(__dirname, `../packages/${target}/package.json`))
+
+// resolve output 解析输出格式
+const outputFormat = format.startsWith('global')
+  ? 'iife'
+  : format === 'cjs'
+  ? 'cjs'
+  : 'esm'
+
+// 输出文件后缀
+const postfix = format.endsWith('-runtime')
+  ? `runtime.``{format.replace(/-runtime``/, '')}`
+  : format
+
+// 输出文件完整路径，例如：../packages/reactivity/dist/reactivity.global.js
+const outfile = resolve(
+  __dirname,
+  `../packages/``{target}/dist/``{target}.${postfix}.js`
+)const relativeOutfile = relative(process.cwd(), outfile)
+
+// resolve externals
+// TODO this logic is largely duplicated from rollup.config.js
+let external = []
+if (!inlineDeps) {
+  // cjs &amp; esm-bundler: external all deps
+  if (format === 'cjs' || format.includes('esm-bundler')) {
+    external = [
+      ...external,
+      ...Object.keys(pkg.dependencies || {}),
+      ...Object.keys(pkg.peerDependencies || {}),
+      // for @vue/compiler-sfc / server-renderer
+      'path',
+      'url',
+      'stream'
+    ]
+  }
+
+  if (target === 'compiler-sfc') {
+    const consolidateDeps = require.resolve('@vue/consolidate/package.json', {paths: [resolve(__dirname, `../packages/${target}/`)]})
+    external = [
+      ...external,
+      ...Object.keys(require(consolidateDeps).devDependencies),
+      'fs',
+      'vm',
+      'crypto',
+      'react-dom/server',
+      'teacup/lib/express',
+      'arc-templates/dist/es5',
+      'then-pug',
+      'then-jade'
+    ]
+  }
+}
+
+// esbuild 打包 api
+build({entryPoints: [resolve(__dirname, `../packages/${target}/src/index.ts`)],    // 入口文件
+  outfile,  // 输出文件
+  bundle: true,
+  external,
+  sourcemap: true,
+  format: outputFormat,  // 打包格式
+  globalName: pkg.buildOptions?.name,
+  platform: format === 'cjs' ? 'node' : 'browser',
+  plugins:
+    format === 'cjs' || pkg.buildOptions?.enableNonBrowserBranches
+      ? [nodePolyfills.default()]
+      : undefined,
+  // 定义一堆全局变量供项目中使用
+  define: {
+    __COMMIT__: `&quot;dev&quot;`,
+    __VERSION__: `&quot;${pkg.version}&quot;`,
+    __DEV__: `true`,
+    __TEST__: `false`,
+    __BROWSER__: String(format !== 'cjs' &amp;&amp; !pkg.buildOptions?.enableNonBrowserBranches),
+    __GLOBAL__: String(format === 'global'),
+    __ESM_BUNDLER__: String(format.includes('esm-bundler')),
+    __ESM_BROWSER__: String(format.includes('esm-browser')),
+    __NODE_JS__: String(format === 'cjs'),
+    __SSR__: String(format === 'cjs' || format.includes('esm-bundler')),
+    __COMPAT__: `false`,
+    __FEATURE_SUSPENSE__: `true`,
+    __FEATURE_OPTIONS_API__: `true`,
+    __FEATURE_PROD_DEVTOOLS__: `false`
+  },
+  // 监控，修改文件后能即时响应
+  watch: {onRebuild(error) {if (!error) console.log(`rebuilt: ${relativeOutfile}`)}}
+}).then(() =&gt; {console.log(`watching: ${relativeOutfile}`)})
+</code></pre>
+</li>
+<li>
+<p>执行打包命令。由于我们一般用于浏览器下调试，所以 -f 基本不用指定，默认就是 global。</p>
+<p>如果整个 vue 一起打包，则直接不用做任何修改 npm run dev 即可。</p>
+<p>如果打包指定模块，比如 reactivity，则有 2 种方式。一是直接 npm run dev reactivity ，二是修改根目录下的 package.json <code>&quot;dev&quot;: &quot;node scripts/dev.js reactivity&quot;</code>，然后再执行 npm run dev。</p>
+</li>
+<li>
+<p>打包后文件如下</p>
+<p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202206111005999.png" alt="image-20220611100505407" /></p>
+</li>
+</ol>
+<h1><a id="%E6%BA%90%E7%A0%81%E8%B0%83%E8%AF%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>源码调试</h1>
+<ol>
+<li>
+<p>在任意位置新建一个 examples 目录（一般调试哪个模块就在哪个模块下创建目录）</p>
+</li>
+<li>
+<p>在 examples 目录中新建一个 xxx.html ，然后用 script 标签引入前面打包出来的文件即可</p>
+</li>
+<li>
+<p>reactivity 测试举例</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Title&lt;/title&gt;
+    &lt;!-- 引入打包文件 --&gt;
+    &lt;script src=&quot;../dist/reactivity.global.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;root&quot;&gt;&lt;/div&gt;
+
+&lt;script&gt;
+    const {readonly, reactive, effect} = VueReactivity
+    let person = reactive({name: &quot;张三&quot;, age: 18});
+    person = readonly(person);
+
+    effect(() =&gt; {document.body.innerHTML = `name: ``{person.name},  age: ``{person.age}`
+    })setTimeout(() =&gt; {
+        person.name = &quot;李四&quot;;
+        person.age = 20;
+    }, 2000)
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202206111017498.gif" alt="2022-06-11 10.17.11" /></p>
+</li>
+<li>
+<p>断点调试</p>
+<p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202206111020195.png" alt="image-20220611102023818" /></p>
+<p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202206111021675.png" alt="image-20220611102113301" /></p>
+</li>
+<li>
+<p>至此我们就可以随便调试源码了。</p>
+</li>
+</ol>
+
+    </div>
+    <footer class="post-footer clearfix">
+      <p class="post-categories">
+        <span>Categories:</span>
+        
+            <a href="Vue.html">Vue</span>, 
+           
+      </p>
+        
+    </footer>
+     <div class="comments-wrap">
+        <div class="share-comments">
+          
+
+          
+
+          
+        </div>
+      </div><!-- end comments wrap -->
+  </article>
+ </div><!-- end-->
+
+
+
+    <footer class="footer">
+            <div class="container">
+                <div class="site-footer-wrapper">
+                        <a class="button-square" href="index.html">
+<svg class="svg-inline--fa fa-home fa-w-18" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="home" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor" d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z"></path></svg>
+                            </a>
+                        
+                         
+                        
+                        
+                        
+                        
+                      
+                      <a class="button-square" href="atom.xml" target="_blank" title="RSS">
+                              <svg class="svg-inline--fa fa-rss fa-w-14" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="rss" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M128.081 415.959c0 35.369-28.672 64.041-64.041 64.041S0 451.328 0 415.959s28.672-64.041 64.041-64.041 64.04 28.673 64.04 64.041zm175.66 47.25c-8.354-154.6-132.185-278.587-286.95-286.95C7.656 175.765 0 183.105 0 192.253v48.069c0 8.415 6.49 15.472 14.887 16.018 111.832 7.284 201.473 96.702 208.772 208.772.547 8.397 7.604 14.887 16.018 14.887h48.069c9.149.001 16.489-7.655 15.995-16.79zm144.249.288C439.596 229.677 251.465 40.445 16.503 32.01 7.473 31.686 0 38.981 0 48.016v48.068c0 8.625 6.835 15.645 15.453 15.999 191.179 7.839 344.627 161.316 352.465 352.465.353 8.618 7.373 15.453 15.999 15.453h48.068c9.034-.001 16.329-7.474 16.005-16.504z"></path></svg><!-- <i class="fas fa-rss fa-lg"></i> -->
+                      </a>
+
+              
+                       
+                                                
+                </div>
+                <div class="site-menu-wrapper">
+                  &nbsp;<span>|</span>&nbsp;
+                  
+                    <a target="self" class="" href="index.html">Home</a>
+                    &nbsp;<span>|</span>&nbsp;
+                  
+                    <a target="_self" class="" href="archives.html">Archives</a>
+                    &nbsp;<span>|</span>&nbsp;
+                                             
+                </div>
+
+                <p class="footer-copyright">
+                        Copyright &copy; 2019
+                        Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+                        Theme used <a target="_blank" href="https://blog.timac.org">Timac</a>.
+                </p>
+            </div>
+        </footer>
+
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="asset/prism.js"></script>
+
+        
+      
+  
+    
+
+
+    </body>
+</html>

@@ -1,0 +1,425 @@
+
+
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      
+    MouseValidate表单验证库扩展与优化 - 
+    
+    </title>
+    
+    
+    
+    <link href="atom.xml" rel="alternate" title="" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/style.css">
+    
+</head>
+  <body>
+
+
+
+
+        <div id="wrapper">
+            <header class="site-header">
+                <div class="container">
+                    <div class="site-title-wrapper">
+                          <a class="button-square" href="index.html">
+<svg class="svg-inline--fa fa-home fa-w-18" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="home" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor" d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z"></path></svg>
+                            </a>
+                        
+                         
+                        
+                        
+                        
+                        
+                      
+                      <a class="button-square" href="atom.xml" target="_blank" title="RSS">
+                              <svg class="svg-inline--fa fa-rss fa-w-14" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="rss" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M128.081 415.959c0 35.369-28.672 64.041-64.041 64.041S0 451.328 0 415.959s28.672-64.041 64.041-64.041 64.04 28.673 64.04 64.041zm175.66 47.25c-8.354-154.6-132.185-278.587-286.95-286.95C7.656 175.765 0 183.105 0 192.253v48.069c0 8.415 6.49 15.472 14.887 16.018 111.832 7.284 201.473 96.702 208.772 208.772.547 8.397 7.604 14.887 16.018 14.887h48.069c9.149.001 16.489-7.655 15.995-16.79zm144.249.288C439.596 229.677 251.465 40.445 16.503 32.01 7.473 31.686 0 38.981 0 48.016v48.068c0 8.625 6.835 15.645 15.453 15.999 191.179 7.839 344.627 161.316 352.465 352.465.353 8.618 7.373 15.453 15.999 15.453h48.068c9.034-.001 16.329-7.474 16.005-16.504z"></path></svg><!-- <i class="fas fa-rss fa-lg"></i> -->
+                      </a>
+
+              
+                       
+                         
+                        
+                    </div>
+
+                    <ul class="site-nav">
+                        
+                    </ul>
+                </div>
+            </header>
+
+            <div id="container">
+
+ 
+<div class="container">
+  <article class="post-container">
+    <header class="post-header">
+        <h1 class="post-title">MouseValidate表单验证库扩展与优化</h1>
+        <p class="post-date">
+                <span>Posted <time datetime="2022/08/31" itemprop="datePublished">2022/08/31</time></span>
+            </p>
+    </header>
+
+    <div class="post-content clearfix">
+<ul>
+<li><a href="#%E5%89%8D%E8%A8%80">前言</a></li>
+<li><a href="#%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8">基本使用</a></li>
+<li><a href="#%E7%BC%BA%E9%99%B7">缺陷</a></li>
+<li><a href="#%E4%BC%98%E5%8C%96%E4%B8%8E%E6%89%A9%E5%B1%95">优化与扩展</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A0%A1%E9%AA%8C">使用自定义校验</a></li>
+<li><a href="#%E5%90%8E%E7%BB%AD">后续</a>
+<ul>
+<li><a href="#%E5%A2%9E%E5%8A%A0%E6%96%87%E6%9C%AC%E9%95%BF%E5%BA%A6%E6%A0%A1%E9%AA%8C%E8%A7%84%E5%88%99">增加文本长度校验规则</a>
+<ul>
+<li><a href="#%E6%A0%B8%E5%BF%83%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5">核心代码片段</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95">使用方法</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1><a id="%E5%89%8D%E8%A8%80" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>前言</h1>
+<p>写这篇文档主要是为了渣土系统这样的KO(即Knockout)老项目，这里边使用的非常多。mouseValidate这个库确实没怎么听过，以至于我想找一下官方文档都搜不到，只能由我自己简单的定义一下了。mouseValidate是一个基于jquery的表单验证库，目前公司项目中除了KO老项目中普遍使用，其它系统基本没有用到，不过这并不妨碍我们学习它的设计思想，以及根据我们自己的需求对它进行定制修改。</p>
+<h1><a id="%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>基本使用</h1>
+<ul>
+<li>第一步引进来，例如：</li>
+</ul>
+<pre><code class="language-js">  define([&quot;jquery&quot;, &quot;durandal/app&quot;, &quot;durandal/composition&quot;, &quot;knockout&quot;, &quot;mouseValidate&quot;],
+      function ($, app, composition, ko, mouseValidate) {
+          function viewModal() {
+            
+          }
+     			return viewModal;
+			});
+</code></pre>
+<ul>
+<li>
+<p>第二步初始化验证</p>
+<blockquote>
+<p>实际上就是定义一些规则，非空啊，手机号码啊，身份证号码之类的。这里只摘录核心代码片段，具体实例可以到渣土系统中找，例子非常多。另外，注意这个initValidate方法一般页面加载完毕就先调用一遍，这样被添加规则的表单字段就能做出响应了。</p>
+</blockquote>
+</li>
+</ul>
+<pre><code class="language-js">//添加规则 
+model.initValidate = function () {
+    mouseValidate.clearValidate();
+    mouseValidate.initValidate($(_dom).find(&quot;#businessLicenseNumber&quot;), {&quot;isEmpty&quot;: &quot;请输入工商营业执照编号&quot;});
+    mouseValidate.initValidate($(_dom).find(&quot;#registerMoney&quot;), {&quot;isEmpty&quot;: &quot;请输入注册资金&quot;,&quot;isNumber&quot;:&quot;请输入正确数值&quot;});
+    mouseValidate.initValidate($(_dom).find(&quot;#legalRepresentative&quot;), {&quot;isEmpty&quot;: &quot;请输入企业法人&quot;});
+    mouseValidate.initValidate($(_dom).find(&quot;#legalRepresentativeContact&quot;), {&quot;isEmpty&quot;: &quot;请输入企业法人联系方式&quot;,&quot;isAllPhone&quot;:&quot;&quot;});
+    mouseValidate.initValidate($(_dom).find(&quot;#legalRepresentativeNumber&quot;), {&quot;isEmpty&quot;: &quot;请输入企业法人身份证号码&quot;});
+};
+
+//提交表单时校验
+model.submit = function(){
+  //注意returnFlag并不是boolean类型，而是&quot;true&quot;或&quot;false&quot;
+   var returnFlag = MouseValidate.returnValidate();
+   if (returnFlag === &quot;false&quot;) {
+       commonUtil.showTip(_dom, &quot;error&quot;, &quot;完成提示与必填项！&quot;, &quot;company-tip&quot;);
+       return false;
+    }
+};
+</code></pre>
+<ul>
+<li>
+<p>效果展示</p>
+<p>调用MouseValidate.returnValidate()，校验的是整个表单。校验不通过的表单项显示红色边框。</p>
+<p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202203311841421.png" alt="img" /></p>
+<p>单击某个表单项让它获得焦点，然后再失去焦点，会单独对这个表单项进行校验。校验不通过，会显示相应提示信息。</p>
+</li>
+</ul>
+<p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202203311842519.png" alt="img" /></p>
+<h1><a id="%E7%BC%BA%E9%99%B7" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>缺陷</h1>
+<ol>
+<li>
+<p>不支持自定义校验规则，比如：校验车牌号。</p>
+</li>
+<li>
+<p>disabled或readonly的表单项，不能触发校验，这是因为这两种情况下，没办法走如下流程：获取焦点——手动输入或选择——失去焦点的操作方式，所以不能触发校验。为了便于大家理解，这里截取一个这样的场景。下面3个字段，都是通过点击按钮，在弹框界面选择某项，然后带回来赋值给右边的input框。因为是选择方式，不支持手动输入，故这几个input框全部都是readonly状态。</p>
+<p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202203311843759.png" alt="img" /></p>
+<p>下面选取具体的值后，发现Input框仍然是红色边框<img src="https://gitee.com/Allen_2017/picrepo/raw/master/youdaoyun/202203201913982.png" alt="image-20220320191338606" /></p>
+</li>
+</ol>
+<h1><a id="%E4%BC%98%E5%8C%96%E4%B8%8E%E6%89%A9%E5%B1%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>优化与扩展</h1>
+<ul>
+<li>
+<p>本次优化与扩展的目的</p>
+<p>针对上面2个缺陷，本次改造mouseValidate库希望达到2个目的。</p>
+<ol>
+<li>
+<p>支持自定义校验规则，这一点非常重要。</p>
+</li>
+<li>
+<p>readonly、disabled 字段值发生变化后，触发校验规则。</p>
+</li>
+</ol>
+</li>
+<li>
+<p>mouseValidate库源码概览</p>
+<p>其实结构非常简单，原来的代码主要由如下几部分构成：2个容器、初始化规则收集函数、表单提交校验函数、清除规则函数、一堆内置校验规则，本次扩展新增了一个customKeys和customFlag，以及增加了一个供外部注册规则的 registerValidate 方法，它们专门用于处理自定义校验规则。这些内容里比较重要的就是initValidate和returnValidate。</p>
+</li>
+</ul>
+<p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202203311844030.png" alt="image-20220320192006482" /></p>
+<ul>
+<li>
+<p><strong>initValidate</strong></p>
+<p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202203311844096.png" alt="image-20220320193718886" /></p>
+</li>
+</ul>
+<p>initValidate方法中，我并不打算详细解读focus、blur等方法，有兴趣的自己去研读。我主要讲一下自己加的一段处理readonly和disabled的逻辑。因为readonly(或disabled)表单项可以通过选择方式或其它非手动输入方式得到值，所以这里只能监听一下它的change事件，其实说穿了很简单，就是当它的值发生变化时，简单校验一下，如果为空就给它来个红色边框，反之就正常边框。</p>
+<pre><code class="language-js">//readonly和disabled的元素增加一个change事件，同时还需在代码中还需要手动触发一下change事件，
+// 这是因为readonly和disabled会导致默认的change失效，$(_dom).find(&quot;#fenceNames&quot;).trigger(&quot;change&quot;);
+if ($(node).attr(&quot;readonly&quot;) === &quot;readonly&quot; || $(node).attr(&quot;disabled&quot;) === &quot;disabled&quot;) {
+   $(node).change(function (evt) {
+      var value = $(node).val();
+      if (value || value === 0) {
+         $(node).css(&quot;border&quot;, &quot;1px solid #B7C7CD&quot;);
+      } else {
+         $(node).css(&quot;border&quot;, &quot;1px solid red&quot;);
+      }
+   });
+}
+</code></pre>
+<p>但是，这里有一个非常重要的细节，readonly或disabled后，change事件需要手动显示触发**$(_dom).find(&quot;xxx&quot;).trigger(&quot;change&quot;)**。这个地方我一直没有想到更好的办法，只能在当前表单项拿到值后，手动触发一下了。就像下面这样：</p>
+<pre><code class="language-js">function initEvents() {
+    app.off('app:construction:choose:fences');
+    app.on('app:construction:choose:fences').then(function (data) {
+        self._selectedFences = data;
+        if (self._selectedFences &amp;&amp; self._selectedFences.length) {
+            var fenceNames = commonUtil.getMappingFields(self._selectedFences, &quot;fenceName&quot;, &quot;,&quot;);
+            self.fenceNames(fenceNames);
+          
+            //触发一下change事件配合mouseValidate库
+            $(_dom).find(&quot;#fenceNames&quot;).trigger(&quot;change&quot;);
+        }
+    });
+}
+</code></pre>
+<ul>
+<li>
+<p><strong>returnValidate</strong></p>
+<p>returnValidate方法用于提交表单时，统一校验所有添加了规则的表单项。使用方法类似于：</p>
+<pre><code class="language-js">//提交表单时校验
+model.submit = function(){
+  //注意returnFlag并不是boolean类型，而是&quot;true&quot;或&quot;false&quot;
+   var returnFlag = MouseValidate.returnValidate();
+   if (returnFlag === &quot;false&quot;) {
+       commonUtil.showTip(_dom, &quot;error&quot;, &quot;完成提示与必填项！&quot;, &quot;company-tip&quot;);
+       return false;
+    }
+};
+</code></pre>
+<p>那么它里边具体是怎么做的呢？</p>
+<ol>
+<li>校验isEmpty规则，将所以不通过的表单节点，放入到flag容器中；</li>
+<li>校验自定义规则，将所有不通过的表单节点，放入到flag容器中（这个是我新加的逻辑）；</li>
+<li>统一处理flag容器中的节点，依次添加红色边框，以表示哪些没有通过校验。</li>
+</ol>
+<p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202203311845316.png" alt="image-20220320200007749" /></p>
+</li>
+</ul>
+<p>下面主要讲一下我自己添加的逻辑。这里要结合前面的inValidate方法来看。故这里重新再贴一遍截图。我们首先要搞清楚customFlag里到底存储的是什么。customFlag.set(node, key) 中的node很好理解，key实际上就是 isVehicleNum、isTaskNum 这样的规则函数！所以customFlag里实际上是类似这样的结构：[ {node: isVehicleNum}, {node: isTaskNum} ] 这样的键值对。</p>
+<p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202203311845902.png" alt="image-20220320201100060" /></p>
+<p>了解了上面这些，然后如果对eval变态函数有些了解，下面这段逻辑就基本能看明白了。eval的神奇在这里表现得淋漓尽致了，能够将字符串拼接成的函数调用执行起来，并且拿到调用后的结果！当然前提是你这个method首先必须得存在，所以下面接着必须讲一下 registerValidate方法的作用了。</p>
+<pre><code class="language-js">//处理自定义的校验
+customFlag.forEach(function (method, node) {
+   var value = $(node).val();
+   var res = eval(method+&quot;('&quot;+value+&quot;')&quot;);
+   if (res.success) {
+      if (flag.get(node) === &quot;false&quot;) {
+         flag.set(node, &quot;true&quot;);
+      }
+   } else {
+      flag.set(node, &quot;false&quot;);
+   }
+});
+</code></pre>
+<ul>
+<li>
+<p><strong>registerValidate</strong></p>
+<p>这个方法比较简单，这里就不多说了，主要目的就是向customKeys数组中添加元素(自定义规则函数名称)。同时，添加进去的规则，务必要有对应的校验函数。后面会举一个添加车牌号校验规则的实例，这个例子也是实际开发中遇到的需求，比较有代表性。</p>
+<p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202203311845628.png" alt="image-20220320202515832" /></p>
+</li>
+</ul>
+<h1><a id="%E4%BD%BF%E7%94%A8%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A0%A1%E9%AA%8C" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>使用自定义校验</h1>
+<ol>
+<li>
+<p>注册自定义规则，并给表单项添加该规则</p>
+<pre><code class="language-js">model.initValidate = function () {
+    //注册自定义规则isVehicleNum
+    mouseValidate.registerValidate(&quot;isVehicleNum&quot;);
+    mouseValidate.clearValidate();
+    //给表单项添加规则，这里包含2个规则，isEmpty、isVehicleNum，多个规则是可以一起使用的
+    mouseValidate.initValidate($(model._constrain).find(&quot;#vehicleNum&quot;), {&quot;isEmpty&quot;: &quot;请输入车牌号&quot;, &quot;isVehicleNum&quot;: &quot;请输入正确的车牌号码&quot;});
+}
+</code></pre>
+</li>
+<li>
+<p>在mouseValidate文件中定义规则函数</p>
+<blockquote>
+<p>注意规则校验函数的返回值结构，务必保持一致！</p>
+</blockquote>
+<pre><code class="language-js">/*
+ * 车牌号验证(这里只简单校验一下前缀和长度)
+ * @param {string}
+ */
+function isVehicleNum(val) {
+   //校验前缀
+   var prefix = eUrban.global.LICENSE_PLATE_NUMBER || &quot;&quot;;
+   if (prefix &amp;&amp; val.indexOf(prefix) !== 0) {
+      return {success: false, message: '车牌号前缀不正确！'};
+   }
+   //校验长度,车牌号码长度目前是7、8位数
+   if (val.length &lt; 7 || val.length &gt; 8) {
+      return {success: false, message: '车牌号长度不正确！'};
+   }
+   return {success: true};
+}
+</code></pre>
+</li>
+<li>
+<p>校验效果</p>
+<p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202203311846225.png" alt="img" /></p>
+</li>
+</ol>
+<h1><a id="%E5%90%8E%E7%BB%AD" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>后续</h1>
+<h2><a id="%E5%A2%9E%E5%8A%A0%E6%96%87%E6%9C%AC%E9%95%BF%E5%BA%A6%E6%A0%A1%E9%AA%8C%E8%A7%84%E5%88%99" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>增加文本长度校验规则</h2>
+<h3><a id="%E6%A0%B8%E5%BF%83%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>核心代码片段</h3>
+<pre><code class="language-js">/**
+	 * 校验文本长度
+	 * @param val
+	 * @returns {{success: boolean, message: string}|{success: boolean}}
+	 */
+	function checkLen(val) {
+		if (!window._checkNode) {
+			return {success: true};
+		}
+		var min = $(window._checkNode).attr(&quot;minlen&quot;);
+		var max = $(window._checkNode).attr(&quot;maxLen&quot;);
+		min = min &amp;&amp; !isNaN(min) ? Number(min) : 0;
+		max = max &amp;&amp; !isNaN(max) ? Number(max) : 0;
+		var len = val.length;
+		if (len &lt; min) {
+			return {success: false, message: '文本长度不得小于' + min};
+		}
+		if (len &gt; max) {
+			return {success: false, message: '文本长度不得大于' + max};
+		}
+		return {success: true};
+	}
+
+//returnValidate、blur等代码中增加window._checkNode赋值。
+customFlag.forEach(function (method, node) {
+  window._checkNode = node; //增加它，用于在校验函数中获取边界
+  var value = $(node).val();
+  var res = eval(method+&quot;('&quot;+value+&quot;')&quot;);
+  if (res.success) {
+    if (flag.get(node) === &quot;false&quot;) {
+      flag.set(node, &quot;true&quot;);
+    }
+  } else {
+    flag.set(node, &quot;false&quot;);
+  }
+});
+</code></pre>
+<h3><a id="%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>使用方法</h3>
+<p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202203311850517.png" alt="image-20220331185015321" /></p>
+<p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202203311851235.png" alt="image-20220331185109074" /></p>
+<p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202203311851346.png" alt="image-20220331185130070" /></p>
+<p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202203311851672.png" alt="image-20220331185144487" /></p>
+
+    </div>
+    <footer class="post-footer clearfix">
+      <p class="post-categories">
+        <span>Categories:</span>
+        
+            <a href="%E6%95%B0%E5%AD%97%E6%94%BF%E9%80%9A.html">数字政通</span>, 
+           
+      </p>
+        
+    </footer>
+     <div class="comments-wrap">
+        <div class="share-comments">
+          
+
+          
+
+          
+        </div>
+      </div><!-- end comments wrap -->
+  </article>
+ </div><!-- end-->
+
+
+
+    <footer class="footer">
+            <div class="container">
+                <div class="site-footer-wrapper">
+                        <a class="button-square" href="index.html">
+<svg class="svg-inline--fa fa-home fa-w-18" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="home" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor" d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z"></path></svg>
+                            </a>
+                        
+                         
+                        
+                        
+                        
+                        
+                      
+                      <a class="button-square" href="atom.xml" target="_blank" title="RSS">
+                              <svg class="svg-inline--fa fa-rss fa-w-14" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="rss" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M128.081 415.959c0 35.369-28.672 64.041-64.041 64.041S0 451.328 0 415.959s28.672-64.041 64.041-64.041 64.04 28.673 64.04 64.041zm175.66 47.25c-8.354-154.6-132.185-278.587-286.95-286.95C7.656 175.765 0 183.105 0 192.253v48.069c0 8.415 6.49 15.472 14.887 16.018 111.832 7.284 201.473 96.702 208.772 208.772.547 8.397 7.604 14.887 16.018 14.887h48.069c9.149.001 16.489-7.655 15.995-16.79zm144.249.288C439.596 229.677 251.465 40.445 16.503 32.01 7.473 31.686 0 38.981 0 48.016v48.068c0 8.625 6.835 15.645 15.453 15.999 191.179 7.839 344.627 161.316 352.465 352.465.353 8.618 7.373 15.453 15.999 15.453h48.068c9.034-.001 16.329-7.474 16.005-16.504z"></path></svg><!-- <i class="fas fa-rss fa-lg"></i> -->
+                      </a>
+
+              
+                       
+                                                
+                </div>
+                <div class="site-menu-wrapper">
+                  &nbsp;<span>|</span>&nbsp;
+                  
+                    <a target="self" class="" href="index.html">Home</a>
+                    &nbsp;<span>|</span>&nbsp;
+                  
+                    <a target="_self" class="" href="archives.html">Archives</a>
+                    &nbsp;<span>|</span>&nbsp;
+                                             
+                </div>
+
+                <p class="footer-copyright">
+                        Copyright &copy; 2019
+                        Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+                        Theme used <a target="_blank" href="https://blog.timac.org">Timac</a>.
+                </p>
+            </div>
+        </footer>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="asset/prism.js"></script>
+
+        
+      
+  
+    
+
+
+    </body>
+</html>
