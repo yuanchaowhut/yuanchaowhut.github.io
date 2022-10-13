@@ -223,6 +223,108 @@ login = (e) =&gt; {
 <p>改造完成后删除原来aes加密相关冗余代码（当然特殊情况想做兼容也可以保留）即可。</p>
 </li>
 </ol>
+<h1><a id="vue-ts%E9%A1%B9%E7%9B%AE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Vue+TS项目</h1>
+<ol>
+<li>
+<p>使用npm方式安装 <a href="https://github.com/JuneAndGreen/sm-crypto">sm-crypto 库</a>。目前最新版本是 0.3.11。</p>
+</li>
+<li>
+<p>我已封装一个 TS版Sm2Util工具类，可以参考使用。</p>
+<pre><code class="language-typescript">import { autowired } from &quot;@egova/base-lib&quot;;
+import LoginService from &quot;@/services/login-service&quot;;
+import Hex from &quot;crypto-js/enc-hex&quot;;
+import WordArray from &quot;crypto-js/lib-typedarrays&quot;;
+
+const sm2 = require(&quot;sm-crypto&quot;).sm2;
+
+export default class Sm2Util {
+    @autowired(LoginService)
+    private static service: LoginService;
+
+    /**
+     * 获取加密参数的方法，加密前至少需要初始化一次.
+     */
+    public static async init() {
+        if (window._cryptogram) {
+            return;
+        }
+        const res = await this.service.getPubKeyService();
+        window._cryptogram = res.data?.cryptogram;
+    }
+
+    /**
+     * 执行加密的方法
+     * @param msg 需要加密的内容
+     */
+    public static encrypt(msg: string = &quot;&quot;): string {
+        // 防止空字符串，加随机盐
+        msg = Hex.stringify(WordArray.random(8)) + msg;
+        return sm2.doEncrypt(msg, window._cryptogram, 1);
+    }
+}
+
+
+//--------------------------------我是分隔线-------------------------------
+// login-service.ts 中相关代码。注意base/cryptogram/pub是mis接口，
+// 渣土精细化项目在 axios 拦截器中做了baseUrl的拼接处理，其它项目要注意。
+import ServiceBase from &quot;./service-base&quot;;
+import { service } from &quot;@egova/base-lib&quot;;
+
+export default class LoginService extends ServiceBase {
+    /**
+     * 获取sm2加密所需的公钥
+     */
+    public async getPubKeyService(): Promise&lt;any&gt; {
+        const res: any = await this._get(&quot;base/cryptogram/pub&quot;);
+        return Promise.resolve(this.destruct(res));
+    }
+}
+</code></pre>
+</li>
+<li>
+<p>以渣土精细化项目为例，先引入Sm2Util工具，注意需要初始化，本例是放在 mounted 方法里进行。调用登录接口时，同样不要忘记增加 legacy:false 参数传递。</p>
+<pre><code class="language-typescript">import Sm2Util from &quot;@/common/utils/sm2utils&quot;;
+
+@component({
+    template: require(&quot;./index.html&quot;)
+})
+export default class Login extends View {
+    @autowired(LoginService)
+    private service!: LoginService;
+    
+     public mounted() {
+        // 国密加密工具初始化
+        Sm2Util.init();
+    }
+    
+    public async login() {
+        // ...other code...
+        const browserVersion = WinowUtil.getBrowserInfo();
+        const osVersion = WinowUtil.getOSVersion();
+        const params = {
+            u: Sm2Util.encrypt(encodeURI(this.username)),
+            p: Sm2Util.encrypt(this.password),
+            ip: null,
+            browserVersion: decodeURI(browserVersion),
+            osVersion: decodeURI(osVersion),
+            lock32R: &quot;&quot;, 
+            legacy: false
+        };
+        // 调用mis登录接口
+        const misLoginRes: any = await this.service.login(params);
+        if (!misLoginRes.success) {
+            this.loginError(misLoginRes);
+            return;
+        }
+        // ...other code...
+    }
+}
+</code></pre>
+</li>
+<li>
+<p>改造完成后删除原来aes加密相关冗余代码（当然特殊情况想做兼容也可以保留）即可。</p>
+</li>
+</ol>
 
                   </article>
                   <div class="comments-wrap">
