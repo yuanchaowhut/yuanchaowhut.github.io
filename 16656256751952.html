@@ -1,0 +1,1404 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      
+    用TS手写Promise源码实现 - 
+    
+    </title>
+    
+
+    
+    
+    <link href="atom.xml" rel="alternate" title="" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/style.min.css">
+    <link rel="stylesheet" href="asset/css/doc.css">
+    <script src="asset/app.js"></script>
+</head>
+  <body>
+    <section class="hero">
+      <div class="hero-head">
+          <nav class="navbar" role="navigation" aria-label="main navigation">
+              <div class="container">
+              <div class="navbar-brand">
+                
+                <a target="_self" class="navbar-item " href="index.html">Home</a>
+                
+                <a target="_self" class="navbar-item " href="archives.html">Archives</a>
+                
+
+                <a role="button" id="navbarSNSRssSwitchBtn" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarSNSRssButtons">
+                  <span aria-hidden="true"></span>
+                  <span aria-hidden="true"></span>
+                  <span aria-hidden="true"></span>
+                </a>
+              </div>
+            
+              <div id="navbarSNSRssButtons" class="navbar-menu">
+                <div class="navbar-start">
+                  
+                </div>
+            
+                <div class="navbar-end">
+                  <div class="navbar-item">
+                    <!--buttons start-->
+                    <div class="buttons">
+                      
+                        
+                        
+                        
+                        
+                      
+                      <a href="atom.xml" target="_blank" title="RSS">
+                          <span class="icon is-large has-text-black-bis">
+                              <svg class="svg-inline--fa fa-rss fa-w-14 fa-lg" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="rss" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M128.081 415.959c0 35.369-28.672 64.041-64.041 64.041S0 451.328 0 415.959s28.672-64.041 64.041-64.041 64.04 28.673 64.04 64.041zm175.66 47.25c-8.354-154.6-132.185-278.587-286.95-286.95C7.656 175.765 0 183.105 0 192.253v48.069c0 8.415 6.49 15.472 14.887 16.018 111.832 7.284 201.473 96.702 208.772 208.772.547 8.397 7.604 14.887 16.018 14.887h48.069c9.149.001 16.489-7.655 15.995-16.79zm144.249.288C439.596 229.677 251.465 40.445 16.503 32.01 7.473 31.686 0 38.981 0 48.016v48.068c0 8.625 6.835 15.645 15.453 15.999 191.179 7.839 344.627 161.316 352.465 352.465.353 8.618 7.373 15.453 15.999 15.453h48.068c9.034-.001 16.329-7.474 16.005-16.504z"></path></svg><!-- <i class="fas fa-rss fa-lg"></i> -->
+                          </span>
+                      </a>
+                    </div>
+                    <!--buttons end-->
+
+                  </div>
+                </div>
+                </div>
+              </div>
+            </nav>
+      </div>
+
+ <div class="hero-body ct-body"></div>
+      
+    </section>
+    <section class="ct-body">
+      <div class="container">
+          <div class="columns is-variable bd-klmn-columns is-4 is-centered">
+              <div class="column is-four-fifths">
+                  <div class="post-body single-content">
+                    
+                    <h1 class="title">
+                            用TS手写Promise源码实现   
+                      </h1>
+                     
+                    
+                      <div class="media">
+                            
+                            <div class="media-content">
+                              <div class="content">
+                                <p>
+                                 <span class="date">2022/10/13</span>
+                                  <span class="tran-posted-in">posted in</span>&nbsp; 
+                                  
+                                      <span class="posted-in"><a href='%E5%89%8D%E7%AB%AF.html'>前端</a></span>
+                                         
+                                  
+
+                                   
+                                      
+                                  <br />
+                                  <span class="tran-tags">Tags:</span>&nbsp;
+                                     
+
+                                </p>
+                              </div>
+                            </div>
+                         
+                    </div>
+                </div>
+                  <article class="markdown-body single-content">
+                    <ul>
+<li><a href="#%E5%86%85%E5%AE%B9%E7%AE%80%E4%BB%8B">内容简介</a></li>
+<li><a href="#%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86">前置知识</a></li>
+<li><a href="#promise-then%E5%88%9D%E6%AD%A5%E5%AE%9E%E7%8E%B0">Promise +then 初步实现</a></li>
+<li><a href="#executor%E5%86%85%E9%83%A8%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86">executor内部异常处理</a></li>
+<li><a href="#%E5%90%8C%E6%AD%A5%E7%BA%A7%E8%81%94then%E6%96%B9%E6%B3%95%E5%AE%9E%E7%8E%B0">同步级联 then 方法实现</a></li>
+<li><a href="#%E5%8D%95%E7%BA%A7%E5%BC%82%E6%AD%A5%E5%8D%95%E7%BA%A7then%E6%96%B9%E6%B3%95%E5%AE%9E%E7%8E%B0">单级异步+单级 then 方法实现</a></li>
+<li><a href="#%E5%A4%9A%E7%BA%A7%E5%BC%82%E6%AD%A5%E7%BA%A7%E8%81%94then%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F">多级异步+级联 then实现方式</a>
+<ul>
+<li><a href="#settimeout%E5%AE%9E%E7%8E%B0">setTimeout 实现</a></li>
+<li><a href="#%E4%BC%A0%E7%BB%9F%E5%AE%9E%E7%8E%B0">传统实现</a></li>
+</ul>
+</li>
+<li><a href="#promise%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95%E5%AE%9E%E7%8E%B0">Promise 静态方法实现</a>
+<ul>
+<li><a href="#all%E6%96%B9%E6%B3%95%E5%AE%9E%E7%8E%B0">all 方法实现</a></li>
+<li><a href="#race%E6%96%B9%E6%B3%95%E5%AE%9E%E7%8E%B0">race 方法实现</a></li>
+<li><a href="#all%E3%80%81race%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B">all、race测试用例</a></li>
+<li><a href="#%E5%85%B6%E5%AE%83%E7%AD%89%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95%E5%AE%9E%E7%8E%B0">其它等静态方法实现</a></li>
+</ul>
+</li>
+<li><a href="#catch%E6%96%B9%E6%B3%95%E5%AE%9E%E7%8E%B0%E5%8F%8A%E4%BB%A3%E7%A0%81%E9%87%8D%E6%9E%84">catch方法实现及代码重构</a></li>
+<li><a href="#%E7%9B%B8%E5%85%B3%E8%AF%B4%E6%98%8E">相关说明</a></li>
+</ul>
+<h1><a id="%E5%86%85%E5%AE%B9%E7%AE%80%E4%BB%8B" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>内容简介</h1>
+<blockquote>
+<p>源码地址：<a href="https://gitee.com/Allen_2017/ts-promise">https://gitee.com/Allen_2017/ts-promise</a></p>
+</blockquote>
+<ol>
+<li>Promise 的三种状态和注意细节；</li>
+<li>Promise 第一步—— Promise 回调 +then 初步实现</li>
+<li>resolve 方法执行失败后的处理</li>
+<li>同步级联 then 方法实现</li>
+<li>实现单级异步+单级 then 方法</li>
+<li>实现单级异步+级联 then 方法</li>
+<li>实现多级异步+级联 then （第一种实现方式）</li>
+<li>实现多级异步+级联 then （ 第二种实现方式）</li>
+<li>Promise静态方法实现(all, race, resolve, reject 等)</li>
+</ol>
+<h1><a id="promise%E5%9F%BA%E7%A1%80" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Promise基础</h1>
+<blockquote>
+<p>参考资料：<a href="https://note.youdao.com/s/PTWkebtw">https://note.youdao.com/s/PTWkebtw</a></p>
+</blockquote>
+<p><strong>promise的三种状态</strong>：pending ，resolve，reject 。pending 就是 等待，resolve可以理解为成功，reject 可以理解为拒绝</p>
+<p><strong>pending状态理解</strong>： pending状态下，可能执行 resolve方法，也可能执行 reject方法。 但在执行 resolve 或 reject前 为 pending 状态。</p>
+<p><strong>resolve状态理解</strong>：代表成功态，执行 resolve方法后的状态。</p>
+<p><strong>reject状态理解</strong>：代表失败态，执行 reject方法后的状态。</p>
+<p><strong>状态特性</strong>：一旦成功了就不能失败，反过来也是一样。</p>
+<p><strong>then方法</strong>： 每个 promsie 都有一个 then 方法。</p>
+<p><strong>其他也执行 reject 的 场景：</strong> 正在执行 resolve 方法报错了，也进入 reject 失败状态。</p>
+<h1><a id="promise-then%E5%88%9D%E6%AD%A5%E5%AE%9E%E7%8E%B0" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Promise +then 初步实现</h1>
+<p><strong>重点知识：</strong>  1. 实现 actiontype    2.  Promise 回调实现   3. 测试类实现</p>
+<p><strong>1. 添加Promise相关类型</strong></p>
+<pre><code class="language-typescript">export type ResolveType = (value: any) =&gt; void;
+
+export type RejectType = (value: any) =&gt; void;
+
+export type Executor = (resolve: ResolveType, reject: RejectType) =&gt; void;
+
+// Promise的3种状态
+export enum Status {
+    PENDING = &quot;pending&quot;,
+    FULLFILLED = &quot;fullfilled&quot;,
+    REJECTED = &quot;rejected&quot;,
+}
+
+</code></pre>
+<p><strong>2.  Promise 回调实现</strong></p>
+<pre><code class="language-typescript">import {ResolveType, RejectType, Executor, Status} from &quot;../types&quot;;
+
+class Promise {
+    public resolve!: ResolveType;
+    public reject!: RejectType;
+    public status!: string;
+    public resolveValue!: any;
+    public rejectValue!: any;
+
+    constructor(executor: Executor) {
+        this.status = Status.PENDING;
+        this.resolve = (value) =&gt; {
+            if (this.status === Status.PENDING) {
+                console.log(&quot;成功了!&quot;);
+                this.status = Status.FULLFILLED;
+                this.resolveValue = value;
+            }
+        };
+        this.reject = (value) =&gt; {
+            if (this.status === Status.PENDING) {
+                console.log(&quot;失败了!&quot;);
+                this.status = Status.REJECTED;
+                this.rejectValue = value;
+            }
+        };
+        executor(this.resolve, this.reject);
+    }
+
+    then(resolveFn: ResolveType, rejectFn: RejectType): void {
+        if (this.status === Status.FULLFILLED) {
+            resolveFn(this.resolveValue);
+        }
+        if (this.status === Status.REJECTED) {
+            resolveFn(this.rejectValue);
+        }
+    }
+}
+
+
+export default Promise;
+</code></pre>
+<p><strong>3. 测试类实现</strong></p>
+<pre><code class="language-typescript">import Promise from &quot;../promise&quot;;
+
+// 注意：此时还没涉及到异步，完全是纯同步执行的。
+let promise = new Promise((resolve, reject) =&gt; {
+    resolve(&quot;成功了！&quot;);
+    // reject(&quot;失败了！&quot;);
+});
+
+promise.then((resolveData) =&gt; {
+    console.log(&quot;resolveData:&quot;, resolveData);
+}, (rejectData) =&gt; {
+    console.log(&quot;rejectData:&quot;, rejectData);
+});
+
+export {}
+</code></pre>
+<h1><a id="executor%E5%86%85%E9%83%A8%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>executor内部异常处理</h1>
+<pre><code class="language-typescript">// 例如：executor 执行器函数内部调用 resolve 传递的参数是字符串，但是resolve 函数内部却故意当做数组使用。
+let promise = new Promise((resolve, reject) =&gt; {
+    resolve(&quot;成功了！&quot;);
+    // reject(&quot;失败了！&quot;);
+});
+
+//-----------------------------------------------------------------------------------------------------
+import {ResolveType, RejectType, Executor, Status} from &quot;../types&quot;;
+
+class Promise {
+    public resolve!: ResolveType;
+    public reject!: RejectType;
+    public status!: string;
+    public resolveValue!: any;
+    public rejectValue!: any;
+
+    constructor(executor: Executor) {
+        this.status = Status.PENDING;
+        this.resolve = (value) =&gt; {
+            // value 故意当做数组使用，编译时不会报错，因为 value 是any类型，但是运行时会报错，因为外部传入的是字符串。
+            value[1] = 100;
+            if (this.status === Status.PENDING) {
+                console.log(&quot;成功了!&quot;);
+                this.status = Status.FULLFILLED;
+                this.resolveValue = value;
+            }
+        };
+        this.reject = (value) =&gt; {
+            if (this.status === Status.PENDING) {
+                console.log(&quot;失败了!&quot;);
+                this.status = Status.REJECTED;
+                this.rejectValue = value;
+            }
+        };
+
+        try {
+            executor(this.resolve, this.reject);
+        } catch (err) {
+            // 必须修改状态，否则后面的 this.reject()不会执行.
+            this.status = Status.PENDING;
+            this.reject(&quot;executor执行出错!&quot;);
+            throw new Error(&quot;程序终止!&quot;);
+        }
+    }
+
+    then(resolveFn: ResolveType, rejectFn: RejectType): void {
+        if (this.status === Status.FULLFILLED) {
+            resolveFn(this.resolveValue);
+        }
+        if (this.status === Status.REJECTED) {
+            resolveFn(this.rejectValue);
+        }
+    }
+}
+
+
+export default Promise;
+</code></pre>
+<h1><a id="%E5%90%8C%E6%AD%A5%E7%BA%A7%E8%81%94then%E6%96%B9%E6%B3%95%E5%AE%9E%E7%8E%B0" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>同步级联 then 方法实现</h1>
+<ol>
+<li>
+<p><strong>修改type文件【返回值any】</strong></p>
+<pre><code class="language-typescript">export type ResolveType = (value: any) =&gt; any;
+
+export type RejectType = (value: any) =&gt; any;
+
+export type Executor = (resolve: ResolveType, reject: RejectType) =&gt; any;
+
+// Promise的3种状态
+export enum Status {
+    PENDING = &quot;pending&quot;,
+    FULLFILLED = &quot;fullfilled&quot;,
+    REJECTED = &quot;rejected&quot;,
+}
+</code></pre>
+</li>
+<li>
+<p><strong>修改 Promise 类</strong></p>
+<p>then 方法返回值类型修改为 Promise 类型，这样就可以使用链式调用 promise.then().then()...。</p>
+<pre><code class="language-typescript">import {ResolveType, RejectType, Executor, Status} from &quot;../types&quot;;
+
+class Promise {
+    public resolve!: ResolveType;
+    public reject!: RejectType;
+    public status!: string;
+    public resolveValue!: any;
+    public rejectValue!: any;
+
+    constructor(executor: Executor) {
+        this.status = Status.PENDING;
+        this.resolve = (value) =&gt; {
+            if (this.status === Status.PENDING) {
+                this.status = Status.FULLFILLED;
+                this.resolveValue = value;
+            }
+        };
+        this.reject = (value) =&gt; {
+            if (this.status === Status.PENDING) {
+                this.status = Status.REJECTED;
+                this.rejectValue = value;
+            }
+        };
+
+        try {
+            executor(this.resolve, this.reject);
+        } catch (err) {
+            // 必须修改状态，否则后面的 this.reject()不会执行.
+            this.status = Status.PENDING;
+            this.reject(&quot;executor执行出错!&quot;);
+            throw new Error(&quot;程序终止!&quot;);
+        }
+    }
+
+    // then()返回值为Promise类型
+    then(resolveFn: ResolveType, rejectFn: RejectType): Promise {
+        return new Promise((resolve, reject) =&gt; {
+            let result;
+            if (this.status === Status.FULLFILLED) {
+                result = resolveFn(this.resolveValue);
+                resolve(result);
+            }
+            if (this.status === Status.REJECTED) {
+                result = resolveFn(this.rejectValue);
+                reject(result);
+            }
+        })
+    }
+}
+
+
+export default Promise;
+</code></pre>
+</li>
+<li>
+<p><strong>修改测试类</strong></p>
+<pre><code class="language-typescript">import Promise from &quot;../promise&quot;;
+
+let promise = new Promise((resolve, reject) =&gt; {
+    resolve(&quot;成功了！&quot;);
+    // reject(&quot;失败了！&quot;);
+});
+
+promise.then((resolveData1) =&gt; {
+    console.log(&quot;第1个then执行成功:&quot;, resolveData1);
+    return &quot;ok1&quot;;
+}, (rejectData1) =&gt; {
+    console.log(&quot;第1个then执行失败:&quot;, rejectData1);
+    return &quot;failed1&quot;;
+}).then((resolveData2) =&gt; {
+    console.log(&quot;第2个then执行成功:&quot;, resolveData2);
+    return &quot;ok2&quot;;
+}, (rejectData2) =&gt; {
+    console.log(&quot;第2个then执行失败:&quot;, rejectData2);
+    return &quot;failed2&quot;;
+}).then((resolveData3) =&gt; {
+    console.log(&quot;第3个then执行成功:&quot;, resolveData3);
+}, (rejectData3) =&gt; {
+    console.log(&quot;第3个then执行失败:&quot;, rejectData3);
+})
+
+export {}
+</code></pre>
+</li>
+</ol>
+<h1><a id="%E5%8D%95%E7%BA%A7%E5%BC%82%E6%AD%A5%E5%8D%95%E7%BA%A7then%E6%96%B9%E6%B3%95%E5%AE%9E%E7%8E%B0" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>单级异步+单级 then 方法实现</h1>
+<p><strong>1. Promise 类</strong></p>
+<pre><code class="language-typescript">import {ResolveType, RejectType, Executor, Status, Fn} from &quot;../types&quot;;
+
+class Promise {
+    public resolve!: ResolveType;
+    public reject!: RejectType;
+    public status!: string;
+    public resolveValue!: any;
+    public rejectValue!: any;
+    // 保存成功状态要执行的函数
+    public resolveCallbacks: Array&lt;Fn&gt; = [];
+    // 保存失败状态要执行的函数
+    public rejectCallbacks: Array&lt;Fn&gt; = [];
+
+    constructor(executor: Executor) {
+        this.status = Status.PENDING;
+        this.resolve = (value) =&gt; {
+            if (this.status === Status.PENDING) {
+                this.status = Status.FULLFILLED;
+                this.resolveValue = value;
+                // 执行回调函数，此时 this.resolveValue 已经有值
+                this.resolveCallbacks.forEach(callback =&gt; callback());
+            }
+        };
+        this.reject = (value) =&gt; {
+            if (this.status === Status.PENDING) {
+                this.status = Status.REJECTED;
+                this.rejectValue = value;
+                // 执行回调函数，此时 this.rejectValue 已经有值
+                this.rejectCallbacks.forEach(callback =&gt; callback());
+            }
+        };
+
+        try {
+            executor(this.resolve, this.reject);
+        } catch (err) {
+            // 必须修改状态，否则后面的 this.reject()不会执行.
+            this.status = Status.PENDING;
+            this.reject(&quot;executor执行出错!&quot;);
+            throw new Error(&quot;程序终止!&quot;);
+        }
+    }
+
+    then(resolveFn: ResolveType, rejectFn: RejectType): Promise {
+        return new Promise((resolve, reject) =&gt; {
+            let result;
+            if (this.status === Status.FULLFILLED) {
+                result = resolveFn(this.resolveValue);
+                resolve(result);
+            } else if (this.status === Status.REJECTED) {
+                result = rejectFn(this.rejectValue);
+                reject(result);
+            } else { //pending状态下先不执行回调函数，而是保存起来
+                //注意：resolveFn来自于上一个promise.then()传递过来的参数，而resolve则来自本new Promise()里的executor执行器的参数.
+                // 那executor的参数resolve哪来的呢？在 Promise 类的构造函数中创建的. 同样的道理对于 rejectFn 和 reject。
+                this.resolveCallbacks.push(() =&gt; {
+                    result = resolveFn(this.resolveValue);
+                    resolve(result);
+                });
+                this.rejectCallbacks.push(() =&gt; {
+                    result = rejectFn(this.rejectValue);
+                    reject(result);
+                });
+            }
+        })
+    }
+}
+
+
+export default Promise;
+</code></pre>
+<p><strong>2. 修改测试类</strong></p>
+<pre><code class="language-typescript">import Promise from &quot;../promise&quot;;
+
+let promise = new Promise((resolve, reject) =&gt; {
+    setTimeout(() =&gt; {
+        resolve(&quot;成功了！&quot;);
+        // reject(&quot;失败了！&quot;);
+    }, 1000)
+});
+
+// 1.promise 的 xxxCallbacks 里保存的是第 then1() 返回的Promise对象的executor中的回调函数, xxxCallbacks.length = 1;
+// 2.then1 的 xxxCallbacks 里保存的是 then2() 返回的Promise对象的executor中的回调函数, xxxCallbacks.length = 1;
+// 3.then2 的 xxxCallbacks 里保存的是 then3() 返回的Promise对象的executor中的回调函数, xxxCallbacks.length = 1;
+// 4.then3 的 xxxCallbacks 是空的, xxxCallbacks.length = 0;
+promise.then((resolveData1) =&gt; {
+    console.log(&quot;第1个then执行成功:&quot;, resolveData1);
+    return &quot;ok1&quot;;
+}, (rejectData1) =&gt; {
+    console.log(&quot;第1个then执行失败:&quot;, rejectData1);
+    return &quot;failed1&quot;;
+}).then((resolveData2) =&gt; {
+    console.log(&quot;第2个then执行成功:&quot;, resolveData2);
+    return &quot;ok2&quot;;
+}, (rejectData2) =&gt; {
+    console.log(&quot;第2个then执行失败:&quot;, rejectData2);
+    return &quot;failed2&quot;;
+}).then((resolveData3) =&gt; {
+    console.log(&quot;第3个then执行成功:&quot;, resolveData3);
+}, (rejectData3) =&gt; {
+    console.log(&quot;第3个then执行失败:&quot;, rejectData3);
+})
+
+export {}
+</code></pre>
+<h1><a id="%E5%A4%9A%E7%BA%A7%E5%BC%82%E6%AD%A5%E7%BA%A7%E8%81%94then%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>多级异步+级联 then实现方式</h1>
+<p>本节实现  1. 升级 Promise 类 实现多级异步+级联 then    2. 修改测试类</p>
+<h2><a id="settimeout%E5%AE%9E%E7%8E%B0" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>setTimeout 实现</h2>
+<p>实现方式一：setTimeout 方式，这种方式很好理解，但是有缺陷，因为setTimeout 的延时时长不好确定，但必须要大于等于then里边的Promise里的异步操作执行的时间，这样 result.resolveValue、result.rejectValue 才有值。</p>
+<p><strong>1. 升级Promise类</strong></p>
+<p>将 then 方法中 else 分支的逻辑封装一个 processPending 方法，让 then 方法变得清爽一些。</p>
+<pre><code class="language-typescript">import {ResolveType, RejectType, Executor, Status, Fn} from &quot;../types&quot;;
+
+class Promise&lt;T = any&gt; {
+    public resolve!: ResolveType;
+    public reject!: RejectType;
+    public status!: string;
+    public resolveValue!: any;
+    public rejectValue!: any;
+    // 保存成功状态要执行的函数
+    public resolveCallbacks: Array&lt;Fn&gt; = [];
+    // 保存失败状态要执行的函数
+    public rejectCallbacks: Array&lt;Fn&gt; = [];
+
+    constructor(executor: Executor) {
+        this.status = Status.PENDING;
+        this.resolve = (value) =&gt; {
+            if (this.status === Status.PENDING) {
+                this.status = Status.FULLFILLED;
+                this.resolveValue = value;
+                // 执行回调函数，此时 this.resolveValue 已经有值
+                this.resolveCallbacks.forEach(callback =&gt; callback());
+            }
+        };
+        this.reject = (value) =&gt; {
+            if (this.status === Status.PENDING) {
+                this.status = Status.REJECTED;
+                this.rejectValue = value;
+                // 执行回调函数，此时 this.rejectValue 已经有值
+                this.rejectCallbacks.forEach(callback =&gt; callback());
+            }
+        };
+
+        try {
+            executor(this.resolve, this.reject);
+        } catch (err) {
+            // 必须修改状态，否则后面的 this.reject()不会执行.
+            this.status = Status.PENDING;
+            this.reject(&quot;executor执行出错!&quot;);
+            throw new Error(&quot;程序终止!&quot;);
+        }
+    }
+
+    then(resolveFn: ResolveType, rejectFn: RejectType): Promise {
+        return new Promise((resolve, reject) =&gt; {
+            let result;
+            if (this.status === Status.FULLFILLED) {
+                result = resolveFn(this.resolveValue);
+                resolve(result);
+            } else if (this.status === Status.REJECTED) {
+                result = rejectFn(this.rejectValue);
+                reject(result);
+            } else {
+                //pending状态下先不执行回调函数，而是保存起来
+                this.processPending(resolveFn, rejectFn, resolve, reject);
+            }
+        })
+    }
+
+    processPending(resolveFn: ResolveType, rejectFn: RejectType, resolve: ResolveType, reject: RejectType) {
+        let result: any;
+        //注意：resolveFn来自于上一个promise.then()传递过来的参数，而resolve则来自本new Promise()里的executor执行器的参数.
+        // 那executor的参数resolve哪来的呢？在 Promise 类的构造函数中创建的. 同样的道理对于 rejectFn 和 reject。
+        this.resolveCallbacks.push(() =&gt; {
+            result = resolveFn(this.resolveValue);
+            if (isPromise(result)) {
+                // 由于result这个promise里执行的也是异步操作，故直接拿不到result.resolveValue，需要等异步操作执行完后
+                // result.resolveValue才有值，所以这里也使用一个 setTimeout 等待一下。
+                setTimeout(() =&gt; {
+                    resolve(result.resolveValue);
+                }, 1000);
+            } else {
+                resolve(result);
+            }
+        });
+        this.rejectCallbacks.push(() =&gt; {
+            result = rejectFn(this.rejectValue);
+            if (isPromise(result)) {
+                setTimeout(() =&gt; {
+                    reject(result.rejectValue);
+                }, 1000);
+            } else {
+                reject(result);
+            }
+        });
+    }
+}
+
+function isObject(val: any): val is Record&lt;any, any&gt; {
+    return val &amp;&amp; typeof val === &quot;object&quot;;
+}
+
+function isFunction(val: any): val is Function {
+    return val &amp;&amp; typeof val === &quot;function&quot;;
+}
+
+function isPromise(val: any): val is Promise {
+    return isObject(val) &amp;&amp; isFunction(val.then);
+}
+
+export default Promise;
+</code></pre>
+<p><strong>2. 修改测试类</strong></p>
+<pre><code class="language-typescript">import Promise from &quot;../promise&quot;;
+
+let promise = new Promise((resolve, reject) =&gt; {
+    setTimeout(() =&gt; {
+        resolve(&quot;成功了！&quot;);
+        // reject(&quot;失败了！&quot;);
+    }, 1000)
+});
+
+// 1.promise 的 xxxCallbacks 里保存的是 then1() 返回的Promise对象的executor中的回调函数, xxxCallbacks.length = 1;
+// 2.then1 的 xxxCallbacks 里保存的是 then2() 返回的Promise对象的executor中的回调函数, xxxCallbacks.length = 1;
+// 3.then2 的 xxxCallbacks 里保存的是 then3() 返回的Promise对象的executor中的回调函数, xxxCallbacks.length = 1;
+// 4.then3 的 xxxCallbacks 是空的, xxxCallbacks.length = 0;
+// promise.then((resolveData1) =&gt; {
+//     console.log(&quot;第1个then执行成功:&quot;, resolveData1);
+//     return &quot;ok1&quot;;
+// }, (rejectData1) =&gt; {
+//     console.log(&quot;第1个then执行失败:&quot;, rejectData1);
+//     return &quot;failed1&quot;;
+// }).then((resolveData2) =&gt; {
+//     console.log(&quot;第2个then执行成功:&quot;, resolveData2);
+//     return &quot;ok2&quot;;
+// }, (rejectData2) =&gt; {
+//     console.log(&quot;第2个then执行失败:&quot;, rejectData2);
+//     return &quot;failed2&quot;;
+// }).then((resolveData3) =&gt; {
+//     console.log(&quot;第3个then执行成功:&quot;, resolveData3);
+// }, (rejectData3) =&gt; {
+//     console.log(&quot;第3个then执行失败:&quot;, rejectData3);
+// })
+
+
+promise.then((resolveData1) =&gt; {
+    console.log(&quot;第1个then执行成功:&quot;, resolveData1);
+    return new Promise((resolve, reject) =&gt; {
+        setTimeout(() =&gt; {
+            resolve(&quot;第二个异步操作执行成功!&quot;);
+        }, 1000);
+    });
+}, (rejectData1) =&gt; {
+    console.log(&quot;第1个then执行失败:&quot;, rejectData1);
+    return &quot;failed1&quot;;
+}).then((resolveData2) =&gt; {
+    console.log(&quot;第2个then执行成功:&quot;, resolveData2);
+    return &quot;ok2&quot;;
+}, (rejectData2) =&gt; {
+    console.log(&quot;第2个then执行失败:&quot;, rejectData2);
+    return &quot;failed2&quot;;
+}).then((resolveData3) =&gt; {
+    console.log(&quot;第3个then执行成功:&quot;, resolveData3);
+}, (rejectData3) =&gt; {
+    console.log(&quot;第3个then执行失败:&quot;, rejectData3);
+})
+
+export {}
+</code></pre>
+<h2><a id="%E4%BC%A0%E7%BB%9F%E5%AE%9E%E7%8E%B0" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>传统实现</h2>
+<p><strong>实现方式二：正统方式，可以完美避免实现方式一的缺陷，但是理解起来费劲一些。</strong></p>
+<p><strong>1 升级 Promise 类</strong></p>
+<p>将 then 方法重构，抽出 processResolve、processReject 等方法。</p>
+<pre><code class="language-typescript">import {ResolveType, RejectType, Executor, Status, Fn} from &quot;../types&quot;;
+
+class Promise&lt;T = any&gt; {
+    public resolve!: ResolveType;
+    public reject!: RejectType;
+    public status!: string;
+    public resolveValue!: any;
+    public rejectValue!: any;
+    // 保存成功状态要执行的函数
+    public resolveCallbacks: Array&lt;Fn&gt; = [];
+    // 保存失败状态要执行的函数
+    public rejectCallbacks: Array&lt;Fn&gt; = [];
+
+    constructor(executor: Executor) {
+        this.status = Status.PENDING;
+        this.resolve = (value) =&gt; {
+            if (this.status === Status.PENDING) {
+                this.status = Status.FULLFILLED;
+                this.resolveValue = value;
+                // 执行回调函数，此时 this.resolveValue 已经有值
+                this.resolveCallbacks.forEach(callback =&gt; callback());
+            }
+        };
+        this.reject = (value) =&gt; {
+            if (this.status === Status.PENDING) {
+                this.status = Status.REJECTED;
+                this.rejectValue = value;
+                // 执行回调函数，此时 this.rejectValue 已经有值
+                this.rejectCallbacks.forEach(callback =&gt; callback());
+            }
+        };
+
+        try {
+            executor(this.resolve, this.reject);
+        } catch (err) {
+            // 必须修改状态，否则后面的 this.reject()不会执行.
+            this.status = Status.PENDING;
+            this.reject(&quot;executor执行出错!&quot;);
+            throw new Error(&quot;程序终止!&quot;);
+        }
+    }
+
+    then(resolveFn: ResolveType, rejectFn: RejectType): Promise {
+        return new Promise((resolve, reject) =&gt; {
+            let result;
+            if (this.status === Status.FULLFILLED) {
+                this.processResolve(resolveFn, resolve, reject);
+            } else if (this.status === Status.REJECTED) {
+                this.processReject(rejectFn, resolve, reject);
+            } else {
+                //pending状态下先不执行then的回调函数，而是保存起来.
+                this.resolveCallbacks.push(() =&gt; {
+                    this.processResolve(resolveFn, resolve, reject);
+                });
+                this.rejectCallbacks.push(() =&gt; {
+                    this.processReject(rejectFn, resolve, reject);
+                });
+            }
+        })
+    }
+
+    processResolve(resolveFn: ResolveType, resolve: ResolveType, reject: RejectType) {
+        let result: any;
+        //注意：resolveFn来自于上一个promise.then()传递过来的参数，而resolve、reject则来自本new Promise()里的executor执行器的参数.
+        // 那executor的参数resolve、reject哪来的呢？在 Promise 类的构造函数中创建的。
+        result = resolveFn(this.resolveValue);
+        if (isPromise(result)) {
+            // 由于result这个promise里执行的也是异步操作，故直接拿不到result.resolveValue，需要等异步操作执行完后result.resolveValue才有值，
+            // 也就是在result.then()里才能拿到值。
+            result.then((resolveData) =&gt; {
+                resolve(resolveData);
+            }, (rejectData) =&gt; {
+                reject(rejectData);
+            });
+        } else {
+            resolve(result);
+        }
+    }
+
+    processReject(rejectFn: RejectType, resolve: ResolveType, reject: RejectType) {
+        let result: any;
+        //注意：rejectFn来自于上一个promise.then()传递过来的参数，而resolve、reject则来自本new Promise()里的executor执行器的参数.
+        // 那executor的参数resolve、reject哪来的呢？在 Promise 类的构造函数中创建的。
+        result = rejectFn(this.rejectValue);
+        if (isPromise(result)) {
+            // 由于result这个promise里执行的也是异步操作，故直接拿不到result.rejectValue，需要等异步操作执行完后result.rejectValue才有值，
+            // 也就是在result.then()里才能拿到值。
+            result.then((resolveData) =&gt; {
+                resolve(resolveData);
+            }, (rejectData) =&gt; {
+                reject(rejectData);
+            });
+        } else {
+            reject(result);
+        }
+    }
+}
+
+function isObject(val: any): val is Record&lt;any, any&gt; {
+    return val &amp;&amp; typeof val === &quot;object&quot;;
+}
+
+function isFunction(val: any): val is Function {
+    return val &amp;&amp; typeof val === &quot;function&quot;;
+}
+
+function isPromise(val: any): val is Promise {
+    return isObject(val) &amp;&amp; isFunction(val.then);
+}
+
+export default Promise;
+</code></pre>
+<p><strong>2. 修改测试类</strong></p>
+<pre><code class="language-typescript">import Promise from &quot;../promise&quot;;
+
+let promise = new Promise((resolve, reject) =&gt; {
+    setTimeout(() =&gt; {
+        resolve(&quot;成功了！&quot;);
+        // reject(&quot;失败了！&quot;);
+    }, 1000);
+    // 同步，实际开发中这种情况很少，Promise设计的初衷就是用来处理异步的.
+    // resolve(&quot;成功了！&quot;);
+    // reject(&quot;失败了！&quot;);
+});
+
+// 1.promise 的 xxxCallbacks 里保存的是 then1() 返回的Promise对象的executor中的回调函数, xxxCallbacks.length = 1;
+// 2.then1 的 xxxCallbacks 里保存的是 then2() 返回的Promise对象的executor中的回调函数, xxxCallbacks.length = 1;
+// 3.then2 的 xxxCallbacks 里保存的是 then3() 返回的Promise对象的executor中的回调函数, xxxCallbacks.length = 1;
+// 4.then3 的 xxxCallbacks 是空的, xxxCallbacks.length = 0;
+// promise.then((resolveData1) =&gt; {
+//     console.log(&quot;第1个then执行成功:&quot;, resolveData1);
+//     return &quot;ok1&quot;;
+// }, (rejectData1) =&gt; {
+//     console.log(&quot;第1个then执行失败:&quot;, rejectData1);
+//     return &quot;failed1&quot;;
+// }).then((resolveData2) =&gt; {
+//     console.log(&quot;第2个then执行成功:&quot;, resolveData2);
+//     return &quot;ok2&quot;;
+// }, (rejectData2) =&gt; {
+//     console.log(&quot;第2个then执行失败:&quot;, rejectData2);
+//     return &quot;failed2&quot;;
+// }).then((resolveData3) =&gt; {
+//     console.log(&quot;第3个then执行成功:&quot;, resolveData3);
+// }, (rejectData3) =&gt; {
+//     console.log(&quot;第3个then执行失败:&quot;, rejectData3);
+// })
+
+
+promise.then((resolveData1) =&gt; {
+    console.log(&quot;第1个then执行成功:&quot;, resolveData1);
+    return new Promise((resolve, reject) =&gt; {
+        setTimeout(() =&gt; {
+            resolve(&quot;第二个异步操作执行成功!&quot;);
+            // reject(&quot;第二个异步操作执行失败!&quot;);
+        }, 1000);
+    });
+}, (rejectData1) =&gt; {
+    console.log(&quot;第1个then执行失败:&quot;, rejectData1);
+    return new Promise((resolve, reject) =&gt; {
+        setTimeout(() =&gt; {
+            resolve(&quot;第二个异步操作执行成功!&quot;);
+            // reject(&quot;第二个异步操作执行失败!&quot;);
+        }, 1000);
+    });
+}).then((resolveData2) =&gt; {
+    console.log(&quot;第2个then执行成功:&quot;, resolveData2);
+    return &quot;ok2&quot;;
+}, (rejectData2) =&gt; {
+    console.log(&quot;第2个then执行失败:&quot;, rejectData2);
+    return &quot;failed2&quot;;
+}).then((resolveData3) =&gt; {
+    console.log(&quot;第3个then执行成功:&quot;, resolveData3);
+}, (rejectData3) =&gt; {
+    console.log(&quot;第3个then执行失败:&quot;, rejectData3);
+})
+
+export {}
+</code></pre>
+<h1><a id="promise%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95%E5%AE%9E%E7%8E%B0" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Promise 静态方法实现</h1>
+<h2><a id="all%E6%96%B9%E6%B3%95%E5%AE%9E%E7%8E%B0" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>all 方法实现</h2>
+<p>思路：将 al l方法参数 promises 的所有 promise 挨个去 .then 一下，拿到执行结果保存到一个数组 successResults 里。遍历过程中当最后一个 promise 执行成功后，才将当前 promise resolve 掉，遍历过程中只要有一个 promise 失败，则直接将当前 promise reject掉。</p>
+<pre><code class="language-typescript">static all(promises: Promise[]) {
+    return new Promise((resolve, reject) =&gt; {
+        let successResults: Array&lt;any&gt; = [];
+        for (let i = 0; i &lt; promises.length; i++) {
+            // 使用立即执行函数解决i的问题
+            (function (index: number) {
+                let promise = promises[index];
+                promise.then((resolveData) =&gt; {
+                    successResults[index] = resolveData;
+                    // 最后一个执行完毕，才resolve出去.
+                    if (index === promises.length - 1) {
+                        resolve(successResults);
+                    }
+                }, (rejectData) =&gt; {
+                    // 1个失败则全部失败
+                    console.log(`第${index + 1}个promise执行失败，导致Promise.all执行失败!`);
+                    reject(rejectData);
+                });
+            })(i)
+        }
+    })
+}
+</code></pre>
+<h2><a id="race%E6%96%B9%E6%B3%95%E5%AE%9E%E7%8E%B0" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>race 方法实现</h2>
+<p>思路：与 al l 类似，同样是挨个遍历 promises，不同的是 race 方法是只要有一个 promise 状态发生变化，就直接结束当前 promise （修改当前 promise 状态），这就需要设置一个状态变量 finished ，当 promises 中任意一个 promise 状态发生改变时，就修改此状态变量的值，并且把结果返回出去。</p>
+<pre><code class="language-typescript">static race(promises: Promise[]) {
+    return new Promise((resolve, reject) =&gt; {
+        let finished: boolean = false;
+        for (let i = 0; i &lt; promises.length; i++) {
+            // 使用立即执行函数解决i的问题
+            (function (index: number) {
+                let promise = promises[index];
+                promise.then((resolveData) =&gt; {
+                    if (!finished) {
+                        console.log(`第${index + 1}个promise率先改变状态，Promise.race执行完毕!`);
+                        resolve(resolveData);
+                        finished = true;
+                    }
+                }, (rejectData) =&gt; {
+                    if (!finished) {
+                        console.log(`第${index + 1}个promise率先改变状态，Promise.race执行完毕!`);
+                        reject(rejectData);
+                        finished = true;
+                    }
+                });
+            })(i)
+        }
+    })
+}
+</code></pre>
+<h2><a id="all%E3%80%81race%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>all、race测试用例</h2>
+<pre><code class="language-typescript">import Promise from &quot;../promise&quot;;
+
+
+// 用于测试Promise.all 和 Promise.race
+let promise1 = new Promise((resolve, reject) =&gt; {
+    setTimeout(() =&gt; {
+        resolve(&quot;第1个异步操作成功了！&quot;);
+    }, 1000);
+});
+
+let promise2 = new Promise((resolve, reject) =&gt; {
+    setTimeout(() =&gt; {
+        resolve(&quot;第2个异步操作成功了！&quot;);
+        // reject(&quot;第2个异步操作失败了！&quot;);
+    }, 1000);
+});
+
+let promise3 = new Promise((resolve, reject) =&gt; {
+    setTimeout(() =&gt; {
+        resolve(&quot;第3个异步操作成功了！&quot;);
+    }, 1000);
+});
+
+// all: [p1,p2,p3] 全部成功才算成功，一个失败全部失败。成功的结果：全部执行成功的结果数组；失败结果：执行失败的那个结果
+// Promise.all([promise1, promise2, promise3]).then((resolveData) =&gt; {
+//     console.log(`resolveData: `, resolveData);
+// }, (rejectData) =&gt; {
+//     console.log(`rejectData: `, rejectData);
+// });
+
+// race: [p1,p2,p3] 有1个promise率先改变状态race执行完毕，then()的结果取决于这个率先改变状态的promise，可以是成功的也可以是失败的。
+Promise.race([promise1, promise2, promise3]).then((resolveData) =&gt; {
+    console.log(`resolveData: `, resolveData);
+}, (rejectData) =&gt; {
+    console.log(`rejectData: `, rejectData);
+});
+
+export {}
+</code></pre>
+<h2><a id="%E5%85%B6%E5%AE%83%E7%AD%89%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95%E5%AE%9E%E7%8E%B0" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>其它等静态方法实现</h2>
+<p>主要包括：resolve、reject。</p>
+<p><strong>1. 升级Promise类</strong></p>
+<pre><code class="language-typescript">import {ResolveType, RejectType, Executor, Status, Fn} from &quot;../types&quot;;
+
+class Promise&lt;T = any&gt; {
+    public resolve!: ResolveType;
+    public reject!: RejectType;
+    public status!: string;
+    public resolveValue!: any;
+    public rejectValue!: any;
+    // 保存成功状态要执行的函数
+    public resolveCallbacks: Array&lt;Fn&gt; = [];
+    // 保存失败状态要执行的函数
+    public rejectCallbacks: Array&lt;Fn&gt; = [];
+
+    constructor(executor: Executor) {
+        this.status = Status.PENDING;
+        this.resolve = (value) =&gt; {
+            if (this.status === Status.PENDING) {
+                this.status = Status.FULLFILLED;
+                this.resolveValue = value;
+                // 执行回调函数，此时 this.resolveValue 已经有值
+                this.resolveCallbacks.forEach(callback =&gt; callback());
+            }
+        };
+        this.reject = (value) =&gt; {
+            if (this.status === Status.PENDING) {
+                this.status = Status.REJECTED;
+                this.rejectValue = value;
+                // 执行回调函数，此时 this.rejectValue 已经有值
+                this.rejectCallbacks.forEach(callback =&gt; callback());
+            }
+        };
+
+        try {
+            executor(this.resolve, this.reject);
+        } catch (err: any) {
+            // 必须修改状态，否则后面的 this.reject()不会执行.
+            this.status = Status.PENDING;
+            this.reject(&quot;executor执行出错!&quot;);
+            throw new Error(&quot;程序终止!&quot;);
+        }
+    }
+
+    then(resolveFn?: ResolveType, rejectFn?: RejectType): Promise {
+        return new Promise((resolve, reject) =&gt; {
+            if (this.status === Status.FULLFILLED) {
+                this.processResolve(resolveFn, resolve, reject);
+            } else if (this.status === Status.REJECTED) {
+                this.processReject(rejectFn, resolve, reject);
+            } else {
+                //pending状态下先不执行then的回调函数，而是保存起来.
+                this.resolveCallbacks.push(() =&gt; {
+                    this.processResolve(resolveFn, resolve, reject);
+                });
+                this.rejectCallbacks.push(() =&gt; {
+                    this.processReject(rejectFn, resolve, reject);
+                });
+            }
+        })
+    }
+
+    catch(rejectFn: RejectType): Promise {
+        return this.then(undefined, rejectFn);
+    }
+
+    processResolve(resolveFn: ResolveType | undefined, resolve: ResolveType, reject: RejectType) {
+        if (isFunction(resolveFn)) {
+            let result = resolveFn(this.resolveValue);
+            if (isPromise(result)) {
+                result.then((resolveData) =&gt; {
+                    resolve(resolveData);
+                }, (rejectData) =&gt; {
+                    reject(rejectData);
+                });
+            } else {
+                resolve(result);
+            }
+        } else {
+            resolve(undefined);
+        }
+    }
+
+    processReject(rejectFn: RejectType | undefined, resolve: ResolveType, reject: RejectType) {
+        if (isFunction(rejectFn)) {
+            let result = rejectFn(this.rejectValue);
+            if (isPromise(result)) {
+                result.then((resolveData) =&gt; {
+                    resolve(resolveData);
+                }, (rejectData) =&gt; {
+                    reject(rejectData);
+                });
+            } else {
+                reject(result);
+            }
+        } else {
+            reject(undefined);
+        }
+    }
+
+    static all(promises: Promise[]): Promise {
+        return new Promise((resolve, reject) =&gt; {
+            let successResults: Array&lt;any&gt; = [];
+            for (let i = 0; i &lt; promises.length; i++) {
+                // 使用立即执行函数解决i的问题
+                (function (index: number) {
+                    let promise = promises[index];
+                    promise.then((resolveData) =&gt; {
+                        successResults[index] = resolveData;
+                        if (index === promises.length - 1) {
+                            resolve(successResults);
+                        }
+                    }, (rejectData) =&gt; {
+                        // 1个失败则全部失败
+                        console.log(`第${index + 1}个promise执行失败，导致Promise.all执行失败!`);
+                        reject(rejectData);
+                    });
+                })(i)
+            }
+        })
+    }
+
+    static race(promises: Promise[]): Promise {
+        return new Promise((resolve, reject) =&gt; {
+            let finished: boolean = false;
+            for (let i = 0; i &lt; promises.length; i++) {
+                // 使用立即执行函数解决i的问题
+                (function (index: number) {
+                    let promise = promises[index];
+                    promise.then((resolveData) =&gt; {
+                        if (!finished) {
+                            console.log(`第${index + 1}个promise率先改变状态，Promise.race执行完毕!`);
+                            resolve(resolveData);
+                            finished = true;
+                        }
+                    }, (rejectData) =&gt; {
+                        if (!finished) {
+                            console.log(`第${index + 1}个promise率先改变状态，Promise.race执行完毕!`);
+                            reject(rejectData);
+                            finished = true;
+                        }
+                    });
+                })(i)
+            }
+        })
+    }
+
+    static resolve(data: any): Promise {
+        return new Promise((resolve, reject) =&gt; {
+            resolve(data);
+        });
+    }
+
+    static reject(data: any): Promise {
+        return new Promise((resolve, reject) =&gt; {
+            reject(data);
+        });
+    }
+}
+
+function isObject(val: any): val is Record&lt;any, any&gt; {
+    return val &amp;&amp; typeof val === &quot;object&quot;;
+}
+
+function isFunction(val: any): val is Function {
+    return val &amp;&amp; typeof val === &quot;function&quot;;
+}
+
+function isPromise(val: any): val is Promise {
+    return isObject(val) &amp;&amp; isFunction(val.then);
+}
+
+export default Promise;
+</code></pre>
+<p><strong>2. 测试用例</strong></p>
+<pre><code class="language-typescript">import Promise from &quot;../promise&quot;;
+
+let promise = Promise.resolve({name: &quot;zhangsan&quot;, age: 28});
+promise.then((resolveData) =&gt; {
+    console.log(&quot;then执行成功:&quot;, resolveData);
+}, (rejectData) =&gt; {
+    console.log(&quot;then执行失败:&quot;, rejectData);
+});
+
+let promise2 = Promise.reject({name: &quot;lisi&quot;, age: 29});
+promise2.then((resolveData) =&gt; {
+    console.log(&quot;then执行成功:&quot;, resolveData);
+}, (rejectData) =&gt; {
+    console.log(&quot;then执行失败:&quot;, rejectData);
+});
+
+export {}
+</code></pre>
+<h1><a id="catch%E6%96%B9%E6%B3%95%E5%AE%9E%E7%8E%B0%E5%8F%8A%E4%BB%A3%E7%A0%81%E9%87%8D%E6%9E%84" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>catch方法实现及代码重构</h1>
+<p>1、then方法2个参数均支持可选；2、catch方法实现（内部调用then方法）；</p>
+<p><strong>1. 升级Promise类</strong></p>
+<pre><code class="language-typescript">import {ResolveType, RejectType, Executor, Status, Fn} from &quot;../types&quot;;
+
+class Promise&lt;T = any&gt; {
+    public resolve!: ResolveType;
+    public reject!: RejectType;
+    public status!: string;
+    public resolveValue!: any;
+    public rejectValue!: any;
+    // 保存成功状态要执行的函数
+    public resolveCallbacks: Array&lt;Fn&gt; = [];
+    // 保存失败状态要执行的函数
+    public rejectCallbacks: Array&lt;Fn&gt; = [];
+
+    constructor(executor: Executor) {
+        this.status = Status.PENDING;
+        this.resolve = (value) =&gt; {
+            if (this.status === Status.PENDING) {
+                this.status = Status.FULLFILLED;
+                this.resolveValue = value;
+                // 执行回调函数，此时 this.resolveValue 已经有值
+                this.resolveCallbacks.forEach(callback =&gt; callback());
+            }
+        };
+        this.reject = (value) =&gt; {
+            if (this.status === Status.PENDING) {
+                this.status = Status.REJECTED;
+                this.rejectValue = value;
+                // 执行回调函数，此时 this.rejectValue 已经有值
+                this.rejectCallbacks.forEach(callback =&gt; callback());
+            }
+        };
+
+        try {
+            executor(this.resolve, this.reject);
+        } catch (err: any) {
+            // 必须修改状态，否则后面的 this.reject()不会执行.
+            this.status = Status.PENDING;
+            this.reject(&quot;executor执行出错!&quot;);
+            throw new Error(&quot;程序终止!&quot;);
+        }
+    }
+
+    then(resolveFn?: ResolveType, rejectFn?: RejectType): Promise {
+        return new Promise((resolve, reject) =&gt; {
+            if (this.status === Status.FULLFILLED) {
+                this.processResolve(resolveFn, resolve, reject);
+            } else if (this.status === Status.REJECTED) {
+                this.processReject(rejectFn, resolve, reject);
+            } else {
+                //pending状态下先不执行then的回调函数，而是保存起来.
+                this.resolveCallbacks.push(() =&gt; {
+                    this.processResolve(resolveFn, resolve, reject);
+                });
+                this.rejectCallbacks.push(() =&gt; {
+                    this.processReject(rejectFn, resolve, reject);
+                });
+            }
+        })
+    }
+
+    // catch 方法其实很简单，内部直接调用 then 方法即可。
+    catch(rejectFn: RejectType): Promise {
+        return this.then(undefined, rejectFn);
+    }
+
+    processResolve(resolveFn: ResolveType | undefined, resolve: ResolveType, reject: RejectType) {
+        if (isFunction(resolveFn)) {
+            let result = resolveFn(this.resolveValue);
+            if (isPromise(result)) {
+                result.then((resolveData) =&gt; {
+                    resolve(resolveData);
+                }, (rejectData) =&gt; {
+                    reject(rejectData);
+                });
+            } else {
+                resolve(result);
+            }
+        } else {
+            resolve(undefined);
+        }
+    }
+
+    processReject(rejectFn: RejectType | undefined, resolve: ResolveType, reject: RejectType) {
+        if (isFunction(rejectFn)) {
+            let result = rejectFn(this.rejectValue);
+            if (isPromise(result)) {
+                result.then((resolveData) =&gt; {
+                    resolve(resolveData);
+                }, (rejectData) =&gt; {
+                    reject(rejectData);
+                });
+            } else {
+                reject(result);
+            }
+        } else {
+            reject(undefined);
+        }
+    }
+
+    static all(promises: Promise[]) {
+        return new Promise((resolve, reject) =&gt; {
+            let successResults: Array&lt;any&gt; = [];
+            for (let i = 0; i &lt; promises.length; i++) {
+                // 使用立即执行函数解决i的问题
+                (function (index: number) {
+                    let promise = promises[index];
+                    promise.then((resolveData) =&gt; {
+                        successResults[index] = resolveData;
+                        if (index === promises.length - 1) {
+                            resolve(successResults);
+                        }
+                    }, (rejectData) =&gt; {
+                        // 1个失败则全部失败
+                        console.log(`第${index + 1}个promise执行失败，导致Promise.all执行失败!`);
+                        reject(rejectData);
+                    });
+                })(i)
+            }
+        })
+    }
+
+    static race(promises: Promise[]) {
+        return new Promise((resolve, reject) =&gt; {
+            let finished: boolean = false;
+            for (let i = 0; i &lt; promises.length; i++) {
+                // 使用立即执行函数解决i的问题
+                (function (index: number) {
+                    let promise = promises[index];
+                    promise.then((resolveData) =&gt; {
+                        if (!finished) {
+                            console.log(`第${index + 1}个promise率先改变状态，Promise.race执行完毕!`);
+                            resolve(resolveData);
+                            finished = true;
+                        }
+                    }, (rejectData) =&gt; {
+                        if (!finished) {
+                            console.log(`第${index + 1}个promise率先改变状态，Promise.race执行完毕!`);
+                            reject(rejectData);
+                            finished = true;
+                        }
+                    });
+                })(i)
+            }
+        })
+    }
+}
+
+function isObject(val: any): val is Record&lt;any, any&gt; {
+    return val &amp;&amp; typeof val === &quot;object&quot;;
+}
+
+function isFunction(val: any): val is Function {
+    return val &amp;&amp; typeof val === &quot;function&quot;;
+}
+
+function isPromise(val: any): val is Promise {
+    return isObject(val) &amp;&amp; isFunction(val.then);
+}
+
+export default Promise;
+</code></pre>
+<p><strong>2. 修改测试类</strong></p>
+<pre><code class="language-typescript">import Promise from &quot;../promise&quot;;
+
+let promise = new Promise((resolve, reject) =&gt; {
+    setTimeout(() =&gt; {
+        resolve(&quot;成功了！&quot;);
+        // reject(&quot;失败了！&quot;);
+    }, 1000);
+    // 同步，实际开发中这种情况很少，Promise设计的初衷就是用来处理异步的，但是我们框架里还是要支持同步的。
+    // resolve(&quot;成功了！&quot;);
+    // reject(&quot;失败了！&quot;);
+});
+
+// 用于测试catch方法
+promise.then((resolveData1) =&gt; {
+    console.log(&quot;第1个then执行成功:&quot;, resolveData1);
+    return new Promise((resolve, reject) =&gt; {
+        setTimeout(() =&gt; {
+            // resolve(&quot;第二个异步操作执行成功!&quot;);
+            reject(&quot;第二个异步操作执行失败!&quot;);
+        }, 1000);
+    });
+}, (rejectData1) =&gt; {
+    console.log(&quot;第1个then执行失败:&quot;, rejectData1);
+    return new Promise((resolve, reject) =&gt; {
+        setTimeout(() =&gt; {
+            // resolve(&quot;第二个异步操作执行成功!&quot;);
+            reject(&quot;第二个异步操作执行失败!&quot;);
+        }, 1000);
+    });
+}).then((resolveData2) =&gt; {
+    console.log(&quot;第2个then执行成功:&quot;, resolveData2);
+    return &quot;ok2&quot;;
+}).catch((err) =&gt; { // catch一般放到末尾，如果放到中间则作用和then是一样的.
+    console.log(&quot;执行catch:&quot;, err);
+    return &quot;catched&quot;
+}).then((resolveData3) =&gt; {
+    console.log(&quot;第3个then执行成功:&quot;, resolveData3);
+}, (rejectData3) =&gt; {
+    console.log(&quot;第3个then执行失败:&quot;, rejectData3);
+})
+</code></pre>
+<h1><a id="%E7%9B%B8%E5%85%B3%E8%AF%B4%E6%98%8E" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>相关说明</h1>
+<p>原生的Promise， 当上一个Promise 对象的状态发生改变后，then、catch 的回调函数会执行，但是它是异步的，会放入到微队列中等待执行。而我们自定义的 Promise 的then、catch 的回调函数执行的时候是同步的，我查阅了一下相关资料，没找到如何模拟进入微队列，只能先这样啦！关于宏任务、微任务这里提供一些参考资料：</p>
+<p><a href="https://note.youdao.com/s/AQNTvaS3">https://note.youdao.com/s/AQNTvaS3</a></p>
+<p><a href="https://note.youdao.com/s/3tWGPLXT%E3%80%82">https://note.youdao.com/s/3tWGPLXT。</a></p>
+
+                  </article>
+                  <div class="comments-wrap">
+                    <div class="share-comments">
+                      
+
+                      
+
+                      
+                    </div>
+                  </div><!-- end comments wrap -->
+              </div>
+            </div><!-- end columns -->
+      </div><!-- end container -->
+    </section>
+
+
+
+    <footer class="footer">
+        <div class="content has-text-centered">
+          <p>
+              Copyright &copy; 2019
+              Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+              Theme used <a target="_blank" href="https://bulma.io/">Bulma CSS</a>.
+          </p>
+        </div>
+      </footer>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="asset/prism.js"></script>
+
+
+
+  
+    
+
+
+
+
+  </body>
+</html>

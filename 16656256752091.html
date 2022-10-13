@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      
+    前端登录国密加密改造 - 
+    
+    </title>
+    
+
+    
+    
+    <link href="atom.xml" rel="alternate" title="" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/style.min.css">
+    <link rel="stylesheet" href="asset/css/doc.css">
+    <script src="asset/app.js"></script>
+</head>
+  <body>
+    <section class="hero">
+      <div class="hero-head">
+          <nav class="navbar" role="navigation" aria-label="main navigation">
+              <div class="container">
+              <div class="navbar-brand">
+                
+                <a target="_self" class="navbar-item " href="index.html">Home</a>
+                
+                <a target="_self" class="navbar-item " href="archives.html">Archives</a>
+                
+
+                <a role="button" id="navbarSNSRssSwitchBtn" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarSNSRssButtons">
+                  <span aria-hidden="true"></span>
+                  <span aria-hidden="true"></span>
+                  <span aria-hidden="true"></span>
+                </a>
+              </div>
+            
+              <div id="navbarSNSRssButtons" class="navbar-menu">
+                <div class="navbar-start">
+                  
+                </div>
+            
+                <div class="navbar-end">
+                  <div class="navbar-item">
+                    <!--buttons start-->
+                    <div class="buttons">
+                      
+                        
+                        
+                        
+                        
+                      
+                      <a href="atom.xml" target="_blank" title="RSS">
+                          <span class="icon is-large has-text-black-bis">
+                              <svg class="svg-inline--fa fa-rss fa-w-14 fa-lg" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="rss" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M128.081 415.959c0 35.369-28.672 64.041-64.041 64.041S0 451.328 0 415.959s28.672-64.041 64.041-64.041 64.04 28.673 64.04 64.041zm175.66 47.25c-8.354-154.6-132.185-278.587-286.95-286.95C7.656 175.765 0 183.105 0 192.253v48.069c0 8.415 6.49 15.472 14.887 16.018 111.832 7.284 201.473 96.702 208.772 208.772.547 8.397 7.604 14.887 16.018 14.887h48.069c9.149.001 16.489-7.655 15.995-16.79zm144.249.288C439.596 229.677 251.465 40.445 16.503 32.01 7.473 31.686 0 38.981 0 48.016v48.068c0 8.625 6.835 15.645 15.453 15.999 191.179 7.839 344.627 161.316 352.465 352.465.353 8.618 7.373 15.453 15.999 15.453h48.068c9.034-.001 16.329-7.474 16.005-16.504z"></path></svg><!-- <i class="fas fa-rss fa-lg"></i> -->
+                          </span>
+                      </a>
+                    </div>
+                    <!--buttons end-->
+
+                  </div>
+                </div>
+                </div>
+              </div>
+            </nav>
+      </div>
+
+ <div class="hero-body ct-body"></div>
+      
+    </section>
+    <section class="ct-body">
+      <div class="container">
+          <div class="columns is-variable bd-klmn-columns is-4 is-centered">
+              <div class="column is-four-fifths">
+                  <div class="post-body single-content">
+                    
+                    <h1 class="title">
+                            前端登录国密加密改造   
+                      </h1>
+                     
+                    
+                      <div class="media">
+                            
+                            <div class="media-content">
+                              <div class="content">
+                                <p>
+                                 <span class="date">2022/10/13</span>
+                                  <span class="tran-posted-in">posted in</span>&nbsp; 
+                                  
+                                      <span class="posted-in"><a href='%E6%95%B0%E5%AD%97%E6%94%BF%E9%80%9A.html'>数字政通</a></span>
+                                         
+                                  
+
+                                   
+                                      
+                                  <br />
+                                  <span class="tran-tags">Tags:</span>&nbsp;
+                                     
+
+                                </p>
+                              </div>
+                            </div>
+                         
+                    </div>
+                </div>
+                  <article class="markdown-body single-content">
+                    <h2><a id="knockout%E8%80%81%E9%A1%B9%E7%9B%AE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Knockout老项目</h2>
+<ol>
+<li>
+<p>引入 sm2Utils 工具类：library/urban/utils/sm2utils</p>
+<pre><code class="language-javascript">define([&quot;jquery&quot;, &quot;knockout&quot;,  &quot;library/urban/utils/sm2utils&quot;],
+     function ($, ko, sm2Utils) {}
+ )
+</code></pre>
+</li>
+<li>
+<p>登录时直接调用 sm2utils 的 encrypt 方法即可。注意：需增加 legacy: false 参数，mis登录接口中该参数默认值为true，即默认使用的还是原来的aes加密方式，故这里需要显示指定为false，使用国密加密。</p>
+<pre><code class="language-javascript">var userName = encodeURI($(&quot;#inupt-username&quot;).val());
+var citySN = null;
+_validPasswordService.ajax({
+    // 用户名、密码加密
+    u: sm2Utils.encrypt(userName),
+    p: sm2Utils.encrypt($(&quot;#inupt-password&quot;).val()),
+    legacy: false
+    
+    ip: citySN ? citySN[&quot;cip&quot;] : null,
+    browserVersion: decodeURI(&quot;&quot; + browserVersion),
+    osVersion: decodeURI(&quot;&quot; + osVersion),
+    lock32R: Lock32R
+}).then(function (data) {});
+</code></pre>
+</li>
+<li>
+<p>老项目改造起来比较简单，原因是sm2utils已经给我们封装好了。改造完成后删除原来aes加密相关冗余代码（当然特殊情况想做兼容也可以保留）即可。</p>
+</li>
+</ol>
+<h2><a id="%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E7%9A%84%E9%A1%B9%E7%9B%AEvue-react" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>前后端分离的项目(Vue &amp; React)</h2>
+<ol>
+<li>
+<p>使用npm方式安装 <a href="https://github.com/JuneAndGreen/sm-crypto">sm-crypto 库</a>。目前最新版本是 0.3.11。</p>
+</li>
+<li>
+<p>我已封装一个 sm2Utils 工具类，可以参考使用。</p>
+<pre><code class="language-javascript">import Hex from 'crypto-js/enc-hex';
+import WordArray from 'crypto-js/lib-typedarrays';
+import {get} from &quot;@/axios&quot;;
+
+const sm2 = require('sm-crypto').sm2;
+
+// 获取加密参数的方法，加密前至少需要初始化一次.
+const init = async () =&gt; {
+    if (window._cryptogram) {
+        return ;
+    }
+    const res = await get(&quot;base/cryptogram/pub&quot;);
+    window._cryptogram = res.cryptogram;
+};
+
+// 执行加密的方法，msg位需要加密的内容
+const encrypt = (msg = &quot;&quot;) =&gt; {
+    // 防止空字符串，加随机盐
+    msg = Hex.stringify(WordArray.random(8)) + msg;
+    return sm2.doEncrypt(msg, window._cryptogram, 1);
+};
+
+const sm2Utils = {
+    init: init,
+    encrypt: encrypt
+};
+
+export default sm2Utils;
+</code></pre>
+</li>
+<li>
+<p>在login.js中使用封装的工具类，注意至少需要初始化一次。这里以React项目为例，是放到了 componentDidMount 中执行。Vue项目类似，放到合适的地方即可。参考示例如下，同样不要忘记增加 legacy:false 参数传递。</p>
+<pre><code class="language-javascript">import sm2Utils from &quot;@/utils/sm2utils&quot;;
+
+componentDidMount() {
+    const { history } = this.props;
+    get('login/validsession').then((result) =&gt; {
+        if (result.sessionValid) {
+            // .... other code ....
+            history.push({ pathname: this.path, state: 'loginState' });
+        } else {
+            // .... other code ....
+                
+            // 初始化国密加密工具
+            sm2Utils.init();
+        }
+    });
+}
+    
+// 执行登录
+login = (e) =&gt; {
+    const { history } = this.props;
+    this.props.form.validateFields((err, values) =&gt; {
+        if (err) {
+            return;
+        }
+        values.browserVersion = decodeURI('' + getBrowserVersion());
+        values.osVersion = decodeURI('' + getOSInfo());
+        values.ip = null;
+        // 用户名、密码加密
+        values.u = sm2Utils.encrypt(encodeURI(values.u));
+        values.p = sm2Utils.encrypt(values.p || &quot;&quot;);
+        values.legacy = false;
+        
+        values.validCode = null;
+        values.validWay = 0;
+        
+        post('login/validpassword', values).then(() =&gt; {
+            get('login/validsession').then(res =&gt; {
+                 // .... other code ....
+            });
+        });
+    });
+}
+</code></pre>
+</li>
+<li>
+<p>改造完成后删除原来aes加密相关冗余代码（当然特殊情况想做兼容也可以保留）即可。</p>
+</li>
+</ol>
+
+                  </article>
+                  <div class="comments-wrap">
+                    <div class="share-comments">
+                      
+
+                      
+
+                      
+                    </div>
+                  </div><!-- end comments wrap -->
+              </div>
+            </div><!-- end columns -->
+      </div><!-- end container -->
+    </section>
+
+
+
+    <footer class="footer">
+        <div class="content has-text-centered">
+          <p>
+              Copyright &copy; 2019
+              Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+              Theme used <a target="_blank" href="https://bulma.io/">Bulma CSS</a>.
+          </p>
+        </div>
+      </footer>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="asset/prism.js"></script>
+
+
+
+  
+    
+
+
+
+
+  </body>
+</html>

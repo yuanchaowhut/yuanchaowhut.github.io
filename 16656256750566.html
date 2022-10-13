@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      
+    部门测试服务更新重启步骤 - 
+    
+    </title>
+    
+
+    
+    
+    <link href="atom.xml" rel="alternate" title="" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/style.min.css">
+    <link rel="stylesheet" href="asset/css/doc.css">
+    <script src="asset/app.js"></script>
+</head>
+  <body>
+    <section class="hero">
+      <div class="hero-head">
+          <nav class="navbar" role="navigation" aria-label="main navigation">
+              <div class="container">
+              <div class="navbar-brand">
+                
+                <a target="_self" class="navbar-item " href="index.html">Home</a>
+                
+                <a target="_self" class="navbar-item " href="archives.html">Archives</a>
+                
+
+                <a role="button" id="navbarSNSRssSwitchBtn" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarSNSRssButtons">
+                  <span aria-hidden="true"></span>
+                  <span aria-hidden="true"></span>
+                  <span aria-hidden="true"></span>
+                </a>
+              </div>
+            
+              <div id="navbarSNSRssButtons" class="navbar-menu">
+                <div class="navbar-start">
+                  
+                </div>
+            
+                <div class="navbar-end">
+                  <div class="navbar-item">
+                    <!--buttons start-->
+                    <div class="buttons">
+                      
+                        
+                        
+                        
+                        
+                      
+                      <a href="atom.xml" target="_blank" title="RSS">
+                          <span class="icon is-large has-text-black-bis">
+                              <svg class="svg-inline--fa fa-rss fa-w-14 fa-lg" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="rss" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M128.081 415.959c0 35.369-28.672 64.041-64.041 64.041S0 451.328 0 415.959s28.672-64.041 64.041-64.041 64.04 28.673 64.04 64.041zm175.66 47.25c-8.354-154.6-132.185-278.587-286.95-286.95C7.656 175.765 0 183.105 0 192.253v48.069c0 8.415 6.49 15.472 14.887 16.018 111.832 7.284 201.473 96.702 208.772 208.772.547 8.397 7.604 14.887 16.018 14.887h48.069c9.149.001 16.489-7.655 15.995-16.79zm144.249.288C439.596 229.677 251.465 40.445 16.503 32.01 7.473 31.686 0 38.981 0 48.016v48.068c0 8.625 6.835 15.645 15.453 15.999 191.179 7.839 344.627 161.316 352.465 352.465.353 8.618 7.373 15.453 15.999 15.453h48.068c9.034-.001 16.329-7.474 16.005-16.504z"></path></svg><!-- <i class="fas fa-rss fa-lg"></i> -->
+                          </span>
+                      </a>
+                    </div>
+                    <!--buttons end-->
+
+                  </div>
+                </div>
+                </div>
+              </div>
+            </nav>
+      </div>
+
+ <div class="hero-body ct-body"></div>
+      
+    </section>
+    <section class="ct-body">
+      <div class="container">
+          <div class="columns is-variable bd-klmn-columns is-4 is-centered">
+              <div class="column is-four-fifths">
+                  <div class="post-body single-content">
+                    
+                    <h1 class="title">
+                            部门测试服务更新重启步骤   
+                      </h1>
+                     
+                    
+                      <div class="media">
+                            
+                            <div class="media-content">
+                              <div class="content">
+                                <p>
+                                 <span class="date">2022/10/13</span>
+                                  <span class="tran-posted-in">posted in</span>&nbsp; 
+                                  
+                                      <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F%E4%B8%8E%E8%BF%90%E7%BB%B4.html'>系统与运维</a></span>
+                                         
+                                  
+
+                                   
+                                      
+                                  <br />
+                                  <span class="tran-tags">Tags:</span>&nbsp;
+                                     
+
+                                </p>
+                              </div>
+                            </div>
+                         
+                    </div>
+                </div>
+                  <article class="markdown-body single-content">
+                    <ul>
+<li><a href="#%E4%B8%80%E3%80%81tomcat%E6%9C%8D%E5%8A%A1">一、Tomcat服务</a>
+<ul>
+<li><a href="#1%E3%80%81%E5%A4%87%E4%BB%BD%E8%A6%81%E6%9B%B4%E6%96%B0%E7%9A%84jar%E5%8C%85">1、备份要更新的jar包</a></li>
+<li><a href="#2%E3%80%81%E4%B8%8A%E4%BC%A0%E6%96%B0%E7%9A%84jar%E5%8C%85">2、上传新的jar包</a></li>
+<li><a href="#3%E3%80%81%E6%9F%A5%E7%9C%8B%E5%B9%B6%E6%9D%80%E6%8E%89%E5%8E%9F%E6%9D%A5%E7%9A%84tomcat%E8%BF%9B%E7%A8%8B">3、查看并杀掉原来的tomcat进程</a></li>
+<li><a href="#4%E3%80%81%E9%87%8D%E5%90%AF%E6%9C%8D%E5%8A%A1">4、重启服务</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BA%8C%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1">二、微服务</a>
+<ul>
+<li><a href="#1%E3%80%81%E6%9F%A5%E6%89%BE%E5%B9%B6%E6%9D%80%E6%8E%89%E5%BE%AE%E6%9C%8D%E5%8A%A1%E8%BF%9B%E7%A8%8B">1、查找并杀掉微服务进程</a></li>
+<li><a href="#2%E3%80%81%E4%B8%8A%E4%BC%A0%E6%96%B0%E7%9A%84jar%E5%8C%85">2、上传新的jar包</a></li>
+<li><a href="#3%E3%80%81%E5%90%AF%E5%8A%A8%E5%BE%AE%E6%9C%8D%E5%8A%A1">3、启动微服务</a></li>
+</ul>
+</li>
+<li><a href="#%E4%B8%89%E3%80%81nginx">三、Nginx</a>
+<ul>
+<li><a href="#1%E3%80%81%E8%BF%9B%E5%85%A5nginx%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95">1、进入nginx配置文件目录</a></li>
+<li><a href="#2%E3%80%81%E6%89%93%E5%BC%80default-conf%E6%96%87%E4%BB%B6">2、打开default.conf文件</a></li>
+<li><a href="#3%E3%80%81%E6%9F%A5%E7%9C%8B%E5%85%B7%E4%BD%93%E9%85%8D%E7%BD%AE%E4%BB%A5%E5%8F%8A%E6%8C%89%E9%9C%80%E4%BF%AE%E6%94%B9">3、查看具体配置以及按需修改</a></li>
+</ul>
+</li>
+</ul>
+<h1><a id="%E4%B8%80%E3%80%81tomcat%E6%9C%8D%E5%8A%A1" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>一、Tomcat服务</h1>
+<blockquote>
+<p>非微服务，比如老渣土系统(construction_v2)。</p>
+</blockquote>
+<h2><a id="1%E3%80%81%E5%A4%87%E4%BB%BD%E8%A6%81%E6%9B%B4%E6%96%B0%E7%9A%84jar%E5%8C%85" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>1、备份要更新的jar包</h2>
+<p><strong>cd /egova/web/eUrbanMIS/WEB-INF/lib</strong></p>
+<p>在这个路径下重命名要更新的jar包，或者将它移出到别的目录，以达到备份的效果。</p>
+<h2><a id="2%E3%80%81%E4%B8%8A%E4%BC%A0%E6%96%B0%E7%9A%84jar%E5%8C%85" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>2、上传新的jar包</h2>
+<p>可以使用多种方式进行文件传输。比如使用xshell等客户端工具。</p>
+<p>如果使用的mac系统，也可以直接使用如下命令：</p>
+<p>scp -r /Users/yuanchao/Desktop/update/xxx.jar root@192.168.102.11:/egova/web/eUrbanMIS/WEB-INF/lib/xxx.jar</p>
+<blockquote>
+<p>备注：我使用上述命令上传jar包，发现存在一个权限的问题，默认新上传到服务器上的jar包是 rw------，即没有执行权限。所以还需要使用root用户修改一下权限，所以如果可以用xshell等工具，建议就用xshell传输文件。</p>
+</blockquote>
+<h2><a id="3%E3%80%81%E6%9F%A5%E7%9C%8B%E5%B9%B6%E6%9D%80%E6%8E%89%E5%8E%9F%E6%9D%A5%E7%9A%84tomcat%E8%BF%9B%E7%A8%8B" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>3、查看并杀掉原来的tomcat进程</h2>
+<p>查看进程：<strong>ps -ef|grep tomcat</strong></p>
+<p>杀死进程：<strong>kill -9  pid</strong></p>
+<p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202206301809719.png" alt="image-20220630180942467" /></p>
+<p>找到对应的进程。部门服务器mis服务是8080端口，就是 apache-tomcat-8.5.70 这个。对比其它 tomcat ，明显别的带端口号命名【图中蓝色框部分】，所以可以定位我们要更新的的进程id是红色框的id【22507】。</p>
+<h2><a id="4%E3%80%81%E9%87%8D%E5%90%AF%E6%9C%8D%E5%8A%A1" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>4、重启服务</h2>
+<p>目前我是直接进入对应 tomcat 的 bin 目录下执行 startup.sh 文件。</p>
+<p><strong>cd /egova/apache-tomcat-8.5.70/bin</strong></p>
+<p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202206301813055.png" alt="image-20220630181335639" /></p>
+<p>启动服务：</p>
+<p><strong>./startup.sh</strong></p>
+<p>查看启动日志：</p>
+<p><strong>tail -f ../logs/catalina.xxx(xxx表示当天日期).out</strong></p>
+<blockquote>
+<p>例如：tail -f ../logs/catalina.2022-06-30.out</p>
+</blockquote>
+<p>注意：启动过程中在执行changelog那一步会卡较长时间，一直到输出如下日志服务才算启动成功了！</p>
+<p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202206301805733.png" alt="image-20220630180523097" /></p>
+<h1><a id="%E4%BA%8C%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>二、微服务</h1>
+<h2><a id="1%E3%80%81%E6%9F%A5%E6%89%BE%E5%B9%B6%E6%9D%80%E6%8E%89%E5%BE%AE%E6%9C%8D%E5%8A%A1%E8%BF%9B%E7%A8%8B" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>1、查找并杀掉微服务进程</h2>
+<p>查看进程：<strong>ps -ef|grep java</strong></p>
+<p>以渣土微服务为例，对应的是 egova-boot-construction-service-1.0.0-SNAPSHOT.jar ，进程 ID如下所示，36127 就是对应的PID。</p>
+<p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202207012146603.png" alt="image-20220608152623524" /></p>
+<p>杀死进程：<strong>kill -9 pid</strong></p>
+<h2><a id="2%E3%80%81%E4%B8%8A%E4%BC%A0%E6%96%B0%E7%9A%84jar%E5%8C%85" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>2、上传新的jar包</h2>
+<p>部门服务器，微服务部署目录为：/egova，以渣土微服务为例，对应的目录是：/egova/micro_construction</p>
+<p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202207011823299.png" alt="image-20220701182310409" /></p>
+<p>进入微服务目录，如下：</p>
+<p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202207011825552.png" alt="image-20220701182523097" /></p>
+<p>具体上传jar包的方式与更新普通tomcat服务一样，参考上面相关内容。</p>
+<p>除此之外，还有2个重要的文件。</p>
+<ul>
+<li>
+<p><strong>bootstrap.sh</strong>：启动微服务的脚本，里边包含一些配置项，可以覆盖项目的 application.yml 配置文件。</p>
+<p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202207011834786.png" alt="image-20220701183447210" /></p>
+</li>
+<li>
+<p><strong>nohup.out</strong>：日志文件，启动微服务后，可以通过查看日志，看是否正常启动。</p>
+</li>
+</ul>
+<h2><a id="3%E3%80%81%E5%90%AF%E5%8A%A8%E5%BE%AE%E6%9C%8D%E5%8A%A1" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>3、启动微服务</h2>
+<p>启动命令：<strong>./bootstrap.sh</strong></p>
+<p>查看日志：<strong>tail -f nohup.out</strong></p>
+<h1><a id="%E4%B8%89%E3%80%81nginx" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>三、Nginx</h1>
+<h2><a id="1%E3%80%81%E8%BF%9B%E5%85%A5nginx%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>1、进入nginx配置文件目录</h2>
+<p><strong>cd /etc/nginx</strong></p>
+<p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202207012110213.png" alt="image-20220701184249093" /></p>
+<h2><a id="2%E3%80%81%E6%89%93%E5%BC%80default-conf%E6%96%87%E4%BB%B6" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>2、打开default.conf文件</h2>
+<p>default.conf 是服务器上nginx的的默认配置文件。</p>
+<p>打开命令：<strong>vim default.conf  或 vi default.conf</strong></p>
+<p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202207012112305.png" alt="image-20220701184315435" /></p>
+<h2><a id="3%E3%80%81%E6%9F%A5%E7%9C%8B%E5%85%B7%E4%BD%93%E9%85%8D%E7%BD%AE%E4%BB%A5%E5%8F%8A%E6%8C%89%E9%9C%80%E4%BF%AE%E6%94%B9" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>3、查看具体配置以及按需修改</h2>
+<p>如下图所示，可以看到nginx转发的端口是 8080，我们平时访问的 <a href="http://192.168.102.11:8080/eUrbanMIS%EF%BC%8C%E4%B8%AD%E7%9A%848080%E7%AB%AF%E5%8F%A3%E5%B0%B1%E6%98%AF%E8%BF%99%E4%B9%88%E6%9D%A5%E7%9A%84%E3%80%82%E5%8F%A6%E5%A4%96%E8%BF%98%E6%9C%89%E5%85%B6%E5%AE%83%E7%9A%84%E4%B8%80%E7%B3%BB%E5%88%97%E9%85%8D%E7%BD%AE%EF%BC%8C%E6%AF%94%E5%A6%82%E6%B8%A3%E5%9C%9F%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%9A%84%E9%85%8D%E7%BD%AE%EF%BC%9A">http://192.168.102.11:8080/eUrbanMIS，中的8080端口就是这么来的。另外还有其它的一系列配置，比如渣土微服务的配置：</a></p>
+<pre><code class="language-properties">location /microconstruction{
+
+​	proxy_pass  http://192.168.102.11:8086/construction/;
+
+}
+</code></pre>
+<p>表示拦截 /microconstruction 开头的请求，转发到实际的渣土微服务 8086 端口。</p>
+<p>前端开发需要同时使用mis服务和微服务时，在 vue.config.js 中配置代理，都是统一配的8080，这样确保不会发生跨域错误，nginx则帮我们获取正确的后台返回结果。</p>
+<p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202207012116540.png" alt="image-20220701184357454" /></p>
+<p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202207012116645.png" alt="image-20220701184431057" /></p>
+<p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202208312035145.png" alt="image-20220831203458702" /></p>
+<p>彩蛋：贴一张我最喜欢的理解正向代理和反向代理的图。</p>
+<p>上面讲到的这种转发请求的模式，其实就是nginx的重要功能之一——反向代理。正向代理相信大伙都懂，威阳同学经常科学上网，用到的工具就是正向代理。</p>
+<p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202207012125806.png" alt="image-20220701212445782" /></p>
+
+                  </article>
+                  <div class="comments-wrap">
+                    <div class="share-comments">
+                      
+
+                      
+
+                      
+                    </div>
+                  </div><!-- end comments wrap -->
+              </div>
+            </div><!-- end columns -->
+      </div><!-- end container -->
+    </section>
+
+
+
+    <footer class="footer">
+        <div class="content has-text-centered">
+          <p>
+              Copyright &copy; 2019
+              Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+              Theme used <a target="_blank" href="https://bulma.io/">Bulma CSS</a>.
+          </p>
+        </div>
+      </footer>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="asset/prism.js"></script>
+
+
+
+  
+    
+
+
+
+
+  </body>
+</html>

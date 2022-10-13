@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      
+    前端屏幕适配解决方案总结 - 
+    
+    </title>
+    
+
+    
+    
+    <link href="atom.xml" rel="alternate" title="" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/style.min.css">
+    <link rel="stylesheet" href="asset/css/doc.css">
+    <script src="asset/app.js"></script>
+</head>
+  <body>
+    <section class="hero">
+      <div class="hero-head">
+          <nav class="navbar" role="navigation" aria-label="main navigation">
+              <div class="container">
+              <div class="navbar-brand">
+                
+                <a target="_self" class="navbar-item " href="index.html">Home</a>
+                
+                <a target="_self" class="navbar-item " href="archives.html">Archives</a>
+                
+
+                <a role="button" id="navbarSNSRssSwitchBtn" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarSNSRssButtons">
+                  <span aria-hidden="true"></span>
+                  <span aria-hidden="true"></span>
+                  <span aria-hidden="true"></span>
+                </a>
+              </div>
+            
+              <div id="navbarSNSRssButtons" class="navbar-menu">
+                <div class="navbar-start">
+                  
+                </div>
+            
+                <div class="navbar-end">
+                  <div class="navbar-item">
+                    <!--buttons start-->
+                    <div class="buttons">
+                      
+                        
+                        
+                        
+                        
+                      
+                      <a href="atom.xml" target="_blank" title="RSS">
+                          <span class="icon is-large has-text-black-bis">
+                              <svg class="svg-inline--fa fa-rss fa-w-14 fa-lg" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="rss" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M128.081 415.959c0 35.369-28.672 64.041-64.041 64.041S0 451.328 0 415.959s28.672-64.041 64.041-64.041 64.04 28.673 64.04 64.041zm175.66 47.25c-8.354-154.6-132.185-278.587-286.95-286.95C7.656 175.765 0 183.105 0 192.253v48.069c0 8.415 6.49 15.472 14.887 16.018 111.832 7.284 201.473 96.702 208.772 208.772.547 8.397 7.604 14.887 16.018 14.887h48.069c9.149.001 16.489-7.655 15.995-16.79zm144.249.288C439.596 229.677 251.465 40.445 16.503 32.01 7.473 31.686 0 38.981 0 48.016v48.068c0 8.625 6.835 15.645 15.453 15.999 191.179 7.839 344.627 161.316 352.465 352.465.353 8.618 7.373 15.453 15.999 15.453h48.068c9.034-.001 16.329-7.474 16.005-16.504z"></path></svg><!-- <i class="fas fa-rss fa-lg"></i> -->
+                          </span>
+                      </a>
+                    </div>
+                    <!--buttons end-->
+
+                  </div>
+                </div>
+                </div>
+              </div>
+            </nav>
+      </div>
+
+ <div class="hero-body ct-body"></div>
+      
+    </section>
+    <section class="ct-body">
+      <div class="container">
+          <div class="columns is-variable bd-klmn-columns is-4 is-centered">
+              <div class="column is-four-fifths">
+                  <div class="post-body single-content">
+                    
+                    <h1 class="title">
+                            前端屏幕适配解决方案总结   
+                      </h1>
+                     
+                    
+                      <div class="media">
+                            
+                            <div class="media-content">
+                              <div class="content">
+                                <p>
+                                 <span class="date">2022/10/13</span>
+                                  <span class="tran-posted-in">posted in</span>&nbsp; 
+                                  
+                                      <span class="posted-in"><a href='%E5%89%8D%E7%AB%AF.html'>前端</a></span>
+                                         
+                                  
+
+                                   
+                                      
+                                  <br />
+                                  <span class="tran-tags">Tags:</span>&nbsp;
+                                     
+
+                                </p>
+                              </div>
+                            </div>
+                         
+                    </div>
+                </div>
+                  <article class="markdown-body single-content">
+                    <ul>
+<li><a href="#%E5%B8%B8%E7%94%A8%E5%88%86%E8%BE%A8%E7%8E%87%E6%B1%87%E6%80%BB">常用分辨率汇总</a></li>
+<li><a href="#%E5%B8%B8%E7%94%A8%E5%B1%8F%E5%B9%95%E9%80%82%E9%85%8D%E6%96%B9%E6%A1%88">常用屏幕适配方案</a>
+<ul>
+<li><a href="#%E4%BD%BF%E7%94%A8%E7%99%BE%E5%88%86%E6%AF%94%E5%8D%95%E4%BD%8D">使用百分比单位%</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8%E8%A7%86%E5%8F%A3%E5%8D%95%E4%BD%8Dviewport">使用视口单位(Viewport)</a>
+<ul>
+<li><a href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5">基本概念</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8%E6%A1%88%E4%BE%8B">使用案例</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BD%BF%E7%94%A8rem%E5%8D%95%E4%BD%8D">使用rem单位</a>
+<ul>
+<li><a href="#remresponse-js">remResponse.js</a></li>
+<li><a href="#px%E4%B8%8Erem%E6%8D%A2%E7%AE%97%E5%85%B3%E7%B3%BB">px与rem换算关系</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BD%BF%E7%94%A8media%E5%AA%92%E4%BD%93%E6%9F%A5%E8%AF%A2">使用@media媒体查询</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8postcss-pxtorem">使用 postcss-pxtorem</a>
+<ul>
+<li><a href="#%E5%AE%89%E8%A3%85">安装</a></li>
+<li><a href="#%E9%85%8D%E7%BD%AE">配置</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8">使用</a></li>
+</ul>
+</li>
+<li><a href="#js%E5%8A%A8%E6%80%81%E4%BF%AE%E6%94%B9">JS动态修改</a></li>
+</ul>
+</li>
+<li><a href="#%E5%B1%8F%E5%B9%95%E9%80%82%E9%85%8D%E7%BB%BC%E5%90%88%E6%96%B9%E6%A1%88">屏幕适配综合方案</a></li>
+</ul>
+<h1><a id="%E5%B8%B8%E7%94%A8%E5%88%86%E8%BE%A8%E7%8E%87%E6%B1%87%E6%80%BB" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>常用分辨率汇总</h1>
+<p>下面列出一些电脑分辨率，其中我们重点关注 <code>1920 * 1080、1366 * 768、1440 * 900</code>。其中前2个是 windows 系统中常用高、低分辨率，1440 是macpro常用分辨率。但是，公司项目中经常有一些其它的分辨率的适配，比如大屏宽屏，以及前段时间有个现场的 1280 * 960，所以个人建议开发时重点自测前3个，项目上如有特殊需求，再挨个满足。</p>
+<ul>
+<li>
+<p>1024*600 （常见8.9寸电脑使用）</p>
+</li>
+<li>
+<p>1024*768 （常用10.4、12.1、14.1、15寸电脑使用）4:3</p>
+</li>
+<li>
+<p>1280*800  （常见10.8、12.1、15.4寸电脑使用）16:10</p>
+</li>
+<li>
+<p>1280*854 （不常见）16:9</p>
+</li>
+<li>
+<p>1280*1024（常用14.1、15寸电脑使用）5:4</p>
+</li>
+<li>
+<p><strong>1366*768（常见15.2寸电脑使用）15:10 （主流）</strong></p>
+</li>
+<li>
+<p><strong>1440*900 （仅苹果17寸电脑使用）16:10</strong></p>
+</li>
+<li>
+<p>1440*1050（常用15、16.1寸电脑使用）4:3</p>
+</li>
+<li>
+<p>1600 * 900  16:9 (非主流)</p>
+</li>
+<li>
+<p>1600*1024（不常见）14:9</p>
+</li>
+<li>
+<p>1600*1200（常用15、16.1寸电脑使用）4:3</p>
+</li>
+<li>
+<p>1680*1050（常见15.4、20寸电脑使用）16:10</p>
+</li>
+<li>
+<p><strong>1920*1080 16:9 （主流）</strong></p>
+</li>
+<li>
+<p>1920*1200（常见20寸电脑使用）16:10</p>
+</li>
+</ul>
+<h1><a id="%E5%B8%B8%E7%94%A8%E5%B1%8F%E5%B9%95%E9%80%82%E9%85%8D%E6%96%B9%E6%A1%88" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>常用屏幕适配方案</h1>
+<h2><a id="%E4%BD%BF%E7%94%A8%E7%99%BE%E5%88%86%E6%AF%94%E5%8D%95%E4%BD%8D" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>使用百分比单位%</h2>
+<p>如：下面是绝对布局水平垂直居中的常用css片段。重点关注 .child css类的写法，parent中是为了截图效果写死了width、height。使用百分比后，无论 .parent 的 width、height 如何变化，.child 元素都是水平垂直居中的。</p>
+<pre><code class="language-css">.parent{
+  position: relative;
+  width: 400px;
+  height: 400px;
+  background: #0000ff;
+}
+
+.child{
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  left: 50%;
+  top: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  background: #ff00ff;
+}
+</code></pre>
+<img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202205291138029.png" alt="image-20220529113737110" style="zoom:50%;" />
+<h2><a id="%E4%BD%BF%E7%94%A8%E8%A7%86%E5%8F%A3%E5%8D%95%E4%BD%8Dviewport" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>使用视口单位(Viewport)</h2>
+<h3><a id="%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>基本概念</h3>
+<p>在PC端，视口指的是浏览器的可视区域，即window.innerWidth/window.innerHeight大小，不包含任务栏标题栏以及底部工具栏的浏览器区域大小。</p>
+<p>在移动端，它涉及3个视口：Layout Viewport（布局视口），Visual Viewport（视觉视口），Ideal Viewport（理想视口）。</p>
+<p>根据<a href="https://drafts.csswg.org/css-values-3/#viewport-relative-lengths">CSS3规范</a>，视口单位主要包括以下4个：</p>
+<p>**vw：**1vw等于视口宽度的1%</p>
+<p>**vh：**1vh等于视口高度的1%</p>
+<p>**vmin：**选取vw和vh中最小的那个</p>
+<p>**vmax：**选取vw和vh中最大的那个</p>
+<p>注意：vh / vw 指的是相对于视口的高度和宽度，而不是父元素的（CSS百分比是相对于包含它的最近的父元素的高度和宽度）。1vh 等于1/100的视口高度，1vw 等于1/100的视口宽度。</p>
+<p>比如：浏览器高度950px，宽度为1920px, 1 vh = 950px/100 = 9.5 px，1vw = 1920px/100 =19.2 px。</p>
+<p>vmax相对于视口的宽度或高度中较大的那个，其中最大的那个被均分为100单位的vmax。</p>
+<p>vmin相对于视口的宽度或高度中较小的那个，其中最小的那个被均分为100单位的vmin。</p>
+<p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202205291150730.png" alt="image-20220529114210518" /></p>
+<p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202205291150337.png" alt="image-20220529114238458" /></p>
+<h3><a id="%E4%BD%BF%E7%94%A8%E6%A1%88%E4%BE%8B" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>使用案例</h3>
+<p>下面 body 中有2个 div，分别占据视口宽度的一半。无论你怎么缩放浏览器，它都是自适应的。 width: 50vw 表示视口宽度的一半，因为整个视口宽度是 100vw，同样的道理对于 vh。</p>
+<p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202205291154772.png" alt="image-20220529115411367" /></p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;!-- 注意：vue、react 等项目的 public/index.html 中几乎都包含下面这段 --&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;
+    &lt;title&gt;VW&amp;VH&lt;/title&gt;
+&lt;/head&gt;
+&lt;style&gt;
+    * {
+        padding: 0;
+        margin: 0
+    }
+
+    .left {
+        float: left;
+        width: 50vw;
+        height: 20vh;
+        background-color: blue;
+        text-align: center;
+        line-height: 20vh;
+        font-size: 3rem
+    }
+
+    .right {
+        float: right;
+        width: 50vw;
+        height: 20vh;
+        background-color: green;
+        text-align: center;
+        line-height: 20vh;
+        font-size: 3rem
+    }
+&lt;/style&gt;
+
+&lt;body&gt;
+    &lt;div class=&quot;left&quot;&gt;left&lt;/div&gt;
+    &lt;div class=&quot;right&quot;&gt;right&lt;/div&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+</code></pre>
+<p>关于 vw 、vh 的浏览器兼容性，请自行查询 <a href="https://caniuse.com/">can i use</a>。</p>
+<h2><a id="%E4%BD%BF%E7%94%A8rem%E5%8D%95%E4%BD%8D" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>使用rem单位</h2>
+<p>使用rem单位取代px是公司前端项目中使用比较广泛、也比较稳定的屏幕适配方案。它使用起来也非常简单。封装一个remResponse.js文件，然后直接在程序入口处(如：index.html 或 main.jsp)中以script标签的形式引入即可。实际开发中设计稿的宽度一般都是1920px。</p>
+<h3><a id="remresponse-js" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>remResponse.js</h3>
+<pre><code class="language-js">// remResponse.js
+window.webSetting = {
+    // 设计稿屏幕宽度
+    designWidth: 1920,
+    limitWidth: 1366
+};
+
+function initFontSize() {
+    var baseWidth = document.documentElement.clientWidth &gt;= window.webSetting.limitWidth ? document.documentElement.clientWidth : window.webSetting.limitWidth;
+    var rath = window._screenRath = baseWidth / window.webSetting.designWidth;
+    document.documentElement.style.fontSize = (rath * 100) + &quot;px&quot;;
+}
+
+initFontSize();
+window.addEventListener(&quot;resize&quot;, initFontSize);
+
+
+//index.html 中引入
+ &lt;script type=&quot;text/javascript&quot; src=&quot;./main/remResponse.js&quot;&gt;&lt;/script&gt;
+
+//main.jsp 中引入
+&lt;script type=&quot;text/javascript&quot; src=&quot;&lt;c:url value='/view/adlet-manage/main/remResponse.js'/&gt;&quot;&gt;&lt;/script&gt;
+</code></pre>
+<h3><a id="px%E4%B8%8Erem%E6%8D%A2%E7%AE%97%E5%85%B3%E7%B3%BB" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>px与rem换算关系</h3>
+<ol>
+<li><strong>px转rem</strong></li>
+</ol>
+<p>​		rem尺寸 = 实际尺寸[px]   /  html根元素fontSize[px]</p>
+<p>​		rem尺寸 = 实际尺寸[px]   / ( (屏幕实际宽度 /  设计稿宽度)  * 100) [px]</p>
+<p>​		rem尺寸 = 实际尺寸[px]   /  (ratio * 100)  [px]</p>
+<blockquote>
+<p>注意：rem的本义就是一个相对单位，相对于根元素的意思(rootElement)，由于我们实际开发中常常将根元素的fontSize定位整数</p>
+<p>100px，故当开发所用显示器的分辨率与设计稿相同时，直接用  actualSize /  100 即可快速得出rem数值。</p>
+</blockquote>
+<ol start="2">
+<li><strong>rem转px</strong></li>
+</ol>
+<p>​		实际尺寸[px]  =   rem尺寸 * html根元素fontSize[px]</p>
+<p>​		实际尺寸[px]  =   rem尺寸 *  ratio * 100  [px]</p>
+<p>​		实际尺寸[px]  =   rem尺寸 * (屏幕实际宽度 /  设计稿宽度)  * 100 [px]</p>
+<blockquote>
+<p>注意：rem转px相对简单一些，由于我们实际开发中，我们的remResponse.js文件中通常都会保存一个 window.<em>screenRatio，故通</em></p>
+<p>常我们只需要使用：rem尺寸 * window._screenRatio * 100 即可。</p>
+</blockquote>
+<h2><a id="%E4%BD%BF%E7%94%A8media%E5%AA%92%E4%BD%93%E6%9F%A5%E8%AF%A2" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>使用@media媒体查询</h2>
+<p>简单使用示例（同一个css文件中）：</p>
+<pre><code class="language-css">/*&gt;=1366的设备*/
+@media (min-width: 1366px) {
+   	body{font-size: 24px;}
+}  
+
+/*&gt;=1440的设备*/
+@media (min-width: 1440px) {
+   	body{font-size: 25px !important;}
+} 
+
+/*&gt;=1920的设备*/
+@media (min-width: 1920px) {
+   	body{font-size: 33px;}
+} 
+</code></pre>
+<p>这样在不同分辨率下，body 的font-size 就会自动适配，表现出不同的大小。</p>
+<p>如果项目中需要大量使用，也可以拆分出多个css文件，但维护起来要特别小心，每修改一个样式或调整样式结构，都要查看下其它文件中有没有同名样式，需不需要同步调整。如下所示，就拆分出了 高、中、低 3个样式文件。</p>
+<img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202205291430407.png" alt="image-20220529122831756" style="zoom:30%;" />
+<p><span style="color:red">点评：个人不是很推荐将它作为主方案，由于维护上的麻烦，还是将作为辅助方案比较好，否则容易产生bug。</span></p>
+<h2><a id="%E4%BD%BF%E7%94%A8postcss-pxtorem" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>使用 postcss-pxtorem</h2>
+<p>关于如何使用，参考文档：<a href="https://www.npmjs.com/package/postcss-pxtorem">https://www.npmjs.com/package/postcss-pxtorem</a>   文档写的非常简练，没有多余的废话，我这里就不复制粘贴了，只拣几个重要的说。</p>
+<h3><a id="%E5%AE%89%E8%A3%85" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>安装</h3>
+<p>postcss 是一个广泛使用的css预处理工具库，postcss-pxtorem 需要配合它使用，所以通常一起安装。</p>
+<pre><code class="language-plain_text">npm install postcss postcss-pxtorem --save-dev
+</code></pre>
+<p>但是我写文档之前安装试了一下，启动Vue会报错，<span style="color:red">PostCSS plugin postcss-pxtorem requires PostCSS 8</span>，检查了 package.json 文件，postcss 的版本已经是 8.x，所以这个报错就有点无厘头了，网上搜索一番，原来是 postcss-pxtorem 的版本高了（现在默认下载下来是 6.x），在 package.json 中降到 5.1.1即可。</p>
+<pre><code class="language-json">&quot;devDependencies&quot;: {
+   &quot;postcss&quot;: &quot;^8.4.14&quot;,
+   &quot;postcss-pxtorem&quot;: &quot;^5.1.1&quot;,
+}
+</code></pre>
+<h3><a id="%E9%85%8D%E7%BD%AE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>配置</h3>
+<p>很多像postcss这样的预处理工具，配置文件都支持2种形式：.xxxrc.js 或 xxx.config.js。这里即：.postcssrc.js 或 postcss.config.js，无论使用哪一种，效果都是一样的。不过要注意的是，<strong>配置文件路径和src平级</strong>。当然这不是重点，重点是如何配置，同样参考<a href="https://github.com/cuth/postcss-pxtorem">官方文档</a>。</p>
+<pre><code class="language-js">// 最简单的配置
+module.exports = {
+    plugins: {
+        autoprefixer: {}, 
+        &quot;postcss-pxtorem&quot;: {
+            rootValue: 100,    // 表示根元素font-size设置为100px
+            propList: [&quot;*&quot;],   // 表示所有css属性存在px单位的都需要转换
+        },
+    }
+};
+
+//------------------------------------------------------------------------------------------------
+
+// 其它配置举例
+module.exports = {
+    plugins: {
+        autoprefixer: { overrideBrowserslist: &quot;last 5 version&quot; }, 
+        &quot;postcss-pxtorem&quot;: {
+    				rootValue: 100,        // 表示根元素font-size设置为100px
+    				unitPrecision: 5,      // 表示最多有5位小数点
+    				propList: ['font', 'font-size', 'line-height', 'letter-spacing'],   //表示哪些css属性需要转换
+    				exclude: /node_modules/i   // 排除 node_modules 下的文件，支持函数写法 exclude: function(file){...}
+				}
+      },
+    }
+};
+</code></pre>
+<h3><a id="%E4%BD%BF%E7%94%A8" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>使用</h3>
+<p>需要指出的是，postcss-pxtorem 只是一个转换工具，即将项目中的 px 单位转换为 rem 单位，它本身并没有屏幕适配功能，它只是一个转换器。具备屏幕适配功能的是 rem 单位本身。例如在我的示例项目中定义了如下样式：</p>
+<pre><code class="language-css">&lt;style lang=&quot;css&quot;&gt;
+  h1{
+    font-size: 20px;
+  }
+&lt;/style&gt;
+</code></pre>
+<p>同时我在 main.js 中需改如下（实际开发肯定不是这样干的）：</p>
+<pre><code class="language-js">new Vue({
+  el:'#app',
+  render: h =&gt; h(App),
+  store,
+  mounted(){
+    document.documentElement.style.fontSize = &quot;100px&quot;;   // 设置根元素font-size大小为100px
+  }
+})
+</code></pre>
+<p>控制台查看实际效果为：</p>
+<p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202205291327067.png" alt="image-20220529132658655" /></p>
+<p>综上所述，如果我们开发中定义样式时，如果本来就严格使用 rem 作为尺寸单位，那么 postcss-pxtorem  感觉就没什么用了。</p>
+<h2><a id="js%E5%8A%A8%E6%80%81%E4%BF%AE%E6%94%B9" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>JS动态修改</h2>
+<p>如果前面所有方案都不解决问题，那么还有最后一招——JS动态修改。包括：</p>
+<p>1、用js强行将px单位转换为 rem单位，只要了解 px 和 rem 的转换关系，这一点就很简单；</p>
+<p>2、用js判断当前分辨率的，通过 if...else...设置不同的尺寸大小。</p>
+<p>下面两个实际案例选自渣土系统。</p>
+<p>案例1：</p>
+<pre><code class="language-js">// 这是 remResponse.js 文件中的代码片段
+window.webSetting = {
+    // 设计稿屏幕宽度
+    designWidth: 1920,
+    limitWidth: 1366
+};
+let baseWidth = document.documentElement.clientWidth &gt;= window.webSetting.limitWidth ? document.documentElement.clientWidth : window.webSetting.limitWidth;
+let ratio = window._screenRatio = baseWidth / window.webSetting.designWidth;
+
+
+// 项目中其它地方，这里用的原生js，当然还可以使用jquery.
+var element = document.getElementById(&quot;xxxId&quot;);
+// 20：表示在设计稿(1920)分辨率下该元素字体大小为20px;
+// 100：表示在设计稿(1920)分辨率下根元素字体大小为100px；
+// window._screenRatio：表示当前分辨率下宽度与设计稿宽度的比率，故100*window._screenRatio表示当前分辨率下根元素的字体大小；
+element.style.fontSize = 20 * (100 * window._screenRatio);
+</code></pre>
+<p>案例2：</p>
+<pre><code class="language-js">model.addVehicle = function () {
+     var data = {};
+          
+     // 适应不同分辨率。 由于比较简单，故这里没有使用 if...else...，直接用三元表达式。
+     // 由于 panal.js 是公司早期的js库，没有使用rem单位，故这里我们认为的判断下分辨率，然后给与不同宽度。
+     // 1920 是设计稿宽度，document.documentElement.clientWidth &gt;= 1920 ? 1600 : 1200 的意思就是如果屏幕分辨率
+     // 大于等于1920，width的值就给1600px，反之就给 1200px。
+     var width = document.documentElement.clientWidth &gt;= 1920 ? 1600 : 1200;
+     var height = document.documentElement.clientWidth &gt;= 1920 ? 880 : 600;
+     var top = document.documentElement.clientWidth &gt;= 1920 ? 90 : 60;
+     var pPanal = panal.getInstance(&quot;view/construction_v3/approve/company/vehicleinfo&quot;, {
+         width: width,
+         height: height - top,
+         op: top,
+         title: &quot;车辆信息&quot;,
+         minBtn: false,
+         titleShow: true,
+         resizable: false,
+         margin: 0,
+         onClose: function (data, uploadersObj) {}
+      }, {});
+};
+</code></pre>
+<h1><a id="%E5%B1%8F%E5%B9%95%E9%80%82%E9%85%8D%E7%BB%BC%E5%90%88%E6%96%B9%E6%A1%88" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>屏幕适配综合方案</h1>
+<p>我们搭建一个前端新项目时，务必要考虑好屏幕适配方案，一定要把它作为一个基础工作做在前面，千万不要等到项目进行了一半或者已经上线后，突然发现有屏幕适配缺陷，然后才去考虑怎么适配（公司早期项目就有不少这样的情况，让后来维护的人忍不住想打人，经常修改好这里另外一个地方就蹦出来1个bug，并且bug还算在维护人的头上），这样前期测试的页面又要重新测试修改，并且极易出现bug。</p>
+<p>根据我个人的开发经验，推荐屏幕适配方案如下：</p>
+<ol>
+<li>
+<p>开发时严格使用rem作为尺寸单位时：</p>
+<p><span style="color: red; font-weight: 600">remReponse（主） + @media（辅助） + JS动态修改（兜底）</span></p>
+</li>
+<li>
+<p>开发时不太注意细节rem、px可能混合存在，或者通篇都是 px 单位时</p>
+<p><span style="color: red; font-weight: 600">remReponse（主） + postcss-pxtorem（辅助）+ @media（辅助） + JS动态修改（兜底）</span></p>
+</li>
+<li>
+<p>编写CSS样式时，布局尽量使用自适应布局，尺寸大小尽量使用百分比、vw、vh 这样的相对单位。</p>
+</li>
+</ol>
+
+                  </article>
+                  <div class="comments-wrap">
+                    <div class="share-comments">
+                      
+
+                      
+
+                      
+                    </div>
+                  </div><!-- end comments wrap -->
+              </div>
+            </div><!-- end columns -->
+      </div><!-- end container -->
+    </section>
+
+
+
+    <footer class="footer">
+        <div class="content has-text-centered">
+          <p>
+              Copyright &copy; 2019
+              Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+              Theme used <a target="_blank" href="https://bulma.io/">Bulma CSS</a>.
+          </p>
+        </div>
+      </footer>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="asset/prism.js"></script>
+
+
+
+  
+    
+
+
+
+
+  </body>
+</html>

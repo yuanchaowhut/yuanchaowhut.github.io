@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      
+    Vue新框架和微服务交换token说明 - 
+    
+    </title>
+    
+
+    
+    
+    <link href="atom.xml" rel="alternate" title="" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/style.min.css">
+    <link rel="stylesheet" href="asset/css/doc.css">
+    <script src="asset/app.js"></script>
+</head>
+  <body>
+    <section class="hero">
+      <div class="hero-head">
+          <nav class="navbar" role="navigation" aria-label="main navigation">
+              <div class="container">
+              <div class="navbar-brand">
+                
+                <a target="_self" class="navbar-item " href="index.html">Home</a>
+                
+                <a target="_self" class="navbar-item " href="archives.html">Archives</a>
+                
+
+                <a role="button" id="navbarSNSRssSwitchBtn" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarSNSRssButtons">
+                  <span aria-hidden="true"></span>
+                  <span aria-hidden="true"></span>
+                  <span aria-hidden="true"></span>
+                </a>
+              </div>
+            
+              <div id="navbarSNSRssButtons" class="navbar-menu">
+                <div class="navbar-start">
+                  
+                </div>
+            
+                <div class="navbar-end">
+                  <div class="navbar-item">
+                    <!--buttons start-->
+                    <div class="buttons">
+                      
+                        
+                        
+                        
+                        
+                      
+                      <a href="atom.xml" target="_blank" title="RSS">
+                          <span class="icon is-large has-text-black-bis">
+                              <svg class="svg-inline--fa fa-rss fa-w-14 fa-lg" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="rss" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M128.081 415.959c0 35.369-28.672 64.041-64.041 64.041S0 451.328 0 415.959s28.672-64.041 64.041-64.041 64.04 28.673 64.04 64.041zm175.66 47.25c-8.354-154.6-132.185-278.587-286.95-286.95C7.656 175.765 0 183.105 0 192.253v48.069c0 8.415 6.49 15.472 14.887 16.018 111.832 7.284 201.473 96.702 208.772 208.772.547 8.397 7.604 14.887 16.018 14.887h48.069c9.149.001 16.489-7.655 15.995-16.79zm144.249.288C439.596 229.677 251.465 40.445 16.503 32.01 7.473 31.686 0 38.981 0 48.016v48.068c0 8.625 6.835 15.645 15.453 15.999 191.179 7.839 344.627 161.316 352.465 352.465.353 8.618 7.373 15.453 15.999 15.453h48.068c9.034-.001 16.329-7.474 16.005-16.504z"></path></svg><!-- <i class="fas fa-rss fa-lg"></i> -->
+                          </span>
+                      </a>
+                    </div>
+                    <!--buttons end-->
+
+                  </div>
+                </div>
+                </div>
+              </div>
+            </nav>
+      </div>
+
+ <div class="hero-body ct-body"></div>
+      
+    </section>
+    <section class="ct-body">
+      <div class="container">
+          <div class="columns is-variable bd-klmn-columns is-4 is-centered">
+              <div class="column is-four-fifths">
+                  <div class="post-body single-content">
+                    
+                    <h1 class="title">
+                            Vue新框架和微服务交换token说明   
+                      </h1>
+                     
+                    
+                      <div class="media">
+                            
+                            <div class="media-content">
+                              <div class="content">
+                                <p>
+                                 <span class="date">2022/10/13</span>
+                                  <span class="tran-posted-in">posted in</span>&nbsp; 
+                                  
+                                      <span class="posted-in"><a href='%E6%95%B0%E5%AD%97%E6%94%BF%E9%80%9A.html'>数字政通</a></span>
+                                         
+                                  
+
+                                   
+                                      
+                                  <br />
+                                  <span class="tran-tags">Tags:</span>&nbsp;
+                                     
+
+                                </p>
+                              </div>
+                            </div>
+                         
+                    </div>
+                </div>
+                  <article class="markdown-body single-content">
+                    <ul>
+<li><a href="#%E6%B5%81%E7%A8%8B%E5%9B%BE">流程图</a>
+<ul>
+<li><a href="#%E7%99%BB%E5%BD%95%E5%85%A8%E6%B5%81%E7%A8%8B">登录全流程</a></li>
+<li><a href="#token%E4%BA%A4%E6%8D%A2%E6%B5%81%E7%A8%8B">token交换流程</a></li>
+</ul>
+</li>
+<li><a href="#token%E4%BA%A4%E6%8D%A2%E7%BB%86%E8%8A%82">token交换细节</a></li>
+<li><a href="#%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF%E6%83%85%E5%86%B5">常见错误情况</a></li>
+</ul>
+<p>今年三四月份以来，部门开始推渣土精细化，使用中台提供的最新Vue框架。由于中台的原始框架，默认只能使用统一用户中心后端，即默认全部是走微服务，而目前的实际情况是我们还有很多接口必须要走mis服务。因此，我按照中台提供的相关文档对原始框架做了一些定制化的改动，让它可以同时支持mis服务和微服务，而支持微服务就需要进行token交换，这个过程在开发和部署中经常出现问题，原因就是很多同事搞不清楚其中的关联关系和相关细节，下面对此做一个全面的介绍。</p>
+<h1><a id="%E6%B5%81%E7%A8%8B%E5%9B%BE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>流程图</h1>
+<p>由于token交换只发生在登录流程中，故这里绘制了2个流程图，一个是登录全流程，一个是token交换流程。</p>
+<h2><a id="%E7%99%BB%E5%BD%95%E5%85%A8%E6%B5%81%E7%A8%8B" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>登录全流程</h2>
+<p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202207071128868.png" alt="Vue框架登录流程" /></p>
+<h2><a id="token%E4%BA%A4%E6%8D%A2%E6%B5%81%E7%A8%8B" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>token交换流程</h2>
+<p>理论上下面4个要素可以分布在不同的服务器，但实际场景可能不会有这么多，可能只有2~3甚至就1台服务器。总之，部署的服务器越多，越要注意服务器之间的网络是否互联互通。</p>
+<p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202207071223481.png" alt="image-20220707122317930" /></p>
+<h1><a id="token%E4%BA%A4%E6%8D%A2%E7%BB%86%E8%8A%82" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>token交换细节</h1>
+<blockquote>
+<p>所谓token交换本质上就是将mis的token作为参数，调用微服务接口(/token/exchange) 获得微服务的token，为了以示区分，我们把它叫做 access_token，后面再发送微服务相关请求时，会在请求头里携带这个access_token，从而得到正确的响应结果。</p>
+</blockquote>
+<ol>
+<li>
+<p>从前面的登录流程图可以看到，只有启用了微服务的情况下才涉及到token交换，否则是不用管的。同时，<strong>目前的版本里，获取微服务地址分两种情况，一是像渣土微服务这种从配置项获取，二是从浏览器地址栏解析得到。</strong></p>
+</li>
+<li>
+<p>渣土精细化项目里微服务地址是走的配置项，需要从后台接口获取。这个配置项我查了下，是前同事在2022年4月15号写的changelog，故早期版本里是没有的， 所以<strong>一定要使用较新的渣土后台更新包</strong>（egova-construction-v2-1.0.1-mysql.jar）。渣土微服务配置项在：系统配置——扩展子系统——渣土工地。<strong>配置规则是一定要是nginx里做了正确部署，浏览器里可以真实访问的、并且前端更新包所在的服务器必须是能够访问到的地址。</strong></p>
+<p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202207071133985.png" alt="image-20220707113336616" /></p>
+</li>
+<li>
+<p>其它新项目(非渣土项目)，目前没有走配置项，所以直接从浏览器里地址栏里解析，比如：<a href="http://192.168.102.11:8080/eUrbanMIS/view/construction/index.html">http://192.168.102.11:8080/eUrbanMIS/view/construction/index.html</a>  这个是前端访问地址，我们会把 <a href="http://192.168.102.11:8080">http://192.168.102.11:8080</a> 解析出来，然后再拼上具体微服务后缀名，最终得到的微服务地址为：<a href="http://192.168.102.11:8080/microconstruction%E3%80%82">http://192.168.102.11:8080/microconstruction。</a></p>
+</li>
+</ol>
+<h1><a id="%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF%E6%83%85%E5%86%B5" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>常见错误情况</h1>
+<p>除了渣土精细化项目需要注意配置项外，其它问题都可以参考token交换流程图。为了避免向上翻看内容不便，这里再贴一遍：</p>
+<p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202207071223481.png" alt="image-20220707122317930" /></p>
+<ol>
+<li>
+<p>渣土精细化项目，渣土jar包版本过低，缺少相关配置项</p>
+<p>解决：升级渣土jar包。</p>
+</li>
+<li>
+<p>Nginx 中没有正确部署，配置的微服务地址或者从浏览器解析得到的微服务地址，实际无法访问</p>
+<p>解决：正确部署，参考现成案例（城市应用管理部门服务器）。</p>
+</li>
+<li>
+<p>Nginx正常部署，浏览器里可以正常访问，前端项目交换token报错</p>
+<p>原因：可能是前端更新包所在的服务器和nginx转发出来的地址，网络不通。可以使用 ping 、telnet 、curl 等命令测试确认一下。</p>
+<p>解决：解决网络不通问题。</p>
+</li>
+<li>
+<p>Nginx正常部署、网络互通、前端项目仍然交换token报错</p>
+<p>原因：可能是微服务配置文件中配置的 mis认证地址所在的服务器，与部署微服务所在的服务器两者网络不通，即进行token交换时，前端的请求确实到达了微服务这里，微服务里调用配置的mis服务进行认证时失败，最终导致交换token失败。</p>
+<p>解决：判断一下这两台服务器之间是否存在这种可能性，联系后台同事修改mis认证地址。</p>
+</li>
+</ol>
+
+                  </article>
+                  <div class="comments-wrap">
+                    <div class="share-comments">
+                      
+
+                      
+
+                      
+                    </div>
+                  </div><!-- end comments wrap -->
+              </div>
+            </div><!-- end columns -->
+      </div><!-- end container -->
+    </section>
+
+
+
+    <footer class="footer">
+        <div class="content has-text-centered">
+          <p>
+              Copyright &copy; 2019
+              Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+              Theme used <a target="_blank" href="https://bulma.io/">Bulma CSS</a>.
+          </p>
+        </div>
+      </footer>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+
+
+
+
+  </body>
+</html>
