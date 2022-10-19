@@ -1,0 +1,3565 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      
+    Durandal & Knockout 培训教程 - 
+    
+    </title>
+    
+
+    
+    
+    <link href="atom.xml" rel="alternate" title="" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/style.min.css">
+    <link rel="stylesheet" href="asset/css/doc.css">
+    <script src="asset/app.js"></script>
+</head>
+  <body>
+    <section class="hero">
+      <div class="hero-head">
+          <nav class="navbar" role="navigation" aria-label="main navigation">
+              <div class="container">
+              <div class="navbar-brand">
+                
+                <a target="_self" class="navbar-item " href="index.html">Home</a>
+                
+                <a target="_self" class="navbar-item " href="archives.html">Archives</a>
+                
+
+                <a role="button" id="navbarSNSRssSwitchBtn" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarSNSRssButtons">
+                  <span aria-hidden="true"></span>
+                  <span aria-hidden="true"></span>
+                  <span aria-hidden="true"></span>
+                </a>
+              </div>
+            
+              <div id="navbarSNSRssButtons" class="navbar-menu">
+                <div class="navbar-start">
+                  
+                </div>
+            
+                <div class="navbar-end">
+                  <div class="navbar-item">
+                    <!--buttons start-->
+                    <div class="buttons">
+                      
+                        
+                        
+                        
+                        
+                      
+                      <a href="atom.xml" target="_blank" title="RSS">
+                          <span class="icon is-large has-text-black-bis">
+                              <svg class="svg-inline--fa fa-rss fa-w-14 fa-lg" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="rss" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M128.081 415.959c0 35.369-28.672 64.041-64.041 64.041S0 451.328 0 415.959s28.672-64.041 64.041-64.041 64.04 28.673 64.04 64.041zm175.66 47.25c-8.354-154.6-132.185-278.587-286.95-286.95C7.656 175.765 0 183.105 0 192.253v48.069c0 8.415 6.49 15.472 14.887 16.018 111.832 7.284 201.473 96.702 208.772 208.772.547 8.397 7.604 14.887 16.018 14.887h48.069c9.149.001 16.489-7.655 15.995-16.79zm144.249.288C439.596 229.677 251.465 40.445 16.503 32.01 7.473 31.686 0 38.981 0 48.016v48.068c0 8.625 6.835 15.645 15.453 15.999 191.179 7.839 344.627 161.316 352.465 352.465.353 8.618 7.373 15.453 15.999 15.453h48.068c9.034-.001 16.329-7.474 16.005-16.504z"></path></svg><!-- <i class="fas fa-rss fa-lg"></i> -->
+                          </span>
+                      </a>
+                    </div>
+                    <!--buttons end-->
+
+                  </div>
+                </div>
+                </div>
+              </div>
+            </nav>
+      </div>
+
+ <div class="hero-body ct-body"></div>
+      
+    </section>
+    <section class="ct-body">
+      <div class="container">
+          <div class="columns is-variable bd-klmn-columns is-4 is-centered">
+              <div class="column is-four-fifths">
+                  <div class="post-body single-content">
+                    
+                    <h1 class="title">
+                            Durandal & Knockout 培训教程   
+                      </h1>
+                     
+                    
+                      <div class="media">
+                            
+                            <div class="media-content">
+                              <div class="content">
+                                <p>
+                                 <span class="date">2022/10/19</span>
+                                  <span class="tran-posted-in">posted in</span>&nbsp; 
+                                  
+                                      <span class="posted-in"><a href='Knockout.html'>Knockout</a></span>
+                                         
+                                  
+
+                                   
+                                      
+                                  <br />
+                                  <span class="tran-tags">Tags:</span>&nbsp;
+                                     
+
+                                </p>
+                              </div>
+                            </div>
+                         
+                    </div>
+                </div>
+                  <article class="markdown-body single-content">
+                    <center>——城市管理应用研发部：袁超</center>
+<ul>
+<li><a href="#knockout">Knockout</a>
+<ul>
+<li><a href="#%E5%9F%BA%E7%A1%80%E6%A6%82%E8%BF%B0">基础概述</a>
+<ul>
+<li><a href="#%E6%98%AF%E4%BB%80%E4%B9%88">是什么?</a></li>
+<li><a href="#%E9%87%8D%E8%A6%81%E7%89%B9%E6%80%A7">重要特性</a></li>
+<li><a href="#%E9%A2%9D%E5%A4%96%E5%A5%BD%E5%A4%84">额外好处</a></li>
+<li><a href="#%E6%95%B0%E6%8D%AE%E7%9B%91%E6%8E%A7">数据监控</a></li>
+<li><a href="#mvvm%E6%A8%A1%E5%BC%8F">MVVM模式</a></li>
+</ul>
+</li>
+<li><a href="#%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A">数据绑定</a>
+<ul>
+<li><a href="#%E4%BD%BF%E7%94%A8%E6%AD%A5%E9%AA%A4">使用步骤</a></li>
+<li><a href="#%E5%B8%B8%E8%A7%81%E6%A8%A1%E6%9D%BF">常见模板</a></li>
+<li><a href="#text">text</a></li>
+<li><a href="#html">html</a></li>
+<li><a href="#value">value</a></li>
+<li><a href="#options">options</a>
+<ul>
+<li><a href="#%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8">基础使用</a></li>
+<li><a href="#change%E4%BA%8B%E4%BB%B6">change事件</a></li>
+<li><a href="#%E9%BB%98%E8%AE%A4%E7%9A%84%E5%A4%B4">默认的头</a></li>
+<li><a href="#%E6%89%8B%E5%8A%A8%E6%B7%BB%E5%8A%A0%E5%A4%B4">手动添加头</a></li>
+<li><a href="#%E5%A4%9A%E9%80%89">多选</a></li>
+<li><a href="#%E9%BB%98%E8%AE%A4%E9%80%89%E4%B8%AD1%E4%B8%AA">默认选中1个</a></li>
+<li><a href="#%E9%BB%98%E8%AE%A4%E9%80%89%E4%B8%AD%E5%A4%9A%E4%B8%AA">默认选中多个</a></li>
+</ul>
+</li>
+<li><a href="#checked">checked</a>
+<ul>
+<li><a href="#%E5%8D%95%E9%80%89%E6%8C%89%E9%92%AE">单选按钮</a></li>
+<li><a href="#%E5%A4%8D%E9%80%89%E6%A1%86">复选框</a></li>
+</ul>
+</li>
+<li><a href="#enable">enable</a></li>
+<li><a href="#disable">disable</a></li>
+<li><a href="#attr">attr</a></li>
+<li><a href="#visible">visible</a></li>
+<li><a href="#style">style</a></li>
+<li><a href="#css">css</a></li>
+</ul>
+</li>
+<li><a href="#%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7">计算属性</a></li>
+<li><a href="#%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6">流程控制</a>
+<ul>
+<li><a href="#if">if</a></li>
+<li><a href="#foreach">foreach</a>
+<ul>
+<li><a href="#%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8">基本使用</a></li>
+<li><a href="#index">$index</a></li>
+<li><a href="#data">$data</a></li>
+<li><a href="#as">as</a></li>
+<li><a href="#parent%E4%B8%8E-root">\(parent与\)root</a></li>
+</ul>
+</li>
+<li><a href="#with">with</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BA%8B%E4%BB%B6%E7%BB%91%E5%AE%9A">事件绑定</a>
+<ul>
+<li><a href="#click">click</a></li>
+<li><a href="#event">event</a></li>
+<li><a href="#%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92">参数传递</a>
+<ul>
+<li><a href="#%E9%BB%98%E8%AE%A4%E5%8F%82%E6%95%B0">默认参数</a></li>
+<li><a href="#%E6%8C%87%E5%AE%9A%E5%8F%82%E6%95%B0">指定参数</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%91%E5%AE%9A">自定义绑定</a></li>
+<li><a href="#%E5%BB%B6%E8%BF%9F%E7%BB%91%E5%AE%9A">延迟绑定</a></li>
+<li><a href="#%E7%BB%84%E4%BB%B6%E5%8C%96">组件化</a>
+<ul>
+<li><a href="#compose">compose</a></li>
+<li><a href="#register">register</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#durandal">Durandal</a>
+<ul>
+<li><a href="#%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B">启动流程</a>
+<ul>
+<li><a href="#index-html">index.html</a></li>
+<li><a href="#main-htm">main.htm</a></li>
+</ul>
+</li>
+<li><a href="#%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE">路由配置</a></li>
+<li><a href="#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F">生命周期</a></li>
+<li><a href="#%E4%BA%8B%E4%BB%B6%E6%9C%BA%E5%88%B6">事件机制</a></li>
+<li><a href="#%E5%8F%A6%E7%B1%BB%E7%BB%84%E4%BB%B6">另类组件</a></li>
+</ul>
+</li>
+<li><a href="#%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86">扩展知识</a>
+<ul>
+<li><a href="#commonjs-amd">Commonjs &amp; AMD</a></li>
+<li><a href="#nginx">Nginx</a>
+<ul>
+<li><a href="#%E8%80%81%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AE">老项目配置</a></li>
+<li><a href="#%E6%96%B0%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AE">新项目配置</a></li>
+</ul>
+</li>
+<li><a href="#%E5%B1%8F%E5%B9%95%E9%80%82%E9%85%8D">屏幕适配</a>
+<ul>
+<li><a href="#%E5%88%86%E8%BE%A8%E7%8E%87%E6%B1%87%E6%80%BB">分辨率汇总</a></li>
+<li><a href="#media">@media</a></li>
+<li><a href="#rem">rem</a></li>
+<li><a href="#px%E4%B8%8Erem%E6%8D%A2%E7%AE%97">px与rem换算</a></li>
+</ul>
+</li>
+<li><a href="#%E9%83%A8%E7%BD%B2%E6%9B%B4%E6%96%B0">部署更新</a>
+<ul>
+<li><a href="#%E4%B8%A4%E7%A7%8D%E6%9B%B4%E6%96%B0%E6%A8%A1%E5%BC%8F">两种更新模式</a></li>
+<li><a href="#%E8%A6%86%E7%9B%96%E6%9B%B4%E6%96%B0">覆盖更新</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99">参考资料</a></li>
+</ul>
+<h1><a id="knockout" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Knockout</h1>
+<h2><a id="%E5%9F%BA%E7%A1%80%E6%A6%82%E8%BF%B0" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>基础概述</h2>
+<h3><a id="%E6%98%AF%E4%BB%80%E4%B9%88" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>是什么?</h3>
+<p>Knockout（简称KO）是一个JavaScript库，可以帮助您用干净的底层数据模型创建丰富的、反应迅速的用户界面。它通过应用<a href="https://baike.baidu.com/item/MVVM">MVVM</a>模式使JavaScript前端UI简单化。任何时候你有需要动态更新UI的需求（例如，根据用户的行为或者外部数据源的变化而变化），用KO可以帮助您实现起来更简单。</p>
+<h3><a id="%E9%87%8D%E8%A6%81%E7%89%B9%E6%80%A7" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>重要特性</h3>
+<ul>
+<li><strong>优雅的依赖性跟踪</strong> -不管任何时候你的数据模型更新，都会自动更新相应的内容。</li>
+<li><strong>声明绑定</strong>-浅显易懂的方式将你的用户界面指定部分关联到你的数据模型上。</li>
+<li><strong>灵活全面的模板</strong>-使用嵌套模板可以构建复杂的动态界面。</li>
+<li><strong>轻易可扩展</strong>-几行代码就可以实现自定义行为作为新的声明式绑定。</li>
+</ul>
+<h3><a id="%E9%A2%9D%E5%A4%96%E5%A5%BD%E5%A4%84" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>额外好处</h3>
+<ul>
+<li><strong>纯JavaScript库</strong>-兼容任何服务器和客户端技术。</li>
+<li><strong>可以很好的应用到已有的应用程序中</strong>-而不需要程序主要架构发生变化。</li>
+<li><strong>简洁</strong>-采用Gzip压缩之后只要13K。</li>
+<li><strong>兼容任何主流浏览器</strong>-(IE 6+, Firefox 2+, Chrome, Safari, 及其他)</li>
+<li><strong>一套全面完整的规范</strong>（采用行为驱动开发）-这意味着在新的浏览器或平台中也能够很容易验证通过。</li>
+</ul>
+<h3><a id="%E6%95%B0%E6%8D%AE%E7%9B%91%E6%8E%A7" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>数据监控</h3>
+<p>KO的三个内置核心功能：</p>
+<ol>
+<li>监控(Observable)和依赖性跟踪(dependency tracking)</li>
+<li>声明绑定(Declarative bindings)</li>
+<li>模板(Templating)</li>
+</ol>
+<h3><a id="mvvm%E6%A8%A1%E5%BC%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>MVVM模式</h3>
+<p>*模型-视图-视图模型（MVVM）*是用于构建用户界面的设计模式。它描述了如何将复杂的UI分割成三个部分：</p>
+<ul>
+<li>
+<p><strong>模型</strong>：应用程序所存储的数据。这个数据代表了你的业务领域对象和操作（例如，可以进行资金转账的银行账户），并独立于任何用户界面。当使用KO，通常会用Ajax调用一些服务器端API将数据读取和写入此存储模型。</p>
+</li>
+<li>
+<p><strong>视图模型</strong>：可理解为UI上的数据呈现和操作后的数据暂存的表示。例如，如果你查看一个列表，视图模型将一系列的数据展示并暴露相关操作(添加和删除项目)的方法。</p>
+<p>需要注意的是，视图模型并不参与UI的呈现方式：它不具有按钮或显示样式的任何概念。不是持久化数据模型，它是用户正在查看或未保存的数据。当使用KO，你的视图模型是纯JavaScript对象。</p>
+</li>
+<li>
+<p><strong>视图</strong>：代表MVVM模式状态的可见部分，用户的互动界面。它显示从视图模型的信息，发送命令到视图模型（例如，当用户点击按钮）。</p>
+<p>当使用KO，视图是简单地声明绑定到其视图模型的HTML文档。另外，也可以使用视图模型的数据生成HTML模板。</p>
+<p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202205291548532.png" alt="image-20220529154807613" /></p>
+</li>
+</ul>
+<h2><a id="%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>数据绑定</h2>
+<h3><a id="%E4%BD%BF%E7%94%A8%E6%AD%A5%E9%AA%A4" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>使用步骤</h3>
+<p>数据绑定分三步，第一步将需要呈现到UI的数据监控起来，第二步通过data-bind声明式绑定到模板(html)中，第三步就可以任意使用，UI就能同步更新。</p>
+<ol>
+<li>
+<p><strong>监控</strong></p>
+<p>监控普通变量：ko.observable()</p>
+<p>监控数组：ko.observableArray()</p>
+<blockquote>
+<p>注意，监控数组也可以使用 ko.observable()，但是为了使语义更加明确，建议使用ko.observableArray()。</p>
+</blockquote>
+<p>嵌套监控：ko.observableArray({</p>
+<p>​    ...object</p>
+<p>​	selected: ko.observable(false)</p>
+<p>})</p>
+</li>
+<li>
+<p><strong>绑定</strong></p>
+<p>在html中使用 <strong>data-bind</strong>  声明式绑定之前监控的变量。绑定值可以是单个值，变量或几乎任何有效的JavaScript表达式。</p>
+<pre><code class="language-html">&lt;h1 data-bind=&quot;text: content&quot;&gt;&lt;/h1&gt;	
+
+&lt;!-- variable (usually a property of the current view model --&gt;
+&lt;div data-bind=&quot;visible: shouldShowMessage&quot;&gt;...&lt;/div&gt;
+ 
+&lt;!-- comparison and conditional --&gt;
+The item is &lt;span data-bind=&quot;text: price() &gt; 50 ? 'expensive' : 'cheap'&quot;&gt;&lt;/span&gt;.
+ 
+&lt;!-- function call and comparison --&gt;
+&lt;button data-bind=&quot;enable: parseAreaCode(cellphoneNumber()) != '555'&quot;&gt;...&lt;/button&gt;
+ 
+&lt;!-- function expression --&gt;
+&lt;div data-bind=&quot;click: function (data) { myFunction('param1', data) }&quot;&gt;...&lt;/div&gt;
+ 
+&lt;!-- object literal (with unquoted and quoted property names) --&gt;
+&lt;div data-bind=&quot;with: {emotion: 'happy', 'facial-expression': 'smile'}&quot;&gt;...&lt;/div&gt;
+</code></pre>
+</li>
+<li>
+<p><strong>使用</strong></p>
+<pre><code class="language-js">var content  = ko.observable('hello world')
+content('123');
+console.log(content())
+</code></pre>
+</li>
+</ol>
+<h3><a id="%E5%B8%B8%E8%A7%81%E6%A8%A1%E6%9D%BF" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>常见模板</h3>
+<ul>
+<li>模板1</li>
+</ul>
+<pre><code class="language-js">define(['durandal/app', 'durandal/system', 'knockout'], function (app, system, ko) {
+    var text = ko.observable(0);
+    var changeText = function () {
+        text(text() + 1);
+    };
+    return {
+        text: text,
+        changeText: changeText
+    }
+});
+
+</code></pre>
+<ul>
+<li>模板2</li>
+</ul>
+<pre><code class="language-js">define(['durandal/app', 'durandal/system', 'knockout'], function (app, system, ko) {
+
+    return {
+        text: ko.observable(0),
+        changeText: function () {
+            this.text(this.text() + 1);
+        }
+    }
+});
+
+</code></pre>
+<ul>
+<li><strong>模板3</strong></li>
+</ul>
+<pre><code class="language-js">define(['durandal/app', 'durandal/system', 'knockout'], function (app, system, ko) {
+    function ViewModel() {
+        var self = this;
+        self.text = ko.observable(0);
+        self.changeText = changeText;
+
+        function changeText() {
+            self.text(self.text() + 1);
+        }
+    }
+		
+    //return new ViewModel();
+    return ViewModel;
+});
+</code></pre>
+<h3><a id="text" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>text</h3>
+<p>格式：data-bind=&quot;text: xxx&quot;</p>
+<p>它是knockout中使用最频繁也是最简单的一种绑定形式。</p>
+<p>示例：</p>
+<pre><code class="language-html">&lt;h1 class=&quot;text-align-center&quot; data-bind=&quot;text: text&quot;&gt;&lt;/h1&gt;
+
+define(['durandal/app', 'durandal/system', 'knockout'], function (app, system, ko) {
+      function ViewModel() {
+        var self = this;
+        self.text = ko.observable(0);
+        self.changeText = changeText;
+
+        function changeText() {
+            self.text(self.text() + 1);
+        }
+    }
+
+    return ViewModel;
+   });    
+</code></pre>
+<h3><a id="html" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>html</h3>
+<p>格式：data-bind=&quot;html: xxx&quot;</p>
+<p>用的比较少，但有时候能解决一下问题。</p>
+<p>示例：</p>
+<pre><code class="language-html">&lt;div data-bind=&quot;html: html&quot;&gt;&lt;/div&gt;
+
+define(['durandal/app', 'durandal/system', 'knockout'], function (app, system, ko) {
+
+    function ViewModel() {
+        var self = this;
+        self.html = ko.observable();
+
+        self.activate = function () {
+            setTimeout(function () {
+                var htmlStr = &quot;&lt;h1 style='text-align:center; color: red'&gt;Hello World!&lt;/h1&gt;&quot;;
+                self.html(htmlStr);
+            }, 1000)
+        }
+    }
+
+    return ViewModel;
+});
+</code></pre>
+<h3><a id="value" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>value</h3>
+<p>格式：data-bind=&quot;value: xxx&quot;</p>
+<p>用的比较多，主要用于表单元素，如：input、textarea、select 等</p>
+<p>value绑定有一个比较特殊的细节，即value改变后，什么时候触发ViewModel更新，这里有一个 valueUpdate 属性：</p>
+<table>
+<thead>
+<tr>
+<th>属性值</th>
+<th>描述</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>change</td>
+<td>当失去焦点的时候更新VM的值，或者是<select> 元素被选择的时候</td>
+<td>默认</td>
+</tr>
+<tr>
+<td>keyup</td>
+<td>当用户敲完一个字符手指松开键盘后立即更新VM</td>
+<td></td>
+</tr>
+<tr>
+<td>keypress</td>
+<td>当用户正在敲一个字符但没有释放键盘的时候就立即更新VM，效果与afterkeydown差不多</td>
+<td></td>
+</tr>
+<tr>
+<td>afterkeydown</td>
+<td>当用户开始输入字符的时候就更新VM。主要是捕获浏览器的keydown事件或异步handle事件</td>
+<td>用的最多</td>
+</tr>
+</tbody>
+</table>
+<p>示例：</p>
+<pre><code class="language-html">&lt;form&gt;
+    &lt;div class=&quot;form-group&quot;&gt;
+        &lt;label for=&quot;default&quot;&gt;change(默认)：&lt;/label&gt;
+        &lt;input id=&quot;default&quot; class=&quot;form-control&quot; placeholder=&quot;请输入&quot; data-bind=&quot;value: content&quot;&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;form-group&quot;&gt;
+        &lt;label for=&quot;keyup&quot;&gt;keyup：&lt;/label&gt;
+        &lt;input id=&quot;keyup&quot; class=&quot;form-control&quot; placeholder=&quot;请输入&quot; data-bind=&quot;value: content, valueUpdate: 'keyup'&quot;&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;form-group&quot;&gt;
+        &lt;label for=&quot;keypress&quot;&gt;keypress：&lt;/label&gt;
+        &lt;input id=&quot;keypress&quot; class=&quot;form-control&quot; placeholder=&quot;请输入&quot;
+               data-bind=&quot;value: content, valueUpdate: 'keypress'&quot;&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;form-group&quot;&gt;
+        &lt;label for=&quot;afterkeydown&quot;&gt;afterkeydown：&lt;/label&gt;
+        &lt;input id=&quot;afterkeydown&quot; class=&quot;form-control&quot; placeholder=&quot;请输入&quot;
+               data-bind=&quot;value: content, valueUpdate: 'afterkeydown'&quot;&gt;
+    &lt;/div&gt;
+&lt;/form&gt;
+
+
+define(['durandal/app', 'durandal/system', 'knockout'], function (app, system, ko) {
+
+    function ViewModel() {
+        var self = this;
+        self.content = ko.observable();
+    }
+
+    return ViewModel;
+});
+</code></pre>
+<h3><a id="options" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>options</h3>
+<p>格式：data-bind=&quot;options: xxx,   optionsText: xxx,    optionsValue: xxx,   value: xxx &quot;</p>
+<p>​            data-bind=&quot;options: xxx,   optionsText: xxx,    optionsValue: xxx,   optionsCaption: 'xxx',    value: xxx &quot;</p>
+<p>​			data-bind=&quot;options: xxx,   optionsText: xxx,    optionsValue: xxx,   selectedOptions: xxx &quot;</p>
+<ul>
+<li>options绑定主要用于<select>标签中，故下面的示例均以<select>的绑定为例。</li>
+<li>ko中绑定一个数组使用 ko.observable 和 ko.observableArray() 都可以，但是为了语义化更强一些，建议使用后者。</li>
+</ul>
+<h4><a id="%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>基础使用</h4>
+<p>示例：</p>
+<pre><code class="language-html">&lt;form class=&quot;form-inline&quot;&gt;
+    &lt;div class=&quot;form-group&quot;&gt;
+        &lt;label for=&quot;fruits&quot;&gt;水果：&lt;/label&gt;
+        &lt;select id=&quot;fruits&quot; class=&quot;form-control&quot; style=&quot;width: 200px&quot;
+                data-bind=&quot;options:fruits, optionsText:'name', optionsValue:'value', value:selectedFruit&quot;&gt;             				 &lt;/select&gt;
+    &lt;/div&gt;
+&lt;/form&gt;
+
+self.fruits = ko.observableArray([
+      {id: 1, name: '苹果', value: 'apple'},
+      {id: 2, name: '香蕉', value: 'banana'},
+      {id: 3, name: '梨子', value: 'pear'},
+      {id: 4, name: '菠萝', value: 'pineapple'}
+  ]);
+self.selectedFruit = ko.observable();
+</code></pre>
+<h4><a id="change%E4%BA%8B%E4%BB%B6" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>change事件</h4>
+<p>select 最常用的change事件需要通过event属性绑定，后面将事件绑定时专门探讨，这里只要知道如何绑定即可。</p>
+<p>示例：</p>
+<pre><code class="language-html">&lt;form class=&quot;form-inline margin-t-md&quot;&gt;
+    &lt;div class=&quot;form-group&quot;&gt;
+        &lt;label for=&quot;hobbies&quot;&gt;爱好：&lt;/label&gt;
+        &lt;select id=&quot;hobbies&quot; class=&quot;form-control&quot; style=&quot;width: 200px&quot;
+                data-bind=&quot;options:hobbies, optionsText:'name', optionsValue:'id', value:selectedHobbyId, event:								{ change: $root.changeHobby }&quot;&gt;&lt;/select&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;form-group margin-l-lg&quot;&gt;
+        &lt;label for=&quot;fruits&quot;&gt;选中的爱好是：&lt;/label&gt;
+        &lt;span data-bind=&quot;text: selectedHobbyName&quot;&gt;&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/form&gt;
+
+self.hobbies = ko.observableArray([
+            {id: 1, name: '乒乓球'},
+            {id: 2, name: '篮球'},
+            {id: 3, name: '羽毛球'},
+            {id: 4, name: '排球'}
+        ]);
+self.selectedHobbyId = ko.observable(self.hobbies()[0].id);
+self.selectedHobbyName = ko.observable(self.hobbies()[0].name);
+self.changeHobby = changeHobby;
+
+function changeHobby() {
+		var id = self.selectedHobbyId();
+		var res = self.hobbies().find(function (item) {
+				return item.id === id;
+		});
+		self.selectedHobbyName(res.name);
+}
+</code></pre>
+<h4><a id="%E9%BB%98%E8%AE%A4%E7%9A%84%E5%A4%B4" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>默认的头</h4>
+<p>ko为select标签提供了一个“请选择”的头部属性optionsCaption，有些场景中很实用，比如列表的查询条件等。需要注意的是，当选中的是caption时，对应value、name需要处理好，value值应该undefined，name值应为空字符串。</p>
+<p>示例：</p>
+<pre><code class="language-html">&lt;form class=&quot;form-inline margin-t-md&quot;&gt;
+    &lt;div class=&quot;form-group&quot;&gt;
+        &lt;label for=&quot;languages&quot;&gt;语言：&lt;/label&gt;
+        &lt;select id=&quot;languages&quot; class=&quot;form-control&quot; style=&quot;width: 200px&quot;
+                data-bind=&quot;options:languages, optionsText:'name', optionsValue:'id', optionsCaption:'请选择', 										value:languageId, event:{ change: $root.changeLanguage }&quot;&gt;&lt;/select&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;form-group margin-l-lg&quot;&gt;
+        &lt;label for=&quot;fruits&quot;&gt;选中的语言是：&lt;/label&gt;
+        &lt;span data-bind=&quot;text: languageName&quot;&gt;&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/form&gt;
+
+//optionsCaption
+self.languages = ko.observableArray([
+    {id: 1, name: 'Java'},
+    {id: 2, name: 'Javascript'},
+    {id: 3, name: 'C++'},
+    {id: 4, name: 'Python'}
+]);
+self.languageId = ko.observable();
+self.languageName = ko.observable();
+self.changeLanguage = changeLanguage;
+
+function changeLanguage() {
+    var id = self.languageId();
+    //必须判断
+    if (id === undefined) {
+        self.languageName(&quot;&quot;);
+        return;
+    }
+    var res = self.languages().find(function (item) {
+        return item.id === id;
+    });
+    self.languageName(res.name);
+}
+</code></pre>
+<h4><a id="%E6%89%8B%E5%8A%A8%E6%B7%BB%E5%8A%A0%E5%A4%B4" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>手动添加头</h4>
+<p>实际开发中，我们为了方便传参，也经常手动添加一个头(请选择、全部等等)，此时就不需要再使用 optionsCation，同时由于“头”也有了具体的id和name，所以不需要再手动判断undefined等。</p>
+<p>示例：</p>
+<pre><code class="language-html">&lt;form class=&quot;form-inline margin-t-md&quot;&gt;
+    &lt;div class=&quot;form-group&quot;&gt;
+        &lt;label for=&quot;hairs&quot;&gt;发型：&lt;/label&gt;
+        &lt;select id=&quot;hairs&quot; class=&quot;form-control&quot; style=&quot;width: 200px&quot;
+                data-bind=&quot;options:hairs, optionsText:'name', optionsValue:'id', value:hairId, event:{ change: 									$root.changeHair }&quot;&gt;&lt;/select&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;form-group margin-l-lg&quot;&gt;
+        &lt;label for=&quot;fruits&quot;&gt;选中的发型是：&lt;/label&gt;
+        &lt;span data-bind=&quot;text: hairName&quot;&gt;&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/form&gt;
+
+//手动加一个头
+self.hairs = ko.observableArray([
+    {id: 0, name: '请选择'},
+    {id: 1, name: '长发'},
+    {id: 2, name: '短发'},
+    {id: 3, name: '卷毛'},
+    {id: 4, name: '光头'}
+]);
+self.hairId = ko.observable();
+self.hairName = ko.observable();
+self.changeHair = changeHair;
+
+function changeHair() {
+    var id = self.hairId();
+    var res = self.hairs().find(function (item) {
+        return item.id === id;
+    });
+    self.hairName(res.name);
+}
+</code></pre>
+<h4><a id="%E5%A4%9A%E9%80%89" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>多选</h4>
+<p>一般用的比较少，使用multiple的select标签时，按住shift键可以多选。由于是多选，所以此时绑定的selectedOptions也是一个数组，并且是一个由<option value="xxx"></option> 的vaue值组成的数组。</p>
+<p>示例：</p>
+<pre><code class="language-html">&lt;form class=&quot;form-inline margin-t-md&quot;&gt;
+    &lt;div class=&quot;form-group&quot;&gt;
+        &lt;label for=&quot;provinces&quot;&gt;省份：&lt;/label&gt;
+        &lt;select id=&quot;provinces&quot; multiple class=&quot;form-control&quot; style=&quot;width: 200px&quot;
+                data-bind=&quot;options:provinces, optionsText:'name', optionsValue:'id', selectedOptions: 													provinceIds, event:{ change: $root.changeProvince }&quot;&gt;&lt;/select&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;form-group margin-l-lg&quot;&gt;
+        &lt;label for=&quot;fruits&quot;&gt;选中的省份是：&lt;/label&gt;
+        &lt;span data-bind=&quot;text: provinceNames&quot;&gt;&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/form&gt;
+
+//multiple select 按住shift键可多选
+self.provinces = ko.observableArray([
+    {id: 1, name: '湖北省'},
+    {id: 2, name: '湖南省'},
+    {id: 3, name: '四川省'},
+    {id: 4, name: '河南省'},
+    {id: 5, name: '江西省'}
+]);
+self.provinceIds = ko.observable();
+self.provinceNames = ko.observable();
+self.changeProvince = changeProvince;
+
+function changeProvince() {
+    var ids = self.provinceIds();
+    var res = self.provinces().filter(function (item) {
+        return ids.indexOf(item.id) !== -1;
+    });
+    var names = res.map(function (item) {
+        return item.name
+    }).join(',');
+    self.provinceNames(names);
+}
+</code></pre>
+<h4><a id="%E9%BB%98%E8%AE%A4%E9%80%89%E4%B8%AD1%E4%B8%AA" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>默认选中1个</h4>
+<p>有时候我们的select标签默认需要选中一项，比如在某个编辑页面，需要一进入页面就默认选中上次保存的选项。此时需要给绑定的value一个初始值，特别地，如果存在optionsCaption且默认需要选中它，则value的初始值可以设定为 undefined。</p>
+<p>示例：</p>
+<pre><code class="language-html">&lt;form class=&quot;form-inline margin-t-md&quot;&gt;
+    &lt;div class=&quot;form-group&quot;&gt;
+        &lt;label for=&quot;brands&quot;&gt;品牌：&lt;/label&gt;
+        &lt;select id=&quot;brands&quot; class=&quot;form-control&quot; style=&quot;width: 200px&quot;
+                data-bind=&quot;options:brands, optionsText:'name', optionsValue:'id', value:brandId, event:{ change: 								$root.changeBrand }&quot;&gt;&lt;/select&gt;
+    &lt;/div&gt;
+&lt;/form&gt;
+
+//默认选中1个
+self.brands = ko.observableArray([
+    {id: 0, name: '请选择'},
+    {id: 1, name: '宝马'},
+    {id: 2, name: '奔驰'},
+    {id: 3, name: '奥迪'},
+    {id: 4, name: '大众'}
+]);
+self.brandId = ko.observable(3); //默认选中奥迪
+</code></pre>
+<h4><a id="%E9%BB%98%E8%AE%A4%E9%80%89%E4%B8%AD%E5%A4%9A%E4%B8%AA" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>默认选中多个</h4>
+<p>如果需要默认选中多个，则要使用到 selectedOptions属性，给它绑定一个数组，该数组由所有选中项的id组成（optionsValue绑定的是各个选中项的id的话）。特别地，如果不需要选中任何项，则可以给它绑定一个空数组。</p>
+<p>示例：</p>
+<pre><code class="language-html">&lt;form class=&quot;form-inline margin-t-md&quot;&gt;
+    &lt;div class=&quot;form-group&quot;&gt;
+        &lt;label for=&quot;units&quot;&gt;企业：&lt;/label&gt;
+        &lt;select id=&quot;units&quot; multiple class=&quot;form-control&quot; style=&quot;width: 200px&quot;
+                data-bind=&quot;options:units, optionsText:'name', optionsValue:'id', selectedOptions:unitIds, event:								{ change: $root.changeUnit }&quot;&gt;&lt;/select&gt;
+    &lt;/div&gt;
+&lt;/form&gt;
+
+//默认选中多个
+self.units = ko.observableArray([
+    {id: 1, name: '阿里巴巴'},
+    {id: 2, name: '腾讯'},
+    {id: 3, name: '小米'},
+    {id: 4, name: '百度'},
+    {id: 5, name: '数字政通'}
+]);
+self.unitIds = ko.observableArray([1, 3, 5]); //默认选中阿里巴巴、小米、数字政通
+</code></pre>
+<h3><a id="checked" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>checked</h3>
+<p>checked属性主要用于单选按钮(radio)和复选框(checkbox)，下面将单独讨论。</p>
+<h4><a id="%E5%8D%95%E9%80%89%E6%8C%89%E9%92%AE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>单选按钮</h4>
+<p>格式：data-bind=&quot;checked: xxx&quot;</p>
+<ul>
+<li>xxx是一个ko变量。</li>
+<li>xxx如果有值，即有默认选中项时，其值必须为字符串。</li>
+<li>xxx如果没有值或者其值为undefined时，则不会有默认选中项。</li>
+</ul>
+<p>示例：</p>
+<pre><code class="language-html">&lt;div&gt;
+    &lt;div class=&quot;radio&quot;&gt;
+        &lt;label&gt;
+            &lt;input type=&quot;radio&quot; name=&quot;gender&quot; id=&quot;male&quot; value=&quot;1&quot; data-bind=&quot;checked: gender&quot;&gt;美女
+        &lt;/label&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;radio&quot;&gt;
+        &lt;label&gt;
+            &lt;input type=&quot;radio&quot; name=&quot;gender&quot; id=&quot;female&quot; value=&quot;2&quot; data-bind=&quot;checked: gender&quot;&gt;帅哥
+        &lt;/label&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;radio&quot;&gt;
+        &lt;label&gt;
+            &lt;input type=&quot;radio&quot; name=&quot;gender&quot; id=&quot;unknown&quot; value=&quot;3&quot; data-bind=&quot;checked: gender&quot;&gt;未知
+        &lt;/label&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;flex&quot;&gt;
+        &lt;span&gt;gender值：&lt;/span&gt;
+        &lt;span data-bind=&quot;text: gender&quot;&gt;&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;flex margin-t-md&quot;&gt;
+        &lt;button class=&quot;btn btn-primary&quot; data-bind=&quot;click: printGender&quot;&gt;打印gender类型&lt;/button&gt;
+        &lt;span class=&quot;margin-l-md font-size-normal&quot; data-bind=&quot;text: genderType&quot;&gt;&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+define(['durandal/app', 'durandal/system', 'knockout'], function (app, system, ko) {
+    function ViewModel() {
+        var self = this;
+        self.gender = ko.observable('1');   //注意这里必须给字符串，否则不会有默认选中项。
+        self.genderType = ko.observable();
+        self.printGender = printGender;
+
+        function printGender() {
+            var getType = Object.prototype.toString;
+            self.genderType(getType.call(self.gender()));
+        }
+    }
+
+    return ViewModel;
+});
+</code></pre>
+<h4><a id="%E5%A4%8D%E9%80%89%E6%A1%86" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>复选框</h4>
+<p>格式：data-bind=&quot;checked: xxx&quot;</p>
+<ul>
+<li>xxx是一个ko数组</li>
+<li>xxx如果有值，即有默认选中项时，则其值必须为字符串数组，比如：ko.observableArray(['1', '2', '3'])。</li>
+<li>xxx如果没有值或则其值为空数组时，则不会有默认选中项。</li>
+</ul>
+<p>示例：</p>
+<pre><code class="language-html">&lt;div class=&quot;margin-t-lg&quot;&gt;
+    &lt;div class=&quot;checkbox&quot;&gt;
+        &lt;label&gt;
+            &lt;input type=&quot;checkbox&quot; value=&quot;1&quot; data-bind=&quot;checked: balls&quot;&gt;篮球
+        &lt;/label&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;checkbox&quot;&gt;
+        &lt;label&gt;
+            &lt;input type=&quot;checkbox&quot; value=&quot;2&quot; data-bind=&quot;checked: balls&quot;&gt;羽毛球
+        &lt;/label&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;checkbox&quot;&gt;
+        &lt;label&gt;
+            &lt;input type=&quot;checkbox&quot; value=&quot;3&quot; data-bind=&quot;checked: balls&quot;&gt;乒乓球
+        &lt;/label&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;flex&quot;&gt;
+        &lt;span&gt;balls值：&lt;/span&gt;
+        &lt;span data-bind=&quot;text: balls().join(',')&quot;&gt;&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;flex margin-t-md&quot;&gt;
+        &lt;button class=&quot;btn btn-primary&quot; data-bind=&quot;click: printBalls&quot;&gt;打印balls类型&lt;/button&gt;
+        &lt;span class=&quot;margin-l-md font-size-normal&quot; data-bind=&quot;text: ballsType&quot;&gt;&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+
+define(['durandal/app', 'durandal/system', 'knockout'], function (app, system, ko) {
+    function ViewModel() {
+        var self = this;
+        self.balls = ko.observableArray(['1', '3']);
+        self.ballsType = ko.observable();
+        self.printBalls = printBalls;
+
+        function printBalls() {
+            var getType = Object.prototype.toString;
+            self.ballsType(getType.call(self.balls()));
+        }
+
+    }
+
+    return ViewModel;
+});
+
+</code></pre>
+<h3><a id="enable" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>enable</h3>
+<p>格式：data-bind=&quot;enable: xxx&quot;</p>
+<p>示例：</p>
+<pre><code class="language-html">&lt;div class=&quot;container&quot;&gt;
+    &lt;form&gt;
+        &lt;div class=&quot;form-group&quot;&gt;
+            &lt;label for=&quot;username&quot;&gt;用户名：&lt;/label&gt;
+            &lt;input id=&quot;username&quot; class=&quot;form-control&quot; data-bind=&quot;enable: editable&quot;&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;form-group&quot;&gt;
+            &lt;label for=&quot;password&quot;&gt;密 码：&lt;/label&gt;
+            &lt;input id=&quot;password&quot; class=&quot;form-control&quot; data-bind=&quot;enable: editable&quot;&gt;
+        &lt;/div&gt;
+
+        &lt;button class=&quot;btn btn-primary&quot; data-bind=&quot;click: toggle&quot;&gt;toggle&lt;/button&gt;
+    &lt;/form&gt;
+&lt;/div&gt;
+
+define(['durandal/app', 'durandal/system', 'knockout'], function (app, system, ko) {
+    function ViewModel() {
+        var self = this;
+        self.userName = ko.observable();
+        self.password = ko.observable();
+        self.editable = ko.observable(false);
+        self.toggle = toggle;
+
+        function toggle() {
+            var b = self.editable();
+            self.editable(!b);
+        }
+    }
+
+    return ViewModel;
+});
+</code></pre>
+<h3><a id="disable" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>disable</h3>
+<p>格式：data-bind=&quot;disable: xxx&quot;</p>
+<p>示例：</p>
+<pre><code class="language-html">&lt;div class=&quot;container&quot;&gt;
+    &lt;form&gt;
+        &lt;div class=&quot;form-group&quot;&gt;
+            &lt;label for=&quot;broadband&quot;&gt;备用宽带：&lt;/label&gt;
+            &lt;input id=&quot;broadband&quot; class=&quot;form-control&quot; data-bind=&quot;disable: forbidden&quot;&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;form-group&quot;&gt;
+            &lt;label for=&quot;server&quot;&gt;备用服务器：&lt;/label&gt;
+            &lt;input id=&quot;server&quot; class=&quot;form-control&quot; data-bind=&quot;disable: forbidden&quot;&gt;
+        &lt;/div&gt;
+
+        &lt;button class=&quot;btn btn-primary&quot; data-bind=&quot;click: toggle&quot;&gt;toggle&lt;/button&gt;
+    &lt;/form&gt;
+&lt;/div&gt;
+
+define(['durandal/app', 'durandal/system', 'knockout'], function (app, system, ko) {
+    function ViewModel() {
+        var self = this;
+        self.broadband = ko.observable();
+        self.server = ko.observable();
+        self.forbidden = ko.observable(true);
+        self.toggle = toggle;
+
+        function toggle() {
+            var b = self.forbidden();
+            self.forbidden(!b);
+        }
+    }
+
+    return ViewModel;
+});
+</code></pre>
+<h3><a id="attr" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>attr</h3>
+<p>格式：data-bind=&quot;attr:{属性名:  xxx}&quot;</p>
+<p>其中属性名分为两大类：一是所有的HTML属性，理论上全部都支持。二是自定义属性，自定义属性如果是没有中横线连接的单个单词(如：myAttr)，则可以不加单引号，如果是有中横线连接的复合单词(例如：my-attr)，则必须加上单引号。</p>
+<p>示例：</p>
+<pre><code class="language-html">&lt;div class=&quot;container&quot;&gt;
+    &lt;!--绑定src属性--&gt;
+    &lt;div class=&quot;flex&quot;&gt;
+        &lt;label&gt;绑定src属性&lt;/label&gt;
+        &lt;img class=&quot;img-circle margin-l-lg&quot; width=&quot;200&quot; height=&quot;200&quot; alt=&quot;&quot; data-bind=&quot;attr:{src: image}&quot;&gt;
+    &lt;/div&gt;
+
+    &lt;!--绑定href属性--&gt;
+    &lt;div class=&quot;flex margin-t-md&quot;&gt;
+        &lt;label&gt;绑定href属性&lt;/label&gt;
+        &lt;a class=&quot;margin-l-lg&quot; data-bind=&quot;attr:{href: link}&quot;&gt;打开链接&lt;/a&gt;
+    &lt;/div&gt;
+
+    &lt;!--绑定title属性--&gt;
+    &lt;div class=&quot;flex margin-t-md&quot;&gt;
+        &lt;label&gt;绑定title属性&lt;/label&gt;
+        &lt;span class=&quot;text-single-line margin-l-lg&quot; style=&quot;width: 2rem&quot; data-bind=&quot;text: introduction, attr:{title: introduction}&quot;&gt;&lt;/span&gt;
+    &lt;/div&gt;
+
+    &lt;!--绑定自定义属性1--&gt;
+    &lt;div class=&quot;flex margin-t-md&quot;&gt;
+        &lt;label&gt;绑定自定义属性1&lt;/label&gt;
+        &lt;span class=&quot;margin-l-lg&quot; data-bind=&quot;text: customAttr1, attr:{myAttr: customAttr1}&quot;&gt;&lt;/span&gt;
+    &lt;/div&gt;
+
+    &lt;!--绑定自定义属性2--&gt;
+    &lt;div class=&quot;flex margin-t-md&quot;&gt;
+        &lt;label&gt;绑定自定义属性2&lt;/label&gt;
+        &lt;span class=&quot;margin-l-lg&quot; data-bind=&quot;text: customAttr2, attr:{'my-attr': customAttr2}&quot;&gt;&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+
+define(['durandal/app', 'durandal/system', 'knockout'], function (app, system, ko) {
+    function ViewModel() {
+        var self = this;
+        self.image = ko.observable('/Durandal/css/images/programer.png');
+        self.link = ko.observable('http://www.baidu.com');
+        self.introduction = ko.observable('北京数字政通科技股份有限公司成立于2001年,2010年在深圳证券交易所上市(股票代码:300075)是北京市认证的高新技术企业和拥有多项自主知识产权的高科技软件企业。');
+        self.customAttr1 = ko.observable('自定义属性1');
+        self.customAttr2 = ko.observable('自定义属性2');
+    }
+
+    return ViewModel;
+});
+</code></pre>
+<h3><a id="visible" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>visible</h3>
+<p>格式：data-bind=&quot;visible: xxx&quot;   或 data-bind=&quot;visible: xxx()&quot;</p>
+<ul>
+<li>visible绑定是knockout用于控制DOM元素显示或隐藏的方法之一，当xxx时布尔类型变量时可以不带括号。当xxx是其它类型比如数组时，可以这样使用：data-bind=&quot;visible: dataList() &amp;&amp; dataList().length&quot;，意思是当dataList为非空数组时显示。</li>
+<li>visible控制DOM元素显示隐藏是通过控制其display  css属性来实现的，文档流中该DOM仍然是存在的。</li>
+</ul>
+<p>示例：</p>
+<pre><code class="language-html">&lt;div class=&quot;container&quot;&gt;
+    &lt;h1 data-bind=&quot;visible: show&quot;&gt;Hello World&lt;/h1&gt;
+    &lt;h1 data-bind=&quot;visible: dataList() &amp;&amp; dataList().length&quot;&gt;Hello Durandal&lt;/h1&gt;
+&lt;/div&gt;
+
+define(['durandal/app', 'durandal/system', 'knockout'], function (app, system, ko) {
+    function ViewModel() {
+        var self = this;
+        self.show = ko.observable(true);
+        self.dataList = ko.observableArray([]);
+    }
+
+    return ViewModel;
+});
+</code></pre>
+<p>上面的示例代码中，show为true故Hello World会显示，而dataList是一个空数组，所以Hello Durandal不显示。下面我们看一下它的DOM结构：</p>
+<p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202205291549281.png" alt="image-20220529154918881" /></p>
+<h3><a id="style" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>style</h3>
+<p>格式：data-bind=&quot;style: {属性名1:  属性值1,  属性名2: 属性值2, ...}&quot;</p>
+<ul>
+<li>style绑定使用频率非常高，可以支持任意css属性，但是需要注意的是，对于background-color这类带中横线的属性名，必须使用驼峰命名(backgroundColor)，否则会报语法错误。</li>
+<li>属性值可以使用js表达式、三元表达式等等。</li>
+</ul>
+<p>示例：</p>
+<pre><code class="language-html">&lt;div class=&quot;container flex flex-column align-center&quot;&gt;
+    &lt;style&gt;
+        .box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2rem;
+            height: 2rem;
+            color: #ffffff;
+            font-family: PingFangSC, PingFangSC-Regular;
+            font-weight: bold;
+            font-size: 0.2rem;
+            background-color: #2aabd2;
+        }
+    &lt;/style&gt;
+
+    &lt;div class=&quot;flex align-center&quot;&gt;
+        &lt;button class=&quot;btn btn-danger padding-l-lg padding-r-lg&quot; data-bind=&quot;click: handleExpand&quot;&gt;扩大&lt;/button&gt;
+        &lt;button class=&quot;btn btn-success padding-l-lg padding-r-lg margin-l-md&quot; data-bind=&quot;click: handleShrink&quot;&gt;缩小
+        &lt;/button&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;box margin-t-md&quot;
+         data-bind=&quot;style:{
+                         width: 2*ratio()+'rem',
+                         height: 2*ratio()+'rem',
+                         backgroundColor: ratio() &gt; 2? '#ff0000': '#2aabd2'
+                     }&quot;&gt;
+        Hello
+    &lt;/div&gt;
+&lt;/div&gt;
+
+
+define(['durandal/app', 'durandal/system', 'knockout'], function (app, system, ko) {
+    function ViewModel() {
+        var self = this;
+        self.ratio = ko.observable(1.0);
+        self.handleExpand = handleExpand;
+        self.handleShrink = handleShrink;
+
+        function handleExpand() {
+            var ratio = self.ratio() + 0.2;
+            self.ratio(ratio);
+        }
+
+        function handleShrink() {
+            var ratio = self.ratio();
+            if (ratio &lt;= 1.0) {
+                console.log('不能再缩小啦');
+                return;
+            }
+            self.ratio(self.ratio() - 0.2);
+        }
+    }
+
+    return ViewModel;
+});
+</code></pre>
+<p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202205291550071.gif" alt="style-bind" /></p>
+<h3><a id="css" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>css</h3>
+<p>格式：data-bind=&quot;css:{class类名: xxx}&quot;</p>
+<ul>
+<li>当class类名为单个单词时，class类名可以用单引号包裹也可以不用，但是如果class类名是含中横线时必须使用单引号包裹，因此只要遇到css绑定，统一用单引号包裹class类名即可。</li>
+<li>ko变量xxx可以是布尔值也可以是布尔表达式，当其值为true时DOM元素会应用此class类名，为false则不会。</li>
+</ul>
+<p>示例：</p>
+<pre><code class="language-html">&lt;div class=&quot;container&quot;&gt;
+    &lt;style&gt;
+        .selected {
+            color: #ffffff;
+        }
+
+        .selected &gt; td {
+            background-color: #2aabd2 !important;
+        }
+
+        .font-bold {
+            font-weight: bold;
+        }
+    &lt;/style&gt;
+    &lt;table class=&quot;table table-striped&quot;&gt;
+        &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;ID&lt;/th&gt;
+            &lt;th&gt;Name&lt;/th&gt;
+            &lt;th&gt;Age&lt;/th&gt;
+        &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody data-bind=&quot;foreach: dataList&quot;&gt;
+        &lt;tr class=&quot;cursor-pointer&quot; data-bind=&quot;css:{'selected': selected(), 'font-bold': selected()}, click:$root.handleSelect&quot;&gt;
+            &lt;td data-bind=&quot;text: id&quot;&gt;&lt;/td&gt;
+            &lt;td data-bind=&quot;text: name&quot;&gt;&lt;/td&gt;
+            &lt;td data-bind=&quot;text: age&quot;&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;/tbody&gt;
+    &lt;/table&gt;
+&lt;/div&gt;
+
+define(['durandal/app', 'durandal/system', 'knockout'], function (app, system, ko) {
+    function ViewModel() {
+        var self = this;
+        self.dataList = ko.observableArray([
+            {id: 1, name: '宋远桥', age: 60, selected: ko.observable(false)},
+            {id: 2, name: '俞莲舟', age: 50, selected: ko.observable(false)},
+            {id: 3, name: '俞岱岩', age: 45, selected: ko.observable(false)},
+            {id: 4, name: '张松溪', age: 40, selected: ko.observable(false)},
+            {id: 5, name: '张翠山', age: 30, selected: ko.observable(false)},
+            {id: 6, name: '殷梨亭', age: 28, selected: ko.observable(false)},
+            {id: 7, name: '莫声谷', age: 25, selected: ko.observable(false)},
+        ]);
+        self.handleSelect = handleSelect;
+
+        function handleSelect(obj) {
+            self.dataList().map(function (item) {
+                item.selected(item.id === obj.id);
+            });
+        }
+    }
+
+    return ViewModel
+});
+</code></pre>
+<p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202205291550558.gif" alt="css-bind" /></p>
+<h2><a id="%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>计算属性</h2>
+<p>计算属性是knockout中非常重要的一个功能，它与普通的KO变量有所不同，它是依赖其它KO变量而存在的。当其依赖的KO变量值发生变化的时，计算属性会重新计算，反之则使用缓存中的属性值。计算属性和其它KO变量一样，都是响应式的，只不过它必须依赖某一个数据实现，并且只有它依赖的数据的值改变了，它才会更新。合理使用计算属性常常能帮我们省很多事。KO3.2.0之前计算属性使用的是 ko.computed()，3.2.0之后新推出 ko.pureComputed()，所以现在我们主要使用 pureComputed。按照官方的说法是后者可以：防止内存泄露、减少计算开销。关于computed深层次的讨论请参阅<a href="https://www.cnblogs.com/smallprogram/category/883528.html?page=2">这里</a>，总结的非常到位，我们不再赘述。</p>
+<p>格式1：ko.pureComputed(fn, context)</p>
+<p>格式2：ko.pureComputed({</p>
+<p>​                 read: function(){</p>
+<p>​                        return xxx</p>
+<p>​                 },</p>
+<p>​                 write: function(){</p>
+<p>​	                    code...</p>
+<p>​				 },</p>
+<p>​                 owner: this</p>
+<p>​            })</p>
+<ul>
+<li>fn 是一个函数，函数内部可以使用其它的KO变量，并且fn最终必须return一个结果出去。</li>
+<li>context 通常就是我们的ViewModel，所以我们经常传this。</li>
+<li>计算属性赋值操作一般用的很少，如果一定要使用则要注意计算属性与它依赖的属性之间的相互影响，有时候会造成UI上的混乱。</li>
+</ul>
+<pre><code class="language-html">&lt;div class=&quot;container&quot;&gt;
+    &lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;col-md-6&quot;&gt;
+            &lt;!--计算属性取值--&gt;
+            &lt;form&gt;
+                &lt;div class=&quot;form-group&quot;&gt;
+                    &lt;label for=&quot;firstName&quot;&gt;First Name：&lt;/label&gt;
+                    &lt;input id=&quot;firstName&quot; data-bind=&quot;value: firstName, valueUpdate: 'afterkeydown'&quot;&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;form-group&quot;&gt;
+                    &lt;label for=&quot;lastName&quot;&gt;Last Name：&lt;/label&gt;
+                    &lt;input id=&quot;lastName&quot; data-bind=&quot;value: lastName, valueUpdate: 'afterkeydown'&quot;&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;form-group&quot;&gt;
+                    &lt;label for=&quot;fullName&quot;&gt;Full Name：&lt;/label&gt;
+                    &lt;input id=&quot;fullName&quot; data-bind=&quot;value: fullName, valueUpdate: 'afterkeydown'&quot;&gt;
+                &lt;/div&gt;
+            &lt;/form&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;col-md-6&quot;&gt;
+            &lt;!--计算属性赋值--&gt;
+            &lt;form&gt;
+                &lt;div class=&quot;form-group&quot;&gt;
+                    &lt;label for=&quot;carriageNumber&quot;&gt;车厢号：&lt;/label&gt;
+                    &lt;input id=&quot;carriageNumber&quot; data-bind=&quot;value: carriageNumber, valueUpdate: 'afterkeydown'&quot;&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;form-group&quot;&gt;
+                    &lt;label for=&quot;seatNumber&quot;&gt;座位号：&lt;/label&gt;
+                    &lt;input id=&quot;seatNumber&quot; data-bind=&quot;value: seatNumber, valueUpdate: 'afterkeydown'&quot;&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;form-group&quot;&gt;
+                    &lt;label for=&quot;ticket&quot;&gt;车票：&lt;/label&gt;
+                    &lt;input id=&quot;ticket&quot; data-bind=&quot;value: ticket, valueUpdate: 'afterkeydown'&quot;&gt;
+                &lt;/div&gt;
+            &lt;/form&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+
+define(['durandal/app', 'durandal/system', 'knockout'], function (app, system, ko) {
+    function ViewModel() {
+        var self = this;
+        //fullName例子
+        self.firstName = ko.observable('');
+        self.lastName = ko.observable('');
+        self.fullName = ko.pureComputed(function () {
+            return this.firstName() + ' ' + this.lastName();
+        }, this);
+        // 如果使用self则this也可以不传
+        // self.fullName = ko.pureComputed(function () {
+        //     return self.firstName() + ' ' + self.lastName();
+        // });
+
+        //火车票例子
+        self.carriageNumber = ko.observable('');
+        self.seatNumber = ko.observable('');
+        self.ticket = ko.pureComputed({
+            //取值
+            read: function () {
+                return this.carriageNumber() + ' ' + this.seatNumber();
+            },
+            //赋值
+            write: function (value) {
+                if (value &amp;&amp; value.lastIndexOf(' ') &gt; 0) {
+                    var arr = value.split(/\s+/);
+                    this.carriageNumber(arr[0] || '');
+                    this.seatNumber(arr[1] || '');
+                }
+            },
+            owner: this
+        });
+        // 如果使用self则owner:this也可以不要 
+        // self.ticket = ko.pureComputed({
+        //     read: function () {
+        //         return self.carriageNumber() + ' ' + self.seatNumber();
+        //     },
+        //     write: function (value) {
+        //         if (value &amp;&amp; value.lastIndexOf(' ') &gt; 0) {
+        //             var arr = value.split(/\s+/);
+        //             self.carriageNumber(arr[0] || '');
+        //             self.seatNumber(arr[1] || '');
+        //         }
+        //     }
+        // });
+    }
+
+    return ViewModel
+});
+</code></pre>
+<p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202205291551554.gif" alt="computed-bind" /></p>
+<h2><a id="%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>流程控制</h2>
+<h3><a id="if" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>if</h3>
+<p>格式1：data-bind=&quot;if: xxx&quot;</p>
+<p>格式2：<!--ko if: xxx--></p>
+<p>​              <!--/ko--></p>
+<p>格式3：data-bind=&quot;ifnot: xxx&quot;</p>
+<p>格式4：<!--ko ifnot: xxx--></p>
+<p>​              <!--/ko--></p>
+<p>if 绑定是KO流程控制语句中非常重要的一个(另一个是foreach下个小结讲)，KO中除了有if外还有个ifnot，这点和Vue是不同的，不过一般用其中一个即可。</p>
+<ul>
+<li>xxx是KO变量，可以是一个布尔值也可以是一个布尔表达式。</li>
+<li>上面<!-- -->包裹的这部分内容，很容易误认为是html的注释，实际上它是ko if语句的一种语法，类似的还有foreach。</li>
+<li>data-bind=&quot;if: xxx&quot; 这种用法只是清空了DOM元素的内容，元素本身仍然在文档流中，而 <!--ko if: xxx--> 则是通过不断创建和销毁DOM元素来实现显示和隐藏的目的。所以，一定要根据实际需求决定使用何种方式。</li>
+</ul>
+<blockquote>
+<p>还记得之前学过的visible绑定吗？KO中控制元素显示和隐藏主要就这2种，visible是通过控制元素的display属性来实现，<!--ko if--> 则是真的的创建、销毁。所以，如果程序中需要经常频繁的控制元素显示和隐藏，则使用visible比较好，这样可以节省重新创建DOM的开销。</p>
+</blockquote>
+<p>示例1：下面示例主要讲述 if 和 ifnot 基本使用</p>
+<pre><code class="language-html">&lt;div class=&quot;container&quot;&gt;
+    &lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;col-md-6&quot;&gt;
+            &lt;button class=&quot;btn btn-primary&quot; data-bind=&quot;text: toggleText, click: toggle&quot;&gt;&lt;/button&gt;
+
+            &lt;h1 data-bind=&quot;if: show&quot;&gt;Hello World&lt;/h1&gt;
+            &lt;!--注意下面这个不是注释，而是ko的一种语法规则--&gt;
+            &lt;!--ko if: show--&gt;
+            &lt;h1&gt;Hello KO&lt;/h1&gt;
+            &lt;!--/ko--&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;col-md-6&quot;&gt;
+            &lt;button class=&quot;btn btn-primary&quot; data-bind=&quot;text: changeText, click: change&quot;&gt;&lt;/button&gt;
+            &lt;h1 data-bind=&quot;ifnot: hiden&quot;&gt;Hello Durandal&lt;/h1&gt;
+            &lt;!--注意下面这个不是注释，而是ko的一种语法规则--&gt;
+            &lt;!--ko ifnot: hiden--&gt;
+            &lt;h1&gt;Hello JS&lt;/h1&gt;
+            &lt;!--/ko--&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+define(['durandal/app', 'durandal/system', 'knockout'], function (app, system, ko) {
+    function ViewModel() {
+        var self = this;
+        self.show = ko.observable(true);
+        self.toggleText = ko.pureComputed(function () {
+            return self.show() ? '隐藏' : '显示';
+        });
+        self.toggle = toggle;
+
+        function toggle() {
+            self.show(!self.show());
+        }
+
+
+        self.hiden = ko.observable(false);
+        self.changeText = ko.pureComputed(function () {
+            return self.hiden() ? '显示' : '隐藏';
+        });
+        self.change = change;
+
+        function change() {
+            self.hiden(!self.hiden());
+        }
+    }
+
+    return ViewModel;
+});
+</code></pre>
+<p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202205291552338.gif" alt="if-bind" /></p>
+<p>示例2：下面示例主要验证 ko if 和 <!--ko if-->的区别</p>
+<pre><code class="language-html">&lt;div class=&quot;container&quot;&gt;
+    &lt;style&gt;
+        .box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+            width: 4rem;
+            height: 2.5rem;
+            color: #ffffff;
+            font-family: PingFangSC, PingFangSC-Regular;
+            background: #2aabd2;
+        }
+    &lt;/style&gt;
+
+    &lt;button class=&quot;btn btn-primary&quot; data-bind=&quot;text: toggleText, click: toggle&quot;&gt;&lt;/button&gt;
+
+    &lt;div class=&quot;box margin-t-md&quot; data-bind=&quot;if: show&quot;&gt;
+        &lt;h1&gt;我是大标题&lt;/h1&gt;
+        &lt;h2&gt;我是二标题&lt;/h2&gt;
+        我是小标题
+    &lt;/div&gt;
+    &lt;hr/&gt;
+    &lt;!--ko if: show--&gt;
+    &lt;div class=&quot;box margin-t-md&quot;&gt;
+        &lt;h1&gt;我是大标题&lt;/h1&gt;
+        &lt;h2&gt;我是二标题&lt;/h2&gt;
+        我是小标题
+    &lt;/div&gt;
+    &lt;!--/ko--&gt;
+&lt;/div&gt;
+
+define(['durandal/app', 'durandal/system', 'knockout'], function (app, system, ko) {
+    function ViewModel() {
+        var self = this;
+        self.show = ko.observable(true);
+        self.toggleText = ko.pureComputed(function () {
+            return self.show() ? '隐藏' : '显示';
+        });
+        self.toggle = toggle;
+
+        function toggle() {
+            self.show(!self.show());
+        }
+    }
+
+    return ViewModel;
+});
+</code></pre>
+<img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202205291553717.gif" alt="202112271211382" style="zoom:75%;" />
+<h3><a id="foreach" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>foreach</h3>
+<p>foreach绑定是KO流程控制语句中另一个重要角色，主要用于渲染一个列表。它的内涵比较丰富，需要注意的地方比较多，下面将分开单独讨论。</p>
+<h4><a id="%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>基本使用</h4>
+<p>格式1：data-bind=&quot;foreach: dataList&quot;</p>
+<p>格式2：<!--ko foreach--></p>
+<p>​			  <!--/ko--></p>
+<ul>
+<li>注意上面两种方式使用上的不同。前者是加在列表元素的父容器上的，后者是直接将列表元素包裹起来。</li>
+<li>遍历的过程中实际上有一个隐含的上下文，即正在遍历的列表项。所以下面的示例代码中才可以直接使用 sku、name 等，它实际上相当于列表项.sku、列表项.name。</li>
+</ul>
+<p>示例：</p>
+<pre><code class="language-html">&lt;div class=&quot;container&quot;&gt;
+    &lt;h3&gt;data-bind方式：&lt;/h3&gt;
+    &lt;table class=&quot;table table-striped&quot;&gt;
+        &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;SKU&lt;/th&gt;
+            &lt;th&gt;名称&lt;/th&gt;
+            &lt;th&gt;单价&lt;/th&gt;
+        &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody data-bind=&quot;foreach: fruits&quot;&gt;
+        &lt;tr&gt;
+            &lt;td data-bind=&quot;text: sku&quot;&gt;&lt;/td&gt;
+            &lt;td data-bind=&quot;text: name&quot;&gt;&lt;/td&gt;
+            &lt;td data-bind=&quot;text: price&quot;&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;/tbody&gt;
+    &lt;/table&gt;
+    
+    &lt;h3&gt;&amp;lt;!--ko foreach--&amp;gt;方式：&lt;/h3&gt;
+    &lt;table class=&quot;table table-striped&quot;&gt;
+        &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;SKU&lt;/th&gt;
+            &lt;th&gt;名称&lt;/th&gt;
+            &lt;th&gt;单价&lt;/th&gt;
+        &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+        &lt;!--ko foreach: fruits--&gt;
+        &lt;tr&gt;
+            &lt;td data-bind=&quot;text: sku&quot;&gt;&lt;/td&gt;
+            &lt;td data-bind=&quot;text: name&quot;&gt;&lt;/td&gt;
+            &lt;td data-bind=&quot;text: price&quot;&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;!--/ko--&gt;
+        &lt;/tbody&gt;
+    &lt;/table&gt;
+&lt;/div&gt;
+
+define(['durandal/app', 'durandal/system', 'knockout'], function (app, system, ko) {
+    function ViewModel() {
+        var self = this;
+        self.fruits = ko.observableArray([
+            {sku: 1001, name: '苹果', price: 6.0},
+            {sku: 1002, name: '香蕉', price: 3.0},
+            {sku: 1003, name: '梨子', price: 5.0},
+            {sku: 1004, name: '菠萝', price: 10.0},
+            {sku: 1005, name: '橘子', price: 3.5},
+        ]);
+    }
+
+    return ViewModel
+});
+</code></pre>
+<p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202205291554166.png" alt="image-20211219123344048" /></p>
+<h4><a id="index" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>$index</h4>
+<p>实际开发中，我们可能会遇到这样的场景。需要给列表增加显示一个序号列，但是后台返回的数据并没有包含序号字段，此时有两种方案，一是拿到接口返回的数据后遍历一遍手动给其扩展一个index属性。另一个方案就是直接使用KO提供的$index内置属性，这样其实是最方便的。</p>
+<blockquote>
+<p>注意：\(index 是从0开始的，实际开发中一般要从1开始，所以要使用 \)index() + 1。</p>
+</blockquote>
+<p>示例：</p>
+<pre><code class="language-html">&lt;div class=&quot;container&quot;&gt;
+    &lt;style&gt;
+        .headers {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+            height: 0.4rem;
+            line-height: 0.4rem;
+            text-align: center;
+            color: white;
+            font-family: PingFangSC, PingFangSC-Medium;
+            font-weight: bold;
+            background: #3071a9;
+        }
+
+        .list {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+            height: 0.5rem;
+            line-height: 0.5rem;
+            text-align: center;
+            font-family: PingFangSC, PingFangSC-Regular;
+        }
+
+        ul.list:nth-child(odd) {
+            background-color: #ffffff;
+        }
+
+        ul.list:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    &lt;/style&gt;
+
+    &lt;ul class=&quot;flex align-center headers&quot;&gt;
+        &lt;li class=&quot;flex-1&quot;&gt;序号&lt;/li&gt;
+        &lt;li class=&quot;flex-1&quot;&gt;学号&lt;/li&gt;
+        &lt;li class=&quot;flex-1&quot;&gt;姓名&lt;/li&gt;
+        &lt;li class=&quot;flex-1&quot;&gt;年龄&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;!--ko foreach: students--&gt;
+    &lt;ul class=&quot;flex align-center list&quot;&gt;
+        &lt;li class=&quot;flex-1&quot; data-bind=&quot;text: $index() + 1&quot;&gt;&lt;/li&gt;
+        &lt;li class=&quot;flex-1&quot; data-bind=&quot;text: stuNo&quot;&gt;&lt;/li&gt;
+        &lt;li class=&quot;flex-1&quot; data-bind=&quot;text: stuName&quot;&gt;&lt;/li&gt;
+        &lt;li class=&quot;flex-1&quot; data-bind=&quot;text: age&quot;&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;!--/ko--&gt;
+&lt;/div&gt;
+
+define(['durandal/app', 'durandal/system', 'knockout'], function (app, system, ko) {
+    function ViewModel() {
+        var self = this;
+        self.students = ko.observableArray([
+            {stuNo: 1001, stuName: '张三', age: 18},
+            {stuNo: 1002, stuName: '香蕉', age: 19},
+            {stuNo: 1003, stuName: '梨子', age: 20},
+            {stuNo: 1004, stuName: '菠萝', age: 17},
+            {stuNo: 1005, stuName: '橘子', age: 16},
+        ]);
+    }
+
+    return ViewModel
+});
+</code></pre>
+<p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202205291555337.png" alt="image-20211219123753934" /></p>
+<h4><a id="data" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>$data</h4>
+<p>前面提到过，foreach中有一个隐含的上下文，实际上这个隐含的上下文可通过\(data拿到。尤其是当列表数据项并不是一个对象，而是一个简单的字符串或数字时，我们更需要通过\)data来表示一个列表项数据。</p>
+<p>示例：</p>
+<pre><code class="language-html">&lt;div class=&quot;container&quot;&gt;
+    &lt;h4&gt;商品列表：&lt;/h4&gt;
+    &lt;table class=&quot;table table-striped&quot;&gt;
+        &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;SKU&lt;/th&gt;
+            &lt;th&gt;名称&lt;/th&gt;
+            &lt;th&gt;单价&lt;/th&gt;
+        &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody data-bind=&quot;foreach: fruits&quot;&gt;
+        &lt;tr&gt;
+            &lt;td data-bind=&quot;text: $data.sku&quot;&gt;&lt;/td&gt;
+            &lt;td data-bind=&quot;text: $data.name&quot;&gt;&lt;/td&gt;
+            &lt;td data-bind=&quot;text: $data.price&quot;&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;/tbody&gt;
+    &lt;/table&gt;
+    &lt;hr/&gt;
+
+    &lt;div class=&quot;flex&quot;&gt;
+        &lt;h4&gt;前端技术：&lt;/h4&gt;
+        &lt;ul class=&quot;flex&quot; data-bind=&quot;foreach: languages&quot;&gt;
+            &lt;li class=&quot;margin-l-md&quot; data-bind=&quot;text: $data&quot;&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+define(['durandal/app', 'durandal/system', 'knockout'], function (app, system, ko) {
+    function ViewModel() {
+        var self = this;
+        self.fruits = ko.observableArray([
+            {sku: 1001, name: '苹果', price: 6.0},
+            {sku: 1002, name: '香蕉', price: 3.0},
+            {sku: 1003, name: '梨子', price: 5.0},
+            {sku: 1004, name: '菠萝', price: 10.0},
+            {sku: 1005, name: '橘子', price: 3.5},
+        ]);
+
+        self.languages = ko.observableArray(['JS', 'Vue', 'React', 'Knockout', 'Wechat', 'uni-app', 'Taro']);
+    }
+
+    return ViewModel
+});
+</code></pre>
+<h4><a id="as" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>as</h4>
+<p>as用于给列表项起一个别名，然后渲染列表项元素时就可以直接使用它。这在嵌套循环中尤其能发挥一些作用。</p>
+<p>格式：data-bind=&quot;foreach: {data: list, as: 'item'}&quot;</p>
+<ul>
+<li>list代指一个ko数组。</li>
+<li>as: 'item' 需要注意2个小细节，一是as后要跟一个冒号，二是别名item要用单引号包裹起来。</li>
+</ul>
+<p>示例：</p>
+<pre><code class="language-html">&lt;div class=&quot;container&quot;&gt;
+    &lt;div class=&quot;flex&quot;&gt;
+        &lt;h4&gt;球类运动：&lt;/h4&gt;
+        &lt;ul class=&quot;flex&quot; data-bind=&quot;foreach: {data: sports, as: 'item'}&quot;&gt;
+            &lt;li class=&quot;margin-l-md&quot; data-bind=&quot;text: item.name&quot;&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;hr/&gt;
+
+    &lt;div class=&quot;flex&quot;&gt;
+        &lt;h4&gt;区域：&lt;/h4&gt;
+        &lt;ul data-bind=&quot;foreach: {data: districts, as: 'province'}&quot;&gt;
+            &lt;li data-bind=&quot;text: province.pname&quot;&gt;&lt;/li&gt;
+            &lt;ul data-bind=&quot;foreach: {data: province.cities, as: 'city'}&quot;&gt;
+                &lt;li class=&quot;padding-l-md&quot; data-bind=&quot;text: city.cname&quot;&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+define(['durandal/app', 'durandal/system', 'knockout'], function (app, system, ko) {
+    function ViewModel() {
+        var self = this;
+        self.sports = ko.observableArray([
+            {id: 1, name: '篮球'},
+            {id: 2, name: '羽毛球'},
+            {id: 3, name: '乒乓球'},
+            {id: 4, name: '排球'},
+            {id: 5, name: '橄榄球'},
+        ]);
+
+        self.districts = ko.observableArray([
+            {
+                pid: 1,
+                pname: '湖北省',
+                cities: [{cid: 1, cname: '武汉市'}, {cid: 2, cname: '宜昌市'}, {cid: 3, cname: '襄阳市'}]
+            },
+            {
+                pid: 2,
+                pname: '湖南省',
+                cities: [{cid: 1, cname: '长沙市'}, {cid: 2, cname: '岳阳市'}, {cid: 3, cname: '衡阳市'}]
+            },
+            {
+                pid: 3,
+                pname: '广东省',
+                cities: [{cid: 1, cname: '广州市'}, {cid: 2, cname: '深圳市'}, {cid: 3, cname: '佛山市'}]
+            },
+        ]);
+    }
+
+    return ViewModel
+});
+</code></pre>
+<p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202205291556155.png" alt="image-20211219195451023" /></p>
+<h4><a id="parent%E4%B8%8E-root" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>\(parent与\)root</h4>
+<p>对于嵌套foreach循环，有时候会有这样的需求，内层循环中需要使用外层循环中的对象，或者foreach循环中需要使用ViewModel中的数据或者绑定ViewModel中的方法。这个时候就需要用到\(parent和\)root这两个内置的属性。</p>
+<ul>
+<li>$parent：是一个相对的概念，即上级作用域(上下文)对象。</li>
+<li>$root：是一个绝对概念，即ViewModel对象。</li>
+<li>更多内置上下文特殊属性请查阅<a href="https://www.cnblogs.com/smallprogram/p/5956631.html">这里</a>。</li>
+</ul>
+<p>示例：</p>
+<pre><code class="language-html">&lt;div class=&quot;container&quot;&gt;
+    &lt;div class=&quot;flex&quot;&gt;
+        &lt;h4&gt;区域：&lt;/h4&gt;
+        &lt;ul data-bind=&quot;foreach: districts&quot;&gt;
+            &lt;li&gt;
+                &lt;span data-bind=&quot;text: pname&quot;&gt;&lt;/span&gt;
+                &lt;span&gt;------------------------&lt;/span&gt;
+                &lt;span data-bind=&quot;text: $root.province&quot;&gt;&lt;/span&gt;
+            &lt;/li&gt;
+            &lt;ul data-bind=&quot;foreach: cities&quot;&gt;
+                &lt;li class=&quot;padding-l-md&quot;&gt;
+                    &lt;span data-bind=&quot;text: cname&quot;&gt;&lt;/span&gt;
+                    &lt;span&gt;------------隶属于------------&lt;/span&gt;
+                    &lt;span data-bind=&quot;text: $parent.pname&quot;&gt;&lt;/span&gt;
+                    &lt;span&gt;-------------是-----------&lt;/span&gt;
+                    &lt;span data-bind=&quot;text: $root.city&quot;&gt;&lt;/span&gt;
+                &lt;/li&gt;
+                &lt;ul data-bind=&quot;foreach: towns&quot;&gt;
+                    &lt;li class=&quot;padding-l-xlg&quot;&gt;
+                        &lt;span data-bind=&quot;text: tname&quot;&gt;&lt;/span&gt;
+                        &lt;span&gt;------------隶属于------------&lt;/span&gt;
+                        &lt;span data-bind=&quot;text: $parent.cname&quot;&gt;&lt;/span&gt;
+                        &lt;span&gt;------------是------------&lt;/span&gt;
+                        &lt;span data-bind=&quot;text: $root.town&quot;&gt;&lt;/span&gt;
+                    &lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/ul&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+define(['durandal/app', 'durandal/system', 'knockout'], function (app, system, ko) {
+    function ViewModel() {
+        var self = this;
+        self.province = ko.observable('省级区域');
+        self.city = ko.observable('市级区域');
+        self.town = ko.observable('县级区域');
+
+        self.districts = ko.observableArray([
+            {
+                pid: 1,
+                pname: '湖北省',
+                cities: [
+                    {
+                        cid: 1,
+                        cname: '武汉市',
+                        towns: [{tid: 1, tname: '洪山区'}, {tid: 2, tname: '武昌区'}, {tid: 3, tname: '江夏区'}]
+                    },
+                    {
+                        cid: 2,
+                        cname: '宜昌市',
+                        towns: [{tid: 1, tname: '夷陵区'}, {tid: 2, tname: '西陵区'}, {tid: 3, tname: '猇亭区'}]
+                    },
+                    {
+                        cid: 3,
+                        cname: '襄阳市',
+                        towns: [{tid: 1, tname: '襄城区'}, {tid: 2, tname: '樊城区'}, {tid: 3, tname: '襄州区'}]
+                    }
+                ]
+            },
+            {
+                pid: 2,
+                pname: '湖南省',
+                cities: [
+                    {
+                        cid: 1,
+                        cname: '长沙市',
+                        towns: [{tid: 1, tname: '芙蓉区'}, {tid: 2, tname: '天心区'}, {tid: 3, tname: '岳麓区'}]
+                    },
+                    {
+                        cid: 2,
+                        cname: '岳阳市',
+                        towns: [{tid: 1, tname: '云溪区'}, {tid: 2, tname: '君山区'}, {tid: 3, tname: '岳阳县'}]
+                    },
+                    {
+                        cid: 3,
+                        cname: '衡阳市',
+                        towns: [{tid: 1, tname: '蒸湘区'}, {tid: 2, tname: '石鼓区'}, {tid: 3, tname: '雁峰区'}]
+                    }
+                ]
+            },
+            {
+                pid: 3,
+                pname: '广东省',
+                cities: [
+                    {
+                        cid: 1,
+                        cname: '广州市',
+                        towns: [{tid: 1, tname: '越秀区'}, {tid: 2, tname: '荔湾区'}, {tid: 3, tname: '海珠区'}]
+                    },
+                    {
+                        cid: 2,
+                        cname: '深圳市',
+                        towns: [{tid: 1, tname: '福田区'}, {tid: 2, tname: '罗湖区'}, {tid: 3, tname: '南山区'}]
+                    },
+                    {
+                        cid: 3,
+                        cname: '佛山市',
+                        towns: [{tid: 1, tname: '禅城区'}, {tid: 2, tname: '南海区'}, {tid: 3, tname: '顺德区'}]
+                    }
+                ]
+            },
+        ]);
+    }
+
+    return ViewModel
+});
+</code></pre>
+<p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202205291557268.png" alt="image-20211219202922932" /></p>
+<p>有时候foreach嵌套层次太多，为了避免搞不清上下文关系，建议直接使用as起别名比较简单。例如上面的例子如果用as来处理的话，示例代码如下：</p>
+<pre><code class="language-html">&lt;div class=&quot;container&quot;&gt;
+    &lt;div class=&quot;flex&quot;&gt;
+        &lt;h4&gt;区域：&lt;/h4&gt;
+        &lt;ul data-bind=&quot;foreach: {data: districts, as: 'item1'}&quot;&gt;
+            &lt;li&gt;
+                &lt;span data-bind=&quot;text: item1.pname&quot;&gt;&lt;/span&gt;
+                &lt;span&gt;------------------------&lt;/span&gt;
+                &lt;span data-bind=&quot;text: $root.province&quot;&gt;&lt;/span&gt;
+            &lt;/li&gt;
+            &lt;ul data-bind=&quot;foreach: {data: item1.cities, as: 'item2'}&quot;&gt;
+                &lt;li class=&quot;padding-l-md&quot;&gt;
+                    &lt;span data-bind=&quot;text: item2.cname&quot;&gt;&lt;/span&gt;
+                    &lt;span&gt;------------隶属于------------&lt;/span&gt;
+                    &lt;span data-bind=&quot;text: item1.pname&quot;&gt;&lt;/span&gt;
+                    &lt;span&gt;-------------是-----------&lt;/span&gt;
+                    &lt;span data-bind=&quot;text: $root.city&quot;&gt;&lt;/span&gt;
+                &lt;/li&gt;
+                &lt;ul data-bind=&quot;foreach: {data: item2.towns, as: 'item3'}&quot;&gt;
+                    &lt;li class=&quot;padding-l-xlg&quot;&gt;
+                        &lt;span data-bind=&quot;text: item3.tname&quot;&gt;&lt;/span&gt;
+                        &lt;span&gt;------------隶属于------------&lt;/span&gt;
+                        &lt;span data-bind=&quot;text: item2.cname&quot;&gt;&lt;/span&gt;
+                        &lt;span&gt;------------是------------&lt;/span&gt;
+                        &lt;span data-bind=&quot;text: $root.town&quot;&gt;&lt;/span&gt;
+                    &lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/ul&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<h3><a id="with" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>with</h3>
+<p>格式1：data-bind=&quot;with:  xxx&quot;</p>
+<p>格式2：<!--ko with: xxx--></p>
+<p>​			  <!--/ko--></p>
+<ul>
+<li>with绑定用于给DOM子元素(或被包裹的DOM元素)指明一个上下文对象，以便于它们能够直接使用该上下文对象的属性。很明显，这里xxx代指的就是一个对象。</li>
+<li>如果使用data-bind方式，则with绑定要应用在父容器中，如果使用<!--ko with-->方式，则直接将子元素包裹起来。</li>
+</ul>
+<pre><code class="language-html">&lt;div class=&quot;container&quot;&gt;
+    &lt;div class=&quot;flex&quot;&gt;
+        &lt;h4&gt;用户信息：&lt;/h4&gt;
+        &lt;ul data-bind=&quot;with: humanInfo&quot;&gt;
+            &lt;li data-bind=&quot;text: humanID&quot;&gt;&lt;/li&gt;
+            &lt;li data-bind=&quot;text: humanName&quot;&gt;&lt;/li&gt;
+            &lt;li data-bind=&quot;text: phone&quot;&gt;&lt;/li&gt;
+            &lt;li data-bind=&quot;text: email&quot;&gt;&lt;/li&gt;
+            &lt;li data-bind=&quot;text: job&quot;&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;hr/&gt;
+
+    &lt;div class=&quot;flex&quot;&gt;
+        &lt;h4&gt;定位信息：&lt;/h4&gt;
+        &lt;div data-bind=&quot;with: position&quot;&gt;
+            &lt;span data-bind=&quot;text: address&quot;&gt;&lt;/span&gt;
+            &lt;!--ko with: coords--&gt;
+            &lt;span data-bind=&quot;text: '(' + coordX + ',' + coordY + ')'&quot;&gt;&lt;/span&gt;
+            &lt;!--/ko--&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+define(['durandal/app', 'durandal/system', 'knockout'], function (app, system, ko) {
+    function ViewModel() {
+        var self = this;
+        self.humanInfo = ko.observable({
+            humanID: 1001,
+            humanName: '张三',
+            phone: 13689876675,
+            email: 'zhangsan@qq.com',
+            job: '程序员'
+        });
+        self.position = ko.observable({
+            address: '光谷金融港',
+            coords: {
+                coordX: 114.427274,
+                coordY: 30.462202
+            }
+        });
+    }
+
+    return ViewModel;
+});
+</code></pre>
+<p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202205291558623.png" alt="image-20211219213844321" /></p>
+<h2><a id="%E4%BA%8B%E4%BB%B6%E7%BB%91%E5%AE%9A" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>事件绑定</h2>
+<h3><a id="click" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>click</h3>
+<p>格式：data-bind=&quot;click: fn&quot;   或列表元素中   data-bind=&quot;click: $root.fn&quot;</p>
+<p>click事件是所有事件中用的最频繁的，但是用法比较简单，不过有一个细节特别容易忽视，因此需要特别注意一下。即对列表元素绑定事件时，一定要注意使用 \(root ，因为列表元素默认的上下文是当前正在遍历的对象，而我们的事件处理程序是定义在VM中的，通过\)root我们就能拿到VM对象。</p>
+<pre><code class="language-html">&lt;div class=&quot;container&quot;&gt;
+    &lt;style&gt;
+        .active &gt; td {
+            color: white;
+            background-color: #2a6496!important;
+        }
+    &lt;/style&gt;
+
+    &lt;h3 data-bind=&quot;text: count() + '次'&quot;&gt;&lt;/h3&gt;
+    &lt;button class=&quot;btn btn-primary margin-t-md&quot; data-bind=&quot;click: handleClick&quot;&gt;点击&lt;/button&gt;
+    &lt;hr/&gt;
+
+    &lt;table class=&quot;table table-striped&quot;&gt;
+        &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;SKU&lt;/th&gt;
+            &lt;th&gt;名称&lt;/th&gt;
+            &lt;th&gt;单价&lt;/th&gt;
+        &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody data-bind=&quot;foreach: fruits&quot;&gt;
+        &lt;tr class=&quot;cursor-pointer&quot; data-bind=&quot;css:{'active': selected()}, click: $root.handleItemClick&quot;&gt;
+            &lt;td data-bind=&quot;text: sku&quot;&gt;&lt;/td&gt;
+            &lt;td data-bind=&quot;text: name&quot;&gt;&lt;/td&gt;
+            &lt;td data-bind=&quot;text: price&quot;&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;/tbody&gt;
+    &lt;/table&gt;
+&lt;/div&gt;
+
+define(['durandal/app', 'durandal/system', 'knockout'], function (app, system, ko) {
+    function ViewModel() {
+        var self = this;
+        self.count = ko.observable(0);
+        self.handleClick = function () {
+            self.count(self.count() + 1);
+        };
+
+        self.fruits = ko.observableArray([
+            {sku: 1001, name: '苹果', price: 6.0, selected: ko.observable(false)},
+            {sku: 1002, name: '香蕉', price: 3.0, selected: ko.observable(false)},
+            {sku: 1003, name: '梨子', price: 5.0, selected: ko.observable(false)},
+            {sku: 1004, name: '菠萝', price: 10.0, selected: ko.observable(false)},
+            {sku: 1005, name: '橘子', price: 3.5, selected: ko.observable(false)},
+        ]);
+        self.handleItemClick = function (obj) {
+            self.fruits().forEach(function (item) {
+                item.selected(item.sku === obj.sku);
+            })
+        }
+    }
+
+    return ViewModel;
+});
+</code></pre>
+<p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202205291558468.gif" alt="click-bind" /></p>
+<h3><a id="event" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>event</h3>
+<p>如果说click绑定是因为使用频率极高而被Knockout单独拎出来的语法糖，那么event绑定就是一个通杀型选手。所有HTML DOM事件都可以通过它来绑定(HTML DOM 事件都有哪些可以参考<a href="https://www.runoob.com/jsref/dom-obj-event.html">这里</a>)，与click绑定一样，对列表元素绑定事件需要注意作用域。</p>
+<p>格式：data-bind=&quot;event: {事件名1:  fn1, 事件名2:  fn2, ...}&quot;</p>
+<p>示例：</p>
+<pre><code class="language-html">&lt;div class=&quot;container&quot;&gt;
+    &lt;style&gt;
+        .box {
+            width: 2rem;
+            height: 2rem;
+        }
+
+        .red-bg {
+            background-color: red;
+        }
+
+        .green-bg {
+            background-color: green;
+        }
+    &lt;/style&gt;
+    &lt;!--鼠标移入移出事件--&gt;
+    &lt;div class=&quot;box&quot;
+         data-bind=&quot;css: {'red-bg': mouseIn(), 'green-bg': !mouseIn()},
+         event:{mouseenter: handleMouseEnter, mouseleave: handleMouseLeave}&quot;&gt;&lt;/div&gt;
+
+    &lt;!--下拉框的change事件--&gt;
+    &lt;form class=&quot;form-inline margin-t-md&quot;&gt;
+        &lt;div class=&quot;form-group&quot;&gt;
+            &lt;label for=&quot;hobbies&quot;&gt;爱好：&lt;/label&gt;
+            &lt;select id=&quot;hobbies&quot; class=&quot;form-control&quot; style=&quot;width: 2rem&quot;
+                    data-bind=&quot;options:hobbies, optionsText:'name', optionsValue:'id', value:selectedHobbyId, event:{ change: changeHobby }&quot;&gt;&lt;/select&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;form-group margin-l-lg&quot;&gt;
+            &lt;label&gt;选中的爱好是：&lt;/label&gt;
+            &lt;span data-bind=&quot;text: selectedHobbyName&quot;&gt;&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/form&gt;
+&lt;/div&gt;
+
+
+define(['durandal/app', 'durandal/system', 'knockout'], function (app, system, ko) {
+    function ViewModel() {
+        var self = this;
+        //鼠标移入移出事件
+        self.mouseIn = ko.observable(false);
+        self.handleMouseEnter = function () {
+            self.mouseIn(true);
+        };
+
+        self.handleMouseLeave = function () {
+            self.mouseIn(false);
+        };
+
+        //change事件
+        self.hobbies = ko.observableArray([
+            {id: 1, name: '乒乓球'},
+            {id: 2, name: '篮球'},
+            {id: 3, name: '羽毛球'},
+            {id: 4, name: '排球'}
+        ]);
+        self.selectedHobbyId = ko.observable(self.hobbies()[0].id);
+        self.selectedHobbyName = ko.observable(self.hobbies()[0].name);
+        self.changeHobby = changeHobby;
+
+        function changeHobby() {
+            var id = self.selectedHobbyId();
+            var res = self.hobbies().find(function (item) {
+                return item.id === id;
+            });
+            self.selectedHobbyName(res.name);
+        }
+    }
+
+    return ViewModel;
+});
+</code></pre>
+<p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202205291559572.gif" alt="event-bind" /></p>
+<h3><a id="%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>参数传递</h3>
+<p>Knockout事件的参数传递与其它框架有所不同，有一些实用的技术点我们在开发中经常会遇到，因此这里单独放一个模块探讨一下。</p>
+<h4><a id="%E9%BB%98%E8%AE%A4%E5%8F%82%E6%95%B0" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>默认参数</h4>
+<p>Knockout的事件参数我这里主要分两大类，一类是普通的事件的参数，它默认有2个参数，参数1是ViewModel对象，参数2是事件源event对象。另一类是列表事件的参数，它也默认有2个参数，参数1是当前响应事件的列表元素对应的上下文对象，参数2是事件源对象。</p>
+<p>示例：</p>
+<pre><code class="language-html">&lt;div class=&quot;container&quot;&gt;
+    &lt;style&gt;
+        .active &gt; td {
+            color: white;
+            background-color: #2a6496 !important;
+        }
+    &lt;/style&gt;
+
+    &lt;!--默认参数情况--&gt;
+    &lt;h3 data-bind=&quot;text: count() + '次'&quot;&gt;&lt;/h3&gt;
+    &lt;button class=&quot;btn btn-primary margin-t-md&quot; data-bind=&quot;click: handleClick&quot;&gt;点击&lt;/button&gt;
+    &lt;hr/&gt;
+
+    &lt;table class=&quot;table table-striped&quot;&gt;
+        &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;SKU&lt;/th&gt;
+            &lt;th&gt;名称&lt;/th&gt;
+            &lt;th&gt;单价&lt;/th&gt;
+        &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody data-bind=&quot;foreach: fruits&quot;&gt;
+        &lt;tr class=&quot;cursor-pointer&quot; data-bind=&quot;css:{'active': selected()}, click: $root.handleItemClick&quot;&gt;
+            &lt;td data-bind=&quot;text: sku&quot;&gt;&lt;/td&gt;
+            &lt;td data-bind=&quot;text: name&quot;&gt;&lt;/td&gt;
+            &lt;td data-bind=&quot;text: price&quot;&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;/tbody&gt;
+    &lt;/table&gt;
+&lt;/div&gt;
+
+
+define(['durandal/app', 'durandal/system', 'knockout'], function (app, system, ko) {
+    function ViewModel() {
+        var self = this;
+        self.count = ko.observable(0);
+        self.fruits = ko.observableArray([
+            {sku: 1001, name: '苹果', price: 6.0, selected: ko.observable(false)},
+            {sku: 1002, name: '香蕉', price: 3.0, selected: ko.observable(false)},
+            {sku: 1003, name: '梨子', price: 5.0, selected: ko.observable(false)},
+            {sku: 1004, name: '菠萝', price: 10.0, selected: ko.observable(false)},
+            {sku: 1005, name: '橘子', price: 3.5, selected: ko.observable(false)},
+        ]);
+
+        self.handleClick = handleClick;
+        self.handleItemClick = handleItemClick;
+
+        function handleClick(vm, event) {
+            self.count(self.count() + 1);
+        }
+
+        function handleItemClick(item, event) {
+            self.fruits().forEach(function (fruit) {
+                item.selected(fruit.sku === item.sku);
+            })
+        }
+    }
+
+    return ViewModel;
+});
+</code></pre>
+<p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202205291600877.gif" alt="202112200017894" /></p>
+<h4><a id="%E6%8C%87%E5%AE%9A%E5%8F%82%E6%95%B0" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>指定参数</h4>
+<p>Knockout事件传递指定参数有两种办法，一种是在原来的事件函数外面再套一层 function(){}，在function内部调用原事件函数并且传参。另一种是使用 fn.bind(obj, param1, param2, ...) 的形式。第一种方式传参的特点是比较纯粹，在事件绑定中传递什么参数，函数中就接收什么参数，既不会多，也不会少。第二种就比较特殊一点，首先就是obj无论传什么都不影响参数接收，其次所有可见参数最末尾还隐含2个参数，vm、event，如果有需要，就可以直接拿来使用，不需要显示传递。</p>
+<p>示例：</p>
+<pre><code class="language-html">&lt;div class=&quot;container&quot;&gt;
+    &lt;div class=&quot;flex align-center&quot;&gt;
+        &lt;button class=&quot;btn btn-primary padding-l-lg padding-r-lg&quot; 
+                data-bind=&quot;click: function(vm,event){handleClick('add')}&quot;&gt;+&lt;/button&gt;
+        &lt;input class=&quot;margin-l-xs margin-r-xs text-align-center&quot; data-bind=&quot;value: count&quot;&gt;
+        &lt;button class=&quot;btn btn-primary padding-l-lg padding-r-lg&quot; 
+                data-bind=&quot;click: handleClick.bind(this,'reduce')&quot;&gt;-&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+define(['durandal/app', 'durandal/system', 'knockout'], function (app, system, ko) {
+    function ViewModel() {
+        var self = this;
+        self.count = ko.observable(0);
+        self.handleClick = handleClick;
+
+        function handleClick(type) {
+            switch (type) {
+                case 'add':
+                    self.count(self.count() + 1);
+                    break;
+                case 'reduce':
+                    self.count(self.count() - 1);
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+
+    return ViewModel;
+});
+</code></pre>
+<p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202205291601879.gif" alt="event-args2" /></p>
+<h2><a id="%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%91%E5%AE%9A" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>自定义绑定</h2>
+<p>自定义绑定我们在实际开发中用的比较少，因为Knockout内置的这些绑定基本上就能满足绝大多数需求，不过有时候自定义绑定确实可以解决一些问题。</p>
+<p>格式：data-bind=&quot;自定义名称:  xxx&quot;</p>
+<p>​			ko.bindingHandlers.自定义名称 = {</p>
+<p>​					init:  function(){},</p>
+<p>​					update: function(){}</p>
+<p>​			}</p>
+<p>示例：</p>
+<pre><code class="language-html">&lt;div class=&quot;container padding-20&quot;&gt;
+    &lt;div class=&quot;flex flex-column align-center&quot;&gt;
+        &lt;button class=&quot;btn btn-primary margin-b-xs&quot; data-bind=&quot;text: btnText, click: toggle&quot;&gt;&lt;/button&gt;
+        &lt;div class=&quot;box-bigger bg-default&quot; data-bind=&quot;slideVisible: show&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+define(['durandal/app', 'durandal/system', 'knockout', 'jquery'], function (app, system, ko, $) {
+    function ViewModel() {
+        var self = this;
+        self.show = ko.observable(true);
+
+        //计算属性
+        self.btnText = ko.pureComputed(function () {
+            return self.show() ? '收起' : '展开';
+        });
+
+        //自定义slideVisible绑定.
+        ko.bindingHandlers.slideVisible = {
+            init: function (element, valueAccessor) {
+                var value = valueAccessor();
+                $(element).toggle(ko.unwrap(value));
+            },
+            update: function (element, valueAccessor) {
+                var value = valueAccessor();
+                ko.unwrap(value) ? $(element).slideDown() : $(element).slideUp();
+            }
+        };
+
+        //按钮点击事件
+        self.toggle = function () {
+            var b = self.show();
+            self.show(!b);
+        }
+    }
+
+    return ViewModel;
+});
+</code></pre>
+<p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202205291602409.gif" alt="202112201222438" /></p>
+<p>下面这段是网上摘抄的<a href="https://www.cnblogs.com/smallprogram/p/5959262.html">代码片段</a>，可以看看update中具体做了些什么。</p>
+<pre><code class="language-js">ko.bindingHandlers.slideVisible = {
+    update: function(element, valueAccessor, allBindings) {
+        // First get the latest data that we're bound to
+        var value = valueAccessor();
+ 
+        // Next, whether or not the supplied model property is observable, get its current value
+        var valueUnwrapped = ko.unwrap(value);
+ 
+        // Grab some more data from another binding property
+        var duration = allBindings.get('slideDuration') || 400; // 400ms is default duration unless otherwise specified
+ 
+        // Now manipulate the DOM element
+        if (valueUnwrapped == true)
+            $(element).slideDown(duration); // Make the element visible
+        else
+            $(element).slideUp(duration);   // Make the element invisible
+        }
+    };
+</code></pre>
+<h2><a id="%E5%BB%B6%E8%BF%9F%E7%BB%91%E5%AE%9A" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>延迟绑定</h2>
+<p>有时候我们的绑定处理程序需要在元素附加到 DOM、 并且整个视图组合完成后，才能使用该元素。举个例子，我们需要测量 HTML 元素的尺寸。 Durandal 提供了一种绑定处理程序的方法，以便它在组合完成之前不会执行。<strong>这在我们公司的老项目中使用的非常频繁！</strong></p>
+<p>格式：</p>
+<pre><code class="language-html">&lt;div data-bind=&quot;myCustomHandler&quot;&gt;
+	code...
+&lt;/div&gt;
+
+composition.addBindingHandler('myCustomHandler',{
+    init:function(dom){
+ 
+    },
+    update:function(dom){
+ 
+    }
+});
+</code></pre>
+<p>示例1：先列举一个不使用 composition.addBindHandler() 的情形</p>
+<pre><code class="language-html">&lt;div class=&quot;container padding-20&quot;&gt;
+    &lt;div id=&quot;test&quot; class=&quot;box-bigger bg-default&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+define(['durandal/app', 'durandal/system', 'knockout', 'jquery'], function (app, system, ko, $) {
+    function ViewModel() {
+        var width = $(&quot;#test&quot;).css(&quot;width&quot;);
+        console.log('----------test------------width：' + width);
+    }
+
+    return ViewModel;
+});
+</code></pre>
+<p>打印结果：</p>
+<p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202205291603847.png" alt="202112230949622" /></p>
+<p>示例2：使用 composition.addBindHandler() 的情形</p>
+<pre><code class="language-html">&lt;div class=&quot;container padding-20&quot; data-bind=&quot;myCustomHandler&quot;&gt;
+    &lt;div id=&quot;test&quot; class=&quot;box-bigger bg-default&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+define(['durandal/app', 'durandal/system', 'durandal/composition', 'knockout', 'jquery'], function (app, system, composition, ko, $) {
+    function ViewModel() {
+
+        composition.addBindingHandler('myCustomHandler', {
+            init: function (dom) {
+                var width = $(&quot;#test&quot;).css(&quot;width&quot;);
+                console.log('----------test------------width：' + width);
+            },
+            update: function (dom) {
+                
+            }
+        });
+    }
+
+    return ViewModel;
+});
+</code></pre>
+<p>打印结果：</p>
+<p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202205291604240.png" alt="202112231015663" /></p>
+<p>小技巧：init 方法中的 dom 即html中data-bind的DOM元素，实际开发中我们经常将它赋值给全局变量，后面就可以使用诸如 \(dom.find(&quot;#test&quot;)  这样的方法来获取当前页面中的DOM元素。这比直接使用 \)(&quot;#test&quot;) 要好，因为 $(&quot;#test&quot;) 是在整个页面中检索，它可能会获取到当前页面之外的相同id的元素，从而产生一些意想不到的bug。</p>
+<pre><code class="language-html">define(['durandal/app', 'durandal/system', 'durandal/composition', 'knockout', 'jquery'], function (app, system, composition, ko, $) {
+    function ViewModel() {
+        var $dom = null;
+
+        composition.addBindingHandler('myCustomHandler', {
+            init: function (dom) {
+                $dom = $(dom);
+
+                // var width = $(&quot;#test&quot;).css(&quot;width&quot;);
+
+                var width = $dom.find(&quot;#test&quot;).css(&quot;width&quot;);
+
+                console.log('----------test------------width：' + width);
+            },
+            update: function (dom) {
+
+            }
+        });
+    }
+
+    return ViewModel;
+});
+</code></pre>
+<h2><a id="%E7%BB%84%E4%BB%B6%E5%8C%96" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>组件化</h2>
+<p>组件化是现代前端开发框架(如Vue、React等)中非常重要的特性，可以称得上是半壁江山中(另外一半是数据驱动)。所谓组件化，简单理解就是将一个app或者页面，按照某种组织原则拆分成多个相对独立的模块。以页面为例，任何独立的可视或者可交互的区域都可以视为一个组件，比如：头部(header)、尾部(footer)、或其它可复用的区块。</p>
+<p>下面是组件化形象的示意图：</p>
+<p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202205291604257.png" alt="202112231420257" /></p>
+<h3><a id="compose" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>compose</h3>
+<p><strong>格式：data-bind=&quot;compose:  xxx&quot;</strong></p>
+<p>**规则1：**如果 compose 绑定解析为字符串，则假定它是模块或视图的标识符。如果字符串以视图引擎识别的扩展名结尾，则通过调用其 locateView 函数来使用 viewLocator 模块，该函数返回识别的视图部分，实现为 DOM 片段。然后使用 binder 模块将该视图绑定到 bindingContext 并将其注入到 compose 绑定所在的元素中。如果它不被 viewLocator 识别，则假定它是一个模块 ID。然后使用 RequireJS 来要求模块。完成后，viewLocator 用于定位模块的常规视图，binder 用于绑定它们，并将其注入到元素中。</p>
+<p>举例：</p>
+<ol>
+<li>
+<p><strong>data-bind=&quot;compose: 'myView.html'&quot;</strong>：查找并定位视图，将其绑定到父上下文并将其组合到声明绑定的 DOM 节点中。</p>
+</li>
+<li>
+<p><strong>data-bind=&quot;compose: 'shell'&quot;</strong>：使用RequireJS获取shell模块及对应的视图，绑定它们并注入到声明绑定的DOM节点。</p>
+</li>
+<li>
+<p><strong>data-bind=&quot;compose: someProperty&quot;</strong>：判断 someProperty 的类型，如果是字符串，则按照上面指定的规则完成组合，绑定视图被注入到声明此绑定的dom节点上，如果是对象则按照后面的规则完成组合。</p>
+</li>
+</ol>
+<p>**规则2：**如果视图属性存在，但没有模型属性，则视图将被解析并绑定到 bindingContext，然后注入到元素中。如果模型属性存在，但没有视图属性，则 viewLocator 将用于定位常规视图，它们将被绑定，然后注入到元素中。如果模型和视图属性都存在，那么它们将被绑定并注入到元素中。请记住，如果模型是一个字符串，它将被假定为一个模块 id，并将使用 RequireJS 解析。同样，如果视图是一个字符串，它将在绑定之前使用 viewLocator 进行解析。注意：以这种方式指定视图时，不需要视图的文件扩展名。</p>
+<p>举例：</p>
+<ol>
+<li>
+<p><strong>data-bind=&quot;compose: { model: someModelProperty }&quot;</strong>：someModelProperty 的值与 viewLocator 一起使用以获取视图。然后将它们绑定并将视图注入到 DOM 节点中。</p>
+</li>
+<li>
+<p><strong>data-bind=&quot;compose: { view:someViewProperty }&quot;</strong>：判断 someViewProperty 的类型，如果是字符串，则使用viewLocator定位视图，否则它自身被认定为一个视图。不管是哪种情况，得到的结果视图将被注入到 DOM 节点中。</p>
+</li>
+<li>
+<p><strong>data-bind=&quot;compose: { model:someModelProperty, view:someViewProperty }&quot;</strong>：someModelProperty 的值已解析，解析 someViewProperty 的值并构造一个视图， 然后将两者绑定并注入到 DOM 节点。</p>
+</li>
+<li>
+<p><strong>data-bind=&quot;compose: { model:someModelProperty, view:'myView.html' }&quot;</strong>：someModelProperty 的值已解析，然后使用 viewLocator 获取 view 指示的视图，然后将它们绑定并将视图注入到 DOM 节点中。</p>
+</li>
+<li>
+<p><strong>data-bind=&quot;compose: { model:'shell', view:someViewProperty }&quot;</strong>：用RequireJS 加载 shell 模块， someViewProperty 的值被解析并返回一个视图，然后将视图绑定到已解析的模块并注入到 DOM 节点。</p>
+</li>
+<li>
+<p><strong>data-bind=&quot;compose: { model:'shell', view:'myView.html' }&quot;</strong>：用RequireJS 加载 shell 模块，然后使用 viewLocator 获取 view 指示的视图，最后两者进行绑定并注入到 DOM 节点中。</p>
+</li>
+</ol>
+<blockquote>
+<p>​	更多使用语法参考官方文档中 <a href="http://durandaljs.com/documentation/Using-Composition.html">Using-Composition</a> 章节。</p>
+</blockquote>
+<p>示例：下面是一个todolist的简单示例。</p>
+<pre><code class="language-html">//index.html
+&lt;div class=&quot;container padding-20&quot;&gt;
+    &lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;col-md-12&quot;&gt;
+            &lt;input data-bind=&quot;value: content, event: {keyup: handleKeyUp}&quot; style=&quot;width: 4rem; height: 0.36rem&quot;&gt;
+            &lt;button class=&quot;btn btn-primary&quot; data-bind=&quot;click: handleClick&quot;&gt;添加&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;col-md-12&quot; data-bind=&quot;foreach: todoList&quot; style=&quot;width: 4.8rem&quot;&gt;
+            &lt;div data-bind=&quot;compose: new $root.TodoItem($data)&quot;&gt;&lt;/div&gt;
+            &lt;!--下面这种也可以--&gt;
+&lt;!--            &lt;div data-bind=&quot;compose: {model: new $root.TodoItem($data), view: 'composition/compose/todoItem.html'}&quot;&gt;&lt;/div&gt;--&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+//index.js
+define(['durandal/app', 'durandal/system', 'knockout', './todoItem'], function (app, system, ko, TodoItem) {
+    function ViewModel() {
+        var self = this;
+        self.content = ko.observable();
+        self.todoList = ko.observableArray([
+            {id: 0, content: 'Do some homework', checked: 1, remove: removeItem},
+            {id: 1, content: 'Play basketball', checked: 0, remove: removeItem},
+            {id: 2, content: 'Watching TV', checked: 0, remove: removeItem},
+            {id: 3, content: 'Wash clothes', checked: 0, remove: removeItem},
+            {id: 4, content: 'Cooking', checked: 0, remove: removeItem}
+        ]);
+        self.TodoItem = TodoItem;
+
+        self.handleClick = handleClick;
+        self.handleKeyUp = handleKeyUp;
+
+        function handleClick() {
+            addItem();
+        }
+
+        function handleKeyUp(vm, event) {
+            if (event.key === 'Enter' || event.keyCode === 13) {
+                addItem();
+            }
+        }
+
+        function addItem() {
+            //计算id值
+            var id = 0;
+            var todos = self.todoList();
+            if (todos &amp;&amp; todos.length) {
+                id = todos[todos.length - 1].id + 1;
+            }
+            var newItem = {id: id, content: self.content(), checked: 0, remove: removeItem};
+            todos.push(newItem);
+            self.todoList(todos);
+            //清空输入框
+            clearInput();
+        }
+
+        function clearInput() {
+            self.content('');
+        }
+
+        function removeItem(id) {
+            var todos = self.todoList();
+            var index = todos.findIndex(function (item) {
+                return item.id === id;
+            });
+            if (index !== -1) {
+                todos.splice(index, 1);
+            }
+            self.todoList(todos);
+        }
+
+    }
+
+    return ViewModel;
+});
+
+
+//todoItem.html
+&lt;div class=&quot;width-100&quot;&gt;
+    &lt;div class=&quot;flex align-center justify-between&quot;&gt;
+        &lt;div class=&quot;flex align-center&quot;&gt;
+            &lt;input type=&quot;checkbox&quot; value=&quot;1&quot; data-bind=&quot;checked: checked&quot; style=&quot;margin: 0; cursor:pointer;&quot;&gt;
+            &lt;span class=&quot;margin-l-xs&quot; data-bind=&quot;text: content, css: {'completed': checked()}&quot;&gt;&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;button class=&quot;btn btn-link&quot; data-bind=&quot;click: remove&quot;&gt;删除&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+//todoItem.js
+define(['durandal/app', 'durandal/system', 'knockout'], function (app, system, ko) {
+    function ViewModel(todo) {
+        var self = this;
+        self.checked = ko.observable(todo.checked);
+        self.content = ko.observable(todo.content);
+        self.remove = remove;
+
+        function remove() {
+            if (todo.remove &amp;&amp; typeof todo.remove === 'function') {
+                todo.remove(todo.id);
+            }
+        }
+
+    }
+
+    return ViewModel;
+});
+</code></pre>
+<h3><a id="register" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>register</h3>
+<p>格式：ko.components.register('component-name', {</p>
+<p>​				viewModel: 模型,</p>
+<p>​				template: 模板</p>
+<p>​			});</p>
+<ul>
+<li>
+<p>Component-name：注册组件的名称，在同一个app中，组件名称必须唯一，否则无法注册成功！</p>
+</li>
+<li>
+<p>viewModel：可以是构造函数、共享对象实例、createViewModel工厂函数、<strong>AMD模块</strong>，我们使用的最多的是AMD模块。</p>
+</li>
+<li>
+<p>template：可以是现有元素ID、现有元素实例、一串标记、DOM节点数组、文档片段、其值描述模板的AMD模块，我们使用最多的还是<strong>AMD模块</strong>。</p>
+</li>
+</ul>
+<p>具体每一种情况的示例，请查看这篇<a href="https://www.cnblogs.com/smallprogram/p/5972518.html">文章</a>。下面仅列举实际开发中最常用的情景。</p>
+<p>示例1：Demo性质的示例，主要体会一下register方式使用组件的方式，实际开发不会这么简单。</p>
+<ul>
+<li>child-comp 是我们注册的组件，可以直接像原生的html标签那样使用，由于浏览器会自动将html中的大写字母转换为小写，因此注册组件时尽量使用小写字母加中横线方式(类似于Vue)。</li>
+<li>ChildViewModel 是一个构造函数，这里直接定义在了父组件的视图模型中，实际开发很少这么做，大多数情况都是以AMD模块方式引入。template 模板这里简单的使用了html字符串，实际开发一般也是通过AMD模块引入。</li>
+</ul>
+<pre><code class="language-html">&lt;div class=&quot;container padding-20&quot;&gt;
+    &lt;h1 data-bind=&quot;text: parentTitle&quot;&gt;&lt;/h1&gt;
+    &lt;hr/&gt;
+    &lt;!--使用注册的组件--&gt;
+    &lt;child-comp&gt;&lt;/child-comp&gt;
+&lt;/div&gt;
+
+
+define(['durandal/app', 'durandal/system', 'knockout'], function (app, system, ko) {
+
+    function ViewModel() {
+        this.parentTitle = ko.observable('我是父组件标题');
+    }
+
+    //构造函数 
+    function ChildViewModel() {
+        this.chldTitle = ko.observable('我是子组件标题');
+    }
+
+    ko.components.register('child-comp', {
+        viewModel: ChildViewModel,
+        template: '&lt;div&gt;&lt;h2 data-bind=&quot;text: chldTitle&quot;&gt;&lt;/h2&gt;&lt;/div&gt;'  //字符串
+    });
+
+    return ViewModel;
+});
+</code></pre>
+<p>页面显示：</p>
+<p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202205291606543.png" alt="202112240955582" /></p>
+<p>示例2：AMD方式引入(比较重要)</p>
+<ul>
+<li>Index是父组件模块，child是子组件模块，index.js中通过AMD方式引入子组件相关内容。这里需要注意的小知识点是html引入的方式比较独特，<strong>text!路径/xxx.html</strong>。类似的还有css的引入  <strong>css!路径/xxx.css</strong>。</li>
+<li>viewModel和template分别使用AMD引入的子组件的ViewModel和template。</li>
+</ul>
+<pre><code class="language-html">//父组件
+//index.html
+&lt;div class=&quot;container padding-20&quot;&gt;
+    &lt;h1 data-bind=&quot;text: title&quot;&gt;&lt;/h1&gt;
+    &lt;hr/&gt;
+    &lt;child-comp2&gt;&lt;/child-comp2&gt;
+&lt;/div&gt;
+
+//index.js
+define(['durandal/app', 'durandal/system', 'knockout', './child', 'text!./child.html'], function (app, system, ko, childViewModel, template) {
+    function ViewModel() {
+        this.title = ko.observable('我是父组件标题');
+    }
+
+    ko.components.register('child-comp2', {
+        viewModel: childViewModel,
+        template: template
+    });
+
+    return ViewModel;
+});
+
+
+//子组件
+//child.html
+&lt;div&gt;
+    &lt;h2 data-bind=&quot;text: title&quot;&gt;&lt;/h2&gt;
+&lt;/div&gt;
+
+//child.js
+define(['durandal/app', 'durandal/system', 'knockout'], function (app, system, ko) {
+
+    function ViewModel() {
+        this.title = ko.observable('我是子组件标题');
+    }
+
+    return ViewModel;
+});
+</code></pre>
+<p>示例3：父子组件通信</p>
+<p>KO中父子组件通信与React类似，父组件传递数据给子组件，直接通过属性方式传入，子组件传递数据给父组件要通过回调方法。</p>
+<ul>
+<li>父组件向子组件传递数据，统一通过一个params属性传递，可以传递任意类型的数据，包括 observable 的数据。</li>
+<li>父组件传递给子组件的observable数据如果直接绑定在子组件的DOM元素上，则当父组件中该数据改变时，子组件中也会相应改变，但子组件中不可以直接对其进行修改。</li>
+<li>子组件向父组件传递数据，需要通过回调函数进行，因此父组件需要将此回调函数在 params 中传递下去，并且要在父组件中编写该回调函数的具体逻辑。</li>
+</ul>
+<pre><code class="language-html">//父组件
+//index.html
+&lt;div class=&quot;container padding-20&quot;&gt;
+    &lt;h1 data-bind=&quot;text: title&quot;&gt;&lt;/h1&gt;
+    &lt;button class=&quot;btn btn-primary margin-t-xs&quot; data-bind=&quot;click: handleClick&quot;&gt;父组件按钮&lt;/button&gt;
+    &lt;hr/&gt;
+    &lt;child-comp3
+            params='stringValue: &quot;hello&quot;,
+            numericValue: 123,
+            boolValue: true,
+            objectValue: { a: 1, b: 2 },
+            dateValue: new Date(),
+            someValue: someValue,
+            someObservable: someObservable(),
+            someMethod: someMethod'&gt;
+    &lt;/child-comp3&gt;
+&lt;/div&gt;
+
+//index.js
+define(['durandal/app', 'durandal/system', 'knockout', './child', 'text!./child.html'], function (app, system, ko, childViewModel, template) {
+    function ViewModel() {
+        var self = this;
+        self.title = ko.observable(&quot;我是父组件标题&quot;);
+        self.someValue = 'Prop from parent';
+        self.someObservable = ko.observable('Observable from parent');
+        self.someMethod = function (data) {
+            self.someObservable(data);
+        };
+
+        self.handleClick = function () {
+            self.someObservable('Observable from parent changed by parent!');
+        }
+    }
+
+    ko.components.register('child-comp3', {
+        viewModel: childViewModel,
+        template: template
+    });
+
+    return ViewModel;
+});
+
+
+//子组件
+//child.html
+&lt;div&gt;
+    &lt;h1 data-bind=&quot;text: title&quot;&gt;&lt;/h1&gt;
+    &lt;button class=&quot;btn btn-primary margin-t-xs&quot; data-bind=&quot;click: handleClick&quot;&gt;子组件按钮&lt;/button&gt;
+    &lt;h4 class=&quot;margin-t-xs&quot; data-bind=&quot;text: stringValue&quot;&gt;&lt;/h4&gt;
+    &lt;h4 class=&quot;margin-t-xs&quot; data-bind=&quot;text: numericValue&quot;&gt;&lt;/h4&gt;
+    &lt;h4 class=&quot;margin-t-xs&quot; data-bind=&quot;text: boolValue&quot;&gt;&lt;/h4&gt;
+    &lt;h4 class=&quot;margin-t-xs&quot; data-bind=&quot;text: objectValue&quot;&gt;&lt;/h4&gt;
+    &lt;h4 class=&quot;margin-t-xs&quot; data-bind=&quot;text: dateValue&quot;&gt;&lt;/h4&gt;
+    &lt;h4 class=&quot;margin-t-xs&quot; data-bind=&quot;text: someValue&quot;&gt;&lt;/h4&gt;
+    &lt;h4 class=&quot;margin-t-xs&quot; data-bind=&quot;text: someObservable&quot;&gt;&lt;/h4&gt;
+&lt;/div&gt;
+
+//child.js
+define(['durandal/app', 'durandal/system', 'knockout'], function (app, system, ko) {
+
+    function ViewModel(params) {
+        var self = this;
+        self.stringValue = params.stringValue;
+        self.numericValue = params.numericValue;
+        self.boolValue = params.boolValue;
+        self.objectValue = JSON.stringify(params.objectValue);
+        self.dateValue = params.dateValue.getFullYear() + '-' + (params.dateValue.getMonth() + 1) + '-' + params.dateValue.getDate();
+        self.someValue = params.someValue;
+        self.someObservable = params.someObservable;
+        self.someMethod = params.someMethod;
+
+        self.handleClick = function () {
+            if (self.someMethod &amp;&amp; typeof self.someMethod === 'function') {
+                self.someMethod(&quot;Observable from parent changed by child&quot;);
+            }
+        }
+
+        self.title = ko.observable(&quot;我是子组件标题&quot;);
+    }
+
+    return ViewModel;
+});
+</code></pre>
+<p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202205291606195.gif" alt="202112241024510" /></p>
+<h1><a id="durandal" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Durandal</h1>
+<h2><a id="%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>启动流程</h2>
+<p>公司的Durandal项目的启动流程主要分两种。一种是类似城管系统的以 xxx.htm 为入口的流程，另一种是类似综管服系统以 index.html 为入口的流程。不管是哪一种，都有一个核心步骤，即必须引入require.js，且必须设置data-main属性  <script src="lib/require/require.js" data-main="app/main"></script>。</p>
+<blockquote>
+<p>注意：Require.js 不一定是显示引入，也可以动态创建script标签引入，实际上这种方式更常见。</p>
+<p>例如 bootstrap.js 中有如下代码块：</p>
+<pre><code class="language-js">var mainScript = document.createElement(&quot;script&quot;);
+mainScript.setAttribute(&quot;type&quot;, &quot;text/javascript&quot;);
+mainScript.setAttribute(&quot;data-main&quot;, win.eUrban.global.rootPath + &quot;view/main/main.js?t=&quot; + (new Date()).getTime());
+mainScript.setAttribute(&quot;src&quot;, win.eUrban.global.rootPath + &quot;library/3rdparty/require/require-2.1.11.min.js?t=&quot; + (new Date()).getTime());
+document.getElementsByTagName(&quot;head&quot;).item(0).appendChild(mainScript);
+</code></pre>
+</blockquote>
+<h3><a id="index-html" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>index.html</h3>
+<img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202205291607868.png" alt="202112281251145" style="zoom:75%;" />
+<h3><a id="main-htm" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>main.htm</h3>
+<p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202205291608307.png" alt="202112281305369" /></p>
+<h2><a id="%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>路由配置</h2>
+<p>Durandal项目如果只有一两个简单的页面，一般不需要使用路由。但是如果系统较复杂、层级较多，则需要使用路由(router) 甚至需要使用多级路由。</p>
+<ol>
+<li>在mian.js配置router插件。</li>
+<li>在路由配置的页面(习惯命名desktop.js、shell.js等)引入plugins/router模块。</li>
+<li>通过固定套路 router.map().buildNavigationModel().activate() 构建路由数据，对应的html中就可以遍历 router.navigationModel 得到配置的路由信息。</li>
+<li>路由对象属性：
+<ul>
+<li>route：可以是数组或者字符串，如果存在下级路由，则route字符串需以 *details 结尾，表示此路由下有子路由。</li>
+<li>moduelId：对应页面路径，Durandal项目中每个页面都对应一组文件(xxx.html、xxx.js)。</li>
+<li>title：路由的标题，用于前台展示。</li>
+<li>nav：可以配置true或者配置数字序号类似于display_order，能够控制显示顺序。但是不能配置false，否则会不起作用。</li>
+<li><strong>注意：这里还可以自己任意扩展其它属性，如果有需要的话。</strong></li>
+</ul>
+</li>
+<li>路由配置页面html中 data-bind=&quot;router: { transition:'entrance', cacheViews:true }&quot;  是固定写法。可以将其理解为一个占位div容器，当切换不同路由时，这里显示不同内容。</li>
+</ol>
+<pre><code class="language-html">//main.js
+app.configurePlugins({
+    router:true,
+});
+
+//shell.js
+define(['plugins/router'], function (router) {
+    return {
+        router: router,
+        activate: function () {
+            return router.map([
+                {route: ['', 'home'],    moduleId: 'hello/index',   title: 'Hello World',  nav: true },
+                {route: 'binds*details', moduleId: 'binds/index',   title: 'KO Binds',  nav: true },
+                {route: 'composition*details', moduleId: 'composition/index', title: 'Composition', nav: true },
+                { route: 'event',    moduleId: 'event/index',   title: 'Events',   nav: true },
+                { route: 'lifecycle',   moduleId: 'lifecycle/index', title: 'Lifecycle',  nav: true },
+            ]).buildNavigationModel()
+              .mapUnknownRoutes('hello/index', 'not-found')
+              .activate();
+        }
+    };
+});
+
+
+//shell.html
+&lt;div class=&quot;collapse navbar-collapse&quot; id=&quot;bs-example-navbar-collapse-1&quot;&gt;
+    &lt;ul class=&quot;nav navbar-nav&quot; data-bind=&quot;foreach: router.navigationModel&quot;&gt;
+      	&lt;li data-bind=&quot;css: { active: isActive }&quot;&gt;
+        	&lt;a data-bind=&quot;attr: { href: hash }, text: title&quot;&gt;&lt;/a&gt;
+				&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;page-host&quot; data-bind=&quot;router: { transition:'entrance', cacheViews:true }&quot;&gt;&lt;/div&gt;
+</code></pre>
+<ol start="6">
+<li>
+<p>如果需要使用多级路由，则父路由对象的 route 务必配置为 xxxx*details，否则不起作用。</p>
+</li>
+<li>
+<p>使用固定套路 router.createChildRouter().makeRelative().map().buildNavigationModel() 构建下级路由数据。同样在html中可以通过router.navigationModel()得到配置的路由信息。</p>
+<blockquote>
+<p>提示：<!--ko router: { transition:'entrance', cacheViews:true }--><!--/ko-->，与 <div data-bind="router: { transition:'entrance', cacheViews:true }"></div> 的作用是一样的，这里只是为了展示不同的写法。</p>
+</blockquote>
+</li>
+</ol>
+<pre><code class="language-html">//composition/index.js
+define(['plugins/router', 'knockout'], function(router, ko) {
+    var childRouter = router.createChildRouter()
+        .makeRelative({
+            moduleId:'composition',
+            fromParent:true
+        }).map([
+            { route: ['', 'compose'],    moduleId: 'compose/index',       title: 'Compose',      nav: true },
+            { route: ['register'],       moduleId: 'register/index',      title: 'Register',     nav: true },
+            { route: ['register2'],      moduleId: 'register2/index',     title: 'Register2',    nav: true },
+            { route: ['register3'],      moduleId: 'register3/index',     title: 'Register3',    nav: true },
+            { route: ['setRoot'],        moduleId: 'setRoot/index',       title: 'SetRoot',      nav: true },
+        ]).buildNavigationModel();
+
+    return {
+        router: childRouter,
+    };
+});
+
+
+//composition/index.html
+&lt;div class=&quot;full-screen&quot;&gt;
+  &lt;div class=&quot;width-100 height-100&quot;&gt;
+    &lt;div class=&quot;col-md-2 height-100 padding-0&quot;&gt;
+        &lt;ul class=&quot;well nav nav-pills nav-stacked height-100 auto-scroll&quot;&gt;
+            &lt;li class=&quot;nav-header&quot;&gt;Composition Examples&lt;/li&gt;
+
+            &lt;!--ko foreach: router.navigationModel()--&gt;
+            &lt;li data-bind=&quot;css: { active: isActive }&quot;&gt;
+                &lt;a data-bind=&quot;attr: { href: hash }, text: title&quot;&gt;&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;!--/ko--&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;col-md-10 height-100 padding-0&quot;&gt;
+      &lt;!--ko router: { transition:'entrance', cacheViews:true }--&gt;&lt;!--/ko--&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<h2><a id="%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>生命周期</h2>
+<p>Durandal 有9个生命周期方法(如下图所示)，其中我们使用的较多的2个是 activate、deactivate，分别可以用来做一些初始化工作和释放资源操作。</p>
+<img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202205291609356.png" alt="202112281114368" style="zoom:75%;" />
+<pre><code class="language-js">define(['durandal/app', 'durandal/system', 'knockout'], function (app, system, ko) {
+    function ViewModel() {
+        var self = this;
+        self.canActivate = function () {
+            console.log('----------------------canActivate----------------------');
+            return true;
+        };
+        self.activate = function () {
+            console.log('----------------------activate----------------------');
+        };
+        self.binding = function () {
+            console.log('----------------------binding------------------------');
+            return {cacheViews: false};
+        };
+        self.bindingComplete = function () {
+            console.log('----------------------bindingComplete------------------');
+        };
+        self.attached = function (view, parent) {
+            console.log('----------------------attached--------------------------');
+        };
+        self.compositionComplete = function (view) {
+            console.log('----------------------compositionComplete-----------------');
+        };
+        self.canDeactivate = function () {
+            console.log('----------------------canDeactivate--------------------');
+            return true
+        };
+        self.deactivate = function () {
+            console.log('----------------------deactivate-----------------------');
+        };
+        self.detached = function (view) {
+            console.log('----------------------detached------------------------');
+        }
+    }
+
+    return ViewModel;
+});
+</code></pre>
+<p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202205291610309.png" alt="202112272246965" /></p>
+<p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202205291611435.png" alt="202112272248356" /></p>
+<h2><a id="%E4%BA%8B%E4%BB%B6%E6%9C%BA%E5%88%B6" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>事件机制</h2>
+<ul>
+<li>
+<p>事件监听</p>
+<p>app.off(&quot;xxx&quot;);</p>
+<p>app.on(&quot;xxx&quot;).then(function(data){</p>
+<p>​		---code---</p>
+<p>});</p>
+</li>
+<li>
+<p>事件触发</p>
+<p>app.trigger(&quot;xxx&quot;, data);</p>
+</li>
+</ul>
+<ol>
+<li>xxx作为事件ID须保证唯一性(例如：app:navigator:open:dialog)，以便和其它事件进行区分。</li>
+<li>app.trigger中的data在app.on().then()的回调函数中以参数的形式接收，从而实现数据的传递。</li>
+</ol>
+<pre><code class="language-js">//navicertapply.js 监听事件
+app.off('app:construction:choose:site');
+app.on('app:construction:choose:site').then(function (data) {
+   
+});
+
+//chooseSite.js 中触发事件
+app.trigger(&quot;app:construction:choose:site&quot;, self._selectedSite);
+</code></pre>
+<p>类比一下jquery：</p>
+<pre><code class="language-js">$(&quot;p&quot;).off(&quot;click&quot;);
+$(&quot;p&quot;).on(&quot;click&quot;, function(event, a, b){
+	
+});
+$(&quot;p&quot;).trigger(&quot;click&quot;, [&quot;Hello&quot;,&quot;World!&quot;]);
+</code></pre>
+<h2><a id="%E5%8F%A6%E7%B1%BB%E7%BB%84%E4%BB%B6" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>另类组件</h2>
+<p>Durandal中还有一种常用的封装组件的方式，它不同与KO组件直接通过 compose 或 register 引入，而是先使用一个div进行占位，然后通过setRoot的方式动态替换占位div的内容。这种方式在公司的老项目中使用的特别多，因此很有必要单独讲一下。</p>
+<p>格式：app.setRoot(view, null, 'replace',  data);</p>
+<ul>
+<li>参数1：目标组件的路径，注意不要带.js后缀；</li>
+<li>参数2：过渡动效，一般直接传null即可；</li>
+<li>参数3：占位div的id;</li>
+<li>参数4：父组件传递给子组件的数据(注意Durandal原生的app.js并不支持第4个参数，是政通的研发自己扩展的)</li>
+</ul>
+<p>​	<img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202205291612462.png" alt="202112281033901" style="zoom:50%;" /></p>
+<p>示例：</p>
+<p>如下所示，index.html是父组件布局文件，common-dialog 是一个公共弹框，其中 id=&quot;replace&quot; 的div是一个占位div。通过点击上方的按钮进行内容的切换。content1、content2、content3 分别对应3个不同组件，分别显示文本、图片、视频。</p>
+<p><strong>注意要点：</strong></p>
+<ol>
+<li>index.js中切换内容的方式(setRoot) 和 content1.js 中获取参数数据的方式(self._ $_param) 。</li>
+<li>content1中使用了前面讲过的延迟绑定技巧，这是因为直接在ViewModel最外层是拿不到参数数据的，这与代码的执行顺序有关，实际上可以放到任意生命周期钩子函数中都可以，但是习惯上我们一般使用 activate 。</li>
+<li>组件内部要回传数据给父组件怎么办？同样可以使用Durandal事件机制那一套处理(app.off、app.on().then()、app.trigger)。</li>
+</ol>
+<pre><code class="language-html">//index.html
+&lt;div class=&quot;container padding-20&quot;&gt;
+    &lt;div class=&quot;flex-align-center justify-center&quot;&gt;
+        &lt;button id=&quot;content1&quot; class=&quot;btn btn-danger&quot; data-bind=&quot;click: handleClick&quot;&gt;显示内容1&lt;/button&gt;
+        &lt;button id=&quot;content2&quot; class=&quot;btn btn-danger margin-l-md&quot; data-bind=&quot;click: handleClick&quot;&gt;显示内容2&lt;/button&gt;
+        &lt;button id=&quot;content3&quot; class=&quot;btn btn-danger margin-l-md&quot; data-bind=&quot;click: handleClick&quot;&gt;显示内容3&lt;/button&gt;
+    &lt;/div&gt;
+
+    &lt;hr/&gt;
+    &lt;p&gt;JavaScript（简称“JS”） 是一种具有函数优先的轻量级，解释型或即时编译型的编程语言。虽然它是作为开发Web页面的脚本语言而出名，但是它也被用到了很多非浏览器环境中，JavaScript 基于原型编程、多范式的动态脚本语言，并且支持面向对象、命令式、声明式、函数式编程范式。 [1]
+        JavaScript在1995年由Netscape公司的Brendan Eich，在网景导航者浏览器上首次设计实现而成。因为Netscape与Sun合作，Netscape管理层希望它外观看起来像Java，因此取名为JavaScript。但实际上它的语法风格与Self及Scheme较为接近。 [2]
+        JavaScript的标准是ECMAScript 。截至 2012 年，所有浏览器都完整的支持ECMAScript 5.1，旧版本的浏览器至少支持ECMAScript 3 标准。2015年6月17日，ECMA国际组织发布了ECMAScript的第六版，该版本正式名称为 ECMAScript 2015，但通常被称为ECMAScript 6 或者ES2015。&lt;/p&gt;
+
+    &lt;div id=&quot;commonDialog&quot; class=&quot;common-dialog&quot; data-bind=&quot;visible:isShow&quot;&gt;
+        &lt;div class=&quot;title-bar&quot;&gt;
+            &lt;span class=&quot;text&quot; data-bind=&quot;text: dialogTitle&quot;&gt;&lt;/span&gt;
+            &lt;span class=&quot;closed&quot; data-bind=&quot;click:hideDialog&quot;&gt;✕&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;content&quot;&gt;
+            &lt;!--占位容器--&gt;
+            &lt;div id=&quot;replace&quot; class=&quot;relative height-100&quot;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+
+//index.js
+define(['durandal/app', 'durandal/system', 'knockout'], function (app, system, ko) {
+    function ViewModel() {
+        var self = this;
+        self.isShow = ko.observable(false);
+        self.dialogTitle = ko.observable();
+        self.showDialog = showDialog;
+        self.hideDialog = hideDialog;
+        self.handleClick = handleClick;
+
+        function showDialog() {
+            self.isShow(true);
+        }
+
+        function hideDialog() {
+            self.isShow(false);
+        }
+
+        function handleClick(vm, event) {
+            var id = event.target.id;
+            self.dialogTitle(id);
+
+            var view = 'composition/setRoot/' + id;
+            app.setRoot(view, null, 'replace', {name: '张三', age: 20});
+
+            showDialog();
+        }
+    }
+
+    return ViewModel;
+});
+
+
+//content1.html
+&lt;div class=&quot;container-fluid height-100&quot; data-bind=&quot;Content1Handler&quot;&gt;
+    &lt;div class=&quot;height-100&quot;&gt;
+        &lt;h3 class=&quot;text-align-center margin-t-md&quot; data-bind=&quot;text: content&quot;&gt;&lt;/h3&gt;
+        &lt;div class=&quot;margin-t-md text-align-center&quot;&gt;
+            name：&lt;span data-bind=&quot;text: name&quot;&gt;&lt;/span&gt;&lt;br/&gt;
+            age：&lt;span data-bind=&quot;text: age&quot;&gt;&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+//content1.js
+define(['durandal/app', 'durandal/system', 'durandal/composition', 'knockout'], function (app, system, composition, ko) {
+    function ViewModel() {
+        var self = this;
+        self.content = ko.observable('我是内容1');
+        self.name = ko.observable();
+        self.age = ko.observable();
+
+        composition.addBindingHandler('Content1Handler', {
+            init: function (dom) {
+                //获取父组件传递过来的数据
+                var data = self._$_param || {};
+                self.name(data.name);
+                self.age(data.age);
+            }
+        });
+    }
+
+    return ViewModel;
+});
+
+//content2、content3略
+</code></pre>
+<img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202205291613833.png" alt="202112281056110" style="zoom:75%;" />
+<img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202205291614428.png" alt="202112281054527" style="zoom:75%;" />
+<img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202205291615415.png" alt="202112281055620" style="zoom:75%;" />
+<h1><a id="%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>扩展知识</h1>
+<h2><a id="commonjs-amd" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Commonjs &amp; AMD</h2>
+<p>关于Commonjs和AMD规范演变过程，请参考阮一峰<a href="https://note.youdao.com/s/TaQWIj3F">JS模块化</a>相关文章。</p>
+<p>下面是现代JS库的一个起手式，以定义一个helloJs为例进行说明。它有如下特性：</p>
+<ul>
+<li>同时支持script方式、commonJs方式、AMD方式引入。</li>
+<li>仿照jquery的 $ 定义一个_。</li>
+<li>既可以通过静态方法调用，又可以通过实例对象调用。</li>
+</ul>
+<pre><code class="language-js">(function (root) {
+    var _ = function () {
+        // 假如客户端以 _() 形式调用，第一次调用时，this指向的是window，执行结果return new _()，
+        // 再次调用了_()，this指向的就是 _ 的一个实例了，就不会再进if内部，从而避免了循环调用。
+        if (!(this instanceof _)) {
+            return new _();
+        }
+    };
+
+    //支持CommonJS规范和&lt;script&gt;方式 
+    typeof module !== &quot;undefined&quot; &amp;&amp; module.exports ? module.exports = _ : root._ = _;
+
+    //支持AMD规范，依赖requireJs
+    if (typeof define === &quot;function&quot; &amp;&amp; define.amd) {
+        define(&quot;helloJs&quot;, [], function () {
+            return _;
+        });
+    }
+
+   // sayHello方法同时定义在_及_的原型上，则客户端既可以通过静态方法调用，也可以通过实例对象调用。
+    _.sayHello = function () {
+        console.log('hello world!');
+    };
+
+    _.prototype.sayHello = function () {
+        console.log('hello world!');
+    };
+
+    return _;
+})(this);
+</code></pre>
+<ol>
+<li>验证script方式引入：</li>
+</ol>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;JS模块化&lt;/title&gt;
+    &lt;script src=&quot;./helloJs.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;script&gt;
+    _.sayHello();
+    _().sayHello();
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<ol start="2">
+<li>验证AMD方式引入</li>
+</ol>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;JS模块化&lt;/title&gt;
+    &lt;script src=&quot;https://cdn.bootcdn.net/ajax/libs/require.js/2.3.6/require.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;script&gt;
+    require(['./helloJs'], function (_) {
+        _.sayHello();
+        _().sayHello();
+    })
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<ol start="3">
+<li>验证CommonJs引入(运行node命令)</li>
+</ol>
+<pre><code class="language-js">let _ = require('./helloJs');
+
+_.sayHello();
+_().sayHello();
+</code></pre>
+<h2><a id="nginx" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Nginx</h2>
+<p>Nginx是一个轻量级Web服务器，它不仅是一个高性能的HTTP和反向代理服务器，同时也是一个IMAP/POP3/SMTP 代理服务器。Nginx的核心功能(高并发、高效率、负载均衡等)属于后台的范畴，我们这里主要关注与前端相关的功能---反向代理。</p>
+<ul>
+<li>
+<p>学习文档</p>
+<p>官方文档：<a href="http://nginx.org/en/docs/">http://nginx.org/en/docs/</a></p>
+<p>中文文档：<a href="https://www.nginx.cn/doc/">https://www.nginx.cn/doc/</a></p>
+</li>
+<li>
+<p>正向代理、反向代理</p>
+<p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202205291617940.png" alt="202112271305798" /></p>
+</li>
+<li>
+<p>常用命令</p>
+</li>
+</ul>
+<p>​		nginx                  --启动(windows系统启动命令 start nginx)</p>
+<p>​        nginx -s stop     --直接退出</p>
+<p>​        nginx -s quit      --保存并退出</p>
+<p>​        nginx -s reload  --重新加载配置文件</p>
+<ul>
+<li>其它说明</li>
+</ul>
+<p>​		由于公司的前端项目主要有2大类：</p>
+<p>​		1.Durandal+Knockout 为主的老项目(如：城管、监督指挥大屏、渣土子系统等 );</p>
+<p>​		2.React、Vue为代表的新项目。</p>
+<p>​		因此下面即将介绍的nginx使用也分2大类进行讲解。另外由于作者本人使用Mac系统，故下面的配置文件的文件路径以mac系统盘符		为准(/Users/yuanchao/xxxx/)，windows系统略有不同(C:\Documents)，请windows用户自行修改或百度。</p>
+<h3><a id="%E8%80%81%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>老项目配置</h3>
+<p>我们这里主要是通过nginx转发，把本地的请求转发到所配置的服务器上面去，最常见的就是转发到现场的外网上。这是因为Durandal项目属于早期项目，前后端并未分离，如果你不想自己本地起一个服务的话，就只能连别人的服务，nginx就可以帮我们做到这一点。</p>
+<p>这里举2个例子，一个是app下的监督指挥大屏项目(screen-standard)，一个是plugin下的渣土项目(construction_v2)。如果工作中遇到类似场景，对照这两个配置文件修改即可。</p>
+<ul>
+<li>
+<p><strong>screen-standard</strong></p>
+<pre><code class="language-nginx">#user  nobody;
+worker_processes  1;
+
+#error_log  logs/error.log;
+#error_log  logs/error.log  notice;
+#error_log  logs/error.log  info;
+
+#pid        logs/nginx.pid;
+
+
+events {
+    worker_connections  1024;
+}
+
+
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    #log_format  main  '$remote_addr - $remote_user [$time_local] &quot;$request&quot; '
+    #                  '$status $body_bytes_sent &quot;$http_referer&quot; '
+    #                  '&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;';
+
+    #access_log  logs/access.log  main;
+
+    sendfile        on;
+    #tcp_nopush     on;
+
+    #keepalive_timeout  0;
+    keepalive_timeout  65;
+
+    #gzip  on;
+	
+    server {
+        listen       8090;
+        server_name  localhost;
+				root _site;
+				index index.html;
+        #charset koi8-r;
+
+        #access_log  logs/host.access.log  main;
+
+				# 用来登陆
+        location /eUrbanMIS1201{
+					proxy_pass http://123.56.170.103:8080/eUrbanMIS1201;
+					proxy_set_header Host $host:$server_port;
+					proxy_set_header X-Real-IP $remote_addr;
+					proxy_set_header REMOTE-HOST $remote_addr;
+					proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+					send_timeout 10;
+					client_max_body_size 100m;
+					proxy_http_version 1.1;
+					proxy_set_header Upgrade $http_upgrade;
+					proxy_set_header Connection &quot;upgrade&quot;;
+					add_header Cache-Control max-age=0;
+        }
+
+				location /eUrbanMIS1201/egova-app/socket{
+					proxy_pass http://123.56.170.103:8080/eUrbanMIS1201/socket;
+					proxy_set_header Host $host:$server_port;
+					proxy_set_header X-Real-IP $remote_addr;
+					proxy_set_header REMOTE-HOST $remote_addr;
+					proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+					send_timeout 10;
+					client_max_body_size 100m;
+					proxy_http_version 1.1;
+					proxy_set_header Upgrade $http_upgrade;
+					proxy_set_header Connection &quot;upgrade&quot;;
+					add_header Cache-Control max-age=0;
+				}
+
+				# 用来访问相对的后台接口
+				location /eUrbanMIS1201/egova-app/home {
+					proxy_pass http://123.56.170.103:8080/eUrbanMIS1201/home;
+        } 
+
+        location /eUrbanMIS1201/mediadl {
+            proxy_pass http://123.56.170.103:8080/eUrbanMIS1201/mediadl;
+        }
+
+				# 用来发布前台文件
+				location /eUrbanMIS1201/view/screen-standard {
+					alias /Users/yuanchao/Egova/wizdom-urban-v14/app/src/main/webapp/view/screen-standard;
+				}
+
+        location /eUrbanMIS1201/style/screen-standard {
+					alias /Users/yuanchao/Egova/wizdom-urban-v14/app/src/main/webapp/style/screen-standard;
+        }
+
+				location /eUrbanMIS2101/library/screen-standard {
+					alias /Users/yuanchao/Egova/wizdom-urban-v14/app/src/main/webapp/library/screen-standard;
+				}
+		
+        #error_page  404              /404.html;
+
+        # redirect server error pages to the static page /50x.html
+        #
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   html;
+        }
+
+        # proxy the PHP scripts to Apache listening on 127.0.0.1:80
+        #
+        #location ~ \.php$ {
+        #    proxy_pass   http://127.0.0.1;
+        #}
+
+        # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
+        #
+        #location ~ \.php$ {
+        #    root           html;
+        #    fastcgi_pass   127.0.0.1:9000;
+        #    fastcgi_index  index.php;
+        #    fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;
+        #    include        fastcgi_params;
+        #}
+
+        # deny access to .htaccess files, if Apache's document root
+        # concurs with nginx's one
+        #
+        #location ~ /\.ht {
+        #    deny  all;
+        #}
+    }
+
+
+    # another virtual host using mix of IP-, name-, and port-based configuration
+    #
+    #server {
+    #    listen       8000;
+    #    listen       somename:8080;
+    #    server_name  somename  alias  another.alias;
+
+    #    location / {
+    #        root   html;
+    #        index  index.html index.htm;
+    #    }
+    #}
+
+
+    # HTTPS server
+    #
+    #server {
+    #    listen       443 ssl;
+    #    server_name  localhost;
+
+    #    ssl_certificate      cert.pem;
+    #    ssl_certificate_key  cert.key;
+
+    #    ssl_session_cache    shared:SSL:1m;
+    #    ssl_session_timeout  5m;
+
+    #    ssl_ciphers  HIGH:!aNULL:!MD5;
+    #    ssl_prefer_server_ciphers  on;
+
+    #    location / {
+    #        root   html;
+    #        index  index.html index.htm;
+    #    }
+    #}
+}
+</code></pre>
+</li>
+</ul>
+<p>​		访问方式：<a href="http://localhost:8090/eUrbanMIS1201/main.htm">http://localhost:8090/eUrbanMIS1201/main.htm</a>                                     ---登录</p>
+<p>​                           <a href="http://localhost:8090/eUrbanMIS1201/view/standardScreen.html">http://localhost:8090/eUrbanMIS1201/view/standardScreen.html</a>        ---大屏首页</p>
+<ul>
+<li>
+<p><strong>construction_v2</strong></p>
+<pre><code class="language-nginx">#user  nobody;
+worker_processes  1;
+
+#error_log  logs/error.log;
+#error_log  logs/error.log  notice;
+#error_log  logs/error.log  info;
+
+#pid        logs/nginx.pid;
+
+
+events {
+    worker_connections  1024;
+}
+
+
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    #log_format  main  '$remote_addr - $remote_user [$time_local] &quot;$request&quot; '
+    #                  '$status $body_bytes_sent &quot;$http_referer&quot; '
+    #                  '&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;';
+
+    #access_log  logs/access.log  main;
+
+    sendfile        on;
+    #tcp_nopush     on;
+
+    #keepalive_timeout  0;
+    keepalive_timeout  65;
+
+    #gzip  on;
+	
+    server {
+        listen       8090;
+        server_name  localhost;
+				root _site;
+				index index.html;
+        #charset koi8-r;
+
+        #access_log  logs/host.access.log  main;
+
+				# 用来登陆
+        location /eUrbanMIS0201{
+					proxy_pass http://123.56.170.103:8080/eUrbanMIS0201;
+					proxy_set_header Host $host:$server_port;
+					proxy_set_header X-Real-IP $remote_addr;
+					proxy_set_header REMOTE-HOST $remote_addr;
+					proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+					send_timeout 10;
+					client_max_body_size 100m;
+					proxy_http_version 1.1;
+					proxy_set_header Upgrade $http_upgrade;
+					proxy_set_header Connection &quot;upgrade&quot;;
+					add_header Cache-Control max-age=0;
+        }
+
+				location /eUrbanMIS0201/egova-app/socket{
+					proxy_pass http://123.56.170.103:8080/eUrbanMIS0201/socket;
+					proxy_set_header Host $host:$server_port;
+					proxy_set_header X-Real-IP $remote_addr;
+					proxy_set_header REMOTE-HOST $remote_addr;
+					proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+					send_timeout 10;
+					client_max_body_size 100m;
+					proxy_http_version 1.1;
+					proxy_set_header Upgrade $http_upgrade;
+					proxy_set_header Connection &quot;upgrade&quot;;
+					add_header Cache-Control max-age=0;
+				}
+
+				# 用来访问相对的后台接口
+				# location /eUrbanMIS0201/egova-app/home {
+				# 	proxy_pass http://123.56.170.103:8080/eUrbanMIS0201/home;
+        # } 
+
+        # location /eUrbanMIS0201/mediadl {
+        #     proxy_pass http://123.56.170.103:8080/eUrbanMIS0201/mediadl;
+        # }
+
+				# 用来发布前台文件
+				location /eUrbanMIS0201/view/construction_v3 {
+					alias /Users/yuanchao/Egova/wizdom-urban-v14/plugin/construction-v2/META-INF/resources/view/construction_v3;
+        }
+        location /eUrbanMIS0201/view/construction {
+					alias /Users/yuanchao/Egova/wizdom-urban-v14/plugin/construction-v2/META-INF/resources/view/construction;
+        }
+				location /eUrbanMIS0201/style/construction {
+					alias /Users/yuanchao/Egova/wizdom-urban-v14/plugin/construction-v2/META-INF/resources/style/construction;
+				}
+		
+        #error_page  404              /404.html;
+
+        # redirect server error pages to the static page /50x.html
+        #
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   html;
+        }
+
+        # proxy the PHP scripts to Apache listening on 127.0.0.1:80
+        #
+        #location ~ \.php$ {
+        #    proxy_pass   http://127.0.0.1;
+        #}
+
+        # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
+        #
+        #location ~ \.php$ {
+        #    root           html;
+        #    fastcgi_pass   127.0.0.1:9000;
+        #    fastcgi_index  index.php;
+        #    fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;
+        #    include        fastcgi_params;
+        #}
+
+        # deny access to .htaccess files, if Apache's document root
+        # concurs with nginx's one
+        #
+        #location ~ /\.ht {
+        #    deny  all;
+        #}
+    }
+
+
+    # another virtual host using mix of IP-, name-, and port-based configuration
+    #
+    #server {
+    #    listen       8000;
+    #    listen       somename:8080;
+    #    server_name  somename  alias  another.alias;
+
+    #    location / {
+    #        root   html;
+    #        index  index.html index.htm;
+    #    }
+    #}
+
+
+    # HTTPS server
+    #
+    #server {
+    #    listen       443 ssl;
+    #    server_name  localhost;
+
+    #    ssl_certificate      cert.pem;
+    #    ssl_certificate_key  cert.key;
+
+    #    ssl_session_cache    shared:SSL:1m;
+    #    ssl_session_timeout  5m;
+
+    #    ssl_ciphers  HIGH:!aNULL:!MD5;
+    #    ssl_prefer_server_ciphers  on;
+
+    #    location / {
+    #        root   html;
+    #        index  index.html index.htm;
+    #    }
+    #}
+}
+</code></pre>
+</li>
+</ul>
+<p>​		访问方式：<a href="http://localhost:8090/eUrbanMIS0201/main.htm">http://localhost:8090/eUrbanMIS0201/main.htm</a>                                    ---登录</p>
+<p>​						   <a href="http://localhost:8090/eUrbanMIS0201/construction.htm">http://localhost:8090/eUrbanMIS0201/construction.htm</a>                       ---渣土首页</p>
+<h3><a id="%E6%96%B0%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>新项目配置</h3>
+<p>对于React项目和Vue项目，自身就带有proxy相关配置，不走nginx也是可以的。但是对于生产环境下的调试，如果走nginx配置，会带来一些便利。比如，有些bug在开发环境下正常，但是在现场的生产环境下却出现异常。我曾经采取的办法就是每次更改一点代码，然后打包发送现场更新(实际开发中我们经常这么做)，然后不断重复这一操作，直到找出bug原因。如果使用nginx 我们可以直接将访问现场的 eUbanMIS/view/xxx 路径代理到访问本地资源，这样就不需要每次都发给现场更新了。如下所示：</p>
+<pre><code class="language-nginx">#user  nobody;
+worker_processes  1;
+
+#error_log  logs/error.log;
+#error_log  logs/error.log  notice;
+#error_log  logs/error.log  info;
+
+#pid        logs/nginx.pid;
+
+
+events {
+    worker_connections  1024;
+}
+
+
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    #log_format  main  '$remote_addr - $remote_user [$time_local] &quot;$request&quot; '
+    #                  '$status $body_bytes_sent &quot;$http_referer&quot; '
+    #                  '&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;';
+
+    #access_log  logs/access.log  main;
+
+    sendfile        on;
+    #tcp_nopush     on;
+
+    #keepalive_timeout  0;
+    keepalive_timeout  65;
+
+    #gzip  on;
+	
+    server {
+        listen       8090;
+        server_name  localhost;
+				root _site;
+				index index.html;
+        #charset koi8-r;
+
+        #access_log  logs/host.access.log  main;
+
+				location /eUrbanMIS1201 {
+            proxy_pass http://123.56.170.103:8080/eUrbanMIS1201;
+            proxy_set_header Cookie &quot;SESSION=2fcf13ee-4172-471a-97f3-72633fcf89e6&quot;;
+      			#如果现场有权限校验(403)则可以配置下面这些Header来伪造现场环境
+						proxy_set_header Host &quot;120.221.95.12:8080&quot;;
+						proxy_set_header Referer &quot;http://120.221.95.12:8080/eUrbanMIS&quot;;
+        }
+
+        #生产环境
+        location /eUrbanMIS1201/view/build {
+            alias /Users/yuanchao/Egova/WebRepository/wizdom-advertisement/build;
+        }
+		
+        #error_page  404              /404.html;
+
+        # redirect server error pages to the static page /50x.html
+        #
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   html;
+        }
+
+        # proxy the PHP scripts to Apache listening on 127.0.0.1:80
+        #
+        #location ~ \.php$ {
+        #    proxy_pass   http://127.0.0.1;
+        #}
+
+        # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
+        #
+        #location ~ \.php$ {
+        #    root           html;
+        #    fastcgi_pass   127.0.0.1:9000;
+        #    fastcgi_index  index.php;
+        #    fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;
+        #    include        fastcgi_params;
+        #}
+
+        # deny access to .htaccess files, if Apache's document root
+        # concurs with nginx's one
+        #
+        #location ~ /\.ht {
+        #    deny  all;
+        #}
+    }
+
+
+    # another virtual host using mix of IP-, name-, and port-based configuration
+    #
+    #server {
+    #    listen       8000;
+    #    listen       somename:8080;
+    #    server_name  somename  alias  another.alias;
+
+    #    location / {
+    #        root   html;
+    #        index  index.html index.htm;
+    #    }
+    #}
+
+
+    # HTTPS server
+    #
+    #server {
+    #    listen       443 ssl;
+    #    server_name  localhost;
+
+    #    ssl_certificate      cert.pem;
+    #    ssl_certificate_key  cert.key;
+
+    #    ssl_session_cache    shared:SSL:1m;
+    #    ssl_session_timeout  5m;
+
+    #    ssl_ciphers  HIGH:!aNULL:!MD5;
+    #    ssl_prefer_server_ciphers  on;
+
+    #    location / {
+    #        root   html;
+    #        index  index.html index.htm;
+    #    }
+    #}
+}
+</code></pre>
+<h2><a id="%E5%B1%8F%E5%B9%95%E9%80%82%E9%85%8D" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>屏幕适配</h2>
+<h3><a id="%E5%88%86%E8%BE%A8%E7%8E%87%E6%B1%87%E6%80%BB" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>分辨率汇总</h3>
+<ul>
+<li>
+<p>1024*600 （常见8.9寸电脑使用）</p>
+</li>
+<li>
+<p>1024*768 （常用10.4、12.1、14.1、15寸电脑使用）4:3</p>
+</li>
+<li>
+<p>1280*800  （常见10.8、12.1、15.4寸电脑使用）16:10</p>
+</li>
+<li>
+<p>1280*854 （不常见）16:9</p>
+</li>
+<li>
+<p>1280*1024（常用14.1、15寸电脑使用）5:4</p>
+</li>
+<li>
+<p><strong>1366*768（常见15.2寸电脑使用）15:10 （主流）</strong></p>
+</li>
+<li>
+<p><strong>1440*900 （仅苹果17寸电脑使用）16:10</strong></p>
+</li>
+<li>
+<p>1440*1050（常用15、16.1寸电脑使用）4:3</p>
+</li>
+<li>
+<p>1600 * 900  16:9 (非主流)</p>
+</li>
+<li>
+<p>1600*1024（不常见）14:9</p>
+</li>
+<li>
+<p>1600*1200（常用15、16.1寸电脑使用）4:3</p>
+</li>
+<li>
+<p>1680*1050（常见15.4、20寸电脑使用）16:10</p>
+</li>
+<li>
+<p><strong>1920*1080 16:9 （主流）</strong></p>
+</li>
+<li>
+<p>1920*1200（常见20寸电脑使用）16:10</p>
+</li>
+</ul>
+<h3><a id="media" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>@media</h3>
+<p>/<em>&gt;=1366的设备</em>/</p>
+<p>@media (min-width: 1366px) {</p>
+<p>​    	body{font-size: 24px;}</p>
+<p>}</p>
+<p>/<em>&gt;=1440的设备</em>/</p>
+<p>@media (min-width: 1440px) {</p>
+<p>​    	body{font-size: 25px !important;}</p>
+<p>}</p>
+<p>/<em>&gt;=1920的设备</em>/</p>
+<p>@media (min-width: 1920px) {</p>
+<p>​    	body{font-size: 33px;}</p>
+<p>}</p>
+<img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202205291619102.png" alt="202112271013036" style="zoom:50%;" />
+<h3><a id="rem" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>rem</h3>
+<p>rem方案是公司Durandal项目中使用最多的一种屏幕适配方案，使用起来也非常简单。封装一个remResponse.js文件，然后直接在程序入口处(如：index.html 或 main.jsp)中以形式引入即可。实际开发中设计稿的宽度一般都是1920px。</p>
+<pre><code class="language-js">// remResponse.js
+window.webSetting = {
+    // 设计稿屏幕宽度
+    designWidth: 1920,
+    limitWidth: 1366
+};
+
+function initFontSize() {
+    var baseWidth = document.documentElement.clientWidth &gt;= window.webSetting.limitWidth ? document.documentElement.clientWidth : window.webSetting.limitWidth;
+    var rath = window._screenRath = baseWidth / window.webSetting.designWidth;
+    document.documentElement.style.fontSize = (rath * 100) + &quot;px&quot;;
+}
+
+initFontSize();
+window.addEventListener(&quot;resize&quot;, initFontSize);
+
+
+//index.html 中引入
+ &lt;script type=&quot;text/javascript&quot; src=&quot;./main/remResponse.js&quot;&gt;&lt;/script&gt;
+
+//main.jsp 中引入
+&lt;script type=&quot;text/javascript&quot; src=&quot;&lt;c:url value='/view/adlet-manage/main/remResponse.js'/&gt;&quot;&gt;&lt;/script&gt;
+</code></pre>
+<h3><a id="px%E4%B8%8Erem%E6%8D%A2%E7%AE%97" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>px与rem换算</h3>
+<ol>
+<li><strong>px转rem</strong></li>
+</ol>
+<p>​		rem尺寸 = 实际尺寸[px]   /  html根元素fontSize[px]</p>
+<p>​		rem尺寸 = 实际尺寸[px]   / ( (屏幕实际宽度 /  设计稿宽度)  * 100) [px]</p>
+<p>​		rem尺寸 = 实际尺寸[px]   /  (ratio * 100)  [px]</p>
+<blockquote>
+<p>注意：rem的本义就是一个相对单位，相对于根元素的意思(rootElement)，由于我们实际开发中常常将根元素的fontSize定位整数</p>
+<p>100px，故当开发所用显示器的分辨率与设计稿相同时，直接用  actualSize /  100 即可快速得出rem数值。</p>
+</blockquote>
+<ol start="2">
+<li><strong>rem转px</strong></li>
+</ol>
+<p>​		实际尺寸[px]  =   rem尺寸 * html根元素fontSize[px]</p>
+<p>​		实际尺寸[px]  =   rem尺寸 *  ratio * 100  [px]</p>
+<p>​		实际尺寸[px]  =   rem尺寸 * (屏幕实际宽度 /  设计稿宽度)  * 100 [px]</p>
+<blockquote>
+<p>注意：rem转px相对简单一些，由于我们实际开发中，我们的remResponse.js文件中通常都会保存一个 window.<em>screenRatio，故通</em></p>
+<p>常我们只需要使用：rem尺寸 * window._screenRatio * 100 即可。</p>
+</blockquote>
+<h2><a id="%E9%83%A8%E7%BD%B2%E6%9B%B4%E6%96%B0" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>部署更新</h2>
+<h3><a id="%E4%B8%A4%E7%A7%8D%E6%9B%B4%E6%96%B0%E6%A8%A1%E5%BC%8F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>两种更新模式</h3>
+<p>不同于新项目(React、Vue等)，Durandal项目有2种更新方式，取决于前端文件以何种形式存在。</p>
+<ul>
+<li><strong>形式一：适用于很小的项目，一般就一个单独页面，不需要用到路由(比如综管服导航页面 navigator)。</strong></li>
+</ul>
+<p>​		app/src/main/webapp/view/项目名称/</p>
+<p>​		app/src/main/webapp/style/项目名称/</p>
+<p>​		app/src/main/webapp/library/项目名称/</p>
+<p>​		前端发送更新时直接发送对应目录文件，现场部署时按照对应路径放置好即可。源代码中有 app/src/main/webapp，现场服务器上		不存在这段路径，直接就是 view/、style/、library/。</p>
+<img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202205291620792.png" alt="202112271113713" style="zoom:75%;" />
+<ul>
+<li><strong>形式二：适用于较大较复杂的项目，一般要用到路由(如渣土项目 construction_v2)。</strong></li>
+</ul>
+<p>​		plugin/插件名称。</p>
+<p>​        前后端代码都在一个插件中，不管修改了前端还是后台代码，都需要打jar包更新。</p>
+<p>​        <img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202205291622279.png" alt="202112271108022" style="zoom:75%;" /></p>
+<h3><a id="%E8%A6%86%E7%9B%96%E6%9B%B4%E6%96%B0" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>覆盖更新</h3>
+<p>Durandal项目中存在一种覆盖更新的特殊情形。通常是用定制化的配置文件去覆盖标准版jar包中的对应文件，如：i18n 文件。这是因为我们的产品要做成标准版，要满足大多数现场的需求，所以很多东西不得不做成可配的，比如项目名称、标题、logo、背景图片等。这些东西通常都放到 i18n.js 或 i18n-ex.js等文件中，不同的现场根据实际需求自行修改这些配置，然后按照对应路径放置到服务器指定目录，这样程序运行时就会读取他们自己的配置文件，换句话说，也就是用定制化的文件覆盖标准版中的同名文件。</p>
+<h1><a id="%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>参考资料</h1>
+<p>Knockout官方文档：<a href="https://knockoutjs.com/documentation/introduction.html">https://knockoutjs.com/documentation/introduction.html</a></p>
+<p>Knockout技术博客：<a href="https://www.cnblogs.com/smallprogram/p/5976954.html">https://www.cnblogs.com/smallprogram/p/5976954.html</a></p>
+<p>Durandal官方文档：<a href="http://durandaljs.com/docs.html">http://durandaljs.com/docs.html</a></p>
+<p>教程源代码地址：     <a href="https://gitee.com/Allen_2017/durandal">https://gitee.com/Allen_2017/durandal</a></p>
+
+                  </article>
+                  <div class="comments-wrap">
+                    <div class="share-comments">
+                      
+
+                      
+
+                      
+                    </div>
+                  </div><!-- end comments wrap -->
+              </div>
+            </div><!-- end columns -->
+      </div><!-- end container -->
+    </section>
+
+
+
+    <footer class="footer">
+        <div class="content has-text-centered">
+          <p>
+              Copyright &copy; 2019
+              Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+              Theme used <a target="_blank" href="https://bulma.io/">Bulma CSS</a>.
+          </p>
+        </div>
+      </footer>
+
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="asset/prism.js"></script>
+
+
+
+  
+    
+
+
+
+
+  </body>
+</html>
