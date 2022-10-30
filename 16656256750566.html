@@ -211,6 +211,24 @@
 <p>彩蛋：贴一张我最喜欢的理解正向代理和反向代理的图。</p>
 <p>上面讲到的这种转发请求的模式，其实就是nginx的重要功能之一——反向代理。正向代理相信大伙都懂，威阳同学经常科学上网，用到的工具就是正向代理。</p>
 <p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202207012125806.png" alt="image-20220701212445782" /></p>
+<h1><a id="%E4%B8%89%E3%80%81%E9%83%A8%E9%97%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%B7%BB%E5%8A%A0id-rsa-pub%E5%85%8D%E5%AF%86%E7%99%BB%E9%99%86" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>三、部门服务器添加 id_rsa.pub 免密登陆</h1>
+<p><a href="https://alidocs.dingtalk.com/i/team/9JOGO3kgYVWWG4QL/docs/9JOGO4EaVo1v6z4Q?iframeQuery=sheet_range%3Dkgqie6hm_3_3_1_1">https://alidocs.dingtalk.com/i/team/9JOGO3kgYVWWG4QL/docs/9JOGO4EaVo1v6z4Q?iframeQuery=sheet_range%3Dkgqie6hm_3_3_1_1</a></p>
+<p>192.168.101.x 192.168.102.x为服务器网段，其余为工位网段。</p>
+<p>修改方式如下：</p>
+<ol>
+<li>
+<p>先将个人公钥写入/root/.ssh/authorized_keys</p>
+</li>
+<li>
+<p>依次执行下面的命令：</p>
+<pre><code class="language-shell">sed -i &quot;/PasswordAuthentication/d&quot; /etc/ssh/sshd_config 
+
+echo &quot;PasswordAuthentication no&quot; &gt;&gt; /etc/ssh/sshd_config 
+
+service sshd restart
+</code></pre>
+</li>
+</ol>
 
                   </article>
                   <div class="comments-wrap">
