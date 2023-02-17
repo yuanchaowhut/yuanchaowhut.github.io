@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      
+    Scss文件与js文件共享变量 - 
+    
+    </title>
+    
+
+    
+    
+    <link href="atom.xml" rel="alternate" title="" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/style.min.css">
+    <link rel="stylesheet" href="asset/css/doc.css">
+    <script src="asset/app.js"></script>
+</head>
+  <body>
+    <section class="hero">
+      <div class="hero-head">
+          <nav class="navbar" role="navigation" aria-label="main navigation">
+              <div class="container">
+              <div class="navbar-brand">
+                
+                <a target="_self" class="navbar-item " href="index.html">Home</a>
+                
+                <a target="_self" class="navbar-item " href="archives.html">Archives</a>
+                
+
+                <a role="button" id="navbarSNSRssSwitchBtn" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarSNSRssButtons">
+                  <span aria-hidden="true"></span>
+                  <span aria-hidden="true"></span>
+                  <span aria-hidden="true"></span>
+                </a>
+              </div>
+            
+              <div id="navbarSNSRssButtons" class="navbar-menu">
+                <div class="navbar-start">
+                  
+                </div>
+            
+                <div class="navbar-end">
+                  <div class="navbar-item">
+                    <!--buttons start-->
+                    <div class="buttons">
+                      
+                        
+                        
+                        
+                        
+                      
+                      <a href="atom.xml" target="_blank" title="RSS">
+                          <span class="icon is-large has-text-black-bis">
+                              <svg class="svg-inline--fa fa-rss fa-w-14 fa-lg" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="rss" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M128.081 415.959c0 35.369-28.672 64.041-64.041 64.041S0 451.328 0 415.959s28.672-64.041 64.041-64.041 64.04 28.673 64.04 64.041zm175.66 47.25c-8.354-154.6-132.185-278.587-286.95-286.95C7.656 175.765 0 183.105 0 192.253v48.069c0 8.415 6.49 15.472 14.887 16.018 111.832 7.284 201.473 96.702 208.772 208.772.547 8.397 7.604 14.887 16.018 14.887h48.069c9.149.001 16.489-7.655 15.995-16.79zm144.249.288C439.596 229.677 251.465 40.445 16.503 32.01 7.473 31.686 0 38.981 0 48.016v48.068c0 8.625 6.835 15.645 15.453 15.999 191.179 7.839 344.627 161.316 352.465 352.465.353 8.618 7.373 15.453 15.999 15.453h48.068c9.034-.001 16.329-7.474 16.005-16.504z"></path></svg><!-- <i class="fas fa-rss fa-lg"></i> -->
+                          </span>
+                      </a>
+                    </div>
+                    <!--buttons end-->
+
+                  </div>
+                </div>
+                </div>
+              </div>
+            </nav>
+      </div>
+
+ <div class="hero-body ct-body"></div>
+      
+    </section>
+    <section class="ct-body">
+      <div class="container">
+          <div class="columns is-variable bd-klmn-columns is-4 is-centered">
+              <div class="column is-four-fifths">
+                  <div class="post-body single-content">
+                    
+                    <h1 class="title">
+                            Scss文件与js文件共享变量   
+                      </h1>
+                     
+                    
+                      <div class="media">
+                            
+                            <div class="media-content">
+                              <div class="content">
+                                <p>
+                                 <span class="date">2022/11/07</span>
+                                  <span class="tran-posted-in">posted in</span>&nbsp; 
+                                  
+                                      <span class="posted-in"><a href='%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96.html'>前端工程化</a></span>
+                                         
+                                  
+
+                                   
+                                      
+                                  <br />
+                                  <span class="tran-tags">Tags:</span>&nbsp;
+                                     
+
+                                </p>
+                              </div>
+                            </div>
+                         
+                    </div>
+                </div>
+                  <article class="markdown-body single-content">
+                    <ul>
+<li><a href="#%E8%83%8C%E6%99%AF">背景</a></li>
+<li><a href="#%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%A1%88">实现方案</a></li>
+<li><a href="#%E5%AE%9E%E9%99%85%E9%97%AE%E9%A2%98">实际问题</a></li>
+<li><a href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99">参考资料</a></li>
+</ul>
+<h1><a id="%E8%83%8C%E6%99%AF" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>背景</h1>
+<p>在跟着做<code>基于Vue3最新标准，实现后台前端综合解决方案</code>项目时，第4章节里边有一个scss与js共享变量的知识点，按照教程中所说去做，中途遇到了一些坑点，在这里做一下记录。</p>
+<h1><a id="%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%A1%88" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>实现方案</h1>
+<p>scss 文件与js文件共享变量实现方案步骤如下：</p>
+<ol>
+<li>
+<p>在 variables.scss 中配置要导出的变量</p>
+<pre><code class="language-scss">// sidebar
+$menuText: #bfcbd9;
+$menuActiveText: #ffffff;
+$subMenuActiveText: #f4f4f5;
+
+$menuBg: #304156;
+$menuHover: #263445;
+
+$subMenuBg: #1f2d3d;
+$subMenuHover: #001528;
+
+$sideBarWidth: 210px;
+
+// https://www.bluematador.com/blog/how-to-share-variables-between-js-and-sass
+// JS 与 scss 共享变量，在 scss 中通过 :export 进行导出，在 js 中可通过 ESM 进行导入
+:export {
+  menuText: $menuText;
+  menuActiveText: $menuActiveText;
+  subMenuActiveText: $subMenuActiveText;
+  menuBg: $menuBg;
+  menuHover: $menuHover;
+  subMenuBg: $subMenuBg;
+  subMenuHover: $subMenuHover;
+  sideBarWidth: $sideBarWidth;
+} 
+</code></pre>
+</li>
+<li>
+<p>在vue文件的script中导入变量并在template中使用</p>
+<pre><code class="language-html">&lt;template&gt;
+  &lt;div class=&quot;app-wrapper&quot;&gt;
+    &lt;!-- 左侧 menu --&gt;
+    &lt;sidebar id=&quot;guide-sidebar&quot;
+             class=&quot;sidebar-container&quot;
+             :style=&quot;{ backgroundColor: variables.menuBg }&quot;
+    /&gt;
+    &lt;div class=&quot;main-container&quot;&gt;
+      &lt;div class=&quot;fixed-header&quot;&gt;
+        &lt;!-- 顶部的 navbar --&gt;
+        &lt;navbar /&gt;
+      &lt;/div&gt;
+      &lt;!-- 内容区 --&gt;
+      &lt;app-main /&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import {} from 'vue'
+import Sidebar from './sidebar'
+import Navbar from './navbar'
+import AppMain from './appmain'
+import variables from '@/styles/variables.scss'
+console.log(variables)  // 输出空对象 {}
+
+&lt;/script&gt;
+
+&lt;style lang=&quot;scss&quot; scoped&gt;
+@import '~@/styles/mixin.scss';
+@import '~@/styles/variables.scss';
+
+.app-wrapper {
+  @include clearfix;
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.fixed-header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 9;
+  width: calc(100% - #{$sideBarWidth});  /*这里可以正常引用*/
+}
+&lt;/style&gt;
+
+</code></pre>
+</li>
+<li>
+<p>如果是vue2文件则如下方式使用</p>
+<pre><code class="language-html">&lt;template&gt;
+      &lt;el-menu
+        :background-color=&quot;variables.menuBg&quot;
+        :text-color=&quot;variables.menuText&quot;
+      &gt;
+      &lt;/el-menu&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+import variables from '@/styles/variables.scss'
+//使用scss的变量，在data中定义也可以
+export default {
+  computed: {
+    variables() {
+      return variables
+    }
+  }
+}
+&lt;/script&gt;
+</code></pre>
+</li>
+</ol>
+<h1><a id="%E5%AE%9E%E9%99%85%E9%97%AE%E9%A2%98" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>实际问题</h1>
+<p>按照上述流程编写代码后，发现script中引入的对象实际为空，console.log(variables) 打印结果为{}，通过网上查阅各种资料，最后将 variables.scss 重命名为 variables.module.scss 才解决问题。具体可以参考下面的资料。<br />
+<img src="http://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/2022/11/07/16678271657557.jpg" alt="" /></p>
+<h1><a id="%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>参考资料</h1>
+<p><a href="https://www.bluematador.com/blog/how-to-share-variables-between-js-and-sass">How to Share Variables Between Javascript and Sass</a><br />
+<a href="https://github.com/css-modules/css-modules">css-modules</a><br />
+<a href="https://www.jianshu.com/p/11c77a838ce7">在vue中如何把scss的变量与js共享</a><br />
+<a href="https://segmentfault.com/a/1190000041841044">scss中:export 无效问题</a><br />
+<a href="https://blog.csdn.net/qq_28522783/article/details/125074100">scss :export 中导出的变量与Vue JavaScript共享无效</a></p>
+
+                  </article>
+                  <div class="comments-wrap">
+                    <div class="share-comments">
+                      
+
+                      
+
+                      
+                    </div>
+                  </div><!-- end comments wrap -->
+              </div>
+            </div><!-- end columns -->
+      </div><!-- end container -->
+    </section>
+
+
+
+    <footer class="footer">
+        <div class="content has-text-centered">
+          <p>
+              Copyright &copy; 2019
+              Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+              Theme used <a target="_blank" href="https://bulma.io/">Bulma CSS</a>.
+          </p>
+        </div>
+      </footer>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="asset/prism.js"></script>
+
+
+
+  
+    
+
+
+
+
+  </body>
+</html>

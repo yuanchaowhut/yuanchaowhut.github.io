@@ -106,7 +106,7 @@
                     </div>
                 </div>
                   <article class="markdown-body single-content">
-                    <h1><a id="01%E5%BC%80%E7%AF%87" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>01 开篇</h1>
+                    <h1><a id="%E7%AC%AC1%E7%AB%A0%EF%BC%9A%E5%BC%80%E7%AF%87" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>第1章：开篇</h1>
 <h2><a id="vue%E7%9A%84%E6%9C%80%E6%96%B0%E5%8F%98%E5%8C%96" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>vue 的最新变化</h2>
 <p>自从 <code>vue</code> 在 <code>2020年09月18日</code> 发布了 <code>3.0</code> 的版本之后，很多开发者都开始尝试被大受推崇的 <code>Composition API</code> ，但是在经过了短期的追捧之后，大家却发现，在企业中 <code>Composition API</code> 却并没有被大范围的普及，很多的公司虽然升级到了 <code>vue 3</code> ，但却依然使用着 <code>options API</code> 语法。</p>
 <p>追其根本，原因还是在 <code>Composition API</code> 所提供的 <code>setup 函数语法</code> 中，如果你使用 <code>setup 函数语法</code> ，那么你得到的代码可能是这样的：</p>
@@ -216,7 +216,7 @@
 </ol>
 <p>都可以学习本课程的内容并获取到足够的收获！</p>
 <p>那么还在犹豫什么呢？快来一起学习吧！</p>
-<h1><a id="02-eslint-git-hooks" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>02 ESLint + Git Hooks</h1>
+<h1><a id="%E7%AC%AC2%E7%AB%A0%EF%BC%9Aeslint-git-hooks%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>第2章：ESLint + Git Hooks 编程规范解决方案</h1>
 <blockquote>
 <p>标准化大厂编程规范解决方案之ESLint + Git Hooks</p>
 </blockquote>
@@ -1062,7 +1062,7 @@ npx lint-staged
 <li><a href="https://github.com/okonet/lint-staged">lint-staged</a>：只检查本次修改更新的代码，并在出现错误的时候，自动修复并且推送</li>
 </ol>
 <p>那么处理完成这些规范操作之后，在下一章我们将会正式进入到咱们的项目开发之中！</p>
-<h1><a id="%E7%99%BB%E5%BD%95%E6%9E%B6%E6%9E%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E4%B8%8E%E5%AE%9E%E7%8E%B0" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>登录架构解决方案与实现</h1>
+<h1><a id="%E7%AC%AC3%E7%AB%A0%EF%BC%9A%E7%99%BB%E5%BD%95%E6%9E%B6%E6%9E%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E4%B8%8E%E5%AE%9E%E7%8E%B0" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>第3章：登录架构解决方案与实现</h1>
 <p>项目架构之搭建登录架构解决方案与实现。</p>
 <h2><a id="%E5%89%8D%E8%A8%80" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>前言</h2>
 <p>在上一章中，我们处理了基本的编码规范，那么接下来我们就可以实现对应的项目开发了。</p>
@@ -1830,6 +1830,5418 @@ module.exports = {
 </li>
 </ol>
 <p>处理完以上配置之后，重新启动项目，图标即可显示！</p>
+<h2><a id="vue3-2%E5%93%8D%E5%BA%94%E5%BC%8F%E4%BC%98%E5%8C%96%E5%AF%B9%E5%BA%94%E7%94%A8%E5%B1%82%E7%9A%84%E6%94%B9%E5%8F%98" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Vue3.2 响应式优化对应用层的改变</h2>
+<p>在处理好了 <code>SvgIcon</code> 图标之后，接下来我们就需要处理登陆页面的逻辑问题了。不过在处理这个逻辑之前，我们需要先来明确一点 <code>vue3</code> 新的更新内容。</p>
+<p>如果大家之前有过了解 <code>Vue3</code> 代码的话，那么会知道 <code>Vue3</code> 中声明响应式数据的方式有两种：</p>
+<ol>
+<li><a href="https://v3.cn.vuejs.org/api/refs-api.html#ref">ref</a></li>
+<li><a href="https://v3.cn.vuejs.org/api/basic-reactivity.html#reactive">reactive</a></li>
+</ol>
+<p>对于这两种使用方式而言，它们在应用层上并没有明确的界限，也就是说我们可能很难仅通过官网的介绍来判断我应该在什么情况下使用什么。</p>
+<p>但是这种情况在现在已经不存在了。</p>
+<p>2020年10月29日，社区大佬 <a href="https://github.com/basvanmeurs">basvanmeurs</a> 提出了一个新的 <a href="https://github.com/vuejs/vue-next/pull/2345">PR</a>，大概的意思是说：他重构了响应式的部分内容，大大增加了性能。</p>
+<p>详细的介绍如下：</p>
+<blockquote>
+<ul>
+<li>Big runtime performance improvement for ref, computed, watch and watchEffect (30%-80% depending on the amount of dependencies)</li>
+<li>Memory usage decreased by about 30% when creating ref, computed, watch and watchEffect</li>
+<li>Creation time performance improvement, most notably for watchers and watchEffects</li>
+</ul>
+<hr />
+<p>ref、calculated、watch 和 watchEffect 的运行时性能大幅提升（30%-80% 取决于依赖项的数量）<br />
+创建 ref、calculated、watch 和 watchEffect 时内存使用量减少了约 30%<br />
+创建时间性能改进，最显著的是 watchers 和 watchEffects</p>
+</blockquote>
+<p>这是一个非常强大的变化，同时又因为这个变化过于庞大，所以一直等待到 <code>2021年8月5日</code> 伴随着  <a href="https://blog.vuejs.org/posts/vue-3.2.html">vue 3.2发布</a>，尤大才合并对应的代码，并在这次变化中对该性能改进进行了如下的介绍：</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/vuejs/vue-next/pull/3995">More efficient ref implementation (~260% faster read / ~50% faster write)</a></li>
+<li><a href="https://github.com/vuejs/vue-next/pull/4017">~40% faster dependency tracking</a></li>
+<li><a href="https://github.com/vuejs/vue-next/pull/4001">~17% less memory usage</a></li>
+</ul>
+<hr />
+<p>更高效的 ref 实现（约 260% 的读取速度/约 50% 的写入速度）<br />
+依赖项跟踪速度提高约 40%<br />
+内存使用量减少约 17%</p>
+</blockquote>
+<p>毫无疑问，这绝对是一个伟大的变化。</p>
+<p>那么针对于这个变化，在应用层中最大的体现就是 <code>ref</code> 这个 <code>API</code> ，性能得到了大幅度的提升。</p>
+<p>所以说，拥抱新的变化吧！</p>
+<p>在之后能使用 <code>ref</code> 的地方就使用 <code>ref</code> 吧。毕竟现在它的性能得到了大幅的提升！</p>
+<p>那么在咱们之后的代码中，我们同样也会全部使用 <code>ref</code> 来作为响应式数据构建的方式，无论是 <strong>基本数据类型</strong> 或者是 <strong>复杂数据类型</strong>， 毕竟这样做本身并没有什么问题，对不对？</p>
+<h2><a id="%E5%AE%8C%E5%96%84%E7%99%BB%E5%BD%95%E8%A1%A8%E5%8D%95%E6%A0%A1%E9%AA%8C" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>完善登录表单校验</h2>
+<p>表单校验是表单使用的一个通用能力，在 <code>element-plus</code> 中想要为表单进行表单校验那么我们需要关注以下三点：</p>
+<ol>
+<li>为 <code>el-form</code> 绑定 <code>model</code> 属性</li>
+<li>为 <code>el-form</code> 绑定 <code>rules</code> 属性</li>
+<li>为 <code>el-form-item</code> 绑定 <code>prop</code> 属性</li>
+</ol>
+<p>保证以上三点即可为 <code>el-from</code> 添加表单校验功能。</p>
+<p>因为这一块是比较简单的功能，只要有过 <code>element-ui</code> 使用经验的同学，应该对这里都不陌生，所以这里就不对这块内容进行过多赘述了。对这里不是很了解的同学可以参考下 <a href="https://element-plus.org/#/zh-CN/component/form">element-plus 中 from 表单部分</a></p>
+<p>以下为对应的代码实现：</p>
+<p><strong>views/login</strong></p>
+<pre><code class="language-html">&lt;template&gt;
+  &lt;div class=&quot;login-container&quot;&gt;
+    &lt;el-form class=&quot;login-form&quot; :model=&quot;loginForm&quot; :rules=&quot;loginRules&quot;&gt;
+      ...
+      &lt;el-form-item prop=&quot;username&quot;&gt;
+        ...
+        &lt;el-input
+         ...
+          v-model=&quot;loginForm.username&quot;
+        /&gt;
+      &lt;/el-form-item&gt;
+
+      &lt;el-form-item prop=&quot;password&quot;&gt;
+        ...
+        &lt;el-input
+          ...
+          v-model=&quot;loginForm.password&quot;
+        /&gt;
+        ...
+      &lt;/el-form-item&gt;
+		...
+    &lt;/el-form&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ref } from 'vue'
+import { validatePassword } from './rules'
+
+// 数据源
+const loginForm = ref({
+  username: 'super-admin',
+  password: '123456'
+})
+// 验证规则
+const loginRules = ref({
+  username: [
+    {
+      required: true,
+      trigger: 'blur',
+      message: '用户名为必填项'
+    }
+  ],
+  password: [
+    {
+      required: true,
+      trigger: 'blur',
+      validator: validatePassword()
+    }
+  ]
+})
+&lt;/script&gt;
+
+</code></pre>
+<p><strong>views/login/rules.js</strong></p>
+<pre><code class="language-js">export const validatePassword = () =&gt; {
+  return (rule, value, callback) =&gt; {
+    if (value.length &lt; 6) {
+      callback(new Error('密码不能少于6位'))
+    } else {
+      callback()
+    }
+  }
+}
+</code></pre>
+<h2><a id="%E5%AF%86%E7%A0%81%E6%A1%86%E7%8A%B6%E6%80%81%E9%80%9A%E7%94%A8%E5%A4%84%E7%90%86" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>密码框状态通用处理</h2>
+<p>对于密码框存在两种状态：</p>
+<ol>
+<li>密文状态</li>
+<li>明文状态</li>
+</ol>
+<p>点击 <strong>眼睛</strong> 可以进行切换。</p>
+<p>该功能实现为通用的处理方案，只需要动态修改 <code>input</code> 的 <code>type</code> 类型即可，其中：</p>
+<ol>
+<li><code>password</code> 为密文显示</li>
+<li><code>text</code> 为明文显示</li>
+</ol>
+<p>根据以上理论，即可得出以下代码：</p>
+<pre><code class="language-html">&lt;template&gt;
+  &lt;div class=&quot;login-container&quot;&gt;
+    &lt;el-form class=&quot;login-form&quot; :model=&quot;loginForm&quot; :rules=&quot;loginRules&quot;&gt;
+      ...
+        &lt;el-input
+          ...
+          :type=&quot;passwordType&quot;
+        /&gt;
+        &lt;span class=&quot;show-pwd&quot; @click=&quot;onChangePwdType&quot;&gt;
+          &lt;svg-icon :icon=&quot;passwordType === 'password' ? 'eye' : 'eye-open'&quot; /&gt;
+        &lt;/span&gt;
+      ...
+    &lt;/el-form&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ref } from 'vue'
+...
+
+// 处理密码框文本显示状态
+const passwordType = ref('password')
+const onChangePwdType = () =&gt; {
+  if (passwordType.value === 'password') {
+    passwordType.value = 'text'
+  } else {
+    passwordType.value = 'password'
+  }
+}
+&lt;/script&gt;
+
+</code></pre>
+<h2><a id="%E9%80%9A%E7%94%A8%E5%90%8E%E5%8F%B0%E7%99%BB%E5%BD%95%E6%96%B9%E6%A1%88%E8%A7%A3%E6%9E%90" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>通用后台登录方案解析</h2>
+<p>处理完了表单的基本操作之后，接下来就是登录操作的实现了。</p>
+<p>对于登录操作在后台项目中是一个通用的解决方案，具体可以分为以下几点：</p>
+<ol>
+<li>封装 <code>axios</code> 模块</li>
+<li>封装 接口请求 模块</li>
+<li>封装登录请求动作</li>
+<li>保存服务端返回的 <code>token</code></li>
+<li>登录鉴权</li>
+</ol>
+<p>这些内容就共同的组成了一套 <strong>后台登录解决方案</strong> 。那么在后面的章节中，我们就分别来去处理这些内容。</p>
+<h2><a id="%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E5%B0%81%E8%A3%85axios%E6%A8%A1%E5%9D%97" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>配置环境变量封装 axios 模块</h2>
+<p>首先我们先去完成第一步：封装 <code>axios</code> 模块。</p>
+<p>在当前这个场景下，我们希望封装出来的 <code>axios</code> 模块，至少需要具备一种能力，那就是：<strong>根据当前模式的不同，设定不同的 <code>BaseUrl</code></strong> ，因为通常情况下企业级项目在 <strong>开发状态</strong> 和 <strong>生产状态</strong> 下它的 <code>baseUrl</code> 是不同的。</p>
+<p>对于 <code>@vue/cli</code> 来说，它具备三种不同的模式：</p>
+<ol>
+<li><code>development</code></li>
+<li><code>test</code></li>
+<li><code>production</code></li>
+</ol>
+<p>具体可以点击 <a href="https://cli.vuejs.org/zh/guide/mode-and-env.html#%E6%A8%A1%E5%BC%8F">这里</a> 进行参考。</p>
+<p>根据我们前面所提到的 <strong>开发状态和生产状态</strong> 那么此时我们的 <code>axios</code> 必须要满足：<strong>在 开发 || 生产 状态下，可以设定不同 <code>BaseUrl</code> 的能力</strong></p>
+<p>那么想要解决这个问题，就必须要使用到 <code>@vue/cli</code> 所提供的 <a href="https://cli.vuejs.org/zh/guide/mode-and-env.html#%E6%A8%A1%E5%BC%8F">环境变量</a> 来去进行实现。</p>
+<p>我们可以在项目中创建两个文件：</p>
+<ol>
+<li><code>.env.development</code></li>
+<li><code>.env.production</code></li>
+</ol>
+<p>它们分别对应 <strong>开发状态</strong> 和 <strong>生产状态</strong>。</p>
+<p>我们可以在上面两个文件中分别写入以下代码：</p>
+<p><strong><code>.env.development</code></strong>：</p>
+<pre><code class="language-shell"># 标志
+ENV = 'development'
+
+# base api
+VUE_APP_BASE_API = '/api'
+</code></pre>
+<p><strong><code>.env.production</code>：</strong></p>
+<pre><code class="language-shell"># 标志
+ENV = 'production'
+
+# base api
+VUE_APP_BASE_API = '/prod-api'
+</code></pre>
+<p>有了这两个文件之后，我们就可以创建对应的 <code>axios</code> 模块</p>
+<p>创建 <code>utils/request.js</code> ，写入如下代码：</p>
+<pre><code class="language-js">import axios from 'axios'
+
+const service = axios.create({
+  baseURL: process.env.VUE_APP_BASE_API,
+  timeout: 5000
+})
+
+export default service
+</code></pre>
+<h2><a id="%E5%B0%81%E8%A3%85%E8%AF%B7%E6%B1%82%E5%8A%A8%E4%BD%9C" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>封装请求动作</h2>
+<p>有了 <code>axios</code> 模块之后，接下来我们就可以</p>
+<ol>
+<li>封装接口请求模块</li>
+<li>封装登录请求动作</li>
+</ol>
+<p><strong>封装接口请求模块：</strong></p>
+<p>创建 <code>api</code> 文件夹，创建 <code>sys.js</code>：</p>
+<pre><code class="language-js">import request from '@/utils/request'
+
+/**
+ * 登录
+ */
+export const login = data =&gt; {
+  return request({
+    url: '/sys/login',
+    method: 'POST',
+    data
+  })
+}
+</code></pre>
+<p><strong>封装登录请求动作：</strong></p>
+<p>该动作我们期望把它封装到 <code>vuex</code> 的 <code>action</code> 中</p>
+<p>在 <code>store</code> 下创建 <code>modules</code> 文件夹，创建 <code>user.js</code> 模块，用于处理所有和 <strong>用户相关</strong> 的内容（此处需要使用第三方包 <code>md5</code> ）：</p>
+<pre><code class="language-js">import { login } from '@/api/sys'
+import md5 from 'md5'
+export default {
+  namespaced: true,
+  state: () =&gt; ({}),
+  mutations: {},
+  actions: {
+    login(context, userInfo) {
+      const { username, password } = userInfo
+      return new Promise((resolve, reject) =&gt; {
+        login({
+          username,
+          password: md5(password)
+        })
+          .then(data =&gt; {
+            resolve()
+          })
+          .catch(err =&gt; {
+            reject(err)
+          })
+      })
+    }
+  }
+}
+</code></pre>
+<p>在 <code>store/index</code> 中完成注册：</p>
+<pre><code class="language-js">import { createStore } from 'vuex'
+import user from './modules/user.js'
+export default createStore({
+  modules: {
+    user
+  }
+})
+</code></pre>
+<h2><a id="%E7%99%BB%E5%BD%95%E8%A7%A6%E5%8F%91%E5%8A%A8%E4%BD%9C" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>登录触发动作</h2>
+<p>在 <code>login</code> 中，触发定义的 <code>action</code></p>
+<pre><code class="language-html">&lt;template&gt;
+	&lt;el-button
+        type=&quot;primary&quot;
+        style=&quot;width: 100%; margin-bottom: 30px&quot;
+        :loading=&quot;loading&quot;
+        @click=&quot;handleLogin&quot;
+        &gt;登录&lt;/el-button
+      &gt;
+&lt;/template&gt;
+&lt;script setup&gt;
+import { ref } from 'vue'
+import { validatePassword } from './rules'
+import { useStore } from 'vuex'
+...
+
+// 登录动作处理
+const loading = ref(false)
+const loginFromRef = ref(null)
+const store = useStore()
+const handleLogin = () =&gt; {
+  loginFromRef.value.validate(valid =&gt; {
+    if (!valid) return
+
+    loading.value = true
+    store
+      .dispatch('user/login', loginForm.value)
+      .then(() =&gt; {
+        loading.value = false
+        // TODO: 登录后操作
+      })
+      .catch(err =&gt; {
+        console.log(err)
+        loading.value = false
+      })
+  })
+}
+&lt;/script&gt;
+</code></pre>
+<p>触发之后会得到以下错误：</p>
+<p><img src="http://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/2022/11/02/16673493846568.png" alt="image-20210910172203852" /></p>
+<p>该错误表示，我们当前请求的接口不存在。</p>
+<p>出现这个问题的原因，是因为我们在前面配置环境变量时指定了 <strong>开发环境下</strong>，请求的 <code>BaseUrl</code> 为 <code>/api</code> ，所以我们真实发出的请求为：<code>/api/sys/login</code> 。</p>
+<p>这样的一个请求会被自动键入到当前前端所在的服务中，所以我们最终就得到了 <code>http://192.168.18.42:8081/api/sys/login</code> 这样的一个请求路径。</p>
+<p>而想要处理这个问题，那么可以通过指定 <a href="https://webpack.docschina.org/configuration/dev-server/">webpack DevServer 代理</a> 的形式，代理当前的 <code>url</code> 请求。</p>
+<p>而指定这个代理非常简单，是一种近乎固定的配置方案。</p>
+<p>在 <code>vue.config.js</code> 中，加入以下代码：</p>
+<pre><code class="language-js">module.exports = {
+  devServer: {
+    // 配置反向代理
+    proxy: {
+      // 当地址中有/api的时候会触发代理机制
+      '/api': {
+        // 要代理的服务器地址  这里不用写 api
+        target: 'https://api.imooc-admin.lgdsunday.club/',
+        changeOrigin: true // 是否跨域
+      }
+    }
+  },
+  ...
+}
+
+</code></pre>
+<p>重新启动服务，再次进行请求，即可得到返回数据</p>
+<p><img src="http://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/2022/11/02/16673494842710.png" alt="image-20210910172808352" /></p>
+<p><img src="http://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/2022/11/02/16673495191734.png" alt="image-20210910172827207" /></p>
+<h2><a id="%E6%9C%AC%E5%9C%B0%E7%BC%93%E5%AD%98%E5%A4%84%E7%90%86%E6%96%B9%E6%A1%88" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>本地缓存处理方案</h2>
+<p>通常情况下，在获取到 <code>token</code> 之后，我们会把 <code>token</code> 进行缓存，而缓存的方式将会分为两种：</p>
+<ol>
+<li>本地缓存：<code>LocalStorage</code></li>
+<li>全局状态管理：<code>Vuex</code></li>
+</ol>
+<p>保存在 <code>LocalStorage</code> 是为了方便实现 <strong>自动登录功能</strong></p>
+<p>保存在 <code>vuex</code> 中是为了后面在其他位置进行使用</p>
+<p>那么下面我们就分别来实现对应的缓存方案：</p>
+<p><strong>LocalStorage：</strong></p>
+<ol>
+<li>
+<p>创建 <code>utils/storage.js</code> 文件，封装三个对应方法：</p>
+<pre><code class="language-js">/**
+ * 存储数据
+ */
+export const setItem = (key, value) =&gt; {
+  // 将数组、对象类型的数据转化为 JSON 字符串进行存储
+  if (typeof value === 'object') {
+    value = JSON.stringify(value)
+  }
+  window.localStorage.setItem(key, value)
+}
+
+/**
+ * 获取数据
+ */
+export const getItem = key =&gt; {
+  const data = window.localStorage.getItem(key)
+  try {
+    return JSON.parse(data)
+  } catch (err) {
+    return data
+  }
+}
+
+/**
+ * 删除数据
+ */
+export const removeItem = key =&gt; {
+  window.localStorage.removeItem(key)
+}
+
+/**
+ * 删除所有数据
+ */
+export const removeAllItem = key =&gt; {
+  window.localStorage.clear()
+}
+</code></pre>
+</li>
+<li>
+<p>在 <code>vuex</code> 的 <code>user</code> 模块下，处理 <code>token</code> 的保存</p>
+<pre><code class="language-js">import { login } from '@/api/sys'
+import md5 from 'md5'
+import { setItem, getItem } from '@/utils/storage'
+import { TOKEN } from '@/constant'
+export default {
+  namespaced: true,
+  state: () =&gt; ({
+    token: getItem(TOKEN) || ''
+  }),
+  mutations: {
+    setToken(state, token) {
+      state.token = token
+      setItem(TOKEN, token)
+    }
+  },
+  actions: {
+    login(context, userInfo) {
+      ...
+          .then(data =&gt; {
+            this.commit('user/setToken', data.data.data.token)
+            resolve()
+          })
+          ...
+      })
+    }
+  }
+}
+
+</code></pre>
+</li>
+<li>
+<p>处理保存的过程中，需要创建 <code>constant</code> 常量目录 <code>constant/index.js</code></p>
+<pre><code class="language-js">export const TOKEN = 'token'
+</code></pre>
+</li>
+</ol>
+<p>此时，当点击登陆时，即可把 <code>token</code> 保存至 <code>vuex</code> 与  <code>localStorage</code> 中</p>
+<h2><a id="%E5%93%8D%E5%BA%94%E6%95%B0%E6%8D%AE%E7%9A%84%E7%BB%9F%E4%B8%80%E5%A4%84%E7%90%86" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>响应数据的统一处理</h2>
+<p>在上一小节中，我们保存了服务端返回的 <code>token</code> 。但是有一个地方比较难受，那就是在 <code>vuex 的 user 模块</code> 中，我们获取数据端的 <code>token</code> 数据，通过 <code>data.data.data.token</code> 的形式进行获取。</p>
+<p>一路的 <code>data.</code> 确实让人比较难受，如果有过 <code>axios</code> 拦截器处理经验的同学应该知道，对于这种问题，我们可以通过 <a href="http://axios-js.com/zh-cn/docs/index.html#%E6%8B%A6%E6%88%AA%E5%99%A8">axios 响应拦截器</a> 进行处理。</p>
+<p>在 <code>utils/request.js</code> 中实现以下代码：</p>
+<pre><code class="language-js">import axios from 'axios'
+import { ElMessage } from 'element-plus'
+
+...
+// 响应拦截器
+service.interceptors.response.use(
+  response =&gt; {
+    const { success, message, data } = response.data
+    //   要根据success的成功与否决定下面的操作
+    if (success) {
+      return data
+    } else {
+      // 业务错误
+      ElMessage.error(message) // 提示错误消息
+      return Promise.reject(new Error(message))
+    }
+  },
+  error =&gt; {
+    // TODO: 将来处理 token 超时问题
+    ElMessage.error(error.message) // 提示错误信息
+    return Promise.reject(error)
+  }
+)
+
+export default service
+
+</code></pre>
+<p>此时，对于 <code>vuex 中的 user 模块</code> 就可以进行以下修改了：</p>
+<pre><code class="language-js">this.commit('user/setToken', data.token)
+</code></pre>
+<h2><a id="%E7%99%BB%E5%BD%95%E5%90%8E%E6%93%8D%E4%BD%9C" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>登录后操作</h2>
+<p>那么截止到此时，我们距离登录操作还差最后一个功能就是 <strong>登录鉴权</strong> 。</p>
+<p>只不过在进行 <strong>登录鉴权</strong> 之前我们得先去创建一个登录后的页面，也就是我们所说的登录后操作。</p>
+<ol>
+<li>
+<p>创建 <code>layout/index.vue</code> ，写入以下代码：</p>
+<pre><code class="language-html">&lt;template&gt;
+  &lt;div class=&quot;&quot;&gt;Layout 页面&lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import {} from 'vue'
+&lt;/script&gt;
+
+&lt;style lang=&quot;scss&quot; scoped&gt;&lt;/style&gt;
+
+</code></pre>
+</li>
+<li>
+<p>在 <code>router/index</code> 中，指定对应路由表：</p>
+<pre><code class="language-js">const publicRoutes = [
+ ...
+  {
+    path: '/',
+    component: () =&gt; import('@/layout/index')
+  }
+]
+</code></pre>
+</li>
+<li>
+<p>在登录成功后，完成跳转</p>
+<pre><code class="language-js">// 登录后操作
+router.push('/')
+</code></pre>
+</li>
+</ol>
+<h2><a id="%E7%99%BB%E5%BD%95%E9%89%B4%E6%9D%83%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>登录鉴权解决方案</h2>
+<p>在处理了登陆后操作之后，接下来我们就来看一下最后的一个功能，也就是 <strong>登录鉴权</strong></p>
+<p>首先我们先去对 <strong>登录鉴权</strong> 进行一个定义，什么是  <strong>登录鉴权</strong> 呢？</p>
+<blockquote>
+<p>当用户未登陆时，不允许进入除 <code>login</code> 之外的其他页面。</p>
+<p>用户登录后，<code>token</code> 未过期之前，不允许进入 <code>login</code> 页面</p>
+</blockquote>
+<p>而想要实现这个功能，那么最好的方式就是通过<a href="https://router.vuejs.org/zh/guide/advanced/navigation-guards.html">Vue Router4.0 导航守卫</a> 来进行实现。</p>
+<p>那么明确好了 <strong>登录鉴权</strong> 的概念之后，接下来就可以去实现一下</p>
+<p>在 <code>main.js</code> 平级，创建 <code>permission</code> 文件并导入</p>
+<pre><code class="language-js">// main.js 中导入路由鉴权文件
+import './permission'
+</code></pre>
+<p><code>permission.js</code> 核心代码：</p>
+<pre><code class="language-js">import router from './router'
+import store from './store'
+
+// 白名单
+const whiteList = ['/login']
+/**
+ * 路由前置守卫
+ */
+router.beforeEach(async (to, from, next) =&gt; {
+  // 存在 token ，进入主页
+  // if (store.state.user.token) {
+  // 快捷访问
+  if (store.getters.token) {
+    if (to.path === '/login') {
+      next('/')
+    } else {
+      next()
+    }
+  } else {
+    // 没有token的情况下，可以进入白名单
+    if (whiteList.indexOf(to.path) &gt; -1) {
+      next()
+    } else {
+      next('/login')
+    }
+  }
+})
+
+</code></pre>
+<p>在此处我们使用到了 <code>vuex 中的 getters</code> ，此时的 <code>getters</code> 被当作 <strong>快捷访问</strong> 的形式进行访问</p>
+<p>所以我们需要声明对应的模块，创建 <code>store/getters</code></p>
+<pre><code class="language-js">const getters = {
+  token: state =&gt; state.user.token
+}
+export default getters
+
+</code></pre>
+<p>在 <code>store/index</code> 中进行导入：</p>
+<pre><code class="language-js">import getters from './getters'
+export default createStore({
+  getters,
+  ...
+})
+
+</code></pre>
+<h2><a id="%E6%80%BB%E7%BB%93" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>总结</h2>
+<p>那么到这里我们整个的第三章就算是全部讲解完成了。</p>
+<p>整个第三章讲解了两个大部分：</p>
+<ol>
+<li><code>vue3</code> 的一些基本概念
+<ol>
+<li><code>vue3</code> 的新特性</li>
+<li>全新的 <code>script setup</code> 语法</li>
+<li>最新的 <code>ref</code> 优化</li>
+</ol>
+</li>
+<li>登录方案相关的业务代码
+<ol>
+<li><code>element-plus</code> 相关
+<ol>
+<li><code>el-form</code> 表单</li>
+<li>密码框状态处理</li>
+</ol>
+</li>
+<li>后台登录解决方案
+<ol>
+<li>封装 <code>axios</code> 模块</li>
+<li>封装 接口请求 模块</li>
+<li>封装登录请求动作</li>
+<li>保存服务端返回的 <code>token</code></li>
+<li>登录鉴权</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<p>那么从下一章开始，我们就会进入到项目内部业务的处理过程。在项目内部的业务处理中，我们又会遇到什么样的业务需求，以及提出什么样的对应解决方案呢？</p>
+<p>敬请期待吧！</p>
+<h1><a id="%E7%AC%AC4%E7%AB%A0%EF%BC%9A%E9%A1%B9%E7%9B%AE%E6%9E%B6%E6%9E%84%E4%B9%8B%E6%90%AD%E5%BB%BAlayout%E6%9E%B6%E6%9E%84" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>第4章：项目架构之搭建Layout架构</h1>
+<h2><a id="%E5%89%8D%E8%A8%80" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>前言</h2>
+<p>在上一章中我们处理完成登录之后，从这一章开始，我们就需要处理项目的 <code>Layout</code> 架构了。那么什么叫做 <code>Layout</code> 架构呢？</p>
+<p>我们来看这张图：<br />
+<img src="http://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/2022/11/07/16677826757914.png" alt="image-20210911095711012" /></p>
+<p>在这张图中，我们把页面分为了三个部分，分别是：</p>
+<ol>
+<li>左侧的 <code>Menu</code> 菜单</li>
+<li>顶部的 <code>NavBar</code></li>
+<li>中间的内容区 <code>Main</code></li>
+</ol>
+<p>可能有同学看到这里就说了，你这不就是个基本的页面布局吗？ 还弄个这么洋气的名字干嘛？</p>
+<p>外行看热闹，内行看门道对不对。</p>
+<p>本章中我们将会实现以下的核心解决方案：</p>
+<ol>
+<li>用户退出方案</li>
+<li>动态侧边栏方案</li>
+<li>动态面包屑方案</li>
+</ol>
+<p>除了这些核心内容之外，还有一些其他的小功能，比如：</p>
+<ol>
+<li>退出的通用逻辑封装</li>
+<li>伸缩侧边栏动画</li>
+<li><code>vue3</code> 动画</li>
+<li>组件状态驱动的动态 <code>CSS</code> 值等等</li>
+</ol>
+<p>换句话而言，掌握了本章中的内容之后，后台项目的通用 <code>Layout</code> 处理，对于来说将变得小菜一碟！</p>
+<h2><a id="%E5%88%9B%E5%BB%BA%E5%9F%BA%E4%BA%8Elayout%E7%9A%84%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%84" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>创建基于 Layout 的基础架构</h2>
+<p>在本小节我们需要创建基于 <code>Layout</code> 的基本架构布局，所以说会涉及到大量的 <code>CSS</code> 内容，这些 <code>CSS</code> 大部分都是比较基础的可复用的 <code>CSS</code> 样式，又因为量比较大，所以说我们不会在视频中把这些所有的 <code>CSS</code> 全部手敲一遍，而是从中间挑出一些比较重要的 <code>Css</code> 内容去进行手写和介绍。这是本小节中一个比较特殊的地方，先和大家进行一下明确。</p>
+<p>那么明确好了之后，我们再来看一下我们 <code>Layout</code> 的基本布局结构：</p>
+<img src="第四章：项目架构之搭建Layout架构 解决方案与实现.assets/image-20210911095711012.png" alt="image-20210911095711012" style="zoom:50%;" />
+<p>我们知道，当登录完成之后，那么我们会进入到 <code>Layout</code> 页面，这个 <code>Layout</code> 页面组件位于 <code>Layout/index.vue</code> 中，所以说想要实现这样的结构，那么我们就需要到对应的 <code>layout</code> 组件中进行。</p>
+<ol>
+<li>
+<p>整个页面分为三部分，所以我们需要先去创建对应的三个组件：</p>
+<ol>
+<li><code>layout/components/Sidebar/index.vue</code></li>
+<li><code>layout/components/Navbar.vue</code></li>
+<li><code>layout/components/AppMain.vue</code></li>
+</ol>
+</li>
+<li>
+<p>然后在 <code>layout/index.vue</code> 中引入这三个组件</p>
+<pre><code class="language-html">&lt;script setup&gt;
+    import Navbar from './components/Navbar'
+    import Sidebar from './components/Sidebar'
+    import AppMain from './components/AppMain'
+&lt;/script&gt;
+</code></pre>
+</li>
+<li>
+<p>完成对应的布局结构</p>
+<pre><code class="language-html">&lt;template&gt;
+  &lt;div class=&quot;app-wrapper&quot;&gt;
+    &lt;!-- 左侧 menu --&gt;
+    &lt;sidebar
+      id=&quot;guide-sidebar&quot;
+      class=&quot;sidebar-container&quot;
+    /&gt;
+    &lt;div class=&quot;main-container&quot;&gt;
+      &lt;div class=&quot;fixed-header&quot;&gt;
+        &lt;!-- 顶部的 navbar --&gt;
+        &lt;navbar /&gt;
+      &lt;/div&gt;
+      &lt;!-- 内容区 --&gt;
+      &lt;app-main /&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+</code></pre>
+</li>
+<li>
+<p>在 <code>styles</code> 中创建如下 <code>css</code> 文件：</p>
+<ol>
+<li><code>variables.scss</code> ： 定义常量</li>
+<li><code>mixin.scss</code> ：定义通用的 <code>css</code></li>
+<li><code>sidebar.scss</code>：处理 <code>menu</code> 菜单的样式</li>
+</ol>
+</li>
+<li>
+<p>为 <code>variables.scss</code> ，定义如下常量并进行导出（ <code>:export</code> 可见 <a href="https://www.bluematador.com/blog/how-to-share-variables-between-js-and-sass">scss 与 js 共享变量</a>）：</p>
+<pre><code class="language-scss">// sidebar
+$menuText: #bfcbd9;
+$menuActiveText: #ffffff;
+$subMenuActiveText: #f4f4f5;
+
+$menuBg: #304156;
+$menuHover: #263445;
+
+$subMenuBg: #1f2d3d;
+$subMenuHover: #001528;
+
+$sideBarWidth: 210px;
+
+// https://www.bluematador.com/blog/how-to-share-variables-between-js-and-sass
+// JS 与 scss 共享变量，在 scss 中通过 :export 进行导出，在 js 中可通过 ESM 进行导入
+:export {
+  menuText: $menuText;
+  menuActiveText: $menuActiveText;
+  subMenuActiveText: $subMenuActiveText;
+  menuBg: $menuBg;
+  menuHover: $menuHover;
+  subMenuBg: $subMenuBg;
+  subMenuHover: $subMenuHover;
+  sideBarWidth: $sideBarWidth;
+}
+
+</code></pre>
+</li>
+<li>
+<p>为 <code>mixin.scss</code> 定义如下样式：</p>
+<pre><code class="language-scss">@mixin clearfix {
+  &amp;:after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin scrollBar {
+  &amp;::-webkit-scrollbar-track-piece {
+    background: #d3dce6;
+  }
+
+  &amp;::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &amp;::-webkit-scrollbar-thumb {
+    background: #99a9bf;
+    border-radius: 20px;
+  }
+}
+
+@mixin relative {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+</code></pre>
+</li>
+<li>
+<p>为 <code>sidebar.scss</code> 定义如下样式：</p>
+<pre><code class="language-scss">#app {
+  .main-container {
+    min-height: 100%;
+    transition: margin-left 0.28s;
+    margin-left: $sideBarWidth;
+    position: relative;
+  }
+
+  .sidebar-container {
+    transition: width 0.28s;
+    width: $sideBarWidth !important;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1001;
+    overflow: hidden;
+
+    // 重置 element-plus 的css
+    .horizontal-collapse-transition {
+      transition: 0s width ease-in-out, 0s padding-left ease-in-out,
+        0s padding-right ease-in-out;
+    }
+
+    .scrollbar-wrapper {
+      overflow-x: hidden !important;
+    }
+
+    .el-scrollbar__bar.is-vertical {
+      right: 0px;
+    }
+
+    .el-scrollbar {
+      height: 100%;
+    }
+
+    &amp;.has-logo {
+      .el-scrollbar {
+        height: calc(100% - 50px);
+      }
+    }
+
+    .is-horizontal {
+      display: none;
+    }
+
+    a {
+      display: inline-block;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .svg-icon {
+      margin-right: 16px;
+    }
+
+    .sub-el-icon {
+      margin-right: 12px;
+      margin-left: -2px;
+    }
+
+    .el-menu {
+      border: none;
+      height: 100%;
+      width: 100% !important;
+    }
+
+    .is-active &gt; .el-submenu__title {
+      color: $subMenuActiveText !important;
+    }
+
+    &amp; .nest-menu .el-submenu &gt; .el-submenu__title,
+    &amp; .el-submenu .el-menu-item {
+      min-width: $sideBarWidth !important;
+    }
+  }
+
+  .hideSidebar {
+    .sidebar-container {
+      width: 54px !important;
+    }
+
+    .main-container {
+      margin-left: 54px;
+    }
+
+    .submenu-title-noDropdown {
+      padding: 0 !important;
+      position: relative;
+
+      .el-tooltip {
+        padding: 0 !important;
+
+        .svg-icon {
+          margin-left: 20px;
+        }
+
+        .sub-el-icon {
+          margin-left: 19px;
+        }
+      }
+    }
+
+    .el-submenu {
+      overflow: hidden;
+
+      &amp; &gt; .el-submenu__title {
+        padding: 0 !important;
+
+        .svg-icon {
+          margin-left: 20px;
+        }
+
+        .sub-el-icon {
+          margin-left: 19px;
+        }
+
+        .el-submenu__icon-arrow {
+          display: none;
+        }
+      }
+    }
+
+    .el-menu--collapse {
+      .el-submenu {
+        &amp; &gt; .el-submenu__title {
+          &amp; &gt; span {
+            height: 0;
+            width: 0;
+            overflow: hidden;
+            visibility: hidden;
+            display: inline-block;
+          }
+        }
+      }
+    }
+  }
+
+  .el-menu--collapse .el-menu .el-submenu {
+    min-width: $sideBarWidth !important;
+  }
+
+  .withoutAnimation {
+    .main-container,
+    .sidebar-container {
+      transition: none;
+    }
+  }
+}
+
+.el-menu--vertical {
+  &amp; &gt; .el-menu {
+    .svg-icon {
+      margin-right: 16px;
+    }
+    .sub-el-icon {
+      margin-right: 12px;
+      margin-left: -2px;
+    }
+  }
+
+  // 菜单项过长时
+  &gt; .el-menu--popup {
+    max-height: 100vh;
+    overflow-y: auto;
+
+    &amp;::-webkit-scrollbar-track-piece {
+      background: #d3dce6;
+    }
+
+    &amp;::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    &amp;::-webkit-scrollbar-thumb {
+      background: #99a9bf;
+      border-radius: 20px;
+    }
+  }
+}
+
+</code></pre>
+</li>
+<li>
+<p>在 <code>index.scss</code> 中按照顺序导入以上样式文件</p>
+<pre><code class="language-scss">@import './variables.scss';
+@import './mixin.scss';
+@import './sidebar.scss';
+</code></pre>
+</li>
+<li>
+<p>在 <code>layout/index.vue</code> 中写入如下样式</p>
+<pre><code class="language-css">&lt;style lang=&quot;scss&quot; scoped&gt;
+@import '~@/styles/mixin.scss';
+@import '~@/styles/variables.scss';
+
+.app-wrapper {
+  @include clearfix;
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.fixed-header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 9;
+  width: calc(100% - #{$sideBarWidth});
+}
+&lt;/style&gt;
+</code></pre>
+</li>
+<li>
+<p>因为将来要实现 <strong>主题更换</strong>，所以为 <code>sidebar</code> 赋值动态的背景颜色</p>
+<pre><code class="language-html">&lt;template&gt;
+...
+    &lt;!-- 左侧 menu --&gt;
+    &lt;sidebar
+      class=&quot;sidebar-container&quot;
+      :style=&quot;{ backgroundColor: variables.menuBg }&quot;
+    /&gt;
+...
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import variables from '@/styles/variables.scss'
+&lt;/script&gt;
+</code></pre>
+</li>
+<li>
+<p>为 <code>Navbar</code>、<code>Sidebar</code>、<code>AppMain</code> 组件进行初始化代码</p>
+<pre><code class="language-html">&lt;template&gt;
+  &lt;div class=&quot;&quot;&gt;{组件名}&lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import {} from 'vue'
+&lt;/script&gt;
+
+&lt;style lang=&quot;scss&quot; scoped&gt;&lt;/style&gt;
+
+</code></pre>
+</li>
+<li>
+<p>至此查看效果为<br />
+<img src="http://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/2022/11/07/16677852582706.png" alt="image-20210911111525589" /></p>
+</li>
+<li>
+<p>可见 <code>Navbar</code> 与 <code>AppMain</code> 重叠</p>
+</li>
+<li>
+<p>为 <code>AppMain</code> 进行样式处理</p>
+<pre><code class="language-html">&lt;template&gt;
+  &lt;div class=&quot;app-main&quot;&gt;AppMain&lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import {} from 'vue'
+&lt;/script&gt;
+
+&lt;style lang=&quot;scss&quot; scoped&gt;
+.app-main {
+  min-height: calc(100vh - 50px);
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  padding: 61px 20px 20px 20px;
+  box-sizing: border-box;
+}
+&lt;/style&gt;
+
+</code></pre>
+</li>
+<li>
+<p>查看效果<br />
+<img src="http://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/2022/11/07/16677854603478.png" alt="image-20210911111716595" /></p>
+</li>
+</ol>
+<p>在本章节中，我们写入了大量的代码，其中以 <code>css</code> 代码为主，因为其中的大量 <code>css</code> 都是可服用的，比如 <code>sidebar.scss</code> ，所以我们这里并没有进行手写。那么对于大家来说，这里的 <code>css</code> 代码也没有手写的必要，毕竟这些重复的体力活，是没有必要所有的事情都亲历亲为的。</p>
+<p>那么下一章节中，我们就去实现一下 <code>navbar</code> 中的功能操作。</p>
+<h2><a id="%E8%8E%B7%E5%8F%96%E7%94%A8%E6%88%B7%E5%9F%BA%E6%9C%AC%E4%BF%A1%E6%81%AF" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>获取用户基本信息</h2>
+<p>处理完了基本的 <code>Layout</code> 架构之后，接下来我们实现一下 <code>navbar</code> 中的 <strong>头像菜单</strong> 功能<br />
+<img src="http://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/2022/11/08/16678664057121.png" alt="image-20210911112904783" /></p>
+<p>这样的一个功能主要分为三个部分：</p>
+<ol>
+<li>获取并展示用户信息</li>
+<li><code>element-plus</code> 中的 <code>dropdown</code> 组件使用</li>
+<li>退出登录的方案实现</li>
+</ol>
+<p>那么接下来我们就去实现第一部分的功能 <strong>获取并展示用户信息</strong></p>
+<p><strong>获取并展示用户信息</strong> 我们把它分为三部分进行实现：</p>
+<ol>
+<li>定义接口请求方法</li>
+<li>定义调用接口的动作</li>
+<li>在权限拦截时触发动作</li>
+</ol>
+<p>那么接下来我们就根据这三个步骤，分别来进行实现：</p>
+<p><strong>定义接口请求方法：</strong></p>
+<p>在 <code>api/sys.js</code> 中定义如下方法：</p>
+<pre><code class="language-js">/**
+ * 获取用户信息
+ */
+export const getUserInfo = () =&gt; {
+  return request({
+    url: '/sys/profile'
+  })
+}
+</code></pre>
+<p>因为获取用户信息需要对应的 <code>token</code> ，所以我们可以利用 <code>axios</code> 的 <strong>请求拦截器</strong> 对 <code>token</code> 进行统一注入，在 <code>utils/request.js</code> 中写入如下代码：</p>
+<pre><code class="language-js">import store from '@/store'
+// 请求拦截器
+service.interceptors.request.use(
+  config =&gt; {
+    // 在这个位置需要统一的去注入token
+    if (store.getters.token) {
+      // 如果token存在 注入token
+      config.headers.Authorization = `Bearer ${store.getters.token}`
+    }
+    return config // 必须返回配置
+  },
+  error =&gt; {
+    return Promise.reject(error)
+  }
+)
+</code></pre>
+<p><strong>定义调用接口的动作：</strong></p>
+<p>在 <code>store/modules/user</code> 中写入以下代码：</p>
+<pre><code class="language-js">import { login, getUserInfo } from '@/api/sys'
+...
+export default {
+  namespaced: true,
+  state: () =&gt; ({
+    ...
+    userInfo: {}
+  }),
+  mutations: {
+    ...
+    setUserInfo(state, userInfo) {
+      state.userInfo = userInfo
+    }
+  },
+  actions: {
+    ...
+    async getUserInfo(context) {
+      const res = await getUserInfo()
+      this.commit('user/setUserInfo', res)
+      return res
+    }
+  }
+}
+
+</code></pre>
+<p><strong>在权限拦截时触发动作：</strong></p>
+<p>在 <code>permission.js</code> 中写入以下代码：</p>
+<pre><code class="language-js">    if (to.path === '/login') {
+      ...
+    } else {
+      // 判断用户资料是否获取
+      // 若不存在用户信息，则需要获取用户信息
+      if (!store.getters.hasUserInfo) {
+        // 触发获取用户信息的 action
+        await store.dispatch('user/getUserInfo')
+      }
+      next()
+    }
+  }
+
+</code></pre>
+<p>在 <code>store/getters.js</code> 中写入判断用户信息代码：</p>
+<pre><code class="language-js">const getters = {
+  ...
+  userInfo: state =&gt; state.user.userInfo,
+  /**
+   * @returns true 表示已存在用户信息
+   */
+  hasUserInfo: state =&gt; {
+    return JSON.stringify(state.user.userInfo) !== '{}'
+  }
+}
+...
+
+</code></pre>
+<p><strong>注意：出现 <code>401</code> 错误表示登录超时：</strong></p>
+<p><img src="media/16661912527730/image-20210911144540729.png" alt="image-20210911144540729" /></p>
+<p>如遇到此错误，可 <strong>手动到控制到 <code>Application</code> 中，删除 <code>LocalStorage</code> 中的 <code>token</code></strong></p>
+<p><img src="http://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/2022/11/10/16680415944392.png" alt="image-20210911144726082" /></p>
+<p>删除后，重新刷新页面，重新进行登录操作（该问题如何解决，会在后续进行讲解）</p>
+<p>至此，即可获取用户信息数据</p>
+<p><img src="media/16661912527730/image-20210911144958117.png" alt="image-20210911144958117" /></p>
+<h2><a id="%E6%B8%B2%E6%9F%93%E7%94%A8%E6%88%B7%E5%A4%B4%E5%83%8F%E8%8F%9C%E5%8D%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>渲染用户头像菜单</h2>
+<p>到现在我们已经拿到了 <strong>用户数据，并且在 <code>getters</code> 中做了对应的快捷访问</strong> ，那么接下来我们就可以根据数据渲染出 <strong>用户头像内容</strong></p>
+<p>渲染用户头像，我们将使用到 <code>element-plus</code> 的两个组件：</p>
+<ol>
+<li><code>avatar</code></li>
+<li><code>Dropdown</code></li>
+</ol>
+<p>在 <code>layout/components/navbar.js</code> 中实现以下代码：</p>
+<pre><code class="language-html">&lt;template&gt;
+  &lt;div class=&quot;navbar&quot;&gt;
+    &lt;div class=&quot;right-menu&quot;&gt;
+      &lt;!-- 头像 --&gt;
+      &lt;el-dropdown class=&quot;avatar-container&quot; trigger=&quot;click&quot;&gt;
+        &lt;div class=&quot;avatar-wrapper&quot;&gt;
+          &lt;el-avatar
+            shape=&quot;square&quot;
+            :size=&quot;40&quot;
+            :src=&quot;$store.getters.userInfo.avatar&quot;
+          &gt;&lt;/el-avatar&gt;
+          &lt;i class=&quot;el-icon-s-tools&quot;&gt;&lt;/i&gt;
+        &lt;/div&gt;
+        &lt;template #dropdown&gt;
+          &lt;el-dropdown-menu class=&quot;user-dropdown&quot;&gt;
+            &lt;router-link to=&quot;/&quot;&gt;
+              &lt;el-dropdown-item&gt; 首页 &lt;/el-dropdown-item&gt;
+            &lt;/router-link&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;&quot;&gt;
+              &lt;el-dropdown-item&gt;课程主页&lt;/el-dropdown-item&gt;
+            &lt;/a&gt;
+            &lt;el-dropdown-item divided&gt;
+              退出登录
+            &lt;/el-dropdown-item&gt;
+          &lt;/el-dropdown-menu&gt;
+        &lt;/template&gt;
+      &lt;/el-dropdown&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import {} from 'vue'
+&lt;/script&gt;
+
+&lt;style lang=&quot;scss&quot; scoped&gt;
+.navbar {
+  height: 50px;
+  overflow: hidden;
+  position: relative;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+
+  .right-menu {
+    display: flex;
+    align-items: center;
+    float: right;
+    padding-right: 16px;
+
+    ::v-deep .avatar-container {
+      cursor: pointer;
+      .avatar-wrapper {
+        margin-top: 5px;
+        position: relative;
+        .el-avatar {
+          --el-avatar-background-color: none;
+          margin-right: 12px;
+        }
+      }
+    }
+  }
+}
+&lt;/style&gt;
+
+</code></pre>
+<p>那么至此，用户头像和对应的下拉菜单就已经实现完成了，那么下一小节我们就可以在此基础上实现对应的 <strong>退出登录</strong> 功能</p>
+<h2><a id="%E9%80%80%E5%87%BA%E7%99%BB%E5%BD%95%E6%96%B9%E6%A1%88%E5%AE%9E%E7%8E%B0" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>退出登录方案实现</h2>
+<p><strong>退出登录</strong> 一直是一个通用的前端实现方案，对于退出登录而言，它的触发时机一般有两种：</p>
+<ol>
+<li>用户<strong>主动</strong>退出</li>
+<li>用户<strong>被动</strong>退出</li>
+</ol>
+<p>其中：</p>
+<ol>
+<li>主动退出指：用户点击登录按钮之后退出</li>
+<li>被动退出指：<code>token</code> 过期或被  其他人”顶下来“ 时退出</li>
+</ol>
+<p>那么无论是什么退出方式，在用户退出时，所需要执行的操作都是固定的：</p>
+<ol>
+<li>清理掉当前用户缓存数据</li>
+<li>清理掉权限相关配置</li>
+<li>返回到登录页</li>
+</ol>
+<p>那么明确好了对应的方案之后，接下来咱们就先来实现 <strong>用户主动退出的对应策略</strong></p>
+<p>在 <code>store/modules/user.js</code> 中，添加对应 <code>action</code></p>
+<pre><code class="language-js">import router from '@/router'
+
+logout() {
+    this.commit('user/setToken', '')
+    this.commit('user/setUserInfo', {})
+    removeAllItem()
+    router.push('/login')
+}
+</code></pre>
+<p>为退出登录按钮添加点击事件，触发 <code>logout</code> 的 <code>action</code></p>
+<pre><code class="language-js">import { useStore } from 'vuex'
+
+const store = useStore()
+const logout = () =&gt; {
+  store.dispatch('user/logout')
+}
+</code></pre>
+<p>那么至此，我们就完成了 <strong>用户主动退出</strong> 对应的实现。</p>
+<h2><a id="%E7%94%A8%E6%88%B7%E8%A2%AB%E5%8A%A8%E9%80%80%E5%87%BA%E6%96%B9%E6%A1%88%E8%A7%A3%E6%9E%90" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>用户被动退出方案解析</h2>
+<p>在上一节我们实现了 <strong>用户主动退出</strong> 场景，同时也提到 <strong>用户被动退出</strong> 的场景主要有两个：</p>
+<ol>
+<li><code>token</code> 失效</li>
+<li>单用户登录：其他人登录该账号被 “顶下来”</li>
+</ol>
+<p>那么这两种场景下，在前端对应的处理方案一共也分为两种，共分为 <strong>主动处理</strong> 、<strong>被动处理</strong> 两种 ：</p>
+<ol>
+<li>主动处理：主要应对 <code>token</code> 失效</li>
+<li>被动处理：同时应对 <code>token</code> 失效 与 <strong>单用户登录</strong></li>
+</ol>
+<p>那么这两种方案基本上就覆盖了用户被动推出时的主要业务场景了</p>
+<p>那么这一小节内容比较少，但是东西还是挺重要的。因为我们主要分析了 <strong>用户被动退出</strong> 的场景，那么从下一小节开始，我们分别来实现这两种处理方案。</p>
+<h2><a id="%E7%94%A8%E6%88%B7%E8%A2%AB%E5%8A%A8%E9%80%80%E5%87%BA%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E4%B9%8B%E4%B8%BB%E5%8A%A8%E5%A4%84%E7%90%86" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>用户被动退出解决方案之主动处理</h2>
+<p>想要搞明白 <strong>主动处理</strong> 方案，那么首先我们得先去搞明白对应的 <strong>背景</strong> 以及 <strong>业务逻辑</strong> 。</p>
+<p>那么首先我们先明确一下对应的 <strong>背景：</strong></p>
+<blockquote>
+<p>我们知道 <code>token</code> 表示了一个用户的身份令牌，对 服务端 而言，它是只认令牌不认人的。所以说一旦其他人获取到了你的 <code>token</code> ，那么就可以伪装成你，来获取对应的敏感数据。</p>
+<p>所以为了保证用户的信息安全，那么对于 <code>token</code> 而言就被制定了很多的安全策略，比如：</p>
+<ol>
+<li>动态 <code>token</code>（可变 <code>token</code>）</li>
+<li>刷新 <code>token</code></li>
+<li>时效 <code>token</code></li>
+<li>...</li>
+</ol>
+<p>这些方案各有利弊，没有绝对的完美的策略。</p>
+</blockquote>
+<p>而我们此时所选择的方案就是 <strong>时效 <code>token</code></strong></p>
+<p>对于 <code>token</code> 本身是拥有时效的，这个大家都知道。但是通常情况下，这个时效都是在服务端进行处理。而此时我们要在 <strong>服务端处理 <code>token</code> 失效的同时，在前端主动介入 <code>token</code> 时效的处理中</strong>。 从而保证用户信息的更加安全性。</p>
+<p>那么对应到我们代码中的实现方案为：</p>
+<ol>
+<li>在用户登陆时，记录当前 <strong>登录时间</strong></li>
+<li>制定一个 <strong>失效时长</strong></li>
+<li>在接口调用时，根据 <strong>当前时间</strong> 对比 <strong>登录时间</strong> ，看是否超过了 <strong>时效时长</strong>
+<ol>
+<li>如果未超过，则正常进行后续操作</li>
+<li>如果超过，则进行 <strong>退出登录</strong> 操作</li>
+</ol>
+</li>
+</ol>
+<p>那么明确好了对应的方案之后，接下来我们就去实现对应代码</p>
+<p>创建 <code>utils/auth.js</code> 文件，并写入以下代码：</p>
+<pre><code class="language-js">import { TIME_STAMP, TOKEN_TIMEOUT_VALUE } from '@/constant'
+import { setItem, getItem } from '@/utils/storage'
+/**
+ * 获取时间戳
+ */
+export function getTimeStamp() {
+  return getItem(TIME_STAMP)
+}
+/**
+ * 设置时间戳
+ */
+export function setTimeStamp() {
+  setItem(TIME_STAMP, Date.now())
+}
+/**
+ * 是否超时
+ */
+export function isCheckTimeout() {
+  // 当前时间戳
+  var currentTime = Date.now()
+  // 缓存时间戳
+  var timeStamp = getTimeStamp()
+  return currentTime - timeStamp &gt; TOKEN_TIMEOUT_VALUE
+}
+</code></pre>
+<p>在 <code>constant</code> 中声明对应常量：</p>
+<pre><code class="language-js">// token 时间戳
+export const TIME_STAMP = 'timeStamp'
+// 超时时长(毫秒) 两小时
+export const TOKEN_TIMEOUT_VALUE = 2 * 3600 * 1000
+</code></pre>
+<p>在用户登录成功之后去设置时间，到 <code>store/user.js</code> 的 <code>login</code> 中：</p>
+<pre><code class="language-js">import { setTimeStamp } from '@/utils/auth'
+
+login(context, userInfo) {
+      ...
+      return new Promise((resolve, reject) =&gt; {
+        ...
+          .then(data =&gt; {
+            ...
+            // 保存登录时间
+            setTimeStamp()
+            resolve()
+          })
+      })
+    },
+</code></pre>
+<p>在 <code>utils/request</code> 对应的请求拦截器中进行 <strong>主动介入</strong></p>
+<pre><code class="language-js">import { isCheckTimeout } from '@/utils/auth'
+
+if (store.getters.token) {
+      if (isCheckTimeout()) {
+        // 登出操作
+        store.dispatch('user/logout')
+        return Promise.reject(new Error('token 失效'))
+      }
+      ...
+    }
+</code></pre>
+<p>那么至此我们就完成了 <strong>主动处理</strong> 对应的业务逻辑</p>
+<h2><a id="%E7%94%A8%E6%88%B7%E8%A2%AB%E5%8A%A8%E9%80%80%E5%87%BA%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E4%B9%8B%E8%A2%AB%E5%8A%A8%E5%A4%84%E7%90%86" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>用户被动退出解决方案之被动处理</h2>
+<p>上一节我们处理了 <strong>用户被动退出时的主动处理</strong> ，那么在这一小节我们去处理 <strong>用户被动退出时的被动处理</strong> 。</p>
+<p>还是和上一小节一样，我们还是先明确背景，然后再来明确业务逻辑。</p>
+<p><strong>背景：</strong></p>
+<p>首先我们需要先明确 <strong>被动处理</strong> 需要应对两种业务场景：</p>
+<ol>
+<li><code>token</code> 过期</li>
+<li>单用户登录</li>
+</ol>
+<p>然后我们一个一个来去看，首先是 <code>token</code> 过期</p>
+<blockquote>
+<p>我们知道对于 <code>token</code> 而言，本身就是具备时效的，这个是在服务端生成 <code>token</code> 时就已经确定的，而此时我们所谓的 <code>token</code> 过期指的就是：</p>
+<p><strong>服务端生成的 <code>token</code> 超过服务端指定时效</strong> 的过程</p>
+</blockquote>
+<p>而对于 单用户登录 而言，指的是：</p>
+<blockquote>
+<p>当用户 A 登录之后，<code>token</code> 过期之前。</p>
+<p>用户 A 的账号在其他的设备中进行了二次登录，导致第一次登录的 A 账号被 “顶下来” 的过程。</p>
+<p>即：<strong>同一账户仅可以在一个设备中保持在线状态</strong></p>
+</blockquote>
+<p>那么明确好了对应的背景之后，接下来我们来看对应的业务处理场景：</p>
+<p>从背景中我们知道，以上的两种情况，都是在 <strong>服务端进行判断的</strong>，而对于前端而言其实是 <strong>服务端通知前端的一个过程。</strong></p>
+<p>所以说对于其业务处理，将遵循以下逻辑：</p>
+<ol>
+<li>服务端返回数据时，会通过特定的状态码通知前端</li>
+<li>当前端接收到特定状态码时，表示遇到了特定状态：<strong><code>token</code> 失效</strong> 或 <strong>单用户登录</strong></li>
+<li>此时进行 <strong>退出登录</strong> 处理</li>
+</ol>
+<p>但是这里大家需要注意，因为咱们课程的特性，<strong>同一个账号需要在多个设备中使用</strong>，所以说此时将不会指定 <strong>单用户登录</strong> 的状态码，仅有 <strong><code>token</code> 失效</strong> 状态码。之后当大家需要到 <strong>单用户登录</strong> 时，只需要增加一个状态码判断即可。</p>
+<p>那么明确好了业务之后，接下来我们来实现对应代码：</p>
+<p>在 <code>utils/request</code> 的响应拦截器中，增加以下逻辑：</p>
+<pre><code class="language-js">// 响应拦截器
+service.interceptors.response.use(
+  response =&gt; {
+    ...
+  },
+  error =&gt; {
+    // 处理 token 超时问题
+    if (
+      error.response &amp;&amp;
+      error.response.data &amp;&amp;
+      error.response.data.code === 401
+    ) {
+      // token超时
+      store.dispatch('user/logout')
+    }
+    ElMessage.error(error.message) // 提示错误信息
+    return Promise.reject(error)
+  }
+)
+</code></pre>
+<p>那么至此，我们就已经完成了 <strong>整个用户退出</strong> 方案。</p>
+<h2><a id="%E5%88%9B%E5%BB%BA%E9%A1%B5%E9%9D%A2%E7%BB%84%E4%BB%B6%EF%BC%8C%E4%BD%BF%E7%94%A8%E4%B8%B4%E6%97%B6menu%E8%8F%9C%E5%8D%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>创建页面组件，使用临时 menu 菜单</h2>
+<p>处理完了 <strong>退出登录</strong> 之后，接下来我们来处理 <strong>动态<code>menu</code>菜单</strong>。</p>
+<p>只不过为了方便大家理解，这里我们先不去直接处理动态菜单，我们先生成一个临时的 <code>menu</code> 菜单。</p>
+<p>创建 <code>layout/Sidebar/SidebarMenu</code> 文件</p>
+<pre><code class="language-html">&lt;template&gt;
+  &lt;!-- 一级 menu 菜单 --&gt;
+  &lt;el-menu
+    :uniqueOpened=&quot;true&quot;
+    default-active=&quot;2&quot;
+    background-color=&quot;#545c64&quot;
+    text-color=&quot;#fff&quot;
+    active-text-color=&quot;#ffd04b&quot;
+  &gt;
+    &lt;!-- 子集 menu 菜单 --&gt;
+    &lt;el-submenu index=&quot;1&quot;&gt;
+      &lt;template #title&gt;
+        &lt;i class=&quot;el-icon-location&quot;&gt;&lt;/i&gt;
+        &lt;span&gt;导航一&lt;/span&gt;
+      &lt;/template&gt;
+      &lt;el-menu-item index=&quot;1-1&quot;&gt;选项1&lt;/el-menu-item&gt;
+      &lt;el-menu-item index=&quot;1-2&quot;&gt;选项2&lt;/el-menu-item&gt;
+    &lt;/el-submenu&gt;
+    &lt;!-- 具体菜单项 --&gt;
+    &lt;el-menu-item index=&quot;2&quot;&gt;
+      &lt;i class=&quot;el-icon-setting&quot;&gt;&lt;/i&gt;
+      &lt;template #title&gt;导航二&lt;/template&gt;
+    &lt;/el-menu-item&gt;
+  &lt;/el-menu&gt;
+&lt;/template&gt;
+</code></pre>
+<p>在 <code>layout/Sidebar/index</code> 中导入该组件</p>
+<pre><code class="language-html">&lt;template&gt;
+  &lt;div class=&quot;&quot;&gt;
+    &lt;h1&gt;占位&lt;/h1&gt;
+    &lt;el-scrollbar&gt;
+      &lt;sidebar-menu&gt;&lt;/sidebar-menu&gt;
+    &lt;/el-scrollbar&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import SidebarMenu from './SidebarMenu'
+import {} from 'vue'
+&lt;/script&gt;
+</code></pre>
+<p>那么至此我们生成了一个临时的 <code>menu</code> 菜单，从这个临时的 <code>menu</code> 菜单出可以看到，<code>el-menu</code> 其实分成了三个部分：</p>
+<ol>
+<li><code>el-menu</code>：整个 <code>menu</code> 菜单</li>
+<li><code>el-submenu</code>：子集 <code>menu</code> 菜单</li>
+<li><code>el-menu-item</code>：具体菜单项</li>
+</ol>
+<p>那么明确好了这些内容之后，接下来我们就可以来去分析一下 <strong>动态 <code>menu</code> 菜单如何生成了</strong></p>
+<h2><a id="%E5%8A%A8%E6%80%81menu%E8%8F%9C%E5%8D%95%E5%A4%84%E7%90%86%E6%96%B9%E6%A1%88%E8%A7%A3%E6%9E%90" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>动态menu菜单处理方案解析</h2>
+<p>上一小节我们处理了 <strong>静态 <code>menu</code></strong>，那么接下来我们来去处理 <strong>动态 <code>menu</code> 菜单</strong></p>
+<p>其实 <strong>动态<code>menu</code>菜单</strong> 其实主要是和 <strong>动态路由表</strong>  配合来去实现 <strong>用户权限</strong> 的。</p>
+<p>但是 <strong>用户权限处理</strong> 需要等到后面的章节中才可以接触到，因为咱们想要处理 <strong>用户权限</strong> 还需要先去处理很多的业务场景，所以在这里我们就先只处理 <strong>动态<code>menu</code>菜单</strong> 这一个概念。</p>
+<p>那么 <strong>动态<code>menu</code>菜单</strong> 指的到底是什么意思呢？</p>
+<p>所谓 <strong>动态<code>menu</code>菜单</strong> 指的是：</p>
+<blockquote>
+<p>根据路由表的配置，自动生成对应的 <code>menu</code> 菜单。</p>
+<p>当路由表发生变化时，<code>menu</code> 菜单自动发生变化</p>
+</blockquote>
+<p>那么明确了 <strong>动态<code>menu</code>菜单</strong> 的含义之后，接下来咱们就需要来明确以下 <strong>动态<code>menu</code>菜单</strong> 的实现方案：</p>
+<ol>
+<li>定义 <strong>路由表</strong> 对应 <strong><code>menu</code> 菜单规则</strong></li>
+<li>根据规则制定 <strong>路由表</strong></li>
+<li>根据规则，依据 <strong>路由表</strong> ，生成 <strong><code>menu</code> 菜单</strong></li>
+</ol>
+<p>那么根据我们的实现方案可以发现，实现 <strong>动态<code>menu</code>菜单</strong> 最核心的关键点其实就在步骤一，也就是 ：定义 <strong>路由表</strong> 对应 <strong><code>menu</code> 菜单规则</strong>。</p>
+<p>那么下面我们就来看一下，这个规则如何制。</p>
+<p><strong>对于单个路由规则而言（循环）：</strong></p>
+<ol>
+<li>如果<code>meta &amp;&amp; meta.title &amp;&amp; meta.icon</code> ：则显示在 <code>menu</code> 菜单中，其中 <code>title</code> 为显示的内容，<code>icon</code> 为显示的图标
+<ol>
+<li>如果存在 <code>children</code> ：则以 <code>el-sub-menu（子菜单）</code> 展示</li>
+<li>否则：则以 <code>el-menu-item（菜单项）</code> 展示</li>
+</ol>
+</li>
+<li>否则：不显示在 <code>menu</code> 菜单中(如登录页面)</li>
+</ol>
+<p>那么明确好了对应的规则之后，接下来我们就可以来去看一下如何进行实现啦</p>
+<h2><a id="%E4%B8%9A%E5%8A%A1%E8%90%BD%E5%9C%B0%EF%BC%9A%E7%94%9F%E6%88%90%E9%A1%B9%E7%9B%AE%E9%A1%B5%E9%9D%A2%E7%BB%84%E4%BB%B6" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>业务落地：生成项目页面组件</h2>
+<p>明确了对应的方案之后，那么下面咱们就来实现对应的代码逻辑。</p>
+<p>根据我们的分析，想要完成动态的 <code>menu</code>，那么我们需要按照以下的步骤来去实现：</p>
+<ol>
+<li>创建页面组件</li>
+<li>生成路由表</li>
+<li>解析路由表</li>
+<li>生成 <code>menu</code> 菜单</li>
+</ol>
+<p>那么明确好了步骤之后，接下来我们就先来实现第一步</p>
+<p><strong>创建页面组件</strong></p>
+<p>在 <code>views</code> 文件夹下，创建如下页面：</p>
+<ol>
+<li>创建文章：<code>article-create</code></li>
+<li>文章详情：<code>article-detail</code></li>
+<li>文章排名：<code>article-ranking</code></li>
+<li>错误页面：<code>error-page</code>
+<ol>
+<li><code>404</code></li>
+<li><code>401</code></li>
+</ol>
+</li>
+<li>导入：<code>import</code></li>
+<li>权限列表：<code>permission-list</code></li>
+<li>个人中心：<code>profile</code></li>
+<li>角色列表：<code>role-list</code></li>
+<li>用户信息：<code>user-info</code></li>
+<li>用户管理：<code>user-manage</code></li>
+</ol>
+<p>大家也可以从 <strong>课程资料</strong> 中直接复制 <strong><code>views（不含 login）</code></strong> 的内容到项目的 <code>views</code> 文件夹下</p>
+<h2><a id="%E4%B8%9A%E5%8A%A1%E8%90%BD%E5%9C%B0%EF%BC%9A%E5%88%9B%E5%BB%BA%E7%BB%93%E6%9E%84%E8%B7%AF%E7%94%B1%E8%A1%A8" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>业务落地：创建结构路由表</h2>
+<p>想要实现结构路由表，那么我们需要先知道最终我们要实现的结构是什么样子的，大家来看下面的截图：</p>
+<p><img src="http://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/2022/11/10/16680415944422.png" alt="image-20210913150402667" /></p>
+<p>这是我们最终要实现的 <code>menu</code> 截图</p>
+<p>根据此截图，我们可以知道两点内容：</p>
+<ol>
+<li>
+<p>我们创建的页面并没有全部进行展示</p>
+<ol>
+<li>
+<p>根据该方案<br />
+<img src="http://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/2022/11/10/16680416709065.png" alt="image-20210913151331012" /></p>
+</li>
+<li>
+<p>即不显示页面 <strong>不满足</strong> 该条件 <code>meta &amp;&amp; meta.title &amp;&amp; meta.icon</code></p>
+</li>
+</ol>
+</li>
+<li>
+<p><code>menu</code> 菜单将具备父子级的结构</p>
+<ol>
+<li>
+<p>按照此结构规划数据，则数据应为</p>
+<pre><code class="language-json">[
+    {
+        &quot;title&quot;: &quot;个人中心&quot;,
+        &quot;path&quot;: &quot;&quot;
+    },
+    {
+        &quot;title&quot;: &quot;用户&quot;,
+        &quot;children&quot;: [
+            {
+                &quot;title&quot;: &quot;员工管理&quot;,
+                &quot;path&quot;: &quot;&quot;
+            },
+            {
+                &quot;title&quot;: &quot;角色列表&quot;,
+                &quot;path&quot;: &quot;&quot;
+            },
+            {
+                &quot;title&quot;: &quot;权限列表&quot;,
+                &quot;path&quot;: &quot;&quot;
+            }
+        ]
+    },
+    {
+        &quot;title&quot;: &quot;文章&quot;,
+        &quot;children&quot;: [
+            {
+                &quot;title&quot;: &quot;文章排名&quot;,
+                &quot;path&quot;: &quot;&quot;
+            },
+            {
+                &quot;title&quot;: &quot;创建文章&quot;,
+                &quot;path&quot;: &quot;&quot;
+            }
+        ]
+    }
+]
+</code></pre>
+</li>
+</ol>
+</li>
+</ol>
+<p>又因为将来我们需要进行 <strong>用户权限处理</strong>，所以此时我们需要先对路由表进行一个划分：</p>
+<ol>
+<li>
+<p>私有路由表 <code>privateRoutes</code> ：权限路由</p>
+</li>
+<li>
+<p>公有路由表 <code>publicRoutes</code>：无权限路由</p>
+</li>
+</ol>
+<p>根据以上理论，生成以下路由表结构：</p>
+<pre><code class="language-js">/**
+ * 私有路由表
+ */
+const privateRoutes = [
+  {
+    path: '/user',
+    component: layout,
+    redirect: '/user/manage',
+    meta: {
+      title: 'user',
+      icon: 'personnel'
+    },
+    children: [
+      {
+        path: '/user/manage',
+        component: () =&gt; import('@/views/user-manage/index'),
+        meta: {
+          title: 'userManage',
+          icon: 'personnel-manage'
+        }
+      },
+      {
+        path: '/user/role',
+        component: () =&gt; import('@/views/role-list/index'),
+        meta: {
+          title: 'roleList',
+          icon: 'role'
+        }
+      },
+      {
+        path: '/user/permission',
+        component: () =&gt; import('@/views/permission-list/index'),
+        meta: {
+          title: 'permissionList',
+          icon: 'permission'
+        }
+      },
+      {
+        path: '/user/info/:id',
+        name: 'userInfo',
+        component: () =&gt; import('@/views/user-info/index'),
+        meta: {
+          title: 'userInfo'
+        }
+      },
+      {
+        path: '/user/import',
+        name: 'import',
+        component: () =&gt; import('@/views/import/index'),
+        meta: {
+          title: 'excelImport'
+        }
+      }
+    ]
+  },
+  {
+    path: '/article',
+    component: layout,
+    redirect: '/article/ranking',
+    meta: {
+      title: 'article',
+      icon: 'article'
+    },
+    children: [
+      {
+        path: '/article/ranking',
+        component: () =&gt; import('@/views/article-ranking/index'),
+        meta: {
+          title: 'articleRanking',
+          icon: 'article-ranking'
+        }
+      },
+      {
+        path: '/article/:id',
+        component: () =&gt; import('@/views/article-detail/index'),
+        meta: {
+          title: 'articleDetail'
+        }
+      },
+      {
+        path: '/article/create',
+        component: () =&gt; import('@/views/article-create/index'),
+        meta: {
+          title: 'articleCreate',
+          icon: 'article-create'
+        }
+      },
+      {
+        path: '/article/editor/:id',
+        component: () =&gt; import('@/views/article-create/index'),
+        meta: {
+          title: 'articleEditor'
+        }
+      }
+    ]
+  }
+]
+
+/**
+ * 公开路由表
+ */
+const publicRoutes = [
+  {
+    path: '/login',
+    component: () =&gt; import('@/views/login/index')
+  },
+  {
+    path: '/',
+    // 注意：带有路径“/”的记录中的组件“默认”是一个不返回 Promise 的函数
+    component: layout,
+    redirect: '/profile',
+    children: [
+      {
+        path: '/profile',
+        name: 'profile',
+        component: () =&gt; import('@/views/profile/index'),
+        meta: {
+          title: 'profile',
+          icon: 'el-icon-user'
+        }
+      },
+      {
+        path: '/404',
+        name: '404',
+        component: () =&gt; import('@/views/error-page/404')
+      },
+      {
+        path: '/401',
+        name: '401',
+        component: () =&gt; import('@/views/error-page/401')
+      }
+    ]
+  }
+]
+
+const router = createRouter({
+  history: createWebHashHistory(),
+  routes: [...publicRoutes, ...privateRoutes]
+})
+</code></pre>
+<p>最后不要忘记在 <code>layout/appMain</code> 下设置路由出口</p>
+<pre><code class="language-html">&lt;template&gt;
+  &lt;div class=&quot;app-main&quot;&gt;
+    &lt;router-view&gt;&lt;/router-view&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+</code></pre>
+<h2><a id="%E4%B8%9A%E5%8A%A1%E8%90%BD%E5%9C%B0%EF%BC%9A%E8%A7%A3%E6%9E%90%E8%B7%AF%E7%94%B1%E8%A1%A8%EF%BC%8C%E8%8E%B7%E5%8F%96%E7%BB%93%E6%9E%84%E5%8C%96%E6%95%B0%E6%8D%AE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>业务落地：解析路由表，获取结构化数据</h2>
+<p>本小节的目标只有一点，那就是获取到之前明确的结构化数据：</p>
+<pre><code class="language-json">[
+    {
+        &quot;title&quot;: &quot;个人中心&quot;,
+        &quot;path&quot;: &quot;&quot;
+    },
+    {
+        &quot;title&quot;: &quot;用户&quot;,
+        &quot;children&quot;: [
+            {
+                &quot;title&quot;: &quot;员工管理&quot;,
+                &quot;path&quot;: &quot;&quot;
+            },
+            {
+                &quot;title&quot;: &quot;角色列表&quot;,
+                &quot;path&quot;: &quot;&quot;
+            },
+            {
+                &quot;title&quot;: &quot;权限列表&quot;,
+                &quot;path&quot;: &quot;&quot;
+            }
+        ]
+    },
+    {
+        &quot;title&quot;: &quot;文章&quot;,
+        &quot;children&quot;: [
+            {
+                &quot;title&quot;: &quot;文章排名&quot;,
+                &quot;path&quot;: &quot;&quot;
+            },
+            {
+                &quot;title&quot;: &quot;创建文章&quot;,
+                &quot;path&quot;: &quot;&quot;
+            }
+        ]
+    }
+]
+</code></pre>
+<p>那么想要完成本小节的目标，我们就需要先来看一下，现在的路由表结构是什么样子的。</p>
+<p>想要获取路由表数据，那么有两种方式：</p>
+<ol>
+<li><a href="https://next.router.vuejs.org/zh/api/#routes">router.options.routes</a>：初始路由列表（<a href="https://next.router.vuejs.org/zh/api/#addroute">新增的路由</a> 无法获取到）。</li>
+<li><a href="https://next.router.vuejs.org/zh/api/#getroutes">router.getRoutes()</a>：获取所有 <a href="https://next.router.vuejs.org/zh/api/#routerecord">路由记录</a> 的完整列表，即所有父子节点拉平后组成的一维路由数组。</li>
+</ol>
+<p>所以，我们此时使用 <a href="https://next.router.vuejs.org/zh/api/#getroutes">router.getRoutes()</a></p>
+<p>在 <code>layout/components/Sidebar/SidebarMenu</code> 下写入以下代码：</p>
+<pre><code class="language-html">&lt;script setup&gt;
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+console.log(router.getRoutes())
+&lt;/script&gt;
+</code></pre>
+<p>得到返回的数据：</p>
+<pre><code class="language-json">[
+    {
+        &quot;path&quot;:&quot;/user/info/:id&quot;,
+        &quot;name&quot;:&quot;userInfo&quot;,
+        &quot;meta&quot;:{
+            &quot;title&quot;:&quot;userInfo&quot;
+        },
+        &quot;children&quot;:[
+
+        ]
+    },
+    {
+        &quot;path&quot;:&quot;/article/editor/:id&quot;,
+        &quot;meta&quot;:{
+            &quot;title&quot;:&quot;articleEditor&quot;
+        },
+        &quot;children&quot;:[
+
+        ]
+    },
+    {
+        &quot;path&quot;:&quot;/user/manage&quot;,
+        &quot;meta&quot;:{
+            &quot;title&quot;:&quot;userManage&quot;,
+            &quot;icon&quot;:&quot;personnel-manage&quot;
+        },
+        &quot;children&quot;:[
+
+        ]
+    },
+    {
+        &quot;path&quot;:&quot;/user/role&quot;,
+        &quot;meta&quot;:{
+            &quot;title&quot;:&quot;roleList&quot;,
+            &quot;icon&quot;:&quot;role&quot;
+        },
+        &quot;children&quot;:[
+
+        ]
+    },
+    {
+        &quot;path&quot;:&quot;/user/permission&quot;,
+        &quot;meta&quot;:{
+            &quot;title&quot;:&quot;permissionList&quot;,
+            &quot;icon&quot;:&quot;permission&quot;
+        },
+        &quot;children&quot;:[
+
+        ]
+    },
+    {
+        &quot;path&quot;:&quot;/user/import&quot;,
+        &quot;name&quot;:&quot;import&quot;,
+        &quot;meta&quot;:{
+            &quot;title&quot;:&quot;excelImport&quot;
+        },
+        &quot;children&quot;:[
+
+        ]
+    },
+    {
+        &quot;path&quot;:&quot;/article/ranking&quot;,
+        &quot;meta&quot;:{
+            &quot;title&quot;:&quot;articleRanking&quot;,
+            &quot;icon&quot;:&quot;article-ranking&quot;
+        },
+        &quot;children&quot;:[
+
+        ]
+    },
+    {
+        &quot;path&quot;:&quot;/article/create&quot;,
+        &quot;meta&quot;:{
+            &quot;title&quot;:&quot;articleCreate&quot;,
+            &quot;icon&quot;:&quot;article-create&quot;
+        },
+        &quot;children&quot;:[
+
+        ]
+    },
+    {
+        &quot;path&quot;:&quot;/article/:id&quot;,
+        &quot;meta&quot;:{
+            &quot;title&quot;:&quot;articleDetail&quot;
+        },
+        &quot;children&quot;:[
+
+        ]
+    },
+    {
+        &quot;path&quot;:&quot;/login&quot;,
+        &quot;meta&quot;:{
+
+        },
+        &quot;children&quot;:[
+
+        ]
+    },
+    {
+        &quot;path&quot;:&quot;/profile&quot;,
+        &quot;name&quot;:&quot;profile&quot;,
+        &quot;meta&quot;:{
+            &quot;title&quot;:&quot;profile&quot;,
+            &quot;icon&quot;:&quot;el-icon-user&quot;
+        },
+        &quot;children&quot;:[
+
+        ]
+    },
+    {
+        &quot;path&quot;:&quot;/404&quot;,
+        &quot;name&quot;:&quot;404&quot;,
+        &quot;meta&quot;:{
+
+        },
+        &quot;children&quot;:[
+
+        ]
+    },
+    {
+        &quot;path&quot;:&quot;/401&quot;,
+        &quot;name&quot;:&quot;401&quot;,
+        &quot;meta&quot;:{
+
+        },
+        &quot;children&quot;:[
+
+        ]
+    },
+    {
+        &quot;path&quot;:&quot;/&quot;,
+        &quot;redirect&quot;:&quot;/profile&quot;,
+        &quot;meta&quot;:{
+
+        },
+        &quot;children&quot;:[
+            {
+                &quot;path&quot;:&quot;/profile&quot;,
+                &quot;name&quot;:&quot;profile&quot;,
+                &quot;meta&quot;:{
+                    &quot;title&quot;:&quot;profile&quot;,
+                    &quot;icon&quot;:&quot;el-icon-user&quot;
+                }
+            },
+            {
+                &quot;path&quot;:&quot;/404&quot;,
+                &quot;name&quot;:&quot;404&quot;
+            },
+            {
+                &quot;path&quot;:&quot;/401&quot;,
+                &quot;name&quot;:&quot;401&quot;
+            }
+        ]
+    },
+    {
+        &quot;path&quot;:&quot;/user&quot;,
+        &quot;redirect&quot;:&quot;/user/manage&quot;,
+        &quot;meta&quot;:{
+            &quot;title&quot;:&quot;user&quot;,
+            &quot;icon&quot;:&quot;personnel&quot;
+        },
+        &quot;children&quot;:[
+            {
+                &quot;path&quot;:&quot;/user/manage&quot;,
+                &quot;meta&quot;:{
+                    &quot;title&quot;:&quot;userManage&quot;,
+                    &quot;icon&quot;:&quot;personnel-manage&quot;
+                }
+            },
+            {
+                &quot;path&quot;:&quot;/user/role&quot;,
+                &quot;meta&quot;:{
+                    &quot;title&quot;:&quot;roleList&quot;,
+                    &quot;icon&quot;:&quot;role&quot;
+                }
+            },
+            {
+                &quot;path&quot;:&quot;/user/permission&quot;,
+                &quot;meta&quot;:{
+                    &quot;title&quot;:&quot;permissionList&quot;,
+                    &quot;icon&quot;:&quot;permission&quot;
+                }
+            },
+            {
+                &quot;path&quot;:&quot;/user/info/:id&quot;,
+                &quot;name&quot;:&quot;userInfo&quot;,
+                &quot;meta&quot;:{
+                    &quot;title&quot;:&quot;userInfo&quot;
+                }
+            },
+            {
+                &quot;path&quot;:&quot;/user/import&quot;,
+                &quot;name&quot;:&quot;import&quot;,
+                &quot;meta&quot;:{
+                    &quot;title&quot;:&quot;excelImport&quot;
+                }
+            }
+        ]
+    },
+    {
+        &quot;path&quot;:&quot;/article&quot;,
+        &quot;redirect&quot;:&quot;/article/ranking&quot;,
+        &quot;meta&quot;:{
+            &quot;title&quot;:&quot;article&quot;,
+            &quot;icon&quot;:&quot;article&quot;
+        },
+        &quot;children&quot;:[
+            {
+                &quot;path&quot;:&quot;/article/ranking&quot;,
+                &quot;meta&quot;:{
+                    &quot;title&quot;:&quot;articleRanking&quot;,
+                    &quot;icon&quot;:&quot;article-ranking&quot;
+                }
+            },
+            {
+                &quot;path&quot;:&quot;/article/:id&quot;,
+                &quot;meta&quot;:{
+                    &quot;title&quot;:&quot;articleDetail&quot;
+                }
+            },
+            {
+                &quot;path&quot;:&quot;/article/create&quot;,
+                &quot;meta&quot;:{
+                    &quot;title&quot;:&quot;articleCreate&quot;,
+                    &quot;icon&quot;:&quot;article-create&quot;
+                }
+            },
+            {
+                &quot;path&quot;:&quot;/article/editor/:id&quot;,
+                &quot;meta&quot;:{
+                    &quot;title&quot;:&quot;articleEditor&quot;
+                }
+            }
+        ]
+    }
+]
+</code></pre>
+<p>从返回的数据来看，它与我们想要的数据结构相去甚远。</p>
+<p>出现这个问题的原因，是因为它返回的是一个 <strong>完整的路由表</strong></p>
+<p>这个路由表距离我们想要的存在两个问题：</p>
+<ol>
+<li>存在重复的路由数据</li>
+<li>不满足该条件 <code>meta &amp;&amp; meta.title &amp;&amp; meta.icon</code> 的数据不应该存在</li>
+</ol>
+<p>那么接下来我们就应该来处理这两个问题</p>
+<p>创建 <code>utils/route</code> 文件，创建两个方法分别处理对应的两个问题：</p>
+<ol>
+<li><code>filterRouters</code></li>
+<li><code>generateMenus</code></li>
+</ol>
+<p>写入以下代码：</p>
+<pre><code class="language-js">// 这里引用node的模块，webpack5会有个报错：webpack ＜ 5 used to include polyfills for node.js core modules by default。
+// 解决方案参考：https://blog.csdn.net/FantasyWeirdo/article/details/123552064
+import path from 'path'
+
+/**
+ * 返回所有子路由，即凡是定义路由对象时处于 children: [] 中的都查出来返回。
+ */
+const getChildrenRoutes = routes =&gt; {
+  const result = []
+  routes.forEach(route =&gt; {
+    if (route.children &amp;&amp; route.children.length &gt; 0) {
+      result.push(...route.children)
+    }
+  })
+  return result
+}
+/**
+ * 处理脱离层级的路由：某个一级路由为其他子路由，则剔除该一级路由，保留路由层级。过滤最终得到 
+ * 的可以认为是一级导航路由。
+ * @param {*} routes router.getRoutes() 得到的是全部路由拉平后组成的数组（包括父节点和子节点）
+ */
+export const filterRouters = routes =&gt; {
+  // 得到路由树中所有存在于children中的路由
+  const childrenRoutes = getChildrenRoutes(routes)
+  // 过滤出不在children中的路由，即为一级导航。
+  return routes.filter(route =&gt; {
+    return !childrenRoutes.find(childrenRoute =&gt; {
+      return childrenRoute.path === route.path
+    })
+  })
+}
+
+/**
+ * 判断数据是否为空值
+ */
+function isNull(data) {
+  if (!data) return true
+  if (JSON.stringify(data) === '{}') return true
+  if (JSON.stringify(data) === '[]') return true
+  return false
+}
+/**
+ * 根据 routes 数据，返回对应 menu 规则数组
+ */
+export function generateMenus(routes, basePath = '') {
+  const result = []
+  // 遍历路由表
+  routes.forEach(item =&gt; {
+    // 不存在 children &amp;&amp; 不存在 meta 直接 return
+    if (isNull(item.meta) &amp;&amp; isNull(item.children)) return
+    // 存在 children 不存在 meta，进入迭代
+    if (isNull(item.meta) &amp;&amp; !isNull(item.children)) {
+      result.push(...generateMenus(item.children))
+      return
+    }
+    // 合并 path 作为跳转路径
+    const routePath = path.resolve(basePath, item.path)
+    // 路由分离之后，存在同名父路由的情况，需要单独处理
+    let route = result.find(item =&gt; item.path === routePath)
+    if (!route) {
+      route = {
+        ...item,
+        path: routePath,
+        children: []
+      }
+
+      // icon 与 title 必须全部存在
+      if (route.meta.icon &amp;&amp; route.meta.title) {
+        // meta 存在生成 route 对象，放入 arr
+        result.push(route)
+      }
+    }
+
+    // 存在 children 进入迭代到children
+    if (item.children) {
+      route.children.push(...generateMenus(item.children, route.path))
+    }
+  })
+  return result
+}
+
+</code></pre>
+<p>在 <code>SidebarMenu</code> 中调用该方法</p>
+<pre><code class="language-js">&lt;script setup&gt;
+import { computed } from 'vue'
+import { useRouter } from 'vue-router'
+import { filterRouters, generateMenus } from '@/utils/route'
+
+const router = useRouter()
+const routes = computed(() =&gt; {
+  const filterRoutes = filterRouters(router.getRoutes())
+  return generateMenus(filterRoutes)
+})
+console.log(JSON.stringify(routes.value))
+&lt;/script&gt;
+</code></pre>
+<p>得到该数据结构</p>
+<pre><code class="language-json">[
+    {
+        &quot;path&quot;:&quot;/profile&quot;,
+        &quot;name&quot;:&quot;profile&quot;,
+        &quot;meta&quot;:{
+            &quot;title&quot;:&quot;profile&quot;,
+            &quot;icon&quot;:&quot;el-icon-user&quot;
+        },
+    },
+    {
+        &quot;path&quot;:&quot;/user&quot;,
+        &quot;redirect&quot;:&quot;/user/manage&quot;,
+        &quot;meta&quot;:{
+            &quot;title&quot;:&quot;user&quot;,
+            &quot;icon&quot;:&quot;personnel&quot;
+        },
+        &quot;props&quot;:{
+            &quot;default&quot;:false
+        },
+        &quot;children&quot;:[
+            {
+                &quot;path&quot;:&quot;/user/manage&quot;,
+                &quot;name&quot;:&quot;userManage&quot;,
+                &quot;meta&quot;:{
+                    &quot;title&quot;:&quot;userManage&quot;,
+                    &quot;icon&quot;:&quot;personnel-manage&quot;
+                },
+                &quot;children&quot;:[
+
+                ]
+            },
+            {
+                &quot;path&quot;:&quot;/user/role&quot;,
+                &quot;name&quot;:&quot;userRole&quot;,
+                &quot;meta&quot;:{
+                    &quot;title&quot;:&quot;roleList&quot;,
+                    &quot;icon&quot;:&quot;role&quot;
+                },
+                &quot;children&quot;:[
+
+                ]
+            },
+            {
+                &quot;path&quot;:&quot;/user/permission&quot;,
+                &quot;name&quot;:&quot;userPermission&quot;,
+                &quot;meta&quot;:{
+                    &quot;title&quot;:&quot;permissionList&quot;,
+                    &quot;icon&quot;:&quot;permission&quot;
+                },
+                &quot;children&quot;:[
+
+                ]
+            }
+        ],
+    },
+    {
+        &quot;path&quot;:&quot;/article&quot;,
+        &quot;redirect&quot;:&quot;/article/ranking&quot;,
+        &quot;meta&quot;:{
+            &quot;title&quot;:&quot;article&quot;,
+            &quot;icon&quot;:&quot;article&quot;
+        },
+        &quot;props&quot;:{
+            &quot;default&quot;:false
+        },
+        &quot;children&quot;:[
+            {
+                &quot;path&quot;:&quot;/article/ranking&quot;,
+                &quot;name&quot;:&quot;articleRanking&quot;,
+                &quot;meta&quot;:{
+                    &quot;title&quot;:&quot;articleRanking&quot;,
+                    &quot;icon&quot;:&quot;article-ranking&quot;
+                },
+                &quot;children&quot;:[
+
+                ]
+            },
+            {
+                &quot;path&quot;:&quot;/article/create&quot;,
+                &quot;name&quot;:&quot;articleCreate&quot;,
+                &quot;meta&quot;:{
+                    &quot;title&quot;:&quot;articleCreate&quot;,
+                    &quot;icon&quot;:&quot;article-create&quot;
+                },
+                &quot;children&quot;:[
+
+                ]
+            }
+        ],
+    }
+]
+</code></pre>
+<h2><a id="%E4%B8%9A%E5%8A%A1%E8%90%BD%E5%9C%B0%EF%BC%9A%E7%94%9F%E6%88%90%E5%8A%A8%E6%80%81menu%E8%8F%9C%E5%8D%95" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>业务落地：生成动态 menu 菜单</h2>
+<p>有了数据结构之后，最后的步骤就水到渠成了</p>
+<p>整个 <code>menu</code> 菜单，我们将分成三个组件来进行处理</p>
+<ol>
+<li><code>SidebarMenu</code>：处理数据，作为最顶层 <code>menu</code> 载体</li>
+<li><code>SidebarItem</code>：根据数据处理 <strong>当前项为 <code>el-submenu</code> || <code>el-menu-item</code></strong></li>
+<li><code>MenuItem</code>：处理 <code>el-menu-item</code> 样式</li>
+</ol>
+<p>那么下面我们一个个来处理</p>
+<p>首先是 <code>SidebarMenu</code></p>
+<pre><code class="language-html">&lt;template&gt;
+  &lt;!-- 一级 menu 菜单 --&gt;
+  &lt;el-menu
+    ...
+  &gt;
+    &lt;sidebar-item
+      v-for=&quot;item in routes&quot;
+      :key=&quot;item.path&quot;
+      :route=&quot;item&quot;
+    &gt;&lt;/sidebar-item&gt;
+  &lt;/el-menu&gt;
+&lt;/template&gt;
+
+</code></pre>
+<p>创建 <code>SidebarItem</code> 组件，用来根据数据处理 <strong>当前项为 <code>el-submenu</code> || <code>el-menu-item</code></strong></p>
+<pre><code class="language-html">&lt;template&gt;
+  &lt;!-- 支持渲染多级 menu 菜单 --&gt;
+  &lt;el-submenu v-if=&quot;route.children.length &gt; 0&quot; :index=&quot;route.path&quot;&gt;
+    &lt;template #title&gt;
+      &lt;menu-item :title=&quot;route.meta.title&quot; :icon=&quot;route.meta.icon&quot;&gt;&lt;/menu-item&gt;
+    &lt;/template&gt;
+    &lt;!-- 循环渲染 --&gt;
+    &lt;sidebar-item
+      v-for=&quot;item in route.children&quot;
+      :key=&quot;item.path&quot;
+      :route=&quot;item&quot;
+    &gt;&lt;/sidebar-item&gt;
+  &lt;/el-submenu&gt;
+  &lt;!-- 渲染 item 项 --&gt;
+  &lt;el-menu-item v-else :index=&quot;route.path&quot;&gt;
+    &lt;menu-item :title=&quot;route.meta.title&quot; :icon=&quot;route.meta.icon&quot;&gt;&lt;/menu-item&gt;
+  &lt;/el-menu-item&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import MenuItem from './MenuItem'
+import { defineProps } from 'vue'
+// 定义 props
+defineProps({
+  route: {
+    type: Object,
+    required: true
+  }
+})
+&lt;/script&gt;
+</code></pre>
+<p>创建 <code>MenuItem</code> 用来处理 <code>el-menu-item</code> 样式</p>
+<pre><code class="language-html">&lt;template&gt;
+  &lt;i v-if=&quot;icon.includes('el-icon')&quot; class=&quot;sub-el-icon&quot; :class=&quot;icon&quot;&gt;&lt;/i&gt;
+  &lt;svg-icon v-else :icon=&quot;icon&quot;&gt;&lt;/svg-icon&gt;
+  &lt;span&gt;{{ title }}&lt;/span&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { defineProps } from 'vue'
+defineProps({
+  title: {
+    type: String,
+    required: true
+  },
+  icon: {
+    type: String,
+    required: true
+  }
+})
+&lt;/script&gt;
+
+&lt;style lang=&quot;scss&quot; scoped&gt;
+&lt;/style&gt;
+</code></pre>
+<p>至此，整个的 <code>menu</code> 菜单结构就已经完成了</p>
+<p>但是此时我们的 <code>menu</code> 菜单还存在三个小的问题：</p>
+<ol>
+<li>样式问题</li>
+<li>路由跳转问题</li>
+<li>默认激活项</li>
+</ol>
+<p>那么下一小节，我们来修复这些残余的问题</p>
+<h2><a id="%E4%B8%9A%E5%8A%A1%E8%90%BD%E5%9C%B0%EF%BC%9A%E4%BF%AE%E5%A4%8D%E6%9C%80%E5%90%8E%E6%AE%8B%E4%BD%99%E9%97%AE%E9%A2%98" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>业务落地：修复最后残余问题</h2>
+<p>目前 <code>menu</code> 菜单存在三个问题</p>
+<ol>
+<li>样式问题</li>
+<li>路由跳转问题</li>
+<li>默认激活项</li>
+</ol>
+<p><strong>样式问题：</strong></p>
+<p>首先处理样式，因为后面我们需要处理 <strong>主题替换</strong> ，所以此处我们不能把样式写死</p>
+<p>在 <code>store/getters</code> 中创建一个新的 <strong>快捷访问</strong></p>
+<pre><code class="language-js">import variables from '@/styles/variables.scss'
+const getters = {
+  ...
+  cssVar: state =&gt; variables
+}
+export default getters
+</code></pre>
+<p>在 <code>SidebarMenu</code> 中写入如下样式</p>
+<pre><code class="language-html">&lt;el-menu
+    :background-color=&quot;$store.getters.cssVar.menuBg&quot;
+    :text-color=&quot;$store.getters.cssVar.menuText&quot;
+    :active-text-color=&quot;$store.getters.cssVar.menuActiveText&quot;
+    :unique-opened=&quot;true&quot;
+  &gt;
+</code></pre>
+<p><strong>路由跳转问题：</strong></p>
+<p>为 <code>el-menu</code> 指定 <code>router</code></p>
+<pre><code class="language-html"> &lt;el-menu
+    ...
+    router
+  &gt;
+</code></pre>
+<p><strong>默认激活项：</strong></p>
+<p>根据当前 <code>url</code> 进行判断即可</p>
+<pre><code class="language-html">  &lt;el-menu
+    :default-active=&quot;activeMenu&quot;
+    ...
+  &gt;
+
+&lt;script setup&gt;
+...
+
+// 计算高亮 menu 的方法
+const route = useRoute()
+const activeMenu = computed(() =&gt; {
+  const { path } = route
+  return path
+})
+&lt;/script&gt;
+
+</code></pre>
+<p>至此整个 <strong>动态<code>menu</code>完成</strong></p>
+<h2><a id="%E5%8A%A8%E7%94%BB%E9%80%BB%E8%BE%91%EF%BC%8C%E5%B7%A6%E4%BE%A7%E8%8F%9C%E5%8D%95%E4%BC%B8%E7%BC%A9%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>动画逻辑，左侧菜单伸缩功能实现</h2>
+<p>下面我们来实现一个标准化功能 <strong>左侧菜单伸缩</strong> ，对于这个功能核心的点在于动画处理</p>
+<p>样式的改变总是由数据进行驱动，所以首先我们去创建对应的数据</p>
+<p>创建 <code>store/app</code> 模块，写入如下代码</p>
+<pre><code class="language-js">export default {
+  namespaced: true,
+  state: () =&gt; ({
+    sidebarOpened: true
+  }),
+  mutations: {
+    triggerSidebarOpened(state) {
+      state.sidebarOpened = !state.sidebarOpened
+    }
+  },
+  actions: {}
+}
+
+</code></pre>
+<p>在 <code>store/index</code> 中进行导入</p>
+<pre><code class="language-js">...
+import app from './modules/app'
+export default createStore({
+  getters,
+  modules: {
+    ...
+    app
+  }
+})
+</code></pre>
+<p>在 <code>store/getters</code> 中创建快捷访问</p>
+<pre><code class="language-js">sidebarOpened: state =&gt; state.app.sidebarOpened
+</code></pre>
+<p>创建 <code>components/hamburger</code> 组件，用来控制数据</p>
+<pre><code class="language-html">&lt;template&gt;
+  &lt;div class=&quot;hamburger-container&quot; @click=&quot;toggleClick&quot;&gt;
+    &lt;svg-icon class=&quot;hamburger&quot; :icon=&quot;icon&quot;&gt;&lt;/svg-icon&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { computed } from 'vue'
+import { useStore } from 'vuex'
+
+const store = useStore()
+const toggleClick = () =&gt; {
+  store.commit('app/triggerSidebarOpened')
+}
+
+const icon = computed(() =&gt;
+  store.getters.sidebarOpened ? 'hamburger-opened' : 'hamburger-closed'
+)
+&lt;/script&gt;
+
+&lt;style lang=&quot;scss&quot; scoped&gt;
+.hamburger-container {
+  padding: 0 16px;
+  .hamburger {
+    display: inline-block;
+    vertical-align: middle;
+    width: 20px;
+    height: 20px;
+  }
+}
+&lt;/style&gt;
+</code></pre>
+<p>在 <code>navbar</code> 中使用该组件</p>
+<pre><code class="language-html">
+&lt;template&gt;
+  &lt;div class=&quot;navbar&quot;&gt;
+    &lt;hamburger class=&quot;hamburger-container&quot; /&gt;
+    ...
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import Hamburger from '@/components/Hamburger'
+...
+&lt;/script&gt;
+
+&lt;style lang=&quot;scss&quot; scoped&gt;
+.navbar {
+  ...
+
+  .hamburger-container {
+    line-height: 46px;
+    height: 100%;
+    float: left;
+    cursor: pointer;
+    // hover 动画
+    transition: background 0.5s;
+
+    &amp;:hover {
+      background: rgba(0, 0, 0, 0.1);
+    }
+  }
+
+ ...
+}
+&lt;/style&gt;
+
+</code></pre>
+<p>在 <code>SidebarMenu</code> 中，控制 <code>el-menu</code> 的 <a href="https://element-plus.org/#/zh-CN/component/menu">collapse</a> 属性</p>
+<pre><code class="language-vue">&lt;el-menu
+    :collapse=&quot;!$store.getters.sidebarOpened&quot;
+    ...
+</code></pre>
+<p>在 <code>layout/index</code> 中指定 <strong>整个侧边栏的宽度和缩放动画</strong></p>
+<pre><code class="language-html">&lt;div
+    class=&quot;app-wrapper&quot;
+    :class=&quot;[$store.getters.sidebarOpened ? 'openSidebar' : 'hideSidebar']&quot;
+  &gt;
+  ...
+</code></pre>
+<p>在 <code>layout/index</code> 中 处理 <code>navbar</code> 的宽度</p>
+<pre><code class="language-html">&lt;style lang=&quot;scss&quot; scoped&gt;
+...
+
+.fixed-header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 9;
+  width: calc(100% - #{$sideBarWidth});
+  transition: width 0.28s;
+}
+
+.hideSidebar .fixed-header {
+  width: calc(100% - #{$hideSideBarWidth});
+}
+&lt;/style&gt;
+</code></pre>
+<p>在 <code>styles/variables.scss</code> 中指定 <code>hideSideBarWidth</code></p>
+<pre><code class="language-scss">$hideSideBarWidth: 54px;
+</code></pre>
+<h2><a id="sidebarheader%E5%A4%84%E7%90%86" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>SidebarHeader 处理</h2>
+<p>整个左侧的 <code>menu</code> 菜单，到现在咱们还剩下最后一个 <code>header</code> 没有进行处理</p>
+<p>在 <code>sidebar/index</code> 中写入如下代码</p>
+<pre><code class="language-html">&lt;template&gt;
+  &lt;div class=&quot;&quot;&gt;
+    &lt;div class=&quot;logo-container&quot;&gt;
+      &lt;el-avatar
+        size=&quot;44&quot;
+        shape=&quot;square&quot;
+        src=&quot;https://m.imooc.com/static/wap/static/common/img/logo-small@2x.png&quot;
+      /&gt;
+      &lt;h1 class=&quot;logo-title&quot; v-if=&quot;$store.getters.sidebarOpened&quot;&gt;
+       imooc-admin
+      &lt;/h1&gt;
+    &lt;/div&gt;
+    ...
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;style lang=&quot;scss&quot; scoped&gt;
+.logo-container {
+  height: 44px;
+  padding: 10px 0 22px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .logo-title {
+    margin-left: 10px;
+    color: #fff;
+    font-weight: 600;
+    line-height: 50px;
+    font-size: 16px;
+    white-space: nowrap;
+  }
+}
+&lt;/style&gt;
+
+</code></pre>
+<p>效果如下，可以发现有一个灰色的背景，这是 element ui 默认的，我们可以覆盖掉。</p>
+<p><img src="http://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/2022/11/15/16684745355800.jpg" alt="" /></p>
+<p>创建 <code>styles/element.scss</code> 文件，统一处理 <code>el-avatar</code> 的背景问题</p>
+<pre><code class="language-scss">.el-avatar {
+  --el-avatar-background-color: none;
+}
+</code></pre>
+<p>在 <code>styles/index.scss</code> 中导入</p>
+<pre><code class="language-scss">...
+@import './element.scss';
+</code></pre>
+<p>统一处理下动画时长的问题，在 <code>styles/variables.scss</code> 中，加入以下变量</p>
+<pre><code class="language-scss">$sideBarDuration: 0.28s;
+</code></pre>
+<p>为 <code>styles/sidebar.scss</code> 修改时长</p>
+<pre><code class="language-scss">  .main-container {
+    transition: margin-left #{$sideBarDuration};
+   ...
+  }
+
+  .sidebar-container {
+    transition: width #{$sideBarDuration};
+  	...
+  }
+</code></pre>
+<p>为 <code>layout/index</code> 修改样式</p>
+<pre><code class="language-scss">.fixed-header {
+  ...
+  transition: width #{$sideBarDuration};
+}
+</code></pre>
+<h2><a id="%E5%85%A8%E6%96%B0vue%E8%83%BD%E5%8A%9B%EF%BC%9A%E7%BB%84%E4%BB%B6%E7%8A%B6%E6%80%81%E9%A9%B1%E5%8A%A8%E7%9A%84%E5%8A%A8%E6%80%81-css%E5%80%BC" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>全新 vue 能力：组件状态驱动的动态 CSS 值</h2>
+<p>在 <a href="https://blog.vuejs.org/posts/vue-3.2.html">vue 3.2</a> 最新更新中，除了之前我们介绍的 <strong>响应式变化</strong> 之外，还有另外一个很重要的更新，那就是 <strong>组件状态驱动的动态 <code>CSS</code> 值</strong> ，对应的文档也已经公布，大家可以 <a href="https://v3.vuejs.org/api/sfc-style.html#state-driven-dynamic-css">点击这里</a> 查看</p>
+<p>那么下面我们就使用下最新的特性，来为 sidebar/index.vue 中的 <code>logo-container</code> 指定下高度：</p>
+<pre><code class="language-html">&lt;template&gt;
+ ...
+ &lt;el-avatar
+ 	:size=&quot;logoHeight&quot;
+ ...
+
+&lt;/template&gt;
+
+&lt;script setup&gt;
+...
+const logoHeight = 44
+&lt;/script&gt;
+
+&lt;style lang=&quot;scss&quot; scoped&gt;
+.logo-container {
+  height: v-bind(logoHeight) + 'px';
+...
+}
+&lt;/style&gt;
+
+</code></pre>
+<p>组件状态驱动 CSS 值的例子还有(摘自官方文档)：</p>
+<pre><code class="language-html">&lt;template&gt;
+  &lt;div class=&quot;text&quot;&gt;hello&lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+  data() {
+    return {
+      color: 'red'
+    }
+  }
+}
+&lt;/script&gt;
+
+&lt;style&gt;
+.text {
+  color: v-bind(color);
+}
+&lt;/style&gt;
+
+/*-------------------------------------------------------------------------*/
+
+&lt;script setup&gt;
+const theme = {
+  color: 'red'
+}
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;p&gt;hello&lt;/p&gt;
+&lt;/template&gt;
+
+&lt;style scoped&gt;
+p {
+  color: v-bind('theme.color');
+}
+&lt;/style&gt;
+
+</code></pre>
+<h2><a id="%E5%8A%A8%E6%80%81%E9%9D%A2%E5%8C%85%E5%B1%91%E6%96%B9%E6%A1%88%E5%88%86%E6%9E%90" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>动态面包屑方案分析</h2>
+<p>到目前位置，本章中还剩下最后一个功能就是 <strong>面包屑导航</strong>，分为：</p>
+<ol>
+<li>静态面包屑</li>
+<li>动态面包屑</li>
+</ol>
+<p><strong>静态面包屑：</strong></p>
+<p>指的是：<strong>在每个页面中写死对应的面包屑菜单</strong>，缺点也很明显：</p>
+<ol>
+<li>每个页面都得写一遍</li>
+<li>页面路径结构变化了，得手动更改</li>
+</ol>
+<p>简单来说就是 <strong>不好维护，不好扩展</strong> 。</p>
+<p><strong>动态面包屑：</strong></p>
+<p><strong>根据当前的 <code>url</code> 自动生成面包屑导航菜单</strong></p>
+<p>无论之后路径发生了什么变化，<strong>动态面包屑</strong> 都会正确的进行计算</p>
+<p>那么在后面的实现过程中，我们将会分成三大步来实现</p>
+<ol>
+<li>创建、渲染基本的面包屑组件</li>
+<li>计算面包屑结构数据</li>
+<li>根据数据渲染动态面包屑内容</li>
+</ol>
+<h2><a id="%E4%B8%9A%E5%8A%A1%E8%90%BD%E5%9C%B0%EF%BC%9A%E6%B8%B2%E6%9F%93%E5%9F%BA%E6%9C%AC%E7%9A%84%E9%9D%A2%E5%8C%85%E5%B1%91%E7%BB%84%E4%BB%B6" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>业务落地：渲染基本的面包屑组件</h2>
+<p>完成第一步，先去创建并渲染出基本的 <a href="https://element-plus.org/#/zh-CN/component/breadcrumb">面包屑</a> 组件</p>
+<p>创建 <code>components/Breadcrumb/index</code>，并写入如下代码：</p>
+<pre><code class="language-html">&lt;template&gt;
+  &lt;el-breadcrumb class=&quot;breadcrumb&quot; separator=&quot;/&quot;&gt;
+    &lt;el-breadcrumb-item :to=&quot;{ path: '/' }&quot;&gt;首页&lt;/el-breadcrumb-item&gt;
+    &lt;el-breadcrumb-item&gt;&lt;a href=&quot;/&quot;&gt;活动管理&lt;/a&gt;&lt;/el-breadcrumb-item&gt;
+    &lt;el-breadcrumb-item&gt;活动列表&lt;/el-breadcrumb-item&gt;
+    &lt;!-- 面包屑的最后一项 --&gt;
+    &lt;el-breadcrumb-item&gt;
+      &lt;span class=&quot;no-redirect&quot;&gt;活动详情&lt;/span&gt;
+    &lt;/el-breadcrumb-item&gt;
+  &lt;/el-breadcrumb&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import {} from 'vue'
+&lt;/script&gt;
+
+&lt;style lang=&quot;scss&quot; scoped&gt;
+.breadcrumb {
+  display: inline-block;
+  font-size: 14px;
+  line-height: 50px;
+  margin-left: 8px;
+
+  ::v-deep .no-redirect {
+    color: #97a8be;
+    cursor: text;
+  }
+}
+&lt;/style&gt;
+
+</code></pre>
+<p>在 <code>layout/components/Navbar</code> 组件下导入</p>
+<pre><code class="language-html">&lt;template&gt;
+  &lt;div class=&quot;navbar&quot;&gt;
+    &lt;hamburger class=&quot;hamburger-container&quot; /&gt;
+    &lt;breadcrumb class=&quot;breadcrumb-container&quot; /&gt;
+	...
+  &lt;/div&gt;
+&lt;/template&gt;
+...
+
+&lt;style lang=&quot;scss&quot; scoped&gt;
+.navbar {
+ ...
+
+  .breadcrumb-container {
+    float: left;
+  }
+   ...
+}
+&lt;/style&gt;
+
+</code></pre>
+<h2><a id="%E4%B8%9A%E5%8A%A1%E8%90%BD%E5%9C%B0%EF%BC%9A%E5%8A%A8%E6%80%81%E8%AE%A1%E7%AE%97%E9%9D%A2%E5%8C%85%E5%B1%91%E7%BB%93%E6%9E%84%E6%95%B0%E6%8D%AE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>业务落地：动态计算面包屑结构数据</h2>
+<p>现在我们是完成了一个静态的 面包屑，接下来咱们就需要依托这个静态的菜单来完成动态的。</p>
+<p>对于现在的静态面包屑来说，他分成了两个组件：</p>
+<ol>
+<li><code>el-breadcrumb</code>：包裹性质的容器</li>
+<li><code>el-breadcrumb-item</code>：每个单独项</li>
+</ol>
+<p>如果我们想要完成动态的，那么就需要依据动态数据，渲染 <code>el-breadcrumb-item</code></p>
+<p>所以说接下来我们需要做的事情就很简单了</p>
+<ol>
+<li>动态数据</li>
+<li>渲染 <code>el-breadcrumb-item</code></li>
+</ol>
+<p>那么这一小节咱们先来看 <strong>动态数据如何制作</strong></p>
+<p>我们希望可以制作出一个 <strong>数组</strong>，数组中每个 <code>item</code> 都表示一个 <strong>路由信息</strong>：</p>
+<p>创建一个方法，用来生成数组数据，在这里我们要使用到 <a href="https://next.router.vuejs.org/zh/api/#matched">route.matched</a> 属性来：<strong>获取与给定路由地址匹配的<a href="https://next.router.vuejs.org/zh/api/#routerecord">标准化的路由记录</a>数组</strong></p>
+<pre><code class="language-html">&lt;script setup&gt;
+import { ref, watch } from 'vue'
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
+// 生成数组数据
+const breadcrumbData = ref([])
+const getBreadcrumbData = () =&gt; {
+  breadcrumbData.value = route.matched.filter(
+    item =&gt; item.meta &amp;&amp; item.meta.title
+  )
+  console.log(breadcrumbData.value)
+}
+// 监听路由变化时触发
+watch(
+  route,
+  () =&gt; {
+    getBreadcrumbData()
+  },
+  {
+    immediate: true
+  }
+)
+&lt;/script&gt;
+</code></pre>
+<h2><a id="%E4%B8%9A%E5%8A%A1%E8%90%BD%E5%9C%B0%EF%BC%9A%E4%BE%9D%E6%8D%AE%E5%8A%A8%E6%80%81%E6%95%B0%E6%8D%AE%EF%BC%8C%E6%B8%B2%E6%9F%93%E9%9D%A2%E5%8C%85%E5%B1%91" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>业务落地：依据动态数据，渲染面包屑</h2>
+<p>有了数据之后，根据数据来去渲染面包屑就比较简单了。</p>
+<pre><code class="language-html">&lt;template&gt;
+  &lt;el-breadcrumb class=&quot;breadcrumb&quot; separator=&quot;/&quot;&gt;
+    &lt;el-breadcrumb-item
+      v-for=&quot;(item, index) in breadcrumbData&quot;
+      :key=&quot;item.path&quot;
+    &gt;
+      &lt;!-- 不可点击项 --&gt;
+      &lt;span v-if=&quot;index === breadcrumbData.length - 1&quot; class=&quot;no-redirect&quot;&gt;{{
+        item.meta.title
+      }}&lt;/span&gt;
+      &lt;!-- 可点击项 --&gt;
+      &lt;a v-else class=&quot;redirect&quot; @click.prevent=&quot;onLinkClick(item)&quot;&gt;{{
+        item.meta.title
+      }}&lt;/a&gt;
+    &lt;/el-breadcrumb-item&gt;
+  &lt;/el-breadcrumb&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+...
+
+// 处理点击事件
+const router = useRouter()
+const onLinkClick = item =&gt; {
+  console.log(item)
+  router.push(item.path)
+}
+
+// 将来需要进行主题替换，所以这里获取下动态样式
+const store = useStore()
+// eslint-disable-next-line
+const linkHoverColor = ref(store.getters.cssVar.menuBg)
+&lt;/script&gt;
+
+&lt;style lang=&quot;scss&quot; scoped&gt;
+.breadcrumb {
+ ...
+
+  .redirect {
+    color: #666;
+    font-weight: 600;
+  }
+
+  .redirect:hover {
+    // 将来需要进行主题替换，所以这里不去写死样式
+    color: v-bind(linkHoverColor);
+  }
+}
+&lt;/style&gt;
+
+</code></pre>
+<h2><a id="vue3%E5%8A%A8%E7%94%BB%E5%A4%84%E7%90%86" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>vue3 动画处理</h2>
+<p>vue3对 <a href="https://v3.cn.vuejs.org/guide/transitions-overview.html#%E5%9F%BA%E4%BA%8E-class-%E7%9A%84%E5%8A%A8%E7%94%BB%E5%92%8C%E8%BF%87%E6%B8%A1">动画</a> 进行了一些修改（<a href="https://v3.cn.vuejs.org/guide/migration/transition.html#%E6%A6%82%E8%A7%88">vue 动画迁移文档</a>）</p>
+<p>主要的修改其实只有两个：</p>
+<ol>
+<li>过渡类名 <code>v-enter</code> 修改为 <code>v-enter-from</code></li>
+<li>过渡类名 <code>v-leave</code> 修改为 <code>v-leave-from</code></li>
+</ol>
+<p>那么依据修改之后的动画，我们来为面包屑增加一些动画样式：</p>
+<ol>
+<li>
+<p>在 <code>Breadcrumb/index</code> 中增加 <code>transition-group</code></p>
+<pre><code class="language-html">&lt;template&gt;
+  &lt;el-breadcrumb class=&quot;breadcrumb&quot; separator=&quot;/&quot;&gt;
+    &lt;transition-group name=&quot;breadcrumb&quot;&gt;
+      ...
+    &lt;/transition-group&gt;
+  &lt;/el-breadcrumb&gt;
+&lt;/template&gt;
+</code></pre>
+</li>
+<li>
+<p>新建 <code>styles/transition</code> 样式文件</p>
+<pre><code class="language-scss">.breadcrumb-enter-active,
+.breadcrumb-leave-active {
+  transition: all 0.5s;
+}
+
+.breadcrumb-enter-from,
+.breadcrumb-leave-active {
+  opacity: 0;
+  transform: translateX(20px);
+}
+
+.breadcrumb-leave-active {
+  position: absolute;
+}
+</code></pre>
+</li>
+<li>
+<p>在 <code>styles/index</code> 中导入</p>
+<pre><code class="language-scss">@import './transition.scss';
+</code></pre>
+</li>
+</ol>
+<h2><a id="%E6%80%BB%E7%BB%93" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>总结</h2>
+<p>到这里我们本章的内容就算是完成了，本章围绕着<code>layout</code> 为核心，主要实现了三个大的业务方案：</p>
+<ol>
+<li>用户退出方案</li>
+<li>动态侧边栏方案</li>
+<li>动态面包屑方案</li>
+</ol>
+<p>除了这三块大的方案之后，还有一些小的功能，比如：</p>
+<ol>
+<li>退出的通用逻辑封装</li>
+<li>伸缩侧边栏动画</li>
+<li><code>vue3</code> 动画</li>
+<li>组件状态驱动的动态 <code>CSS</code> 值等等</li>
+</ol>
+<p>那么这些方案的实现逻辑，就不在这里在跟大家重复了。</p>
+<p>这些方案在企业后台项目开发中，整体的覆盖率还是很高的</p>
+<p>那么在下一章节中，我们会去讲解一些通用的功能方案，相信这些功能方案大家一定都或多或少的遇到过，并且给大家带来过一定的麻烦。</p>
+<p>那么具体这样方案都有什么呢？我们一起期待吧！</p>
+<h1><a id="%E7%AC%AC5%E7%AB%A0%EF%BC%9A%E5%90%8E%E5%8F%B0%E9%A1%B9%E7%9B%AE%E5%89%8D%E7%AB%AF%E7%BB%BC%E5%90%88%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E4%B9%8B%E9%80%9A%E7%94%A8%E5%8A%9F%E8%83%BD%E5%BC%80%E5%8F%91" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>第5章：后台项目前端综合解决方案之通用功能开发</h1>
+<h2><a id="%E5%BC%80%E7%AF%87" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>开篇</h2>
+<p>在后台项目的前端开发之中，存在着很多的通用业务功能，并且存在着一定的技术难度。</p>
+<p>所以说就有很多同学在面临这些功能的时候，大多数时都是采用 <code>ctrl + c || v</code> 的形式来进行实现。这就导致了虽然做过类似的功能，但是对这些功能的实现原理一知半解。</p>
+<p>那么针对于这样的问题，就有了咱们这一章。</p>
+<p>在本章中我们列举出了常见的一些通用功能，具体如下：</p>
+<ol>
+<li>国际化</li>
+<li>动态换肤</li>
+<li><code>screenfull</code></li>
+<li><code>headerSearch</code></li>
+<li><code>tagView</code></li>
+<li><code>guide</code></li>
+</ol>
+<p>来为大家进行讲解。</p>
+<p>相信大家完成了本章的学习之后，对于这些功能无论是从 <strong>原理上</strong> 还是从 <strong>实现上</strong> 都可以做到 <strong>了然于胸</strong> 的目标</p>
+<h2><a id="%E5%9B%BD%E9%99%85%E5%8C%96%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>国际化实现原理</h2>
+<p>先来看一个需求：</p>
+<blockquote>
+<p>我们有一个变量 <code>msg</code> ，但是这个 <code>msg</code> 有且只能有两个值：</p>
+<ol>
+<li>hello world</li>
+<li>你好世界</li>
+</ol>
+<p>要求：根据需要切换 <code>msg</code> 的值</p>
+</blockquote>
+<p>这样的一个需求就是 国际化 的需求，那么我们可以通过以下代码来实现这个需求</p>
+<pre><code class="language-js">&lt;script&gt;
+  // 1. 定义 msg 值的数据源
+  const messages = {
+    en: {
+      msg: 'hello world'
+    },
+    zh: {
+      msg: '你好世界'
+    }
+  }
+  // 2. 定义切换变量
+  let locale = 'en'
+  // 3. 定义赋值函数
+  function t(key) {
+    return messages[locale][key]
+  }
+  // 4. 为 msg 赋值 
+  let msg = t('msg')
+  console.log(msg);
+  // 修改 locale， 重新执行 t 方法，获取不同语言环境下的值
+
+&lt;/script&gt;
+</code></pre>
+<p>总结：</p>
+<ol>
+<li>通过一个变量来 <strong>控制</strong> 语言环境</li>
+<li>所有语言环境下的数据源要 <strong>预先</strong> 定义好</li>
+<li>通过一个方法来获取 <strong>当前语言</strong> 下 <strong>指定属性</strong> 的值</li>
+<li>该值即为国际化下展示值</li>
+</ol>
+<h3><a id="%E5%9F%BA%E4%BA%8Evue-i18n-v9%E7%9A%84%E5%9B%BD%E9%99%85%E5%8C%96%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%A1%88%E5%88%86%E6%9E%90" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>基于 vue-i18n V9  的国际化实现方案分析</h3>
+<p>在 <code>vue</code> 的项目中，我们不需要手写这么复杂的一些基础代码，可以直接使用 <a href="https://vue-i18n.intlify.dev/">vue-i18n</a> 进行实现（注意：<strong><code>vue3</code> 下需要使用 <code>V 9.x</code> 的 <code>i18n</code></strong>）</p>
+<p><a href="https://vue-i18n.intlify.dev/guide/">vue-i18n</a> 的使用可以分为四个部分：</p>
+<ol>
+<li>创建 <code>messages</code> 数据源</li>
+<li>创建 <code>locale</code> 语言变量</li>
+<li>初始化 <code>i18n</code> 实例</li>
+<li>注册 <code>i18n</code> 实例</li>
+</ol>
+<p>那么接下来我们就去实现以下：</p>
+<ol>
+<li>
+<p>安装 <code>vue-i18n</code></p>
+<pre><code class="language-plain_text">npm install vue-i18n@next
+</code></pre>
+</li>
+<li>
+<p>创建 <code>i18n/index.js</code> 文件</p>
+</li>
+<li>
+<p>创建 <code>messages</code> 数据源</p>
+<pre><code class="language-js">const messages = {
+  en: {
+    msg: {
+      test: 'hello world'
+    }
+  },
+  zh: {
+    msg: {
+      test: '你好世界'
+    }
+  }
+}
+</code></pre>
+</li>
+<li>
+<p>创建 <code>locale</code> 语言变量</p>
+<pre><code class="language-js">const locale = 'en'
+</code></pre>
+</li>
+<li>
+<p>初始化 <code>i18n</code> 实例</p>
+<pre><code class="language-js">import { createI18n } from 'vue-i18n'
+
+const i18n = createI18n({
+  // 使用 Composition API 模式，则需要将其设置为false
+  legacy: false,
+  // 全局注入 $t 函数
+  globalInjection: true,
+  locale,
+  messages
+})
+</code></pre>
+</li>
+<li>
+<p>把 <code>i18n</code> 注册到 <code>vue</code> 实例</p>
+<pre><code class="language-js">
+export default i18n
+</code></pre>
+</li>
+<li>
+<p>在 <code>main.js</code> 中导入</p>
+<pre><code class="language-js">// i18n （PS：导入放到 APP.vue 导入之前，因为后面我们会在 app.vue 中使用国际化内容）
+import i18n from '@/i18n'
+...
+app.use(i18n)
+</code></pre>
+</li>
+<li>
+<p>在 <code>layout/components/Sidebar/index.vue</code> 中使用 <code>i18n</code></p>
+<pre><code class="language-html">&lt;h1 class=&quot;logo-title&quot; v-if=&quot;$store.getters.sidebarOpened&quot;&gt;
+        {{ $t('msg.test') }}
+&lt;/h1&gt;
+</code></pre>
+</li>
+<li>
+<p>修改 <code>locale</code> 的值，即可改变展示的内容</p>
+</li>
+</ol>
+<p>截止到现在我们已经实现了 <code>i18n</code> 的最基础用法，那么解下来我们就可以在项目中使用 <code>i18n</code> 完成国际化。</p>
+<p>项目中完成国际化分成以下几步进行:</p>
+<ol>
+<li>封装 <code>langSelect</code> 组件用于修改 <code>locale</code></li>
+<li>导入 <code>el-locale</code> 语言包</li>
+<li>创建自定义语言包</li>
+</ol>
+<h3><a id="%E6%96%B9%E6%A1%88%E8%90%BD%E5%9C%B0%EF%BC%9A%E5%B0%81%E8%A3%85langselect%E7%BB%84%E4%BB%B6" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>方案落地：封装  langSelect  组件</h3>
+<ol>
+<li>
+<p>定义 <code>store/app.js</code></p>
+<pre><code class="language-js">import { LANG } from '@/constant'
+import { getItem, setItem } from '@/utils/storage'
+export default {
+  namespaced: true,
+  state: () =&gt; ({
+    ...
+    language: getItem(LANG) || 'zh'
+  }),
+  mutations: {
+    ...
+    /**
+     * 设置国际化
+     */
+    setLanguage(state, lang) {
+      setItem(LANG, lang)
+      state.language = lang
+    }
+  },
+  actions: {}
+}
+
+</code></pre>
+</li>
+<li>
+<p>在 <code>constant</code> 中定义常量</p>
+<pre><code class="language-js">// 国际化
+export const LANG = 'language'
+</code></pre>
+</li>
+<li>
+<p>创建 <code>components/LangSelect/index</code></p>
+<pre><code class="language-html">&lt;template&gt;
+  &lt;el-dropdown
+    trigger=&quot;click&quot;
+    class=&quot;international&quot;
+    @command=&quot;handleSetLanguage&quot;
+  &gt;
+    &lt;div&gt;
+      &lt;el-tooltip content=&quot;国际化&quot; :effect=&quot;effect&quot;&gt;
+        &lt;svg-icon icon=&quot;language&quot; /&gt;
+      &lt;/el-tooltip&gt;
+    &lt;/div&gt;
+    &lt;template #dropdown&gt;
+      &lt;el-dropdown-menu&gt;
+        &lt;el-dropdown-item :disabled=&quot;language === 'zh'&quot; command=&quot;zh&quot;&gt;
+          中文
+        &lt;/el-dropdown-item&gt;
+        &lt;el-dropdown-item :disabled=&quot;language === 'en'&quot; command=&quot;en&quot;&gt;
+          English
+        &lt;/el-dropdown-item&gt;
+      &lt;/el-dropdown-menu&gt;
+    &lt;/template&gt;
+  &lt;/el-dropdown&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { useI18n } from 'vue-i18n'
+import { defineProps, computed } from 'vue'
+import { useStore } from 'vuex'
+import { ElMessage } from 'element-plus'
+
+defineProps({
+  effect: {
+    type: String,
+    default: 'dark',
+    validator: function(value) {
+      // 这个值必须匹配下列字符串中的一个
+      return ['dark', 'light'].indexOf(value) !== -1
+    }
+  }
+})
+
+const store = useStore()
+const language = computed(() =&gt; store.getters.language)
+
+// 切换语言的方法
+const i18n = useI18n()
+const handleSetLanguage = lang =&gt; {
+  i18n.locale.value = lang
+  store.commit('app/setLanguage', lang)
+  ElMessage.success('更新成功')
+}
+&lt;/script&gt;
+</code></pre>
+</li>
+<li>
+<p>在 <code>navbar</code> 中导入 <code>LangSelect</code></p>
+<pre><code class="language-html">&lt;template&gt;
+  &lt;div class=&quot;navbar&quot;&gt;
+    ...
+    &lt;div class=&quot;right-menu&quot;&gt;
+      &lt;lang-select class=&quot;right-menu-item hover-effect&quot; /&gt;
+      &lt;!-- 头像 --&gt;
+      ...
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import LangSelect from '@/components/LangSelect'
+...
+&lt;/script&gt;
+
+&lt;style lang=&quot;scss&quot; scoped&gt;
+.navbar {
+  ...
+
+  .right-menu {
+    ...
+
+    ::v-deep .right-menu-item {
+      display: inline-block;
+      padding: 0 18px 0 0;
+      font-size: 24px;
+      color: #5a5e66;
+      vertical-align: text-bottom;
+
+      &amp;.hover-effect {
+        cursor: pointer;
+      }
+    }
+
+    ...
+}
+&lt;/style&gt;
+
+</code></pre>
+</li>
+</ol>
+<h3><a id="%E6%96%B9%E6%A1%88%E8%90%BD%E5%9C%B0%EF%BC%9Aelement-plus%E5%9B%BD%E9%99%85%E5%8C%96%E5%A4%84%E7%90%86" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>方案落地：element-plus 国际化处理</h3>
+<p>截止到目前，我们的国际化内容已经基本功能已经处理完成了。接下来需要处理的就是对应的语言包，有了语言包就可以实现整个项目中的所有国际化处理了。</p>
+<p>那么对于语言包来说，我们整个项目中会分成两部分：</p>
+<ol>
+<li><code>element-plus</code> 语言包：用来处理 <code>element</code> 组件的国际化功能</li>
+<li>自定义语言包：用来处理 <strong>非</strong><code>element</code> 组件的国际化功能</li>
+</ol>
+<p>那么首先我们先来处理 <code>element-plus</code> 语言包：</p>
+<p>按照正常的逻辑，我们是可以通过 <code>element-ui</code> 配合 <code>vue-i18n</code>来实现国际化功能的，但是目前的 <code>element-plus</code> 尚未提供配合  <code>vue-i18n</code> 实现国际化的方式！</p>
+<p>所以说，我们暂时只能先去做临时处理，等到 <code>element-plus</code> 支持 <code>vue-i18n</code> 功能之后，我们再进行对接实现</p>
+<p>那么临时处理我们怎么去做呢？</p>
+<ol>
+<li>
+<p>升级 <code>element-plus</code> 到最新版本</p>
+<pre><code class="language-plain_text">npm i element-plus
+</code></pre>
+<p>目前课程中使用的最新版本为：<code>^1.1.0-beta.15</code></p>
+</li>
+<li>
+<p>升级版本之后，左侧 <code>menu</code> 菜单无法正常显示，这是因为 <code>element-plus</code> 修改了 <code>el-submenu</code> 的组件名称</p>
+</li>
+<li>
+<p>到 <code>layout/components/Sidebar/SidebarItem</code> 中，修改 <code>el-submenu</code> 为 <code>el-sub-menu</code></p>
+</li>
+<li>
+<p>接下来实现国际化</p>
+</li>
+<li>
+<p>在 <code>plugins/index</code> 中导入 <code>element</code> 的中文、英文语言包：</p>
+</li>
+</ol>
+<pre><code class="language-js">import zhCn from 'element-plus/es/locale/lang/zh-cn'
+import en from 'element-plus/lib/locale/lang/en'
+</code></pre>
+<ol start="6">
+<li>
+<p>注册 <code>element</code> 时，根据当前语言选择使用哪种语言包</p>
+<pre><code class="language-js">import store from '@/store'
+
+export default app =&gt; {
+  app.use(ElementPlus, {
+    locale: store.getters.language === 'en' ? en : zhCn
+  })
+}
+</code></pre>
+</li>
+</ol>
+<h3><a id="%E6%96%B9%E6%A1%88%E8%90%BD%E5%9C%B0%EF%BC%9A%E8%87%AA%E5%AE%9A%E4%B9%89%E8%AF%AD%E8%A8%80%E5%8C%85%E5%9B%BD%E9%99%85%E5%8C%96%E5%A4%84%E7%90%86" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>方案落地：自定义语言包国际化处理</h3>
+<p>处理完 <code>element</code> 的国际化内容之后，接下来我们来处理 <strong>自定义语言包</strong>。</p>
+<p>自定义语言包我们使用了 <code>commonJS</code> 导出了一个对象，这个对象就是所有的 <strong>自定义语言对象</strong></p>
+<blockquote>
+<p>大家可以在 <strong>资料/lang</strong> 中获取到所有的语言包</p>
+</blockquote>
+<ol>
+<li>
+<p>复制 <code>lang</code> 文件夹到 <code>i18n</code> 中</p>
+</li>
+<li>
+<p>在 <code>lang/index</code> 中，导入语言包</p>
+<pre><code class="language-js">import mZhLocale from './lang/zh'
+import mEnLocale from './lang/en'
+</code></pre>
+</li>
+<li>
+<p>在 <code>messages</code> 中注册到语言包</p>
+<pre><code class="language-js">const messages = {
+  en: {
+    msg: {
+      ...mEnLocale
+    }
+  },
+  zh: {
+    msg: {
+      ...mZhLocale
+    }
+  }
+}
+</code></pre>
+</li>
+</ol>
+<h3><a id="%E6%96%B9%E6%A1%88%E8%90%BD%E5%9C%B0%EF%BC%9A%E5%A4%84%E7%90%86%E9%A1%B9%E7%9B%AE%E5%9B%BD%E9%99%85%E5%8C%96%E5%86%85%E5%AE%B9" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>方案落地：处理项目国际化内容</h3>
+<p>在处理好了国际化的语言包之后，接下来我们就可以应用国际化功能到我们的项目中</p>
+<p>对于我们目前的项目而言，需要进行国际化处理的地方主要分为：</p>
+<ol>
+<li>登录页面</li>
+<li><code>navbar</code> 区域</li>
+<li><code>sidebar</code> 区域</li>
+<li>面包屑区域</li>
+</ol>
+<p>那么这一小节，我们先来处理前两个</p>
+<p><strong>登录页面：</strong></p>
+<p><code>login/index</code></p>
+<pre><code class="language-html">&lt;template&gt;
+  &lt;div class=&quot;login-container&quot;&gt;
+    ...
+      &lt;div class=&quot;title-container&quot;&gt;
+        &lt;h3 class=&quot;title&quot;&gt;{{ $t('msg.login.title') }}&lt;/h3&gt;
+          &lt;lang-select class=&quot;lang-select&quot; effect=&quot;light&quot;&gt;&lt;/lang-select&gt;
+      &lt;/div&gt;
+
+      ...
+
+      &lt;el-button
+        type=&quot;primary&quot;
+        style=&quot;width: 100%; margin-bottom: 30px&quot;
+        :loading=&quot;loading&quot;
+        @click=&quot;handleLogin&quot;
+        &gt;{{ $t('msg.login.loginBtn') }}&lt;/el-button
+      &gt;
+      
+      &lt;div class=&quot;tips&quot; v-html=&quot;$t('msg.login.desc')&quot;&gt;&lt;/div&gt;
+    &lt;/el-form&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { useI18n } from 'vue-i18n'
+...
+// 验证规则
+const i18n = useI18n()
+const loginRules = ref({
+  username: [
+    {
+      ...
+      message: i18n.t('msg.login.usernameRule')
+    }
+  ],
+  ...
+})
+...
+&lt;/script&gt;
+
+
+</code></pre>
+<p><code>login/rules</code></p>
+<pre><code class="language-js">import i18n from '@/i18n'
+export const validatePassword = () =&gt; {
+  return (rule, value, callback) =&gt; {
+    if (value.length &lt; 6) {
+      callback(new Error(i18n.global.t('msg.login.passwordRule')))
+    } else {
+      callback()
+    }
+  }
+}
+
+</code></pre>
+<p><strong><code>navbar</code> 区域</strong></p>
+<p><code>layout/components/navbar</code></p>
+<pre><code class="language-html">&lt;template&gt;
+  &lt;div class=&quot;navbar&quot;&gt;
+    ...
+        &lt;template #dropdown&gt;
+          &lt;el-dropdown-menu class=&quot;user-dropdown&quot;&gt;
+            &lt;router-link to=&quot;/&quot;&gt;
+              &lt;el-dropdown-item&gt; {{ $t('msg.navBar.home') }} &lt;/el-dropdown-item&gt;
+            &lt;/router-link&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;&quot;&gt;
+              &lt;el-dropdown-item&gt;{{ $t('msg.navBar.course') }}&lt;/el-dropdown-item&gt;
+            &lt;/a&gt;
+            &lt;el-dropdown-item divided @click=&quot;logout&quot;&gt;
+              {{ $t('msg.navBar.logout') }}
+            &lt;/el-dropdown-item&gt;
+          &lt;/el-dropdown-menu&gt;
+        &lt;/template&gt;
+      &lt;/el-dropdown&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+</code></pre>
+<p><code>components/LangSelect/index</code></p>
+<pre><code class="language-html">&lt;el-tooltip :content=&quot;$t('msg.navBar.lang')&quot; :effect=&quot;effect&quot;&gt;
+       ...
+    
+    
+const handleSetLanguage = lang =&gt; {
+  ...
+  ElMessage.success(i18n.t('msg.toast.switchLangSuccess'))
+}
+</code></pre>
+<h3><a id="%E6%96%B9%E6%A1%88%E8%90%BD%E5%9C%B0%EF%BC%9Asidebar%E4%B8%8E%E9%9D%A2%E5%8C%85%E5%B1%91%E5%8C%BA%E5%9F%9F%E7%9A%84%E5%9B%BD%E9%99%85%E5%8C%96%E5%A4%84%E7%90%86" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>方案落地：sidebar 与 面包屑 区域的国际化处理</h3>
+<p><strong>sidebar 区域</strong></p>
+<p>目前对于 <code>sidebar</code> 而言，显示的文本是我们在定义路由表时的 <code>title</code></p>
+<pre><code class="language-html">&lt;span&gt;{{ title }}&lt;/span&gt;
+</code></pre>
+<p>我们可以 <strong>把 <code>title</code> 作为语言包内容的 <code>key</code> 进行处理</strong></p>
+<p>创建 <code>utils/i18n</code> 工具模块，用于 <strong>将 <code>title</code> 转化为国际化内容</strong></p>
+<pre><code class="language-js">import i18n from '@/i18n'
+export function generateTitle(title) {
+  return i18n.global.t('msg.route.' + title)
+}
+
+</code></pre>
+<p>在 <code>layout/components/Sidebar/MenuItem.vue</code> 中导入该方法：</p>
+<pre><code class="language-html">&lt;template&gt;
+  ...
+  &lt;span&gt;{{ generateTitle(title) }}&lt;/span&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { generateTitle } from '@/utils/i18n'
+...
+&lt;/script&gt;
+
+</code></pre>
+<p>最后修改下 <code>sidebarHeader</code> 的内容</p>
+<pre><code class="language-php+HTML">&lt;h1 class=&quot;logo-title&quot; v-if=&quot;$store.getters.sidebarOpened&quot;&gt;
+	imooc-admin
+&lt;/h1&gt;
+</code></pre>
+<p><strong>面包屑区域：</strong></p>
+<p>在 <code>components/Breadcrumb/index</code></p>
+<pre><code class="language-html">&lt;template&gt;
+...
+    &lt;!-- 不可点击项 --&gt;
+    &lt;span v-if=&quot;index === breadcrumbData.length - 1&quot; class=&quot;no-redirect&quot;&gt;{{
+        generateTitle(item.meta.title)
+        }}&lt;/span&gt;
+    &lt;!-- 可点击项 --&gt;
+    &lt;a v-else class=&quot;redirect&quot; @click.prevent=&quot;onLinkClick(item)&quot;&gt;{{
+        generateTitle(item.meta.title)
+        }}&lt;/a&gt;
+...
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { generateTitle } from '@/utils/i18n'
+...
+&lt;/script&gt;
+
+</code></pre>
+<h3><a id="%E6%96%B9%E6%A1%88%E8%90%BD%E5%9C%B0%EF%BC%9A%E5%9B%BD%E9%99%85%E5%8C%96%E7%BC%93%E5%AD%98%E5%A4%84%E7%90%86" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>方案落地：国际化缓存处理</h3>
+<p>我们希望在 <strong>刷新页面后，当前的国际化选择可以被保留</strong>，所以想要实现这个功能，那么就需要进行 <strong>国际化的缓存处理</strong></p>
+<p>此处的缓存，我们依然通过两个方面进行：</p>
+<ol>
+<li><code>vuex</code> 缓存</li>
+<li><code>LocalStorage</code> 缓存</li>
+</ol>
+<p>只不过这里的缓存，我们已经在处理 <strong><code>langSelect</code> 组件时</strong> 处理完成了，所以此时我们只需要使用缓存下来的数据即可。</p>
+<p>在 <code>i18n/index</code> 中，创建 <code>getLanguage</code> 方法：</p>
+<pre><code class="language-js">import store from '@/store'
+/**
+ * 返回当前 lang
+ */
+function getLanguage() {
+  return store &amp;&amp; store.getters &amp;&amp; store.getters.language
+}
+</code></pre>
+<p>修改 <code>createI18n</code> 的 <code>locale</code> 为 <code>getLanguage()</code></p>
+<pre><code class="language-js">const i18n = createI18n({
+  ...
+  locale: getLanguage()
+})
+</code></pre>
+<h3><a id="%E5%9B%BD%E9%99%85%E5%8C%96%E6%96%B9%E6%A1%88%E6%80%BB%E7%BB%93" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>国际化方案总结</h3>
+<p>国际化是前端项目中的一个非常常见的功能，那么在前端项目中实现国际化主要依靠的就是 <code>vue-i18n</code> 这个第三方的包。</p>
+<p>关于国际化的实现原理大家可以参照 <strong>国际化实现原理</strong> 这一小节，这里我们就不再赘述了。</p>
+<p>而  <code>i18n</code> 的使用，整体来说就分为这么四步：</p>
+<ol>
+<li>创建 <code>messages</code> 数据源</li>
+<li>创建 <code>locale</code> 语言变量</li>
+<li>初始化 <code>i18n</code> 实例</li>
+<li>注册 <code>i18n</code> 实例</li>
+</ol>
+<p>核心的内容其实就是 数据源的部分，但是大家需要注意，如果你的项目中使用了 <strong>第三方组件库</strong> ，那么不要忘记 <strong>第三方组件库的数据源</strong> 需要 <strong>单独</strong> 进行处理！</p>
+<h2><a id="%E5%8A%A8%E6%80%81%E6%8D%A2%E8%82%A4%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>动态换肤实现原理</h2>
+<p>接下来我们来处理 <strong>动态换肤</strong> 功能。</p>
+<p>关于 <strong>动态换肤</strong> 我们之前已经提到过了，在 <code>layout/components/Sidebar/SidebarMenu.vue</code> 中，我们实现 <code>el-menu</code> 的背景色时，说过：<strong>此处将来会实现换肤功能，所以我们不能直接写死，而需要通过一个动态的值，来进行指定</strong></p>
+<pre><code class="language-html">&lt;el-menu
+    :default-active=&quot;activeMenu&quot;
+    :collapse=&quot;!$store.getters.sidebarOpened&quot;
+    :background-color=&quot;$store.getters.cssVar.menuBg&quot;
+    :text-color=&quot;$store.getters.cssVar.menuText&quot;
+    :active-text-color=&quot;$store.getters.cssVar.menuActiveText&quot;
+    :unique-opened=&quot;true&quot;
+    router
+  &gt;x'z
+    ...
+  &lt;/el-menu&gt;
+</code></pre>
+<p>那么换句话而言，想要实现 <strong>动态换肤</strong> 的一个前置条件就是：<strong>色值不可以写死！</strong></p>
+<p>那么为什么会有这个前置条件呢？动态换肤又是如何来去实现的呢？这一小节我们来看一下这个问题。</p>
+<p>首先我们先来说一下动态换肤的实现方式。</p>
+<p>在 <code>scss</code> 中，我们可以通过 <code>$变量名:变量值</code> 的方式定义  <code>css 变量</code>，然后通过该 <code>css 变量</code> 来去指定某一块 <code>DOM</code> 对应的颜色。</p>
+<p>那么大家可以想一下，如果我此时改变了该 <code>css 变量</code> 的值，那么所对应的 <code>DOM</code> 颜色是不是也会同步发生变化？</p>
+<p>当大量的 <code>DOM</code> 都依赖于这个 <code>css 变量</code> 设置颜色时，我们是不是只需要改变这个 <code>css 变量</code>，那么所有 <code>DOM</code> 的颜色是不是都会发生变化，所谓的 <strong>动态换肤</strong> 是不是就可以实现了！</p>
+<p>这个就是实现 <strong>动态换肤</strong> 的原理。</p>
+<p>而在我们的项目中想要实现动态换肤，需要同时处理两个方面的内容：</p>
+<ol>
+<li><code>element-plus</code> 主题</li>
+<li>非 <code>element-plus</code> 主题</li>
+</ol>
+<p>那么下面我们就分别来去处理这两块主题对应的内容</p>
+<h3><a id="%E5%8A%A8%E6%80%81%E6%8D%A2%E8%82%A4%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>动态换肤原理分析</h3>
+<p>接下来我们来处理 <strong>动态换肤</strong> 功能</p>
+<p>关于 <strong>动态换肤</strong> 我们之前已经提到过了，在 <code>layout/components/SidebarMenu.vue</code> 中，我们实现 <code>el-menu</code> 的背景色时，说过 <strong>此处将来会实现换肤功能，所以我们不能直接写死，而需要通过一个动态的值进行指定</strong></p>
+<pre><code class="language-html"> &lt;el-menu
+    :default-active=&quot;activeMenu&quot;
+    :collapse=&quot;!$store.getters.sidebarOpened&quot;
+    :background-color=&quot;$store.getters.cssVar.menuBg&quot;
+    :text-color=&quot;$store.getters.cssVar.menuText&quot;
+    :active-text-color=&quot;$store.getters.cssVar.menuActiveText&quot;
+    :unique-opened=&quot;true&quot;
+    router
+  &gt;
+</code></pre>
+<p>那么换句话而言，想要实现 <strong>动态换肤</strong> 的一个前置条件就是：<strong>色值不可以写死！</strong></p>
+<p>那么为什么会有这个前置条件呢？动态换肤又是如何去进行实现的呢？这一小节我们来看一下这个问题。</p>
+<p>首先我们先来说一下动态换肤的实现方式。</p>
+<p>在 <code>scss</code> 中，我们可以通过 <code>$变量名:变量值</code> 的方式定义 <code>css 变量</code> ，然后通过该 <code>css</code> 来去指定某一块 <code>DOM</code> 对应的颜色。</p>
+<p>那么大家可以想一下，如果我此时改变了该 <code>css</code> 变量的值，那么对应的 <code>DOM</code> 颜色是不是也会同步发生变化。</p>
+<p>当大量的 <code>DOM</code> 都依赖这个 <code>css 变量</code> 设置颜色时，我们是不是只需要改变这个 <code>css 变量</code> ，那么所有 <code>DOM</code> 的颜色是不是都会发生变化，所谓的 <strong>动态换肤</strong> 是不是就可以实现了！</p>
+<p>这个就是 <strong>动态换肤</strong> 的实现原理</p>
+<p>而在我们的项目中想要实现动态换肤，需要同时处理两个方面的内容：</p>
+<ol>
+<li><code>element-plus</code> 主题</li>
+<li>非 <code>element-plus</code> 主题</li>
+</ol>
+<p>那么下面我们就分别来去处理这两块主题对应的内容</p>
+<h3><a id="%E5%8A%A8%E6%80%81%E6%8D%A2%E8%82%A4%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%A1%88%E5%88%86%E6%9E%90" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>动态换肤实现方案分析</h3>
+<p>明确好了原理之后，接下来我们就来理一下咱们的实现思路。</p>
+<p>从原理中我们可以得到以下两个关键信息：</p>
+<ol>
+<li>动态换肤的关键是修改 <code>css 变量</code> 的值</li>
+<li>换肤需要同时兼顾
+<ol>
+<li><code>element-plus</code></li>
+<li>非 <code>element-plus</code></li>
+</ol>
+</li>
+</ol>
+<p>那么根据以上关键信息，我们就可以得出对应的实现方案</p>
+<ol>
+<li>创建一个组件 <code>ThemeSelect</code> 用来处理修改之后的 <code>css 变量</code> 的值</li>
+<li>根据新值修改 <code>element-plus</code>  主题色</li>
+<li>根据新值修改非 <code>element-plus</code>  主题色</li>
+</ol>
+<h3><a id="%E6%96%B9%E6%A1%88%E8%90%BD%E5%9C%B0%EF%BC%9A%E5%88%9B%E5%BB%BAthemeselect%E7%BB%84%E4%BB%B6" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>方案落地：创建  ThemeSelect 组件</h3>
+<p>查看完成之后的项目我们可以发现，<code>ThemeSelect</code> 组件将由两部分组成：</p>
+<ol>
+<li><code>navbar</code> 中的展示图标</li>
+<li>选择颜色的弹出层</li>
+</ol>
+<p>那么本小节我们就先来处理第一个 <strong><code>navbar</code> 中的展示图标</strong></p>
+<p>创建 <code>components/ThemeSelect/index</code> 组件</p>
+<pre><code class="language-html">&lt;template&gt;
+  &lt;!-- 主题图标  
+  v-bind：https://v3.cn.vuejs.org/api/instance-properties.html#attrs --&gt;
+  &lt;el-dropdown
+    v-bind=&quot;$attrs&quot;
+    trigger=&quot;click&quot;
+    class=&quot;theme&quot;
+    @command=&quot;handleSetTheme&quot;
+  &gt;
+    &lt;div&gt;
+      &lt;el-tooltip :content=&quot;$t('msg.navBar.themeChange')&quot;&gt;
+        &lt;svg-icon icon=&quot;change-theme&quot; /&gt;
+      &lt;/el-tooltip&gt;
+    &lt;/div&gt;
+    &lt;template #dropdown&gt;
+      &lt;el-dropdown-menu&gt;
+        &lt;el-dropdown-item command=&quot;color&quot;&gt;
+          {{ $t('msg.theme.themeColorChange') }}
+        &lt;/el-dropdown-item&gt;
+      &lt;/el-dropdown-menu&gt;
+    &lt;/template&gt;
+  &lt;/el-dropdown&gt;
+  &lt;!-- 展示弹出层 --&gt;
+  &lt;div&gt;&lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+const handleSetTheme = command =&gt; {}
+&lt;/script&gt;
+
+&lt;style lang=&quot;scss&quot; scoped&gt;&lt;/style&gt;
+
+</code></pre>
+<p>在 <code>layout/components/navbar</code> 中进行引用</p>
+<pre><code class="language-html">&lt;div class=&quot;right-menu&quot;&gt;
+      &lt;theme-picker class=&quot;right-menu-item hover-effect&quot;&gt;&lt;/theme-picker&gt;
+      
+import ThemePicker from '@/components/ThemeSelect/index'
+</code></pre>
+<h3><a id="%E6%96%B9%E6%A1%88%E8%90%BD%E5%9C%B0%EF%BC%9A%E5%88%9B%E5%BB%BAselectcolor%E7%BB%84%E4%BB%B6" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>方案落地：创建  SelectColor 组件</h3>
+<p>在有了 <code>ThemeSelect </code> 之后，接下来我们来去处理颜色选择的组件 <code>SelectColor</code>，在这里我们会用到 <code>element</code> 中的 <code>el-color-picker</code> 组件</p>
+<p>对于 <code>SelectColor</code> 的处理，我们需要分成两步进行：</p>
+<ol>
+<li>完成 <code>SelectColor</code> 弹窗展示的双向数据绑定</li>
+<li>把选中的色值进行本地缓存</li>
+</ol>
+<p>那么下面咱们先来看第一步：<strong>完成 <code>SelectColor</code> 弹窗展示的双向数据绑定</strong></p>
+<p>创建 <code>components/ThemePicker/components/SelectColor.vue</code></p>
+<pre><code class="language-html">&lt;template&gt;
+  &lt;el-dialog title=&quot;提示&quot; :model-value=&quot;modelValue&quot; @close=&quot;closed&quot; width=&quot;22%&quot;&gt;
+    &lt;div class=&quot;center&quot;&gt;
+      &lt;p class=&quot;title&quot;&gt;{{ $t('msg.theme.themeColorChange') }}&lt;/p&gt;
+      &lt;el-color-picker
+        v-model=&quot;mColor&quot;
+        :predefine=&quot;predefineColors&quot;
+      &gt;&lt;/el-color-picker&gt;
+    &lt;/div&gt;
+    &lt;template #footer&gt;
+      &lt;span class=&quot;dialog-footer&quot;&gt;
+        &lt;el-button @click=&quot;closed&quot;&gt;{{ $t('msg.universal.cancel') }}&lt;/el-button&gt;
+        &lt;el-button type=&quot;primary&quot; @click=&quot;comfirm&quot;&gt;{{
+          $t('msg.universal.confirm')
+        }}&lt;/el-button&gt;
+      &lt;/span&gt;
+    &lt;/template&gt;
+  &lt;/el-dialog&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { defineProps, defineEmits, ref } from 'vue'
+defineProps({
+  modelValue: {
+    type: Boolean,
+    required: true
+  }
+})
+const emits = defineEmits(['update:modelValue'])
+
+// 预定义色值
+const predefineColors = [
+  '#ff4500',
+  '#ff8c00',
+  '#ffd700',
+  '#90ee90',
+  '#00ced1',
+  '#1e90ff',
+  '#c71585',
+  'rgba(255, 69, 0, 0.68)',
+  'rgb(255, 120, 0)',
+  'hsv(51, 100, 98)',
+  'hsva(120, 40, 94, 0.5)',
+  'hsl(181, 100%, 37%)',
+  'hsla(209, 100%, 56%, 0.73)',
+  '#c7158577'
+]
+// 默认色值
+const mColor = ref('#00ff00')
+
+/**
+ * 关闭
+ */
+const closed = () =&gt; {
+  emits('update:modelValue', false)
+}
+/**
+ * 确定
+ * 1. 修改主题色
+ * 2. 保存最新的主题色
+ * 3. 关闭 dialog
+ */
+const comfirm = async () =&gt; {
+  // 3. 关闭 dialog
+  closed()
+}
+&lt;/script&gt;
+
+&lt;style lang=&quot;scss&quot; scoped&gt;
+.center {
+  text-align: center;
+  .title {
+    margin-bottom: 12px;
+  }
+}
+&lt;/style&gt;
+
+</code></pre>
+<p>在 <code>ThemePicker/index</code> 中使用该组件</p>
+<pre><code class="language-html">&lt;template&gt;
+  ...
+  &lt;!-- 展示弹出层 --&gt;
+  &lt;div&gt;
+    &lt;select-color v-model=&quot;selectColorVisible&quot;&gt;&lt;/select-color&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import SelectColor from './components/SelectColor.vue'
+import { ref } from 'vue'
+
+const selectColorVisible = ref(false)
+const handleSetTheme = command =&gt; {
+  selectColorVisible.value = true
+}
+&lt;/script&gt;
+
+</code></pre>
+<p>完成双向数据绑定之后，我们来处理第二步：<strong>把选中的色值进行本地缓存</strong></p>
+<p>缓存的方式分为两种：</p>
+<ol>
+<li><code>vuex</code></li>
+<li>本地存储</li>
+</ol>
+<p>在 <code>constants/index</code> 下新建常量值</p>
+<pre><code class="language-js">// 主题色保存的 key
+export const MAIN_COLOR = 'mainColor'
+// 默认色值
+export const DEFAULT_COLOR = '#409eff'
+</code></pre>
+<p>创建 <code>store/modules/theme</code> 模块，用来处理 <strong>主题色</strong> 相关内容</p>
+<pre><code class="language-js">import { getItem, setItem } from '@/utils/storage'
+import { MAIN_COLOR, DEFAULT_COLOR } from '@/constant'
+export default {
+  namespaced: true,
+  state: () =&gt; ({
+    mainColor: getItem(MAIN_COLOR) || DEFAULT_COLOR
+  }),
+  mutations: {
+    /**
+     * 设置主题色
+     */
+    setMainColor(state, newColor) {
+      state.mainColor = newColor
+      setItem(MAIN_COLOR, newColor)
+    }
+  }
+}
+</code></pre>
+<p>在 <code>store/getters</code> 下指定快捷访问</p>
+<pre><code class="language-js">mainColor: state =&gt; state.theme.mainColor
+</code></pre>
+<p>在 <code>store/index</code> 中导入 <code>theme</code></p>
+<pre><code class="language-js">...
+import theme from './modules/theme.js'
+
+export default createStore({
+  getters,
+  modules: {
+    ...
+    theme
+  }
+})
+</code></pre>
+<p>在 <code>selectColor</code> 中，设置初始色值 和  缓存色值</p>
+<pre><code class="language-html">...
+
+&lt;script setup&gt;
+import { defineProps, defineEmits, ref } from 'vue'
+import { useStore } from 'vuex'
+...
+const store = useStore()
+// 默认色值
+const mColor = ref(store.getters.mainColor)
+...
+/**
+ * 确定
+ * 1. 修改主题色
+ * 2. 保存最新的主题色
+ * 3. 关闭 dialog
+ */
+const comfirm = async () =&gt; {
+  // 2. 保存最新的主题色
+  store.commit('theme/setMainColor', mColor.value)
+  // 3. 关闭 dialog
+  closed()
+}
+&lt;/script&gt;
+
+
+</code></pre>
+<h3><a id="%E6%96%B9%E6%A1%88%E8%90%BD%E5%9C%B0%EF%BC%9A%E5%A4%84%E7%90%86element-plus%E4%B8%BB%E9%A2%98%E5%8F%98%E6%9B%B4%E5%8E%9F%E7%90%86%E4%B8%8E%E6%AD%A5%E9%AA%A4%E5%88%86%E6%9E%90" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>方案落地：处理 element-plus 主题变更原理与步骤分析</h3>
+<p>对于 <code>element-plus</code> 的主题变更，相对比较复杂，所以说整个过程我们会分为三部分：</p>
+<ol>
+<li>实现原理</li>
+<li>实现步骤</li>
+<li>实现过程</li>
+</ol>
+<p><strong>实现原理：</strong></p>
+<p>在之前我们分析主题变更的实现原理时，我们说过，核心的原理是：<strong>通过修改 <code>scss</code> 变量</strong>的形式修改主题色完成主题变更</p>
+<p>但是对于 <code>element-plus</code> 而言，我们怎么去修改这样的主题色呢？</p>
+<p>其实整体的原理非常简单，分为三步：</p>
+<ol>
+<li>获取当前 <code>element-plus</code> 的所有样式</li>
+<li>找到我们想要替换的样式部分，通过正则完成替换</li>
+<li>把替换后的样式写入到 <code>style</code> 标签中，利用样式优先级的特性，替代固有样式</li>
+</ol>
+<p><strong>实现步骤：</strong></p>
+<p>那么明确了原理之后，我们的实现步骤也就呼之欲出了，对应原理总体可分为四步：</p>
+<ol>
+<li>获取当前 <code>element-plus</code> 的所有样式</li>
+<li>定义我们要替换之后的样式</li>
+<li>在原样式中，利用正则替换新样式</li>
+<li>把替换后的样式写入到 <code>style</code> 标签中</li>
+</ol>
+<h2><a id="%E6%96%B9%E6%A1%88%E8%90%BD%E5%9C%B0%EF%BC%9A%E5%A4%84%E7%90%86element-plus%E4%B8%BB%E9%A2%98%E5%8F%98%E6%9B%B4" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>方案落地：处理 element-plus 主题变更</h2>
+<p>创建 <code>utils/theme</code> 工具类，写入两个方法</p>
+<pre><code class="language-js">/**
+ * 写入新样式到 style
+ * @param {*} elNewStyle  element-plus 的新样式
+ * @param {*} isNewStyleTag 是否生成新的 style 标签
+ */
+export const writeNewStyle = elNewStyle =&gt; {
+  
+}
+
+/**
+ * 根据主色值，生成最新的样式表
+ */
+export const generateNewStyle =  primaryColor =&gt; {
+ 
+}
+</code></pre>
+<p>那么接下来我们先实现第一个方法 <code>generateNewStyle</code>，在实现的过程中，我们需要安装两个工具类：</p>
+<ol>
+<li><a href="https://www.npmjs.com/package/rgb-hex">rgb-hex</a>：转换RGB(A)颜色为十六进制</li>
+<li><a href="https://www.npmjs.com/package/css-color-function">css-color-function</a>：在CSS中提出的颜色函数的解析器和转换器</li>
+</ol>
+<p>然后还需要写入一个 <strong>颜色转化计算器  <code>formula.json</code></strong></p>
+<p>创建 <code>constants/formula.json</code> （<a href="https://gist.github.com/benfrain/7545629%EF%BC%89">https://gist.github.com/benfrain/7545629）</a></p>
+<pre><code class="language-json">{
+  &quot;shade-1&quot;: &quot;color(primary shade(10%))&quot;,
+  &quot;light-1&quot;: &quot;color(primary tint(10%))&quot;,
+  &quot;light-2&quot;: &quot;color(primary tint(20%))&quot;,
+  &quot;light-3&quot;: &quot;color(primary tint(30%))&quot;,
+  &quot;light-4&quot;: &quot;color(primary tint(40%))&quot;,
+  &quot;light-5&quot;: &quot;color(primary tint(50%))&quot;,
+  &quot;light-6&quot;: &quot;color(primary tint(60%))&quot;,
+  &quot;light-7&quot;: &quot;color(primary tint(70%))&quot;,
+  &quot;light-8&quot;: &quot;color(primary tint(80%))&quot;,
+  &quot;light-9&quot;: &quot;color(primary tint(90%))&quot;,
+  &quot;subMenuHover&quot;: &quot;color(primary tint(70%))&quot;,
+  &quot;subMenuBg&quot;: &quot;color(primary tint(80%))&quot;,
+  &quot;menuHover&quot;: &quot;color(primary tint(90%))&quot;,
+  &quot;menuBg&quot;: &quot;color(primary)&quot;
+}
+</code></pre>
+<p>准备就绪后，我们来实现 <code>generateNewStyle</code> 方法：</p>
+<pre><code class="language-js">import color from 'css-color-function'
+import rgbHex from 'rgb-hex'
+import formula from '@/constant/formula.json'
+import axios from 'axios'
+
+/**
+ * 根据主色值，生成最新的样式表
+ */
+export const generateNewStyle = async primaryColor =&gt; {
+  const colors = generateColors(primaryColor)
+  let cssText = await getOriginalStyle()
+
+  // 遍历生成的样式表，在 CSS 的原样式中进行全局替换
+  Object.keys(colors).forEach(key =&gt; {
+    cssText = cssText.replace(
+      new RegExp('(:|\\s+)' + key, 'g'),
+      '$1' + colors[key]
+    )
+  })
+
+  return cssText
+}
+
+/**
+ * 根据主色生成色值表
+ */
+export const generateColors = primary =&gt; {
+  if (!primary) return
+  const colors = {
+    primary
+  }
+  Object.keys(formula).forEach(key =&gt; {
+    const value = formula[key].replace(/primary/g, primary)
+    colors[key] = '#' + rgbHex(color.convert(value))
+  })
+  return colors
+}
+
+/**
+ * 获取当前 element-plus 的默认样式表
+ */
+const getOriginalStyle = async () =&gt; {
+  const version = require('element-plus/package.json').version
+  const url = `https://unpkg.com/element-plus@${version}/dist/index.css`
+  const { data } = await axios(url)
+  // 把获取到的数据筛选为原样式模板
+  return getStyleTemplate(data)
+}
+
+/**
+ * 返回 style 的 template
+ */
+const getStyleTemplate = data =&gt; {
+  // element-plus 默认色值
+  const colorMap = {
+    '#3a8ee6': 'shade-1',
+    '#409eff': 'primary',
+    '#53a8ff': 'light-1',
+    '#66b1ff': 'light-2',
+    '#79bbff': 'light-3',
+    '#8cc5ff': 'light-4',
+    '#a0cfff': 'light-5',
+    '#b3d8ff': 'light-6',
+    '#c6e2ff': 'light-7',
+    '#d9ecff': 'light-8',
+    '#ecf5ff': 'light-9'
+  }
+  // 根据默认色值为要替换的色值打上标记
+  Object.keys(colorMap).forEach(key =&gt; {
+    const value = colorMap[key]
+    data = data.replace(new RegExp(key, 'ig'), value)
+  })
+  return data
+}
+
+</code></pre>
+<p>接下来处理 <code>writeNewStyle</code> 方法：</p>
+<pre><code class="language-js">/**
+ * 写入新样式到 style
+ * @param {*} elNewStyle  element-plus 的新样式
+ * @param {*} isNewStyleTag 是否生成新的 style 标签
+ */
+export const writeNewStyle = elNewStyle =&gt; {
+  const style = document.createElement('style')
+  style.innerText = elNewStyle
+  document.head.appendChild(style)
+}
+</code></pre>
+<p>最后在 <code>SelectColor.vue</code> 中导入这两个方法：</p>
+<pre><code class="language-vue">...
+
+&lt;script setup&gt;
+...
+import { generateNewStyle, writeNewStyle } from '@/utils/theme'
+...
+/**
+ * 确定
+ * 1. 修改主题色
+ * 2. 保存最新的主题色
+ * 3. 关闭 dialog
+ */
+
+const comfirm = async () =&gt; {
+  // 1.1 获取主题色
+  const newStyleText = await generateNewStyle(mColor.value)
+  // 1.2 写入最新主题色
+  writeNewStyle(newStyleText)
+  // 2. 保存最新的主题色
+  store.commit('theme/setMainColor', mColor.value)
+  // 3. 关闭 dialog
+  closed()
+}
+&lt;/script&gt;
+
+</code></pre>
+<p>一些处理完成之后，我们可以在 <code>profile</code> 中通过一些代码进行测试：</p>
+<pre><code class="language-html">&lt;el-row&gt;
+      &lt;el-button&gt;Default&lt;/el-button&gt;
+      &lt;el-button type=&quot;primary&quot;&gt;Primary&lt;/el-button&gt;
+      &lt;el-button type=&quot;success&quot;&gt;Success&lt;/el-button&gt;
+      &lt;el-button type=&quot;info&quot;&gt;Info&lt;/el-button&gt;
+      &lt;el-button type=&quot;warning&quot;&gt;Warning&lt;/el-button&gt;
+      &lt;el-button type=&quot;danger&quot;&gt;Danger&lt;/el-button&gt;
+    &lt;/el-row&gt;
+</code></pre>
+<h2><a id="5-17%EF%BC%9A%E6%96%B9%E6%A1%88%E8%90%BD%E5%9C%B0%EF%BC%9Aelement-plus%E6%96%B0%E4%B8%BB%E9%A2%98%E7%9A%84%E7%AB%8B%E5%8D%B3%E7%94%9F%E6%95%88" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>5-17：方案落地：element-plus 新主题的立即生效</h2>
+<p>到目前我们已经完成了 <code>element-plus</code> 的主题变更，但是当前的主题变更还有一个小问题，那就是：<strong>在刷新页面后，新主题会失效</strong></p>
+<p>那么出现这个问题的原因，非常简单：<strong>因为没有写入新的 <code>style</code></strong></p>
+<p>所以我们只需要在 <strong>应用加载后，写入 <code>style</code> 即可</strong></p>
+<p>那么写入的时机，我们可以放入到 <code>app.vue</code> 中</p>
+<pre><code class="language-vue">&lt;script setup&gt;
+import { useStore } from 'vuex'
+import { generateNewStyle, writeNewStyle } from '@/utils/theme'
+
+const store = useStore()
+generateNewStyle(store.getters.mainColor).then(newStyleText =&gt; {
+  writeNewStyle(newStyleText)
+})
+&lt;/script&gt;
+
+</code></pre>
+<h2><a id="5-18%EF%BC%9A%E6%96%B9%E6%A1%88%E8%90%BD%E5%9C%B0%EF%BC%9A%E8%87%AA%E5%AE%9A%E4%B9%89%E4%B8%BB%E9%A2%98%E5%8F%98%E6%9B%B4" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>5-18：方案落地：自定义主题变更</h2>
+<p>自定义主题变更相对来说比较简单，因为 <strong>自己的代码更加可控</strong>。</p>
+<p>目前在我们的代码中，需要进行 <strong>自定义主题变更</strong> 为  <strong><code>menu</code> 菜单背景色</strong></p>
+<p>而目前指定 <code>menu</code> 菜单背景色的位置在 <code>layout/components/sidebar/SidebarMenu.vue</code> 中</p>
+<pre><code class="language-js">  &lt;el-menu
+    :default-active=&quot;activeMenu&quot;
+    :collapse=&quot;!$store.getters.sidebarOpened&quot;
+    :background-color=&quot;$store.getters.cssVar.menuBg&quot;
+    :text-color=&quot;$store.getters.cssVar.menuText&quot;
+    :active-text-color=&quot;$store.getters.cssVar.menuActiveText&quot;
+    :unique-opened=&quot;true&quot;
+    router
+  &gt;
+</code></pre>
+<p>此处的 背景色是通过 <code>getters</code> 进行指定的，该 <code>cssVar</code> 的 <code>getters</code> 为：</p>
+<pre><code class="language-js">cssVar: state =&gt; variables,
+</code></pre>
+<p>所以，我们想要修改 <strong>自定义主题</strong> ，只需要从这里入手即可。</p>
+<p><strong>根据当前保存的 <code>mainColor</code> 覆盖原有的默认色值</strong></p>
+<pre><code class="language-js">import variables from '@/styles/variables.scss'
+import { MAIN_COLOR } from '@/constant'
+import { getItem } from '@/utils/storage'
+import { generateColors } from '@/utils/theme'
+
+const getters = {
+  ...
+  cssVar: state =&gt; {
+    return {
+      ...variables,
+      ...generateColors(getItem(MAIN_COLOR))
+    }
+  },
+  ...
+}
+export default getters
+
+</code></pre>
+<p>但是我们这样设定之后，整个自定义主题变更，还存在两个问题：</p>
+<ol>
+<li><code>menuBg</code> 背景颜色没有变化<br />
+<img src="第五章：后台项目前端综合解决方案之通用功能开发.assets/image-20210925203000626.png" alt="image-20210925203000626" style="zoom:33%;" /></li>
+</ol>
+<p>这个问题是因为咱们的 <code>sidebar</code> 的背景色未被替换，所以我们可以在 <code>layout/index</code> 中设置 <code>sidebar</code> 的 <code>backgroundColor</code></p>
+<pre><code class="language-html">&lt;sidebar
+      id=&quot;guide-sidebar&quot;
+      class=&quot;sidebar-container&quot;
+      :style=&quot;{ backgroundColor: $store.getters.cssVar.menuBg }&quot;
+    /&gt;
+</code></pre>
+<ol start="2">
+<li>主题色替换之后，需要刷新页面才可响应</li>
+</ol>
+<p>这个是因为 <code>getters</code> 中没有监听到 <strong>依赖值的响应变化</strong>，所以我们希望修改依赖值</p>
+<p>在 <code>store/modules/theme</code> 中</p>
+<pre><code class="language-js">...
+import variables from '@/styles/variables.scss'
+export default {
+  namespaced: true,
+  state: () =&gt; ({
+    ...
+    variables
+  }),
+  mutations: {
+    /**
+     * 设置主题色
+     */
+    setMainColor(state, newColor) {
+      ...
+      state.variables.menuBg = newColor
+      ...
+    }
+  }
+}
+
+</code></pre>
+<p>在 <code>getters</code> 中</p>
+<pre><code class="language-js">....
+
+const getters = {
+ ...
+  cssVar: state =&gt; {
+    return {
+      ...state.theme.variables,
+      ...generateColors(getItem(MAIN_COLOR))
+    }
+  },
+  ...
+}
+export default getters
+
+</code></pre>
+<h2><a id="5-19%EF%BC%9A%E8%87%AA%E5%AE%9A%E4%B9%89%E4%B8%BB%E9%A2%98%E6%96%B9%E6%A1%88%E6%80%BB%E7%BB%93" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>5-19：自定义主题方案总结</h2>
+<p>那么到这里整个自定义主题我们就处理完成了。</p>
+<p>对于 <strong>自定义主题而言</strong>，核心的原理其实就是 <strong>修改<code>scss</code>变量来进行实现主题色变化</strong></p>
+<p>明确好了原理之后，对后续实现的步骤就具体情况具体分析了。</p>
+<ol>
+<li>对于 <code>element-plus</code>：因为 <code>element-plus</code> 是第三方的包，所以它 <strong>不是完全可控</strong> 的，那么对于这种最简单直白的方案，就是直接拿到它编译后的 <code>css</code> 进行色值替换，利用 <code>style</code> <strong>内部样式表</strong> 优先级高于 <strong>外部样式表</strong> 的特性，来进行主题替换</li>
+<li>对于自定义主题：因为自定义主题是 <strong>完全可控</strong> 的，所以我们实现起来就轻松很多，只需要修改对应的 <code>scss</code>变量即可</li>
+</ol>
+<p>那么在之后大家遇到 <strong>自定义主题</strong> 的处理时，就可以按照我们所梳理的方案进行处理了。</p>
+<h2><a id="5-20%EF%BC%9Ascreenfull%E5%8E%9F%E7%90%86%E5%8F%8A%E6%96%B9%E6%A1%88%E5%88%86%E6%9E%90" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>5-20：screenfull 原理及方案分析</h2>
+<p>接下来我们来看 <code>screenfull （全屏）</code> 功能实现</p>
+<p>对于 <code>screenfull </code> 和之前一样 ，我们还是先分析它的原理，然后在制定对应的方案实现</p>
+<p><strong>原理：</strong></p>
+<p>对于 <code>screenfull </code> 而言，浏览器本身已经提供了对用的 <code>API</code>，<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Fullscreen_API">点击这里即可查看</a>，这个 <code>API</code> 中，主要提供了两个方法：</p>
+<ol>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Document/exitFullscreen"><code>Document.exitFullscreen()</code></a>：该方法用于请求从全屏模式切换到窗口模式</li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/requestFullScreen"><code>Element.requestFullscreen()</code></a>：该方法用于请求浏览器（user agent）将特定元素（甚至延伸到它的后代元素）置为全屏模式
+<ol>
+<li>比如我们可以通过 <code>document.getElementById('app').requestFullscreen()</code> 在获取 <code>id=app</code> 的 <code>DOM</code> 之后，把该区域置为全屏</li>
+</ol>
+</li>
+</ol>
+<p>但是该方法存在一定的小问题，比如：</p>
+<ol>
+<li><code>appmain</code> 区域背景颜色为黑色</li>
+</ol>
+<p>所以通常情况下我们不会直接使用该 <code>API</code> 来去实现全屏效果，而是会使用它的包装库 <a href="https://www.npmjs.com/package/screenfull">screenfull</a></p>
+<p><strong>方案：</strong></p>
+<p>那么明确好了原理之后，接下来实现方案就比较容易了。</p>
+<p>整体的方案实现分为两步：</p>
+<ol>
+<li>封装 <code>screenfull</code> 组件
+<ol>
+<li>展示切换按钮</li>
+<li>基于 <a href="https://www.npmjs.com/package/screenfull">screenfull</a> 实现切换功能</li>
+</ol>
+</li>
+<li>在 <code>navbar</code> 中引入该组件</li>
+</ol>
+<h2><a id="5-21%EF%BC%9A%E6%96%B9%E6%A1%88%E8%90%BD%E5%9C%B0%EF%BC%9Ascreenfull" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>5-21：方案落地：screenfull</h2>
+<p>明确好了方案之后，接下来我们就落地该方案</p>
+<p><strong>封装 <code>screenfull</code> 组件：</strong></p>
+<ol>
+<li>
+<p>下来依赖包  <a href="https://www.npmjs.com/package/screenfull">screenfull</a></p>
+<pre><code class="language-plain_text">npm i screenfull@5.1.0
+</code></pre>
+</li>
+<li>
+<p>创建 <code>components/Screenfull/index</code></p>
+<pre><code class="language-vue">&lt;template&gt;
+  &lt;div&gt;
+    &lt;svg-icon
+      :icon=&quot;isFullscreen ? 'exit-fullscreen' : 'fullscreen'&quot;
+      @click=&quot;onToggle&quot;
+    /&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ref, onMounted, onUnmounted } from 'vue'
+import screenfull from 'screenfull'
+
+// 是否全屏
+const isFullscreen = ref(false)
+
+// 监听变化
+const change = () =&gt; {
+  isFullscreen.value = screenfull.isFullscreen
+}
+
+// 切换事件
+const onToggle = () =&gt; {
+  screenfull.toggle()
+}
+
+// 设置侦听器
+onMounted(() =&gt; {
+  screenfull.on('change', change)
+})
+
+// 删除侦听器
+onUnmounted(() =&gt; {
+  screenfull.off('change', change)
+})
+&lt;/script&gt;
+
+&lt;style lang=&quot;scss&quot; scoped&gt;&lt;/style&gt;
+
+</code></pre>
+</li>
+</ol>
+<p><strong>在 <code>navbar</code> 中引入该组件：</strong></p>
+<pre><code class="language-plain_text">&lt;screenfull class=&quot;right-menu-item hover-effect&quot; /&gt;
+import Screenfull from '@/components/Screenfull'
+</code></pre>
+<h2><a id="5-22%EF%BC%9Aheadersearch%E5%8E%9F%E7%90%86%E5%8F%8A%E6%96%B9%E6%A1%88%E5%88%86%E6%9E%90" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>5-22：headerSearch 原理及方案分析</h2>
+<blockquote>
+<p>所谓 <code>headerSearch</code> 指 <strong>页面搜索</strong></p>
+</blockquote>
+<p><strong>原理：</strong></p>
+<p><code>headerSearch</code> 是复杂后台系统中非常常见的一个功能，它可以：<strong>在指定搜索框中对当前应用中所有页面进行检索，以 <code>select</code> 的形式展示出被检索的页面，以达到快速进入的目的</strong></p>
+<p>那么明确好了 <code>headerSearch</code>  的作用之后，接下来我们来看一下对应的实现原理</p>
+<p>根据前面的目的我们可以发现，整个 <code>headerSearch</code> 其实可以分为三个核心的功能点：</p>
+<ol>
+<li>根据指定内容对所有页面进行检索</li>
+<li>以 <code>select</code> 形式展示检索出的页面</li>
+<li>通过检索页面可快速进入对应页面</li>
+</ol>
+<p>那么围绕着这三个核心的功能点，我们想要分析它的原理就非常简单了：<strong>根据指定内容检索所有页面，把检索出的页面以 <code>select</code> 展示，点击对应 <code>option</code> 可进入</strong></p>
+<p><strong>方案：</strong></p>
+<p>对照着三个核心功能点和原理，想要指定对应的实现方案是非常简单的一件事情了</p>
+<ol>
+<li>创建 <code>headerSearch</code> 组件，用作样式展示和用户输入内容获取</li>
+<li>获取所有的页面数据，用作被检索的数据源</li>
+<li>根据用户输入内容在数据源中进行 <a href="https://fusejs.io/">模糊搜索</a></li>
+<li>把搜索到的内容以 <code>select</code> 进行展示</li>
+<li>监听 <code>select</code> 的 <code>change</code> 事件，完成对应跳转</li>
+</ol>
+<h2><a id="5-23%EF%BC%9A%E6%96%B9%E6%A1%88%E8%90%BD%E5%9C%B0%EF%BC%9A%E5%88%9B%E5%BB%BA-headersearch%E7%BB%84%E4%BB%B6" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>5-23：方案落地：创建 headerSearch 组件</h2>
+<p>创建 <code>components/headerSearch/index</code> 组件：</p>
+<pre><code class="language-vue">&lt;template&gt;
+  &lt;div :class=&quot;{ show: isShow }&quot; class=&quot;header-search&quot;&gt;
+    &lt;svg-icon
+      class-name=&quot;search-icon&quot;
+      icon=&quot;search&quot;
+      @click.stop=&quot;onShowClick&quot;
+    /&gt;
+    &lt;el-select
+      ref=&quot;headerSearchSelectRef&quot;
+      class=&quot;header-search-select&quot;
+      v-model=&quot;search&quot;
+      filterable
+      default-first-option
+      remote
+      placeholder=&quot;Search&quot;
+      :remote-method=&quot;querySearch&quot;
+      @change=&quot;onSelectChange&quot;
+    &gt;
+      &lt;el-option
+        v-for=&quot;option in 5&quot;
+        :key=&quot;option&quot;
+        :label=&quot;option&quot;
+        :value=&quot;option&quot;
+      &gt;&lt;/el-option&gt;
+    &lt;/el-select&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ref } from 'vue'
+
+// 控制 search 显示
+const isShow = ref(false)
+// el-select 实例
+const headerSearchSelectRef = ref(null)
+const onShowClick = () =&gt; {
+  isShow.value = !isShow.value
+  headerSearchSelectRef.value.focus()
+}
+
+// search 相关
+const search = ref('')
+// 搜索方法
+const querySearch = () =&gt; {
+  console.log('querySearch')
+}
+// 选中回调
+const onSelectChange = () =&gt; {
+  console.log('onSelectChange')
+}
+&lt;/script&gt;
+
+&lt;style lang=&quot;scss&quot; scoped&gt;
+.header-search {
+  font-size: 0 !important;
+  .search-icon {
+    cursor: pointer;
+    font-size: 18px;
+    vertical-align: middle;
+  }
+  .header-search-select {
+    font-size: 18px;
+    transition: width 0.2s;
+    width: 0;
+    overflow: hidden;
+    background: transparent;
+    border-radius: 0;
+    display: inline-block;
+    vertical-align: middle;
+
+    ::v-deep .el-input__inner {
+      border-radius: 0;
+      border: 0;
+      padding-left: 0;
+      padding-right: 0;
+      box-shadow: none !important;
+      border-bottom: 1px solid #d9d9d9;
+      vertical-align: middle;
+    }
+  }
+  &amp;.show {
+    .header-search-select {
+      width: 210px;
+      margin-left: 10px;
+    }
+  }
+}
+&lt;/style&gt;
+
+</code></pre>
+<p>在 <code>navbar</code> 中导入该组件</p>
+<pre><code class="language-plain_text">&lt;header-search class=&quot;right-menu-item hover-effect&quot;&gt;&lt;/header-search&gt;
+import HeaderSearch from '@/components/HeaderSearch'
+</code></pre>
+<h2><a id="" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a></h2>
+<p>在有了 <code>headerSearch</code> 之后，接下来就可以来处理对应的 <strong>检索数据源了</strong></p>
+<p><strong>检索数据源</strong> 表示：<strong>有哪些页面希望检索</strong></p>
+<p>那么对于我们当前的业务而言，我们希望被检索的页面其实就是左侧菜单中的页面，那么我们检索数据源即为：<strong>左侧菜单对应的数据源</strong></p>
+<p>根据以上原理，我们可以得出以下代码：</p>
+<pre><code class="language-vue">&lt;script setup&gt;
+import { ref, computed } from 'vue'
+import { filterRouters, generateMenus } from '@/utils/route'
+import { useRouter } from 'vue-router'
+...
+// 检索数据源
+const router = useRouter()
+const searchPool = computed(() =&gt; {
+  const filterRoutes = filterRouters(router.getRoutes())
+  console.log(generateMenus(filterRoutes))
+  return generateMenus(filterRoutes)
+})
+console.log(searchPool)
+&lt;/script&gt;
+</code></pre>
+<h2><a id="5-25%EF%BC%9A%E6%96%B9%E6%A1%88%E8%90%BD%E5%9C%B0%EF%BC%9A%E5%AF%B9%E6%A3%80%E7%B4%A2%E6%95%B0%E6%8D%AE%E6%BA%90%E8%BF%9B%E8%A1%8C%E6%A8%A1%E7%B3%8A%E6%90%9C%E7%B4%A2" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>5-25：方案落地：对检索数据源进行模糊搜索</h2>
+<p>如果我们想要进行  <a href="https://fusejs.io/">模糊搜索</a>  的话，那么需要依赖一个第三方的库  <a href="https://fusejs.io/">fuse.js</a></p>
+<ol>
+<li>
+<p>安装 <a href="https://fusejs.io/">fuse.js</a></p>
+<pre><code class="language-plain_text">npm install --save fuse.js@6.4.6
+</code></pre>
+</li>
+<li>
+<p>初始化 <code>Fuse</code>，更多初始化配置项 <a href="https://fusejs.io/api/options.html">可点击这里</a></p>
+<pre><code class="language-js">import Fuse from 'fuse.js'
+
+/**
+ * 搜索库相关
+ */
+const fuse = new Fuse(list, {
+    // 是否按优先级进行排序
+    shouldSort: true,
+    // 匹配长度超过这个值的才会被认为是匹配的
+    minMatchCharLength: 1,
+    // 将被搜索的键列表。 这支持嵌套路径、加权搜索、在字符串和对象数组中搜索。
+    // name：搜索的键
+    // weight：对应的权重
+    keys: [
+      {
+        name: 'title',
+        weight: 0.7
+      },
+      {
+        name: 'path',
+        weight: 0.3
+      }
+    ]
+  })
+
+</code></pre>
+</li>
+<li>
+<p>参考 <a href="https://fusejs.io/demo.html">Fuse Demo</a> 与 最终效果，可以得出，我们最终期望得到如下的检索数据源结构</p>
+<pre><code class="language-json">[
+    {
+        &quot;path&quot;:&quot;/my&quot;,
+        &quot;title&quot;:[
+            &quot;个人中心&quot;
+        ]
+    },
+    {
+        &quot;path&quot;:&quot;/user&quot;,
+        &quot;title&quot;:[
+            &quot;用户&quot;
+        ]
+    },
+    {
+        &quot;path&quot;:&quot;/user/manage&quot;,
+        &quot;title&quot;:[
+            &quot;用户&quot;,
+            &quot;用户管理&quot;
+        ]
+    },
+    {
+        &quot;path&quot;:&quot;/user/info&quot;,
+        &quot;title&quot;:[
+            &quot;用户&quot;,
+            &quot;用户信息&quot;
+        ]
+    },
+    {
+        &quot;path&quot;:&quot;/article&quot;,
+        &quot;title&quot;:[
+            &quot;文章&quot;
+        ]
+    },
+    {
+        &quot;path&quot;:&quot;/article/ranking&quot;,
+        &quot;title&quot;:[
+            &quot;文章&quot;,
+            &quot;文章排名&quot;
+        ]
+    },
+    {
+        &quot;path&quot;:&quot;/article/create&quot;,
+        &quot;title&quot;:[
+            &quot;文章&quot;,
+            &quot;创建文章&quot;
+        ]
+    }
+]
+</code></pre>
+</li>
+<li>
+<p>所以我们之前处理了的数据源并不符合我们的需要，所以我们需要对数据源进行重新处理</p>
+</li>
+</ol>
+<h2><a id="5-26%EF%BC%9A%E6%96%B9%E6%A1%88%E8%90%BD%E5%9C%B0%EF%BC%9A%E6%95%B0%E6%8D%AE%E6%BA%90%E9%87%8D%E5%A4%84%E7%90%86%EF%BC%8C%E7%94%9F%E6%88%90-searchpool" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>5-26：方案落地：数据源重处理，生成  searchPool</h2>
+<p>在上一小节，我们明确了最终我们期望得到数据源结构，那么接下来我们就对重新计算数据源，生成对应的 <code>searchPoll</code></p>
+<p>创建 <code>compositions/HeaderSearch/FuseData.js</code></p>
+<pre><code class="language-js">import path from 'path'
+import i18n from '@/i18n'
+/**
+ * 筛选出可供搜索的路由对象
+ * @param routes 路由表
+ * @param basePath 基础路径，默认为 /
+ * @param prefixTitle
+ */
+export const generateRoutes = (routes, basePath = '/', prefixTitle = []) =&gt; {
+  // 创建 result 数据
+  let res = []
+  // 循环 routes 路由
+  for (const route of routes) {
+    // 创建包含 path 和 title 的 item
+    const data = {
+      path: path.resolve(basePath, route.path),
+      title: [...prefixTitle]
+    }
+    // 当前存在 meta 时，使用 i18n 解析国际化数据，组合成新的 title 内容
+    // 动态路由不允许被搜索
+    // 匹配动态路由的正则
+    const re = /.*\/:.*/
+    if (route.meta &amp;&amp; route.meta.title &amp;&amp; !re.exec(route.path)) {
+      const i18ntitle = i18n.global.t(`msg.route.${route.meta.title}`)
+      data.title = [...data.title, i18ntitle]
+      res.push(data)
+    }
+
+    // 存在 children 时，迭代调用
+    if (route.children) {
+      const tempRoutes = generateRoutes(route.children, data.path, data.title)
+      if (tempRoutes.length &gt;= 1) {
+        res = [...res, ...tempRoutes]
+      }
+    }
+  }
+  return res
+}
+
+</code></pre>
+<p>在 <code>headerSearch</code> 中导入 <code>generateRoutes</code></p>
+<pre><code class="language-vue">&lt;script setup&gt;
+import { computed, ref } from 'vue'
+import { generateRoutes } from './FuseData'
+import Fuse from 'fuse.js'
+import { filterRouters } from '@/utils/route'
+import { useRouter } from 'vue-router'
+
+...
+
+// 检索数据源
+const router = useRouter()
+const searchPool = computed(() =&gt; {
+  const filterRoutes = filterRouters(router.getRoutes())
+  return generateRoutes(filterRoutes)
+})
+/**
+ * 搜索库相关
+ */
+const fuse = new Fuse(searchPool.value, {
+  ...
+})
+&lt;/script&gt;
+</code></pre>
+<p>通过 <code>querySearch</code> 测试搜索结果</p>
+<pre><code class="language-js">// 搜索方法
+const querySearch = query =&gt; {
+  console.log(fuse.search(query))
+}
+</code></pre>
+<h2><a id="5-27%EF%BC%9A%E6%96%B9%E6%A1%88%E8%90%BD%E5%9C%B0%EF%BC%9A%E6%B8%B2%E6%9F%93%E6%A3%80%E7%B4%A2%E6%95%B0%E6%8D%AE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>5-27：方案落地：渲染检索数据</h2>
+<p>数据源处理完成之后，最后我们就只需要完成:</p>
+<ol>
+<li>渲染检索出的数据</li>
+<li>完成对应跳转</li>
+</ol>
+<p>那么下面我们按照步骤进行实现：</p>
+<ol>
+<li>
+<p>渲染检索出的数据</p>
+<pre><code class="language-vue">&lt;template&gt;
+  &lt;el-option
+      v-for=&quot;option in searchOptions&quot;
+      :key=&quot;option.item.path&quot;
+      :label=&quot;option.item.title.join(' &gt; ')&quot;
+      :value=&quot;option.item&quot;
+  &gt;&lt;/el-option&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+...
+// 搜索结果
+const searchOptions = ref([])
+// 搜索方法
+const querySearch = query =&gt; {
+  if (query !== '') {
+    searchOptions.value = fuse.search(query)
+  } else {
+    searchOptions.value = []
+  }
+}
+...
+&lt;/script&gt;
+
+</code></pre>
+</li>
+<li>
+<p>完成对应跳转</p>
+<pre><code class="language-js">// 选中回调
+const onSelectChange = val =&gt; {
+  router.push(val.path)
+}
+</code></pre>
+</li>
+</ol>
+<h2><a id="5-28%EF%BC%9A%E6%96%B9%E6%A1%88%E8%90%BD%E5%9C%B0%EF%BC%9A%E5%89%A9%E4%BD%99%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>5-28：方案落地：剩余问题处理</h2>
+<p>到这里我们的 <code>headerSearch</code> 功能基本上就已经处理完成了，但是还存在一些小 <code>bug</code> ，那么最后这一小节我们就处理下这些剩余的 <code>bug</code></p>
+<ol>
+<li>在 <code>search</code> 打开时，点击 <code>body</code> 关闭 <code>search</code></li>
+<li>在 <code>search</code> 关闭时，清理 <code>searchOptions</code></li>
+<li><code>headerSearch</code> 应该具备国际化能力</li>
+</ol>
+<p>明确好问题之后，接下来我们进行处理</p>
+<p>首先我们先处理前前面两个问题：</p>
+<pre><code class="language-js">/**
+ * 关闭 search 的处理事件
+ */
+const onClose = () =&gt; {
+  headerSearchSelectRef.value.blur()
+  isShow.value = false
+  searchOptions.value = []
+}
+/**
+ * 监听 search 打开，处理 close 事件
+ */
+watch(isShow, val =&gt; {
+  if (val) {
+    document.body.addEventListener('click', onClose)
+  } else {
+    document.body.removeEventListener('click', onClose)
+  }
+})
+</code></pre>
+<p>接下来是国际化的问题，想要处理这个问题非常简单，我们只需要：<strong>监听语言变化，重新计算数据源初始化 <code>fuse</code> 即可</strong></p>
+<ol>
+<li>
+<p>在 <code>utils/i18n</code> 下，新建方法 <code>watchSwitchLang</code></p>
+<pre><code class="language-js">import { watch } from 'vue'
+import store from '@/store'
+
+/**
+ *
+ * @param  {...any} cbs 所有的回调
+ */
+export function watchSwitchLang(...cbs) {
+  watch(
+    () =&gt; store.getters.language,
+    () =&gt; {
+      cbs.forEach(cb =&gt; cb(store.getters.language))
+    }
+  )
+}
+</code></pre>
+</li>
+<li>
+<p>在 <code>headerSearch</code> 监听变化，重新赋值</p>
+<pre><code class="language-vue">&lt;script setup&gt;
+...
+import { watchSwitchLang } from '@/utils/i18n'
+
+...
+
+// 检索数据源
+const router = useRouter()
+let searchPool = computed(() =&gt; {
+  const filterRoutes = filterRouters(router.getRoutes())
+  return generateRoutes(filterRoutes)
+})
+/**
+ * 搜索库相关
+ */
+let fuse
+const initFuse = searchPool =&gt; {
+  fuse = new Fuse(searchPool, {
+    ...
+}
+initFuse(searchPool.value)
+
+...
+
+// 处理国际化
+watchSwitchLang(() =&gt; {
+  searchPool = computed(() =&gt; {
+    const filterRoutes = filterRouters(router.getRoutes())
+    return generateRoutes(filterRoutes)
+  })
+  initFuse(searchPool.value)
+})
+&lt;/script&gt;
+</code></pre>
+</li>
+</ol>
+<h2><a id="5-29%EF%BC%9Aheadersearch%E6%96%B9%E6%A1%88%E6%80%BB%E7%BB%93" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>5-29：headerSearch 方案总结</h2>
+<p>那么到这里整个的 <code>headerSearch</code> 我们就已经全部处理完成了，整个 <code>headerSearch</code> 我们只需要把握住三个核心的关键点</p>
+<ol>
+<li>根据指定内容对所有页面进行检索</li>
+<li>以 <code>select</code> 形式展示检索出的页面</li>
+<li>通过检索页面可快速进入对应页面</li>
+</ol>
+<p>保证大方向没有错误，那么具体的细节处理我们具体分析就可以了。</p>
+<p>关于细节的处理，可能比较复杂的地方有两个：</p>
+<ol>
+<li>模糊搜索</li>
+<li>检索数据源</li>
+</ol>
+<p>对于这两块，我们依赖于 <code>fuse.js</code> 进行了实现，大大简化了我们的业务处理流程。</p>
+<h2><a id="5-30%EF%BC%9Atagsview%E5%8E%9F%E7%90%86%E5%8F%8A%E6%96%B9%E6%A1%88%E5%88%86%E6%9E%90" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>5-30：tagsView 原理及方案分析</h2>
+<p>所谓 <code>tagsView</code> 可以分成两部分来去看：</p>
+<ol>
+<li>tags</li>
+<li>view</li>
+</ol>
+<p>好像和废话一样是吧。那怎么分开看呢？</p>
+<p>首先我们先来看 <code>tags</code>：</p>
+<p>所谓 <code>tgas</code> 指的是：<strong>位于 <code>appmain</code> 之上的标签</strong></p>
+<p>那么现在我们忽略掉 <code>view</code>，现在只有一个要求：</p>
+<blockquote>
+<p>在 <code>view</code> 之上渲染这个 <code>tag</code></p>
+</blockquote>
+<p>仅看这一个要求，很简单吧。</p>
+<p><strong>views：</strong></p>
+<p>明确好了 <code>tags</code> 之后，我们来看 <code>views</code>。</p>
+<p>脱离了 <code>tags</code> 只看 <code>views</code> 就更简单了，所谓 <code>views</code> ：<strong>指的就是一个用来渲染组件的位置</strong>，就像我们之前的 <code>Appmain</code> 一样，只不过这里的 <code>views</code> 可能稍微复杂一点，因为它需要在渲染的基础上增加：</p>
+<ol>
+<li>动画</li>
+<li>缓存</li>
+</ol>
+<p>这两个额外的功能。</p>
+<p>加上这两个功能之后可能会略显复杂，但是 <a href="https://next.router.vuejs.org/zh/guide/advanced/transitions.html#%E5%9F%BA%E4%BA%8E%E8%B7%AF%E7%94%B1%E7%9A%84%E5%8A%A8%E6%80%81%E8%BF%87%E6%B8%A1">官网已经帮助我们处理了这个问题</a></p>
+<p>所以 单看 <code>views</code> 也是一个很简单的功能。</p>
+<p>那么接下来我们需要做的就是把 <code>tags</code> 和 <code>view</code> 合并起来而已。</p>
+<p>那么明确好了原理之后，我们就来看 <strong>实现方案：</strong></p>
+<ol>
+<li>创建 <code>tagsView</code> 组件：用来处理 <code>tags</code> 的展示</li>
+<li>处理基于路由的动态过渡，在 <code>AppMain</code> 中进行：用于处理 <code>view</code> 的部分</li>
+</ol>
+<p>整个的方案就是这么两大部，但是其中我们还需要处理一些细节相关的，<strong>完整的方案为</strong>：</p>
+<ol>
+<li>监听路由变化，组成用于渲染 <code>tags</code> 的数据源</li>
+<li>创建 <code>tags</code> 组件，根据数据源渲染 <code>tag</code>，渲染出来的 <code>tags</code> 需要同时具备
+<ol>
+<li>国际化 <code>title</code></li>
+<li>路由跳转</li>
+</ol>
+</li>
+<li>处理鼠标右键效果，根据右键处理对应数据源</li>
+<li>处理基于路由的动态过渡</li>
+</ol>
+<p>那么明确好了方案之后，接下来我们根据方案进行处理即可。</p>
+<h2><a id="5-31%EF%BC%9A%E6%96%B9%E6%A1%88%E8%90%BD%E5%9C%B0%EF%BC%9A%E5%88%9B%E5%BB%BA-tags%E6%95%B0%E6%8D%AE%E6%BA%90" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>5-31：方案落地：创建 tags 数据源</h2>
+<p><code>tags</code> 的数据源分为两部分：</p>
+<ol>
+<li>保存数据：<code>appmain</code> 组件中进行</li>
+<li>展示数据：<code>tags</code> 组件中进行</li>
+</ol>
+<p>所以 <code>tags</code> 的数据我们最好把它保存到 <code>vuex</code> 中。</p>
+<ol>
+<li>
+<p>在 <code>constant</code> 中新建常量</p>
+<pre><code class="language-js">// tags
+export const TAGS_VIEW = 'tagsView'
+</code></pre>
+</li>
+<li>
+<p>在 <code>store/app</code> 中创建 <code>tagsViewList</code></p>
+<pre><code class="language-js">import { LANG, TAGS_VIEW } from '@/constant'
+import { getItem, setItem } from '@/utils/storage'
+export default {
+  namespaced: true,
+  state: () =&gt; ({
+    ...
+    tagsViewList: getItem(TAGS_VIEW) || []
+  }),
+  mutations: {
+    ...
+    /**
+     * 添加 tags
+     */
+    addTagsViewList(state, tag) {
+      const isFind = state.tagsViewList.find(item =&gt; {
+        return item.path === tag.path
+      })
+    // 处理重复
+      if (!isFind) {
+        state.tagsViewList.push(tag)
+        setItem(TAGS_VIEW, state.tagsViewList)
+      }
+    }
+  },
+  actions: {}
+}
+
+</code></pre>
+</li>
+<li>
+<p>在 <code>appmain</code> 中监听路由的变化</p>
+<pre><code class="language-vue">&lt;script setup&gt;
+import { watch } from 'vue'
+import { isTags } from '@/utils/tags'
+import { generateTitle } from '@/utils/i18n'
+import { useRoute } from 'vue-router'
+import { useStore } from 'vuex'
+
+const route = useRoute()
+
+/**
+ * 生成 title
+ */
+const getTitle = route =&gt; {
+  let title = ''
+  if (!route.meta) {
+    // 处理无 meta 的路由
+    const pathArr = route.path.split('/')
+    title = pathArr[pathArr.length - 1]
+  } else {
+    title = generateTitle(route.meta.title)
+  }
+  return title
+}
+
+/**
+ * 监听路由变化
+ */
+const store = useStore()
+watch(
+  route,
+  (to, from) =&gt; {
+    if (!isTags(to.path)) return
+    const { fullPath, meta, name, params, path, query } = to
+    store.commit('app/addTagsViewList', {
+      fullPath,
+      meta,
+      name,
+      params,
+      path,
+      query,
+      title: getTitle(to)
+    })
+  },
+  {
+    immediate: true
+  }
+)
+&lt;/script&gt;
+
+
+</code></pre>
+</li>
+<li>
+<p>创建 <code>utils/tags</code></p>
+<pre><code class="language-js">const whiteList = ['/login', '/import', '/404', '/401']
+
+/**
+ * path 是否需要被缓存
+ * @param {*} path
+ * @returns
+ */
+export function isTags(path) {
+  return !whiteList.includes(path)
+}
+
+</code></pre>
+</li>
+</ol>
+<h2><a id="5-32%EF%BC%9A%E6%96%B9%E6%A1%88%E8%90%BD%E5%9C%B0%EF%BC%9A%E7%94%9F%E6%88%90-tagsview" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>5-32：方案落地：生成 tagsView</h2>
+<p>目前数据已经被保存到 <code>store</code> 中，那么接下来我们就依赖数据渲染 <code>tags</code></p>
+<ol>
+<li>
+<p>创建 <code>store/app</code> 中 <code>tagsViewList</code> 的快捷访问</p>
+<pre><code class="language-js">  tagsViewList: state =&gt; state.app.tagsViewList
+</code></pre>
+</li>
+<li>
+<p>创建 <code>components/tagsview</code></p>
+<pre><code class="language-vue">&lt;template&gt;
+  &lt;div class=&quot;tags-view-container&quot;&gt;
+      &lt;router-link
+        class=&quot;tags-view-item&quot;
+        :class=&quot;isActive(tag) ? 'active' : ''&quot;
+        :style=&quot;{
+          backgroundColor: isActive(tag) ? $store.getters.cssVar.menuBg : '',
+          borderColor: isActive(tag) ? $store.getters.cssVar.menuBg : ''
+        }&quot;
+        v-for=&quot;(tag, index) in $store.getters.tagsViewList&quot;
+        :key=&quot;tag.fullPath&quot;
+        :to=&quot;{ path: tag.fullPath }&quot;
+      &gt;
+        {{ tag.title }}
+        &lt;i
+          v-show=&quot;!isActive(tag)&quot;
+          class=&quot;el-icon-close&quot;
+          @click.prevent.stop=&quot;onCloseClick(index)&quot;
+        /&gt;
+      &lt;/router-link&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { useRoute } from 'vue-router'
+const route = useRoute()
+
+/**
+ * 是否被选中
+ */
+const isActive = tag =&gt; {
+  return tag.path === route.path
+}
+
+/**
+ * 关闭 tag 的点击事件
+ */
+const onCloseClick = index =&gt; {}
+&lt;/script&gt;
+
+&lt;style lang=&quot;scss&quot; scoped&gt;
+.tags-view-container {
+  height: 34px;
+  width: 100%;
+  background: #fff;
+  border-bottom: 1px solid #d8dce5;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 0 3px 0 rgba(0, 0, 0, 0.04);
+    .tags-view-item {
+      display: inline-block;
+      position: relative;
+      cursor: pointer;
+      height: 26px;
+      line-height: 26px;
+      border: 1px solid #d8dce5;
+      color: #495060;
+      background: #fff;
+      padding: 0 8px;
+      font-size: 12px;
+      margin-left: 5px;
+      margin-top: 4px;
+      &amp;:first-of-type {
+        margin-left: 15px;
+      }
+      &amp;:last-of-type {
+        margin-right: 15px;
+      }
+      &amp;.active {
+        color: #fff;
+        &amp;::before {
+          content: '';
+          background: #fff;
+          display: inline-block;
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          position: relative;
+          margin-right: 4px;
+        }
+      }
+      // close 按钮
+      .el-icon-close {
+        width: 16px;
+        height: 16px;
+        line-height: 10px;
+        vertical-align: 2px;
+        border-radius: 50%;
+        text-align: center;
+        transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+        transform-origin: 100% 50%;
+        &amp;:before {
+          transform: scale(0.6);
+          display: inline-block;
+          vertical-align: -3px;
+        }
+        &amp;:hover {
+          background-color: #b4bccc;
+          color: #fff;
+        }
+      }
+    
+  }
+}
+&lt;/style&gt;
+</code></pre>
+</li>
+<li>
+<p>在 <code>layout/index</code> 中导入</p>
+<pre><code class="language-vue">&lt;div class=&quot;fixed-header&quot;&gt;
+    &lt;!-- 顶部的 navbar --&gt;
+    &lt;navbar /&gt;
+    &lt;!-- tags --&gt;
+    &lt;tags-view&gt;&lt;/tags-view&gt;
+&lt;/div&gt;
+
+import TagsView from '@/components/TagsView'
+
+</code></pre>
+</li>
+</ol>
+<h2><a id="5-33%EF%BC%9A%E6%96%B9%E6%A1%88%E8%90%BD%E5%9C%B0%EF%BC%9Atagsview%E5%9B%BD%E9%99%85%E5%8C%96%E5%A4%84%E7%90%86" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>5-33：方案落地：tagsView 国际化处理</h2>
+<p><code>tagsView</code> 的国际化处理可以理解为修改现有 <code>tags</code> 的 <code>title</code>。</p>
+<p>所以我们只需要：</p>
+<ol>
+<li>监听到语言变化</li>
+<li>国际化对应的 <code>title</code> 即可</li>
+</ol>
+<p>根据方案，可生成如下代码：</p>
+<ol>
+<li>
+<p>在 <code>store/app</code> 中，创建修改 <code>ttile</code> 的 <code>mutations</code></p>
+<pre><code class="language-js">/**
+* 为指定的 tag 修改 title
+*/
+changeTagsView(state, { index, tag }) {
+    state.tagsViewList[index] = tag
+    setItem(TAGS_VIEW, state.tagsViewList)
+}
+</code></pre>
+</li>
+<li>
+<p>在 <code>appmain</code> 中监听语言变化</p>
+<pre><code class="language-js">import { generateTitle, watchSwitchLang } from '@/utils/i18n'
+
+/**
+ * 国际化 tags
+ */
+watchSwitchLang(() =&gt; {
+  store.getters.tagsViewList.forEach((route, index) =&gt; {
+    store.commit('app/changeTagsView', {
+      index,
+      tag: {
+        ...route,
+        title: getTitle(route)
+      }
+    })
+  })
+})
+</code></pre>
+</li>
+</ol>
+<h2><a id="5-34%EF%BC%9A%E6%96%B9%E6%A1%88%E8%90%BD%E5%9C%B0%EF%BC%9Acontextmenu%E5%B1%95%E7%A4%BA%E5%A4%84%E7%90%86" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>5-34：方案落地：contextMenu 展示处理</h2>
+<blockquote>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/contextmenu_event">contextMenu</a> 为 鼠标右键事件</p>
+</blockquote>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/contextmenu_event">contextMenu</a> 事件的处理分为两部分：</p>
+<ol>
+<li><code>contextMenu</code> 的展示</li>
+<li>右键项对应逻辑处理</li>
+</ol>
+<p>那么这一小节我们先处理第一部分：<code>contextMenu</code> 的展示：</p>
+<ol>
+<li>
+<p>创建 <code>components/TagsView/ContextMenu</code> 组件，作为右键展示部分</p>
+<pre><code class="language-vue">&lt;template&gt;
+  &lt;ul class=&quot;context-menu-container&quot;&gt;
+    &lt;li @click=&quot;onRefreshClick&quot;&gt;
+      {{ $t('msg.tagsView.refresh') }}
+    &lt;/li&gt;
+    &lt;li @click=&quot;onCloseRightClick&quot;&gt;
+      {{ $t('msg.tagsView.closeRight') }}
+    &lt;/li&gt;
+    &lt;li @click=&quot;onCloseOtherClick&quot;&gt;
+      {{ $t('msg.tagsView.closeOther') }}
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { defineProps } from 'vue'
+defineProps({
+  index: {
+    type: Number,
+    required: true
+  }
+})
+
+const onRefreshClick = () =&gt; {}
+
+const onCloseRightClick = () =&gt; {}
+
+const onCloseOtherClick = () =&gt; {}
+&lt;/script&gt;
+
+&lt;style lang=&quot;scss&quot; scoped&gt;
+.context-menu-container {
+  position: fixed;
+  background: #fff;
+  z-index: 3000;
+  list-style-type: none;
+  padding: 5px 0;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  color: #333;
+  box-shadow: 2px 2px 3px 0 rgba(0, 0, 0, 0.3);
+  li {
+    margin: 0;
+    padding: 7px 16px;
+    cursor: pointer;
+    &amp;:hover {
+      background: #eee;
+    }
+  }
+}
+&lt;/style&gt;
+
+</code></pre>
+</li>
+<li>
+<p>在 <code>tagsview </code> 中控制 <code>contextMenu</code> 的展示</p>
+<pre><code class="language-vue">&lt;template&gt;
+  &lt;div class=&quot;tags-view-container&quot;&gt;
+    &lt;el-scrollbar class=&quot;tags-view-wrapper&quot;&gt;
+      &lt;router-link
+        ...
+        @contextmenu.prevent=&quot;openMenu($event, index)&quot;
+      &gt;
+        ...
+    &lt;/el-scrollbar&gt;
+    &lt;context-menu
+      v-show=&quot;visible&quot;
+      :style=&quot;menuStyle&quot;
+      :index=&quot;selectIndex&quot;
+    &gt;&lt;/context-menu&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import ContextMenu from './ContextMenu.vue'
+import { ref, reactive, watch } from 'vue'
+import { useRoute } from 'vue-router'
+...
+
+// contextMenu 相关
+const selectIndex = ref(0)
+const visible = ref(false)
+const menuStyle = reactive({
+  left: 0,
+  top: 0
+})
+/**
+ * 展示 menu
+ */
+const openMenu = (e, index) =&gt; {
+  const { x, y } = e
+  menuStyle.left = x + 'px'
+  menuStyle.top = y + 'px'
+  selectIndex.value = index
+  visible.value = true
+}
+
+
+&lt;/script&gt;
+</code></pre>
+</li>
+</ol>
+<h2><a id="5-35%EF%BC%9A%E6%96%B9%E6%A1%88%E8%90%BD%E5%9C%B0%EF%BC%9Acontextmenu%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>5-35：方案落地：contextMenu 事件处理</h2>
+<p>对于 <code>contextMenu</code> 的事件一共分为三个：</p>
+<ol>
+<li>刷新</li>
+<li>关闭右侧</li>
+<li>关闭所有</li>
+</ol>
+<p>但是不要忘记，我们之前 <strong>关闭单个 <code>tags</code></strong> 的事件还没有进行处理，所以这一小节我们一共需要处理 4 个对应的事件</p>
+<ol>
+<li>
+<p>刷新事件</p>
+<pre><code class="language-js">const router = useRouter()
+const onRefreshClick = () =&gt; {
+  router.go(0)
+}
+</code></pre>
+</li>
+<li>
+<p>在 <code>store/app</code> 中，创建删除 <code>tags</code> 的 <code>mutations</code>，该 <code>mutations</code> 需要同时具备以下三个能力：</p>
+<ol>
+<li>删除 “右侧”</li>
+<li>删除 “其他”</li>
+<li>删除 “当前”</li>
+</ol>
+</li>
+<li>
+<p>根据以上理论得出以下代码：</p>
+<pre><code class="language-js">/**
+     * 删除 tag
+     * @param {type: 'other'||'right'||'index', index: index} payload
+     */
+    removeTagsView(state, payload) {
+      if (payload.type === 'index') {
+        state.tagsViewList.splice(payload.index, 1)
+        return
+      } else if (payload.type === 'other') {
+        state.tagsViewList.splice(
+          payload.index + 1,
+          state.tagsViewList.length - payload.index + 1
+        )
+        state.tagsViewList.splice(0, payload.index)
+      } else if (payload.type === 'right') {
+        state.tagsViewList.splice(
+          payload.index + 1,
+          state.tagsViewList.length - payload.index + 1
+        )
+      }
+      setItem(TAGS_VIEW, state.tagsViewList)
+    },
+</code></pre>
+</li>
+<li>
+<p>关闭右侧事件</p>
+<pre><code class="language-js">const store = useStore()
+const onCloseRightClick = () =&gt; {
+  store.commit('app/removeTagsView', {
+    type: 'right',
+    index: props.index
+  })
+}
+</code></pre>
+</li>
+<li>
+<p>关闭其他</p>
+<pre><code class="language-js">const onCloseOtherClick = () =&gt; {
+  store.commit('app/removeTagsView', {
+    type: 'other',
+    index: props.index
+  })
+}
+</code></pre>
+</li>
+<li>
+<p>关闭当前（<code>tagsview</code>）</p>
+<pre><code class="language-js">/**
+ * 关闭 tag 的点击事件
+ */
+const store = useStore()
+const onCloseClick = index =&gt; {
+  store.commit('app/removeTagsView', {
+    type: 'index',
+    index: index
+  })
+}
+</code></pre>
+</li>
+</ol>
+<h2><a id="5-36%EF%BC%9A%E6%96%B9%E6%A1%88%E8%90%BD%E5%9C%B0%EF%BC%9A%E5%A4%84%E7%90%86-contextmenu%E7%9A%84%E5%85%B3%E9%97%AD%E8%A1%8C%E4%B8%BA" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>5-36：方案落地：处理 contextMenu 的关闭行为</h2>
+<pre><code class="language-js">/**
+ * 关闭 menu
+ */
+const closeMenu = () =&gt; {
+  visible.value = false
+}
+
+/**
+ * 监听变化
+ */
+watch(visible, val =&gt; {
+  if (val) {
+    document.body.addEventListener('click', closeMenu)
+  } else {
+    document.body.removeEventListener('click', closeMenu)
+  }
+})
+</code></pre>
+<h2><a id="5-37%EF%BC%9A%E6%96%B9%E6%A1%88%E8%90%BD%E5%9C%B0%EF%BC%9A%E5%A4%84%E7%90%86%E5%9F%BA%E4%BA%8E%E8%B7%AF%E7%94%B1%E7%9A%84%E5%8A%A8%E6%80%81%E8%BF%87%E6%B8%A1" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>5-37：方案落地：处理基于路由的动态过渡</h2>
+<p><a href="https://next.router.vuejs.org/zh/guide/advanced/transitions.html#%E5%9F%BA%E4%BA%8E%E8%B7%AF%E7%94%B1%E7%9A%84%E5%8A%A8%E6%80%81%E8%BF%87%E6%B8%A1">处理基于路由的动态过渡</a>  官方已经给出了示例代码，结合 <code>router-view</code> 和 <code>transition</code> 我们可以非常方便的实现这个功能</p>
+<ol>
+<li>
+<p>在 <code>appmain</code> 中处理对应代码逻辑</p>
+<pre><code class="language-vue">&lt;template&gt;
+  &lt;div class=&quot;app-main&quot;&gt;
+    &lt;router-view v-slot=&quot;{ Component, route }&quot;&gt;
+      &lt;transition name=&quot;fade-transform&quot; mode=&quot;out-in&quot;&gt;
+        &lt;keep-alive&gt;
+          &lt;component :is=&quot;Component&quot; :key=&quot;route.path&quot; /&gt;
+        &lt;/keep-alive&gt;
+      &lt;/transition&gt;
+    &lt;/router-view&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+</code></pre>
+</li>
+<li>
+<p>增加了 <code>tags</code> 之后，<code>app-main</code> 的位置需要进行以下处理</p>
+<pre><code class="language-vue">&lt;style lang=&quot;scss&quot; scoped&gt;
+.app-main {
+  min-height: calc(100vh - 50px - 43px);
+  ...
+  padding: 104px 20px 20px 20px;
+  ...
+}
+&lt;/style&gt;
+</code></pre>
+</li>
+<li>
+<p>在 <code>styles/transition</code> 中增加动画渲染</p>
+<pre><code class="language-scss">/* fade-transform */
+.fade-transform-leave-active,
+.fade-transform-enter-active {
+  transition: all 0.5s;
+}
+
+.fade-transform-enter-from {
+  opacity: 0;
+  transform: translateX(-30px);
+}
+
+.fade-transform-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}
+</code></pre>
+</li>
+</ol>
+<h2><a id="5-38%EF%BC%9Atagsview%E6%96%B9%E6%A1%88%E6%80%BB%E7%BB%93" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>5-38：tagsView 方案总结</h2>
+<p>那么到这里关于 <code>tagsView</code> 的内容我们就已经处理完成了。</p>
+<p>整个 <code>tagsView</code> 就像我们之前说的，拆开来看之后，会显得明确很多。</p>
+<p>整个 <code>tagsView</code> 整体来看就是三块大的内容：</p>
+<ol>
+<li><code>tags</code>：<code>tagsView</code> 组件</li>
+<li><code>contextMenu</code>：<code>contextMenu</code> 组件</li>
+<li><code>view</code>：<code>appmain</code> 组件</li>
+</ol>
+<p>再加上一部分的数据处理即可。</p>
+<p>最后关于 <code>tags</code> 的国际化部分，其实处理的方案有非常多，大家也可以在后面的 <strong>讨论题</strong> 中探讨一下关于 <strong>此处国家化</strong> 的实现，相信会有很多新的思路被打开的。</p>
+<h2><a id="5-39%EF%BC%9Aguide%E5%8E%9F%E7%90%86%E5%8F%8A%E6%96%B9%E6%A1%88%E5%88%86%E6%9E%90" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>5-39：guide 原理及方案分析</h2>
+<p>所谓 <code>guide</code> 指的就是 <strong>引导页</strong></p>
+<p>引导页是软件中经常见到的一个功能，无论是在后台项目还是前台或者是移动端项目中。</p>
+<p>那么对于引导页而言，它是如何实现的呢？我们来分析一下。</p>
+<p>通常情况下引导页是通过 <strong>聚焦</strong> 的方式，高亮一块视图，然后通过文字解释的形式来告知用户该功能的作用。</p>
+<p>所以说对于引导页而言，它的实现其实就是：<strong>页面样式</strong> 的实现。</p>
+<p>我们只需要可以做到：</p>
+<ol>
+<li>高亮某一块指定的样式</li>
+<li>在高亮的样式处通过文本展示内容</li>
+<li>用户可以进行下一次高亮或者关闭事件</li>
+</ol>
+<p>那么就可以实现对应的引导功能。</p>
+<p><strong>方案：</strong></p>
+<p>对于引导页来说，市面上有很多现成的轮子，所以我们不需要手动的去进行以上内容的处理，我们这里可以直接使用 <a href="https://kamranahmed.info/driver.js/">driver.js</a> 进行引导页处理。</p>
+<p>基于 <a href="https://kamranahmed.info/driver.js/">driver.js</a> 我们的实现方案如下：</p>
+<ol>
+<li>创建 <code>Guide</code> 组件：用于处理 <code>icon</code> 展示</li>
+<li>初始化 <a href="https://kamranahmed.info/driver.js/">driver.js</a></li>
+<li>指定 <a href="https://kamranahmed.info/driver.js/">driver.js</a> 的 <code>steps</code></li>
+</ol>
+<h2><a id="5-40%EF%BC%9A%E6%96%B9%E6%A1%88%E8%90%BD%E5%9C%B0%EF%BC%9A%E7%94%9F%E6%88%90-guide" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>5-40：方案落地：生成 Guide</h2>
+<ol>
+<li>创建<code>components/Guide</code></li>
+</ol>
+<pre><code class="language-vue">&lt;template&gt;
+  &lt;div&gt;
+    &lt;el-tooltip :content=&quot;$t('msg.navBar.guide')&quot;&gt;
+      &lt;svg-icon icon=&quot;guide&quot; /&gt;
+    &lt;/el-tooltip&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;&lt;/script&gt;
+
+&lt;style scoped&gt;&lt;/style&gt;
+
+</code></pre>
+<ol start="2">
+<li>
+<p>在 <code>navbar</code> 中导入该组件</p>
+<pre><code class="language-vue">&lt;guide class=&quot;right-menu-item hover-effect&quot; /&gt;
+
+import Guide from '@/components/Guide'
+</code></pre>
+</li>
+</ol>
+<h2><a id="5-41%EF%BC%9A%E6%96%B9%E6%A1%88%E8%90%BD%E5%9C%B0%EF%BC%9Aguide%E4%B8%9A%E5%8A%A1%E9%80%BB%E8%BE%91%E5%A4%84%E7%90%86" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>5-41：方案落地：Guide 业务逻辑处理</h2>
+<ol>
+<li>
+<p>导入 <a href="https://kamranahmed.info/driver.js/">driver.js</a></p>
+<pre><code class="language-plain_text">npm i driver.js@0.9.8
+</code></pre>
+</li>
+<li>
+<p>在 <code>guide.vue</code> 中初始化 <code>driiver</code></p>
+<pre><code class="language-vue">&lt;script setup&gt;
+import Driver from 'driver.js'
+import 'driver.js/dist/driver.min.css'
+import { onMounted } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const i18n = useI18n()
+
+let driver = null
+onMounted(() =&gt; {
+  driver = new Driver({
+    // 禁止点击蒙版关闭
+    allowClose: false,
+    closeBtnText: i18n.t('msg.guide.close'),
+    nextBtnText: i18n.t('msg.guide.next'),
+    prevBtnText: i18n.t('msg.guide.prev')
+  })
+})
+&lt;/script&gt;
+</code></pre>
+</li>
+<li>
+<p>创建 <strong>步骤</strong> <code>steps.js</code></p>
+<pre><code class="language-js">// 此处不要导入 @/i18n 使用 i18n.global ，因为我们在 router 中 layout 不是按需加载，所以会在 Guide 会在 I18n 初始化完成之前被直接调用。导致 i18n 为 undefined
+const steps = i18n =&gt; {
+  return [
+    {
+      element: '#guide-start',
+      popover: {
+        title: i18n.t('msg.guide.guideTitle'),
+        description: i18n.t('msg.guide.guideDesc'),
+        position: 'bottom-right'
+      }
+    },
+    {
+      element: '#guide-hamburger',
+      popover: {
+        title: i18n.t('msg.guide.hamburgerTitle'),
+        description: i18n.t('msg.guide.hamburgerDesc')
+      }
+    },
+    {
+      element: '#guide-breadcrumb',
+      popover: {
+        title: i18n.t('msg.guide.breadcrumbTitle'),
+        description: i18n.t('msg.guide.breadcrumbDesc')
+      }
+    },
+    {
+      element: '#guide-search',
+      popover: {
+        title: i18n.t('msg.guide.searchTitle'),
+        description: i18n.t('msg.guide.searchDesc'),
+        position: 'bottom-right'
+      }
+    },
+    {
+      element: '#guide-full',
+      popover: {
+        title: i18n.t('msg.guide.fullTitle'),
+        description: i18n.t('msg.guide.fullDesc'),
+        position: 'bottom-right'
+      }
+    },
+    {
+      element: '#guide-theme',
+      popover: {
+        title: i18n.t('msg.guide.themeTitle'),
+        description: i18n.t('msg.guide.themeDesc'),
+        position: 'bottom-right'
+      }
+    },
+    {
+      element: '#guide-lang',
+      popover: {
+        title: i18n.t('msg.guide.langTitle'),
+        description: i18n.t('msg.guide.langDesc'),
+        position: 'bottom-right'
+      }
+    },
+    {
+      element: '#guide-tags',
+      popover: {
+        title: i18n.t('msg.guide.tagTitle'),
+        description: i18n.t('msg.guide.tagDesc')
+      }
+    },
+    {
+      element: '#guide-sidebar',
+      popover: {
+        title: i18n.t('msg.guide.sidebarTitle'),
+        description: i18n.t('msg.guide.sidebarDesc'),
+        position: 'right-center'
+      }
+    }
+  ]
+}
+export default steps
+</code></pre>
+</li>
+<li>
+<p>在 <code>guide</code> 中导入“步骤”</p>
+<pre><code class="language-vue">&lt;template&gt;
+  ...
+  &lt;svg-icon icon=&quot;guide&quot; @click=&quot;onClick&quot; /&gt;
+  ...
+&lt;/template&gt;
+
+&lt;script setup&gt;
+...
+import steps from './steps'
+...
+const onClick = () =&gt; {
+  driver.defineSteps(steps(i18n))
+  driver.start()
+}
+&lt;/script&gt;
+
+&lt;style scoped&gt;&lt;/style&gt;
+
+</code></pre>
+</li>
+<li>
+<p>为 <strong>引导高亮区域增加 ID</strong></p>
+</li>
+<li>
+<p>在 <code>components/Guide/index</code> 中增加</p>
+<pre><code class="language-html">&lt;svg-icon id=&quot;guide-start&quot; icon=&quot;guide&quot; @click=&quot;onClick&quot; /&gt;
+</code></pre>
+</li>
+<li>
+<p>在 <code>components/Hamburger/index</code> 增加</p>
+<pre><code class="language-html">&lt;svg-icon id=&quot;guide-hamburger&quot; class=&quot;hamburger&quot; :icon=&quot;icon&quot;&gt;&lt;/svg-icon&gt;
+</code></pre>
+</li>
+<li>
+<p>在 <code>src/layout/components</code> 增加</p>
+<pre><code class="language-html">&lt;breadcrumb id=&quot;guide-breadcrumb&quot; class=&quot;breadcrumb-container&quot; /&gt;
+</code></pre>
+</li>
+<li>
+<p>在 <code>components/HeaderSearch/index</code> 增加</p>
+<pre><code class="language-html"> &lt;svg-icon
+      id=&quot;guide-search&quot;
+      class-name=&quot;search-icon&quot;
+      icon=&quot;search&quot;
+      @click.stop=&quot;onShowClick&quot;
+    /&gt;
+</code></pre>
+</li>
+<li>
+<p>在 <code>components/Screenfull/index</code> 增加</p>
+<pre><code class="language-html">&lt;svg-icon
+      id=&quot;guide-full&quot;
+      :icon=&quot;isFullscreen ? 'exit-fullscreen' : 'fullscreen'&quot;
+      @click=&quot;onToggle&quot;
+    /&gt;
+</code></pre>
+</li>
+<li>
+<p>在 <code>components/ThemePicker/index</code> 增加</p>
+<pre><code class="language-html">&lt;svg-icon id=&quot;guide-theme&quot; icon=&quot;change-theme&quot; /&gt;
+</code></pre>
+</li>
+<li>
+<p>在 <code>components/LangSelect/index</code> 增加</p>
+<pre><code class="language-html">&lt;svg-icon id=&quot;guide-lang&quot; icon=&quot;language&quot; /&gt;
+</code></pre>
+</li>
+<li>
+<p>在 <code>layout/index</code> 增加</p>
+<pre><code class="language-html">&lt;tags-view id=&quot;guide-tags&quot;&gt;&lt;/tags-view&gt;
+</code></pre>
+</li>
+<li>
+<p>在 <code>layout/index</code> 增加</p>
+<pre><code class="language-html">&lt;sidebar
+      id=&quot;guide-sidebar&quot;
+      class=&quot;sidebar-container&quot;
+      :style=&quot;{ backgroundColor: $store.getters.cssVar.menuBg }&quot;
+    /&gt;
+</code></pre>
+</li>
+</ol>
+<h2><a id="5-42%EF%BC%9A%E6%80%BB%E7%BB%93" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>5-42：总结</h2>
+<p>那么到这里我们整个的 <strong>后台项目前端综合解决方案之通用功能开发</strong> 这一章节就算是处理完成了。</p>
+<p>在本章中我们对以下通用功能进行了处理：</p>
+<ol>
+<li>国际化</li>
+<li>动态换肤</li>
+<li><code>screenfull</code></li>
+<li><code>headerSearch</code></li>
+<li><code>tagView</code></li>
+<li><code>guide</code></li>
+</ol>
+<p>其中除了 <code>screenfull</code> 和 <code>guide</code> 之外其他的功能都是具备一定的复杂度的。</p>
+<p>但是只要我们可以根据功能分析出对应原理，就可以根据原理实现对应方案，有了方案就可以制定出对应的实现步骤。</p>
+<p>只要大的步骤没有错误，那么具体的细节功能实现只需要具体情况具体分析即可。</p>
+<p>不过大家要注意，对于这些实现方案而言，<strong>并非</strong> 只有我们课程中的这一种实现方式。大家也可以针对这些实现方案在咱们的 <strong>群里</strong> 或者 <strong>讨论区</strong> 中，和我们一起多多发言或者讨论。</p>
 
                   </article>
                   <div class="comments-wrap">

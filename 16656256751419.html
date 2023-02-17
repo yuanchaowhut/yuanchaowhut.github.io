@@ -109,14 +109,18 @@
                     <ul>
 <li><a href="#%E8%83%8C%E6%99%AF">背景</a></li>
 <li><a href="#%E8%BF%81%E7%A7%BB%E4%BB%93%E5%BA%93%E5%9C%B0%E5%9D%80">迁移仓库地址</a></li>
-<li><a href="#wizdom-react-submodule">Wizdom-react &amp; submodule</a>
-<ul>
+<li><a href="#wizdom-react-submodule">Wizdom-react &amp; submodule</a></li>
 <li><a href="#%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84">目录结构</a></li>
 <li><a href="#git%E6%93%8D%E4%BD%9C">git操作</a>
 <ul>
 <li><a href="#1%E3%80%81%E6%96%B0%E5%A2%9Esubmodule">1、新增submodule</a></li>
-<li><a href="#2%E3%80%81%E5%88%9D%E5%A7%8B%E5%8C%96submodule">2、初始化submodule</a></li>
-<li><a href="#3%E3%80%81%E6%9B%B4%E6%96%B0submodule">3、更新submodule</a></li>
+<li><a href="#2%E3%80%81%E5%88%9D%E5%A7%8B%E5%8C%96submodule">2、初始化submodule</a>
+<ul>
+<li><a href="#%E6%96%B9%E6%A1%88%E4%B8%80%EF%BC%9A%E4%B8%80%E6%AC%A1%E6%80%A7%E5%88%9D%E5%A7%8B%E5%8C%96%E6%89%80%E6%9C%89submodule">方案一：一次性初始化所有 submodule</a></li>
+<li><a href="#%E6%96%B9%E6%A1%88%E4%BA%8C%EF%BC%9Ainit%E5%92%8C-update%E7%89%B9%E5%AE%9A-submodule">方案二：init 和 update 特定submodule</a></li>
+</ul>
+</li>
+<li><a href="#3%E3%80%81%E6%9B%B4%E6%96%B0-submodule%E4%BB%A3%E7%A0%81">3、更新 submodule 代码</a></li>
 <li><a href="#4%E3%80%81%E5%88%A0%E9%99%A4submodule">4、删除submodule</a></li>
 </ul>
 </li>
@@ -126,8 +130,7 @@
 <li><a href="#%E8%BF%90%E8%A1%8Cplugins%E4%B8%8B-submodule%E4%BB%A3%E7%A0%81">运行 plugins 下submodule代码</a></li>
 </ul>
 </li>
-</ul>
-</li>
+<li><a href="#wizdom-react-submodule%E6%9C%80%E6%96%B0%E8%A7%84%E5%AE%9A-20221031">wizdom-react submodule 最新规定(20221031)</a></li>
 <li><a href="#%E6%94%B6%E8%8E%B7%E4%B8%8E%E5%88%86%E4%BA%AB">收获与分享</a>
 <ul>
 <li><a href="#1%E3%80%81prettier%E6%89%B9%E9%87%8F%E6%A0%BC%E5%BC%8F%E5%8C%96">1、prettier 批量格式化</a></li>
@@ -208,7 +211,7 @@
 <p><a href="https://juejin.cn/post/6844903492750934029">https://juejin.cn/post/6844903492750934029</a></p>
 <p><a href="https://zhuanlan.zhihu.com/p/87053283">https://zhuanlan.zhihu.com/p/87053283</a></p>
 <p>如果实在不想看文档，下面摘出非常重要的几点务必认真阅读（<strong>以wizsite为例</strong>）：</p>
-<h2><a id="%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>目录结构</h2>
+<h1><a id="%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>目录结构</h1>
 <pre><code class="language-plain_text">react
 ├── src
 │   └── plugins                 # 子系统目录
@@ -221,15 +224,15 @@
 │           └── package.json
 └── package.json
 </code></pre>
-<h2><a id="git%E6%93%8D%E4%BD%9C" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>git操作</h2>
-<h3><a id="1%E3%80%81%E6%96%B0%E5%A2%9Esubmodule" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>1、新增submodule</h3>
+<h1><a id="git%E6%93%8D%E4%BD%9C" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>git操作</h1>
+<h2><a id="1%E3%80%81%E6%96%B0%E5%A2%9Esubmodule" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>1、新增submodule</h2>
 <p>如果wizdom-react中已经新增过submodule了直接略过此步骤.</p>
-<blockquote>
-<p>除了用下面的方式，也可以在根目录下直接一条命令搞定：git submodule add --force ssh://git@192.168.101.70:222/csgl/frontend/wizdom-react-plugins/wizsite.git src/plugins/wizsite</p>
-</blockquote>
-<pre><code class="language-shell"># 记住新增submodule是新增在plugins目录下，故要先cd到src/plugins这个目录里边
+<pre><code class="language-shell"># 分步执行的方式
 cd ./src/plugins
 git submodule add ssh://git@192.168.101.70:222/csgl/frontend/wizdom-react-plugins/wizsite.git
+
+# 一次性搞定的方式（在wizdom-react根目录下执行命令）
+git submodule add --force ssh://git@192.168.101.70:222/csgl/frontend/wizdom-react-plugins/wizsite.git src/plugins/wizsite
 </code></pre>
 <p>执行完上述命令后，wizsite项目代码就会clone到plugins目录下，同时在wizdom-react的根目录下的 .gitmodules 文件中会追加几行记录，表示该submodule已经添加进来了。</p>
 <p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202207231303410.png" alt="image-20220723130259269" /></p>
@@ -239,25 +242,23 @@ cd wizdite
 # 现在是master分支，需切换到develop分支
 git checkout develop
 </code></pre>
-<h3><a id="2%E3%80%81%E5%88%9D%E5%A7%8B%E5%8C%96submodule" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>2、初始化submodule</h3>
-<p>由于目前新增submodule的工作是我来做的，我新增了submodule后，大家需要把代码拉下来。<strong>需要注意的是，与新增 submodule 不同，初始化 submodule 需要在 wizdom-react的根目录下进行。</strong></p>
-<blockquote>
-<p>新增的时候需要切换到 src/plugins 目录下，当然也有不切换直接在wizdom-react主目录下干的方式，相对而言本文档这种比较好理解一些。</p>
-</blockquote>
+<h2><a id="2%E3%80%81%E5%88%9D%E5%A7%8B%E5%8C%96submodule" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>2、初始化submodule</h2>
+<p>A新增加了一个 submodule 后，B需要把代码拉下来进行开发，如果此前B从来没有拉过该 submodule的代码，就需要对该 submodule 进行初始化。</p>
+<h3><a id="%E6%96%B9%E6%A1%88%E4%B8%80%EF%BC%9A%E4%B8%80%E6%AC%A1%E6%80%A7%E5%88%9D%E5%A7%8B%E5%8C%96%E6%89%80%E6%9C%89submodule" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>方案一：一次性初始化所有 submodule</h3>
 <p>第一步：修改 .gitmodules 文件，屏蔽掉非本部门的submodule。</p>
-<p><strong><font color="red">备注：这种方式是一次update所有submodule， 由于各个部门仓库权限问题，才需要这么做，但是后面有更好的方式，请继续往下阅读。</font></strong></p>
+<p><strong><font color="red">备注：这种方式是一次update所有submodule， 由于各个部门仓库权限问题，才需要这么做。</font></strong></p>
 <p>因为其它部门的仓库，我们没有权限，如果不屏蔽掉，会导致整体代码都clone不下来。</p>
 <p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202207231331909.png" alt="image-20220723133125691" /></p>
-<p>第二步：执行  <strong>git submodule init</strong>  初始化submodule。</p>
-<hr />
-<p><strong><font color="red">备注：init 和 update 可以放到一条命令里，请继续往下阅读。</font></strong></p>
+<p>第二步：执行  <strong>git submodule init</strong>  初始化所有 submodule。</p>
 <p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202207231345057.png" alt="image-20220723134530408" /></p>
 <p>第三步：执行  <strong>git submodule update</strong> 即可拉取所有submodule的代码。</p>
-<p><strong><font color="red">备注：第三步：执行  git submodule update --init --remote ./src/plugins/xxx(submodule名称)，clone 指定的submodule代码到本地</font></strong></p>
+<h3><a id="%E6%96%B9%E6%A1%88%E4%BA%8C%EF%BC%9Ainit%E5%92%8C-update%E7%89%B9%E5%AE%9A-submodule" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>方案二：init 和 update 特定submodule</h3>
+<p><strong>git submodule update --init --remote ./src/plugins/xxx(submodule名称)</strong><br />
+这条命令只会初始化和 update 指定的 submodule 到本地，只需要执行一条命令即可，比较方便。</p>
 <p><img src="https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/LAJdl62EgpGQlke1/img/d0c0bab9-15bd-447e-beb9-a19ca50cb3d2.png" alt="img" /></p>
 <p><strong>第一次进入 submodule ，会看到 git(1bab43xx) ，貌似产生了一个新分支，但实际上没有。切换分支到develop后（git checkout develop ）后， 用 git branch -a 命令查看， 没有产生多余分支，因此大家不用理会。</strong></p>
 <p><strong><img src="https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/LAJdl62EgpGQlke1/img/3cece30b-e98d-4be0-a749-fe13027bfea5.png" alt="img" /></strong></p>
-<h3><a id="3%E3%80%81%E6%9B%B4%E6%96%B0submodule" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>3、更新submodule</h3>
+<h2><a id="3%E3%80%81%E6%9B%B4%E6%96%B0-submodule%E4%BB%A3%E7%A0%81" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>3、更新 submodule 代码</h2>
 <p>当我们修改了submodule（如：wizsite）里的代码后，需要提交代码，这个提交需要分2个步骤，第一步提交submodule的代码，第二步提交submodule版本信息。</p>
 <pre><code class="language-shell"># 查看是否在submodule(如：wizsite)目录下，如果不是则需进入submodule 目录
 cd ./src/plugins/wizsite
@@ -275,10 +276,10 @@ git add
 git commit
 git push
 </code></pre>
-<h3><a id="4%E3%80%81%E5%88%A0%E9%99%A4submodule" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>4、删除submodule</h3>
+<h2><a id="4%E3%80%81%E5%88%A0%E9%99%A4submodule" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>4、删除submodule</h2>
 <p>暂时涉及不到，不过前面发的文档里有操作方法。</p>
-<h2><a id="%E9%A1%B9%E7%9B%AE%E5%90%AF%E5%8A%A8%E6%88%96%E6%89%93%E5%8C%85" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>项目启动或打包</h2>
-<h3><a id="%E8%BF%90%E8%A1%8C%E5%8E%9Fpages%E4%B8%8B%E7%9A%84%E4%BB%A3%E7%A0%81" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>运行原 pages 下的代码</h3>
+<h1><a id="%E9%A1%B9%E7%9B%AE%E5%90%AF%E5%8A%A8%E6%88%96%E6%89%93%E5%8C%85" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>项目启动或打包</h1>
+<h2><a id="%E8%BF%90%E8%A1%8C%E5%8E%9Fpages%E4%B8%8B%E7%9A%84%E4%BB%A3%E7%A0%81" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>运行原 pages 下的代码</h2>
 <p>截止到目前，wizdom-react的本部门的项目，均已完成迁移，因此这个方式不再建议，后期 pages目录下的代码一删掉，这种方式就终结了。</p>
 <p>1、修改App.js文件切换注释</p>
 <p><img src="https://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/images/202207231359898.png" alt="image-20220723135906460" /></p>
@@ -289,13 +290,35 @@ pnpm start xxx
 #打包命令
 pnpm run build xxx
 </code></pre>
-<h3><a id="%E8%BF%90%E8%A1%8Cplugins%E4%B8%8B-submodule%E4%BB%A3%E7%A0%81" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>运行 plugins 下submodule代码</h3>
+<h2><a id="%E8%BF%90%E8%A1%8Cplugins%E4%B8%8B-submodule%E4%BB%A3%E7%A0%81" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>运行 plugins 下submodule代码</h2>
 <pre><code class="language-shell">#启动命令
 pnpm start xxx -- --plugin
 
 #打包命令
 pnpm run build xxx -- --plugin
 </code></pre>
+<h1><a id="wizdom-react-submodule%E6%9C%80%E6%96%B0%E8%A7%84%E5%AE%9A-20221031" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>wizdom-react submodule 最新规定(20221031)</h1>
+<p>由于付战力那边将 plugins 整个目录都删掉了（为了流水线打包相关问题），并且规定后续各个部门只提交 submodule 的代码，所以对我们有一些影响。<br />
+<img src="http://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/2022/10/31/16671936633406.jpg" alt="" /></p>
+<p>总结操作流程如下：</p>
+<ol>
+<li>
+<p>各开发人员 clone 下来 wizdom-react 项目后，手动创建一个空的 pluings 目录。<br />
+<img src="http://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/2022/10/31/16671936633439.jpg" alt="" /></p>
+</li>
+<li>
+<p>如果是新增某个 submodule，即 .gitsubmodules 文件中不包含它，则在 wizdom-react 的根目录下直接执行下面命令即可，其中 wizsite 是 submodule 名称，其它项目替换一下即可。</p>
+<pre><code class="language-shell">git submodule add --force ssh://git@192.168.101.70:222/csgl/frontend/wizdom-react-plugins/wizsite.git src/plugins/wizsite
+</code></pre>
+</li>
+<li>
+<p>如果是一个已存在的 submodule，即 .gitsubmodules 中已经包含它了，则先手动删掉它，然后再执行步骤2中的命令重新添加进来。<br />
+<img src="http://yuanchaowhut.oss-cn-hangzhou.aliyuncs.com/2022/10/31/16671936633457.jpg" alt="" /></p>
+</li>
+<li>
+<p>这次改动唯一的好处就是今后提交代码只需要提交一次，即只需要提交 submodule 的代码到对应的子仓库即可，wizdom-react 仓库就不需要再提交了。</p>
+</li>
+</ol>
 <h1><a id="%E6%94%B6%E8%8E%B7%E4%B8%8E%E5%88%86%E4%BA%AB" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>收获与分享</h1>
 <p>本次仓库迁移整改遇到了很多问题，在解决相关问题的过程中，也学习到了不少东西，这里简单的分享几个小技巧。</p>
 <h2><a id="1%E3%80%81prettier%E6%89%B9%E9%87%8F%E6%A0%BC%E5%BC%8F%E5%8C%96" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>1、prettier 批量格式化</h2>
